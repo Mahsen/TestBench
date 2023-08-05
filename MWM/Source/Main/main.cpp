@@ -76,6 +76,50 @@ struct {
 	{
 		public:
 			virtual bool Open() {		
+				Update(19200);
+				return true;
+			}
+			virtual bool Update(uint32_t Speed) {
+				UART_UpdateSetting(TESTBENCH_TEST_ID56_MEDIA_UI_UART, Speed, USART_WordLength_8b, USART_Parity_No, USART_StopBits_1, true);
+				return true;
+			}
+			virtual bool Send(uint8_t *Message, uint32_t Length) {		
+				UART_Send_String(TESTBENCH_TEST_ID56_MEDIA_UI_UART, Message, Length);
+				return true;
+			}
+			virtual bool Receive(uint8_t *Message, uint32_t *Length) {	
+				if(UART_Read_State_FIFO(TESTBENCH_TEST_ID56_MEDIA_UI_UART).rxBusy()) {
+					for(U32 Index=RESET; Index<100; Index++)
+					{
+						*Length = UART_Read_State_FIFO(TESTBENCH_TEST_ID56_MEDIA_UI_UART).rx_Length;	
+						TaskManager_Delay(100 MSec);
+						if(*Length == UART_Read_State_FIFO(TESTBENCH_TEST_ID56_MEDIA_UI_UART).rx_Length)
+						{
+							break;
+						}
+					}
+					if(*Length) {
+						*Length = UART_Receive_String_FIFO(TESTBENCH_TEST_ID56_MEDIA_UI_UART, Message, *Length);
+						return true;
+					}
+				}
+				return false;
+			}
+			virtual bool Clear() {		
+				UART_Reset_Buffer_FIFO(TESTBENCH_TEST_ID56_MEDIA_UI_UART);
+				return true;
+			}
+			virtual bool Reset() {		
+				return false;
+			}
+			virtual bool Close() {		
+				return false;
+			}		
+	} Interface;
+	class : Media
+	{
+		public:
+			virtual bool Open() {		
 				Update(TESTBENCH_TEST_ID56_MEDIA_METER_MEDIA_BOUDRATE);
 				return true;
 			}
@@ -406,9 +450,10 @@ __task void StartTasks(void) {
 		TestBench.Add((uint8_t*)"ID56_CheckFlash", &TEST_ID56_CheckFlash);	
 		TestBench.Add((uint8_t*)"ID56_Power_4v_Off", &TEST_ID56_Power_4v_Off);
 		TestBench.Add((uint8_t*)"ID56_Power_5v_Off", &TEST_ID56_Power_5v_Off);
+		
+		// Config user interface
+		UI.Init((Media*)&Test_56.Interface);
 	}
-	// Config user interface
-	UI.Init();
 	
 	os_tsk_delete_self();
 }

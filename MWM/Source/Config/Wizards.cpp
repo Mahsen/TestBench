@@ -407,44 +407,6 @@ Tel : +989124662703
 #ifndef TESTBENCH_TEST_ID56_MEDIA_UI_UART
 	#define TESTBENCH_TEST_ID56_MEDIA_UI_UART                          5
 #endif
-// <h> Data Packet
-//			 <o> Boudrate
-//					 <300=> 300
-//					 <600=> 600
-//					 <1200=> 1200
-//					 <4800=> 4800
-//					 <9600=> 9600
-//					 <19200=> 19200
-//					 <38400=> 38400
-//					 <57600=> 57600
-//					 <115200=> 115200
-//					 <256000=> 256000
-#ifndef TESTBENCH_TEST_ID56_MEDIA_UI_BOUDRATE
-	#define TESTBENCH_TEST_ID56_MEDIA_UI_BOUDRATE           19200
-#endif
-//			 <o> Data Bit
-//					 <0x2000=> 7
-//					 <0x0000=> 8
-//					 <0x1000=> 9
-#ifndef TESTBENCH_TEST_ID56_MEDIA_UI_DATABIT
-	#define TESTBENCH_TEST_ID56_MEDIA_UI_DATABIT            0x0000
-#endif
-//			 <o> Stop bits
-//					 <0x1000=> 0.5
-//					 <0x0000=> 1
-//					 <0x3000=> 1.5
-//					 <0x2000=> 2
-#ifndef TESTBENCH_TEST_ID56_MEDIA_UI_STOPBIT
-	#define TESTBENCH_TEST_ID56_MEDIA_UI_STOPBIT             0x0000
-#endif
-//			 <o> Parity
-//					 <0x0000=> None
-//					 <0x0400=> Even
-//					 <0x0600=> Odd
-#ifndef TESTBENCH_TEST_ID56_MEDIA_UI_PARITY
-	#define TESTBENCH_TEST_ID56_MEDIA_UI_PARITY             0x0000
-#endif
-// </h>
 // </h>
 // </h>
 // </h>
