@@ -423,6 +423,7 @@ int main (void) {
 __task void StartTasks(void) {
 
 	TaskManager_Delay(20 MSec);
+	
 	// Init drivers
 	__init_RTC();
 	__init_WDT();
@@ -433,6 +434,10 @@ __task void StartTasks(void) {
 	__init_PWM();
 	__init_TaskTimer();
 	__init_TaskManager();
+	
+	GPIO_Input_AddPin(TESTBENCH_KEY_A_PORT, TESTBENCH_KEY_A_PIN, NULL, &General.Key.A.ValueBool, PIN_EDGE_TOGGEL, PIN_PULLING_UP, false);
+	GPIO_Output_AddPin(TESTBENCH_LED_PORT, TESTBENCH_LED_PIN, &General.LED.A.ValueBool, !WDT_LED_LOGIC);
+
 	// Add tests
 	TestBench.Init(&TEST_GetID);
 	if(strcmp((char*)TestBench.GetID(), "56") == NULL) {
