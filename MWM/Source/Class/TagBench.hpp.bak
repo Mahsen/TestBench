@@ -1,0 +1,79 @@
+#ifndef __TAGBENCH_HPP
+#define __TAGBENCH_HPP
+//----------------------------------------------------------
+#include "defines.h"
+#include "wizards.cpp"
+#include "heap.hpp"
+//----------------------------------------------------------
+class TAGBENCH
+{
+	private:
+		
+	public:
+	
+		/// ساختار مقادير
+		//{
+		struct struct_Parm
+		{
+			U8 Command[32];
+			void SetCommand(U8* Value)
+			{
+				strcpy((char*)Command, (char*)Value);
+			}
+			U8* GetCommand(void)
+			{
+				return Command;
+			}
+			void ResetCommand(void)
+			{
+				memset((char*)Command, NULL, sizeof(Command));
+			}
+			
+			U8 Data[1024];
+			void SetData(U8* Value)
+			{
+				strcpy((char*)Data, (char*)Value);
+			}
+			U8* GetData(void)
+			{
+				return Data;
+			}
+			void ResetData(void)
+			{
+				memset((char*)Data, NULL, sizeof(Data));
+			}
+			
+			struct_Parm(void)
+			{
+				ResetCommand();
+				ResetData();
+			}
+		};
+		//}
+	
+		/// توابع عمومي
+		//{		
+		void Init(void);
+		struct_Parm* Detach(U8* Data);
+		U8* Atach(struct_Parm* Data);
+		//}
+		
+		/// ساخت نمونه ساختار شي
+		//{
+		static TAGBENCH* GetInstance(void)
+		{
+			static void* THIS = NULL;
+			
+			if(!THIS)
+			{
+				HEAP::GetInstance()->GetBlock(THIS, sizeof(TAGBENCH), (U8*)"TAGBENCH");
+			}
+			
+			return (TAGBENCH*)THIS;
+		}
+		//}
+		
+};
+//----------------------------------------------------------
+void __init_TagBench(void);
+#endif
