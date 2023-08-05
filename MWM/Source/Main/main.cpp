@@ -379,7 +379,7 @@ int main (void) {
 __task void StartTasks(void) {
 
 	TaskManager_Delay(20 MSec);
-		
+	// Init drivers
 	__init_RTC();
 	__init_WDT();
 	__init_Timer();
@@ -389,7 +389,7 @@ __task void StartTasks(void) {
 	__init_PWM();
 	__init_TaskTimer();
 	__init_TaskManager();
-	
+	// Add tests
 	TestBench.Init(&TEST_GetID);
 	if(strcmp((char*)TestBench.GetID(), "56") == NULL) {
 		GPIO_Output_AddPin(TESTBENCH_TEST_ID56_DIGITAL_OUTPUT_POWER_5V_EN_PORT, TESTBENCH_TEST_ID56_DIGITAL_OUTPUT_POWER_5V_EN_PIN, &Test_56.DigitalOutput.Power_5v_En.ValueBool, false);
@@ -407,7 +407,7 @@ __task void StartTasks(void) {
 		TestBench.Add((uint8_t*)"ID56_Power_4v_Off", &TEST_ID56_Power_4v_Off);
 		TestBench.Add((uint8_t*)"ID56_Power_5v_Off", &TEST_ID56_Power_5v_Off);
 	}
-	
+	// Config user interface
 	UI.Init();
 	
 	os_tsk_delete_self();
