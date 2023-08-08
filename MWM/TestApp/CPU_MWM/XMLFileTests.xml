@@ -190,7 +190,7 @@
 		<WaitAnswer Value="10000" />
 		<Alert Value="" />
 		<Promp Value="" />
-		<ExcelField Value="N" />
+		<ExcelField Value="I" />
 		<ElementPosX1 Value="" />
 		<ElementPosX2 Value="" />
 		<ElementPosY1 Value="" />
