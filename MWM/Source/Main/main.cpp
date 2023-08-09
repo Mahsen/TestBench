@@ -399,6 +399,27 @@ void TEST_ID56_CheckFlash(U8* Data)
 		}
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
+void TEST_ID56_CheckEEprom(U8* Data)
+{
+		U8 Buffer[128];
+		uint32_t Length;
+		
+		Test_56.Meter.Update(9600);
+		Test_56.Meter.Clear();
+		Test_56.Meter.Send((U8*)"R30", 3);
+		TaskManager_Delay(10 Sec);
+		Length = Test_56.Meter.Receive(Buffer, &Length);
+
+		if(Length)
+		{
+				sprintf((char*)Data, "%s", Buffer);
+		}
+		else
+		{
+				strcpy((char*)Data, "Error");
+		}
+}
+/*--------------------------------------------------------------------------------------------------------------------*/
 void TEST_ID56_Power_4v_Off(U8* Data)
 {
 		TaskManager_Delay(1 Sec);
@@ -453,6 +474,7 @@ __task void StartTasks(void) {
 		TestBench.Add((uint8_t*)"ID56_CheckModem", &TEST_ID56_CheckModem);
 		TestBench.Add((uint8_t*)"ID56_RTC_Voltage", &TEST_ID56_RTC_Voltage);
 		TestBench.Add((uint8_t*)"ID56_CheckFlash", &TEST_ID56_CheckFlash);	
+		TestBench.Add((uint8_t*)"ID56_CheckEEprom", &TEST_ID56_CheckEEprom);
 		TestBench.Add((uint8_t*)"ID56_Power_4v_Off", &TEST_ID56_Power_4v_Off);
 		TestBench.Add((uint8_t*)"ID56_Power_5v_Off", &TEST_ID56_Power_5v_Off);
 		
