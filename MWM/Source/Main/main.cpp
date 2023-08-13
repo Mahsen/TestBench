@@ -472,10 +472,10 @@ __task void StartTasks(void) {
 		TestBench.Add((uint8_t*)"ID56_CheckProgram_Test", &TEST_ID56_CheckProgram_Test);	
 		TestBench.Add((uint8_t*)"ID56_Power_4v_On", &TEST_ID56_Power_4v_On);
 		TestBench.Add((uint8_t*)"ID56_CheckModem", &TEST_ID56_CheckModem);
+		TestBench.Add((uint8_t*)"ID56_Power_4v_Off", &TEST_ID56_Power_4v_Off);
 		TestBench.Add((uint8_t*)"ID56_RTC_Voltage", &TEST_ID56_RTC_Voltage);
 		TestBench.Add((uint8_t*)"ID56_CheckFlash", &TEST_ID56_CheckFlash);	
-		TestBench.Add((uint8_t*)"ID56_CheckEEprom", &TEST_ID56_CheckEEprom);
-		TestBench.Add((uint8_t*)"ID56_Power_4v_Off", &TEST_ID56_Power_4v_Off);
+		TestBench.Add((uint8_t*)"ID56_CheckEEprom", &TEST_ID56_CheckEEprom);		
 		TestBench.Add((uint8_t*)"ID56_Power_5v_Off", &TEST_ID56_Power_5v_Off);
 		
 		// Config user interface

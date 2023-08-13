@@ -269,6 +269,30 @@
 		<ElementPosY2 Value="" />
 	</Test>
 	
+	<Test Command="ID56_CheckLCD">
+		<Enable Value="True" />
+		<EnableIf Value="" />
+		<EnableLoop Value="" />
+		<EnableNext Value="" />
+		<Explanation Value="بررسی عملکرد LCD" />
+		<Description Value="بررسی عملکرد LCD" />
+		<MessageOK Value="عملکرد LCD صحیح است" />
+		<MessageNO Value="اختلال در عملکرد LCD" />
+		<RunExe Value="" />		
+		<AskData Value="آیا LCD اطلاعات را شفاف و خوانا نمایش می دهد ؟" />	
+		<Data Value="" />
+		<MustAnswer Value="OK" />
+		<ExceptAnswer Value="" />
+		<WaitAnswer Value="100000" />
+		<Alert Value="" />
+		<Promp Value="" />
+		<ExcelField Value="K" />
+		<ElementPosX1 Value="" />
+		<ElementPosX2 Value="" />
+		<ElementPosY1 Value="" />
+		<ElementPosY2 Value="" />
+	</Test>
+	
 	<Test Command="ID56_Power_5v_Off">
 		<Enable Value="True" />
 		<EnableIf Value="" />
