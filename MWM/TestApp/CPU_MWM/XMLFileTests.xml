@@ -172,6 +172,30 @@
 		<ElementPosY1 Value="" />
 		<ElementPosY2 Value="" />
 	</Test>
+
+	<Test Command="ID56_Power_4v_Off">
+		<Enable Value="True" />
+		<EnableIf Value="" />
+		<EnableLoop Value="" />
+		<EnableNext Value="" />
+		<Explanation Value="قطع تغذیه 4 ولت برد مورد تست" />
+		<Description Value="قطع تغذیه 4 ولت برد مورد تست" />
+		<MessageOK Value="تغذیه 4 ولت برد مورد تست قطع گردید" />
+		<MessageNO Value="اختلال در قطع تغذیه 4 ولت برد تست" />
+		<RunExe Value="" />		
+		<AskData Value="" />	
+		<Data Value="" />
+		<MustAnswer Value="OK" />
+		<ExceptAnswer Value="" />
+		<WaitAnswer Value="20000" />
+		<Alert Value="" />
+		<Promp Value="" />
+		<ExcelField Value="" />
+		<ElementPosX1 Value="" />
+		<ElementPosX2 Value="" />
+		<ElementPosY1 Value="" />
+		<ElementPosY2 Value="" />
+	</Test>
 	
 	<Test Command="ID56_RTC_Voltage">
 		<Enable Value="True" />
@@ -221,24 +245,24 @@
 		<ElementPosY2 Value="" />
 	</Test>
 	
-	<Test Command="ID56_Power_4v_Off">
+	<Test Command="ID56_CheckEEprom">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="" />
 		<EnableNext Value="" />
-		<Explanation Value="قطع تغذیه 4 ولت برد مورد تست" />
-		<Description Value="قطع تغذیه 4 ولت برد مورد تست" />
-		<MessageOK Value="تغذیه 4 ولت برد مورد تست قطع گردید" />
-		<MessageNO Value="اختلال در قطع تغذیه 4 ولت برد تست" />
+		<Explanation Value="بررسی عملکرد EEprom خارجی" />
+		<Description Value="بررسی عملکرد EEprom خارجی" />
+		<MessageOK Value="عملکرد EEprom خارجی صحیح است" />
+		<MessageNO Value="اختلال در عملکرد EEprom خارجی" />
 		<RunExe Value="" />		
 		<AskData Value="" />	
 		<Data Value="" />
 		<MustAnswer Value="OK" />
 		<ExceptAnswer Value="" />
-		<WaitAnswer Value="20000" />
+		<WaitAnswer Value="100000" />
 		<Alert Value="" />
 		<Promp Value="" />
-		<ExcelField Value="" />
+		<ExcelField Value="J" />
 		<ElementPosX1 Value="" />
 		<ElementPosX2 Value="" />
 		<ElementPosY1 Value="" />
