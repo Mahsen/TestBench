@@ -164,6 +164,7 @@ struct { // Test_56
 struct { // Test_55
 	struct {
 		struct_ValueBool Power_12v_En;
+		struct_ValueBool Power_3v3_En;
 		struct_ValueBool Booster_En;
 		struct_ValueBool Relay_Set;
 		struct_ValueBool Relay_Reset;
@@ -774,6 +775,29 @@ void TEST_ID55_3v3_Voltage(U8* Data)
 	}
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
+void TEST_ID55_Booster_Voltage(U8* Data)
+{
+	TaskManager_Delay(200 MSec);
+	float Value[2];
+	
+	Test_55.DigitalOutput.Power_3v3_En.Enable();
+	Test_55.DigitalOutput.Booster_En.Enable();
+	TaskManager_Delay(500 MSec);
+	Value[0] = Test_55.AnalogInput.Get_Booster_Voltage();
+
+	if((Value[0] >= 1.55) && (Value[0] <= 1.7))
+	{
+		sprintf((char*)Data, "OK");
+	}
+	else
+	{		
+		sprintf((char*)Data, "Fault voltage");
+	}
+	
+	Test_55.DigitalOutput.Booster_En.Disable();
+	Test_55.DigitalOutput.Power_3v3_En.Disable();
+}
+/*--------------------------------------------------------------------------------------------------------------------*/
 void TEST_ID55_Power_12v_Off(U8* Data)
 {
 	TaskManager_Delay(1 Sec);
@@ -830,6 +854,7 @@ __task void StartTasks(void) {
 	}
 	else if(strcmp((char*)TestBench.GetID(), "55") == NULL) {
 		GPIO_Output_AddPin(TESTBENCH_TEST_ID55_DIGITAL_OUTPUT_POWER_12V_EN_PORT, TESTBENCH_TEST_ID55_DIGITAL_OUTPUT_POWER_12V_EN_PIN, &Test_55.DigitalOutput.Power_12v_En.ValueBool, false);
+		GPIO_Output_AddPin(TESTBENCH_TEST_ID55_DIGITAL_OUTPUT_POWER_3V3_EN_PORT, TESTBENCH_TEST_ID55_DIGITAL_OUTPUT_POWER_3V3_EN_PIN, &Test_55.DigitalOutput.Power_3v3_En.ValueBool, false);
 		GPIO_Output_AddPin(TESTBENCH_TEST_ID55_DIGITAL_OUTPUT_BOOSTER_EN_PORT, TESTBENCH_TEST_ID55_DIGITAL_OUTPUT_BOOSTER_EN_PIN, &Test_55.DigitalOutput.Booster_En.ValueBool, false);
 		GPIO_Output_AddPin(TESTBENCH_TEST_ID55_DIGITAL_OUTPUT_RELAY_SET_PORT, TESTBENCH_TEST_ID55_DIGITAL_OUTPUT_RELAY_SET_PIN, &Test_55.DigitalOutput.Relay_Set.ValueBool, false);
 		GPIO_Output_AddPin(TESTBENCH_TEST_ID55_DIGITAL_OUTPUT_RELAY_RESET_PORT, TESTBENCH_TEST_ID55_DIGITAL_OUTPUT_RELAY_RESET_PIN, &Test_55.DigitalOutput.Relay_Reset.ValueBool, false);
@@ -845,6 +870,7 @@ __task void StartTasks(void) {
 		TestBench.Add((uint8_t*)"ID55_5v_Voltage", &TEST_ID55_5v_Voltage);
 		TestBench.Add((uint8_t*)"ID55_4v_Voltage", &TEST_ID55_4v_Voltage);
 		TestBench.Add((uint8_t*)"ID55_3v3_Voltage", &TEST_ID55_3v3_Voltage);
+		TestBench.Add((uint8_t*)"ID55_Booster_Voltage", &TEST_ID55_Booster_Voltage);
 		TestBench.Add((uint8_t*)"ID55_Power_12v_Off", &TEST_ID55_Power_12v_Off);	
 		
 		// Config user interface
