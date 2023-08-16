@@ -197,6 +197,30 @@
 		<ElementPosY2 Value="" />
 	</Test>
 	
+	<Test Command="ID55_Relay">
+		<Enable Value="True" />
+		<EnableIf Value="" />
+		<EnableLoop Value="True" />
+		<EnableNext Value="" />
+		<Explanation Value="بررسی عملکرد Relay" />
+		<Description Value="بررسی عملکرد Relay" />
+		<MessageOK Value="عمکرد Relay صحیح می باشد" />
+		<MessageNO Value="اختلال در عملکرد Relay" />
+		<RunExe Value="" />		
+		<AskData Value="" />	
+		<Data Value="" />
+		<MustAnswer Value="OK" />
+		<ExceptAnswer Value="" />
+		<WaitAnswer Value="10000" />
+		<Alert Value="" />
+		<Promp Value="" />
+		<ExcelField Value="I" />
+		<ElementPosX1 Value="" />
+		<ElementPosX2 Value="" />
+		<ElementPosY1 Value="" />
+		<ElementPosY2 Value="" />
+	</Test>
+	
 	<Test Command="ID55_Power_12v_Off">
 		<Enable Value="True" />
 		<EnableIf Value="" />

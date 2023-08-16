@@ -175,9 +175,10 @@ struct { // Test_55
 			else {
 				Relay_Reset.Enable();
 			}
-			TaskManager_Delay(30 MSec);
+			TaskManager_Delay(50 MSec);
 			Relay_Set.Disable();
 			Relay_Reset.Disable();
+			TaskManager_Delay(50 MSec);
 		}			
 		struct_ValueBool MBUS_En;
 		struct_ValueBool RS485_En;
@@ -798,6 +799,31 @@ void TEST_ID55_Booster_Voltage(U8* Data)
 	Test_55.DigitalOutput.Power_3v3_En.Disable();
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
+void TEST_ID55_Relay(U8* Data)
+{
+	TaskManager_Delay(200 MSec);
+	U8 Error = 0;
+	
+	Test_55.DigitalOutput.Power_3v3_En.Enable();
+	Test_55.DigitalOutput.Relay(true);
+	TaskManager_Delay(200 MSec);
+	if(Test_55.DigitalInput.Relay_Status.Get() == false) {
+		Error = 1;
+	}
+	Test_55.DigitalOutput.Relay(false);
+	TaskManager_Delay(200 MSec);
+	if(Test_55.DigitalInput.Relay_Status.Get() != false) {
+		Error = 2;
+	}
+	Test_55.DigitalOutput.Power_3v3_En.Disable();
+	if(Error == 0) {
+		sprintf((char*)Data, "OK");
+	}
+	else {
+		sprintf((char*)Data, "Relay Error : %d", Error);
+	}
+}
+/*--------------------------------------------------------------------------------------------------------------------*/
 void TEST_ID55_Power_12v_Off(U8* Data)
 {
 	TaskManager_Delay(1 Sec);
@@ -871,6 +897,7 @@ __task void StartTasks(void) {
 		TestBench.Add((uint8_t*)"ID55_4v_Voltage", &TEST_ID55_4v_Voltage);
 		TestBench.Add((uint8_t*)"ID55_3v3_Voltage", &TEST_ID55_3v3_Voltage);
 		TestBench.Add((uint8_t*)"ID55_Booster_Voltage", &TEST_ID55_Booster_Voltage);
+		TestBench.Add((uint8_t*)"ID55_Relay", &TEST_ID55_Relay);
 		TestBench.Add((uint8_t*)"ID55_Power_12v_Off", &TEST_ID55_Power_12v_Off);	
 		
 		// Config user interface
