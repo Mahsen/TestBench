@@ -746,7 +746,24 @@ void TEST_ID55_4v_Voltage(U8* Data)
 	float Value[2];
 	Value[0] = Test_55.AnalogInput.Get_Power_4v_Voltage();
 
-	if((Value[0] >= 2.2) && (Value[0] <= 2.4))
+	if((Value[0] >= 1.35) && (Value[0] <= 1.65))
+	{
+		sprintf((char*)Data, "OK");
+	}
+	else
+	{
+		Test_55.DigitalOutput.Power_12v_En.Disable();
+		sprintf((char*)Data, "Fault voltage");
+	}
+}
+/*--------------------------------------------------------------------------------------------------------------------*/
+void TEST_ID55_3v3_Voltage(U8* Data)
+{
+	TaskManager_Delay(200 MSec);
+	float Value[2];
+	Value[0] = Test_55.AnalogInput.Get_Power_3v3_Voltage();
+
+	if((Value[0] >= 2.6) && (Value[0] <= 2.9))
 	{
 		sprintf((char*)Data, "OK");
 	}
@@ -827,6 +844,7 @@ __task void StartTasks(void) {
 		TestBench.Add((uint8_t*)"ID55_Power_12v_On", &TEST_ID55_Power_12v_On);		
 		TestBench.Add((uint8_t*)"ID55_5v_Voltage", &TEST_ID55_5v_Voltage);
 		TestBench.Add((uint8_t*)"ID55_4v_Voltage", &TEST_ID55_4v_Voltage);
+		TestBench.Add((uint8_t*)"ID55_3v3_Voltage", &TEST_ID55_3v3_Voltage);
 		TestBench.Add((uint8_t*)"ID55_Power_12v_Off", &TEST_ID55_Power_12v_Off);	
 		
 		// Config user interface
