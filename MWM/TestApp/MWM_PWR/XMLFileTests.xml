@@ -100,6 +100,54 @@
 		<ElementPosY1 Value="" />
 		<ElementPosY2 Value="" />
 	</Test>
+
+	<Test Command="ID55_5v_Voltage">
+		<Enable Value="True" />
+		<EnableIf Value="" />
+		<EnableLoop Value="True" />
+		<EnableNext Value="" />
+		<Explanation Value="بررسی عملکرد ولتاژ 5v" />
+		<Description Value="بررسی عملکرد ولتاژ 5v" />
+		<MessageOK Value="عملکرد ولتاژ 5v صحیح میباشد" />
+		<MessageNO Value="عملکرد ولتاژ 5v اختلال دارد" />
+		<RunExe Value="" />		
+		<AskData Value="" />	
+		<Data Value="" />
+		<MustAnswer Value="OK" />
+		<ExceptAnswer Value="" />
+		<WaitAnswer Value="10000" />
+		<Alert Value="" />
+		<Promp Value="" />
+		<ExcelField Value="I" />
+		<ElementPosX1 Value="" />
+		<ElementPosX2 Value="" />
+		<ElementPosY1 Value="" />
+		<ElementPosY2 Value="" />
+	</Test>
+	
+	<Test Command="ID55_4v_Voltage">
+		<Enable Value="True" />
+		<EnableIf Value="" />
+		<EnableLoop Value="True" />
+		<EnableNext Value="" />
+		<Explanation Value="بررسی عملکرد ولتاژ 4v" />
+		<Description Value="بررسی عملکرد ولتاژ 4v" />
+		<MessageOK Value="عملکرد ولتاژ 4v صحیح میباشد" />
+		<MessageNO Value="عملکرد ولتاژ 4v اختلال دارد" />
+		<RunExe Value="" />		
+		<AskData Value="" />	
+		<Data Value="" />
+		<MustAnswer Value="OK" />
+		<ExceptAnswer Value="" />
+		<WaitAnswer Value="10000" />
+		<Alert Value="" />
+		<Promp Value="" />
+		<ExcelField Value="I" />
+		<ElementPosX1 Value="" />
+		<ElementPosX2 Value="" />
+		<ElementPosY1 Value="" />
+		<ElementPosY2 Value="" />
+	</Test>
 	
 	<Test Command="ID55_Power_12v_Off">
 		<Enable Value="True" />
