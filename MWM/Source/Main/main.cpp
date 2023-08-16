@@ -9,7 +9,7 @@
     Site : https://www.mahsen.ir
     Tel : +989124662703
     Email : info@mahsen.ir
-    Last Update : 2023/8/5
+    Last Update : 2023/8/16
 */
 /************************************************** Warnings **********************************************************/
 /*
@@ -43,7 +43,7 @@
     Nothing
 */
 /************************************************** Opjects ***********************************************************/
-struct {
+struct { // General
 	struct {
 		struct_ValueBool A;
 	} Key;
@@ -51,7 +51,7 @@ struct {
 		struct_ValueBool A;
 	} LED;
 } General;
-struct {	
+struct { // Test_56
 	struct {
 		struct_ValueBool Power_5v_En;
 		struct_ValueBool Power_4v_En;
@@ -161,6 +161,272 @@ struct {
 			}		
 	} Meter;
 } Test_56;
+struct { // Test_55
+	struct {
+		struct_ValueBool Power_12v_En;
+		struct_ValueBool Booster_En;
+		struct_ValueBool Relay_Set;
+		struct_ValueBool Relay_Reset;
+		void Relay(bool Enable) {
+			if(Enable) {
+				Relay_Set.Enable();
+			}
+			else {
+				Relay_Reset.Enable();
+			}
+			TaskManager_Delay(30 MSec);
+			Relay_Set.Disable();
+			Relay_Reset.Disable();
+		}			
+		struct_ValueBool MBUS_En;
+		struct_ValueBool RS485_En;
+	} DigitalOutput;
+	struct {
+		struct_ValueBool Relay_Status;
+	} DigitalInput;
+	struct {
+		float Get_Power_12v_Voltage(void)
+		{
+			return ((float)ADC_Read(TESTBENCH_TEST_ID55_ANALOG_INPUT_POWER_12V_VOLTAGE_CHANNEL) * 0.0008056640625);
+		}
+		float Get_Power_5v_Voltage(void)
+		{
+			return ((float)ADC_Read(TESTBENCH_TEST_ID55_ANALOG_INPUT_POWER_5V_VOLTAGE_CHANNEL) * 0.0008056640625);
+		}
+		float Get_Power_4v_Voltage(void)
+		{
+			return ((float)ADC_Read(TESTBENCH_TEST_ID55_ANALOG_INPUT_POWER_4V_VOLTAGE_CHANNEL) * 0.0008056640625);
+		}
+		float Get_Power_3v3_Voltage(void)
+		{
+			return ((float)ADC_Read(TESTBENCH_TEST_ID55_ANALOG_INPUT_POWER_3V3_VOLTAGE_CHANNEL) * 0.0008056640625);
+		}		
+		float Get_Booster_Voltage(void)
+		{
+			return ((float)ADC_Read(TESTBENCH_TEST_ID55_ANALOG_INPUT_BOOSTER_VOLTAGE_CHANNEL) * 0.0008056640625);
+		}			
+	} AnalogInput;
+	class : Media
+	{
+		public:
+			virtual bool Open() {		
+				Update(19200);
+				return true;
+			}
+			virtual bool Update(uint32_t Speed) {
+				UART_UpdateSetting(TESTBENCH_TEST_ID56_MEDIA_UI_UART, Speed, USART_WordLength_8b, USART_Parity_No, USART_StopBits_1, true);
+				return true;
+			}
+			virtual bool Send(uint8_t *Message, uint32_t Length) {		
+				UART_Send_String(TESTBENCH_TEST_ID56_MEDIA_UI_UART, Message, Length);
+				return true;
+			}
+			virtual bool Receive(uint8_t *Message, uint32_t *Length) {	
+				if(UART_Read_State_FIFO(TESTBENCH_TEST_ID56_MEDIA_UI_UART).rxBusy()) {
+					for(U32 Index=RESET; Index<100; Index++)
+					{
+						*Length = UART_Read_State_FIFO(TESTBENCH_TEST_ID56_MEDIA_UI_UART).rx_Length;	
+						TaskManager_Delay(100 MSec);
+						if(*Length == UART_Read_State_FIFO(TESTBENCH_TEST_ID56_MEDIA_UI_UART).rx_Length)
+						{
+							break;
+						}
+					}
+					if(*Length) {
+						*Length = UART_Receive_String_FIFO(TESTBENCH_TEST_ID56_MEDIA_UI_UART, Message, *Length);
+						return true;
+					}
+				}
+				return false;
+			}
+			virtual bool Clear() {		
+				UART_Reset_Buffer_FIFO(TESTBENCH_TEST_ID56_MEDIA_UI_UART);
+				return true;
+			}
+			virtual bool Reset() {		
+				return false;
+			}
+			virtual bool Close() {		
+				return false;
+			}		
+	} Interface;
+	class : Media
+	{
+		public:
+			virtual bool Open() {		
+				Update(1200);
+				return true;
+			}
+			virtual bool Update(uint32_t Speed) {
+				UART_UpdateSetting(TESTBENCH_TEST_ID55_MBUS_MASTER_MEDIA_UART, Speed, USART_WordLength_8b, USART_Parity_No, USART_StopBits_1, true);
+				return true;
+			}
+			virtual bool Send(uint8_t *Message, uint32_t Length) {		
+				UART_Send_String(TESTBENCH_TEST_ID55_MBUS_MASTER_MEDIA_UART, Message, Length);
+				return true;
+			}
+			virtual bool Receive(uint8_t *Message, uint32_t *Length) {	
+				if(UART_Read_State_FIFO(TESTBENCH_TEST_ID55_MBUS_MASTER_MEDIA_UART).rxBusy()) {
+					for(U32 Index=RESET; Index<100; Index++)
+					{
+						*Length = UART_Read_State_FIFO(TESTBENCH_TEST_ID55_MBUS_MASTER_MEDIA_UART).rx_Length;	
+						TaskManager_Delay(100 MSec);
+						if(*Length == UART_Read_State_FIFO(TESTBENCH_TEST_ID55_MBUS_MASTER_MEDIA_UART).rx_Length)
+						{
+							break;
+						}
+					}
+					if(*Length) {
+						*Length = UART_Receive_String_FIFO(TESTBENCH_TEST_ID55_MBUS_MASTER_MEDIA_UART, Message, *Length);
+						return true;
+					}
+				}
+				return false;
+			}
+			virtual bool Clear() {		
+				UART_Reset_Buffer_FIFO(TESTBENCH_TEST_ID55_MBUS_MASTER_MEDIA_UART);
+				return true;
+			}
+			virtual bool Reset() {		
+				return false;
+			}
+			virtual bool Close() {		
+				return false;
+			}		
+	} MBUS_Master;
+	class : Media
+	{
+		public:
+			virtual bool Open() {		
+				Update(1200);
+				return true;
+			}
+			virtual bool Update(uint32_t Speed) {
+				UART_UpdateSetting(TESTBENCH_TEST_ID55_MBUS_SLAVE_MEDIA_UART, Speed, USART_WordLength_8b, USART_Parity_No, USART_StopBits_1, true);
+				return true;
+			}
+			virtual bool Send(uint8_t *Message, uint32_t Length) {		
+				UART_Send_String(TESTBENCH_TEST_ID55_MBUS_SLAVE_MEDIA_UART, Message, Length);
+				return true;
+			}
+			virtual bool Receive(uint8_t *Message, uint32_t *Length) {	
+				if(UART_Read_State_FIFO(TESTBENCH_TEST_ID55_MBUS_SLAVE_MEDIA_UART).rxBusy()) {
+					for(U32 Index=RESET; Index<100; Index++)
+					{
+						*Length = UART_Read_State_FIFO(TESTBENCH_TEST_ID55_MBUS_SLAVE_MEDIA_UART).rx_Length;	
+						TaskManager_Delay(100 MSec);
+						if(*Length == UART_Read_State_FIFO(TESTBENCH_TEST_ID55_MBUS_SLAVE_MEDIA_UART).rx_Length)
+						{
+							break;
+						}
+					}
+					if(*Length) {
+						*Length = UART_Receive_String_FIFO(TESTBENCH_TEST_ID55_MBUS_SLAVE_MEDIA_UART, Message, *Length);
+						return true;
+					}
+				}
+				return false;
+			}
+			virtual bool Clear() {		
+				UART_Reset_Buffer_FIFO(TESTBENCH_TEST_ID55_MBUS_SLAVE_MEDIA_UART);
+				return true;
+			}
+			virtual bool Reset() {		
+				return false;
+			}
+			virtual bool Close() {		
+				return false;
+			}		
+	} MBUS_Slave;
+	class : Media
+	{
+		public:
+			virtual bool Open() {		
+				Update(9600);
+				return true;
+			}
+			virtual bool Update(uint32_t Speed) {
+				UART_UpdateSetting(TESTBENCH_TEST_ID55_RS485_MASTER_MEDIA_UART, Speed, USART_WordLength_8b, USART_Parity_No, USART_StopBits_1, true);
+				return true;
+			}
+			virtual bool Send(uint8_t *Message, uint32_t Length) {		
+				UART_Send_String(TESTBENCH_TEST_ID55_RS485_MASTER_MEDIA_UART, Message, Length);
+				return true;
+			}
+			virtual bool Receive(uint8_t *Message, uint32_t *Length) {	
+				if(UART_Read_State_FIFO(TESTBENCH_TEST_ID55_RS485_MASTER_MEDIA_UART).rxBusy()) {
+					for(U32 Index=RESET; Index<100; Index++)
+					{
+						*Length = UART_Read_State_FIFO(TESTBENCH_TEST_ID55_RS485_MASTER_MEDIA_UART).rx_Length;	
+						TaskManager_Delay(100 MSec);
+						if(*Length == UART_Read_State_FIFO(TESTBENCH_TEST_ID55_RS485_MASTER_MEDIA_UART).rx_Length)
+						{
+							break;
+						}
+					}
+					if(*Length) {
+						*Length = UART_Receive_String_FIFO(TESTBENCH_TEST_ID55_RS485_MASTER_MEDIA_UART, Message, *Length);
+						return true;
+					}
+				}
+				return false;
+			}
+			virtual bool Clear() {		
+				UART_Reset_Buffer_FIFO(TESTBENCH_TEST_ID55_RS485_MASTER_MEDIA_UART);
+				return true;
+			}
+			virtual bool Reset() {		
+				return false;
+			}
+			virtual bool Close() {		
+				return false;
+			}		
+	} RS485_Master;
+	class : Media
+	{
+		public:
+			virtual bool Open() {		
+				Update(9600);
+				return true;
+			}
+			virtual bool Update(uint32_t Speed) {
+				UART_UpdateSetting(TESTBENCH_TEST_ID55_RS485_SLAVE_MEDIA_UART, Speed, USART_WordLength_8b, USART_Parity_No, USART_StopBits_1, true);
+				return true;
+			}
+			virtual bool Send(uint8_t *Message, uint32_t Length) {		
+				UART_Send_String(TESTBENCH_TEST_ID55_RS485_SLAVE_MEDIA_UART, Message, Length);
+				return true;
+			}
+			virtual bool Receive(uint8_t *Message, uint32_t *Length) {	
+				if(UART_Read_State_FIFO(TESTBENCH_TEST_ID55_RS485_SLAVE_MEDIA_UART).rxBusy()) {
+					for(U32 Index=RESET; Index<100; Index++)
+					{
+						*Length = UART_Read_State_FIFO(TESTBENCH_TEST_ID55_RS485_SLAVE_MEDIA_UART).rx_Length;	
+						TaskManager_Delay(100 MSec);
+						if(*Length == UART_Read_State_FIFO(TESTBENCH_TEST_ID55_RS485_SLAVE_MEDIA_UART).rx_Length)
+						{
+							break;
+						}
+					}
+					if(*Length) {
+						*Length = UART_Receive_String_FIFO(TESTBENCH_TEST_ID55_RS485_SLAVE_MEDIA_UART, Message, *Length);
+						return true;
+					}
+				}
+				return false;
+			}
+			virtual bool Clear() {		
+				UART_Reset_Buffer_FIFO(TESTBENCH_TEST_ID55_RS485_SLAVE_MEDIA_UART);
+				return true;
+			}
+			virtual bool Reset() {		
+				return false;
+			}
+			virtual bool Close() {		
+				return false;
+			}		
+	} RS485_Slave;
+} Test_55;
 /************************************************** Functions *********************************************************/
 bool TEST_GetID_MUTEX = false;
 uint8_t* TEST_GetID() {
@@ -258,6 +524,7 @@ uint8_t* TEST_GetID() {
 		General.LED.A.Enable();
 		Test_56.DigitalOutput.Power_4v_En.Disable();
 		Test_56.DigitalOutput.Power_5v_En.Disable();
+		Test_55.DigitalOutput.Power_12v_En.Disable();
 		sprintf((char*)Data, "0");
 	}
 	
@@ -434,6 +701,35 @@ void TEST_ID56_Power_5v_Off(U8* Data)
 		sprintf((char*)Data, "OK");
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
+void TEST_ID55_Power_12v_On(U8* Data)
+{
+	TaskManager_Delay(200 MSec);
+	float Value[2];
+	Value[0] = Test_55.AnalogInput.Get_Power_12v_Voltage();
+	
+	if(Value[0] >= 2.15) {
+		Test_55.DigitalOutput.Power_12v_En.Enable();
+		TaskManager_Delay(3 Sec);
+		Value[1] = Test_55.AnalogInput.Get_Power_12v_Voltage();
+		if(Value[1] < (Value[0]-(Value[0]*0.3))) {
+			Test_55.DigitalOutput.Power_12v_En.Disable();
+			sprintf((char*)Data, "Short circuit");
+		} else {
+			sprintf((char*)Data, "OK");
+		}			
+	}
+	else {
+		sprintf((char*)Data, "Input under voltage");
+	}
+}
+/*--------------------------------------------------------------------------------------------------------------------*/
+void TEST_ID55_Power_12v_Off(U8* Data)
+{
+	TaskManager_Delay(1 Sec);
+	Test_55.DigitalOutput.Power_12v_En.Disable();
+	sprintf((char*)Data, "OK");
+}
+/*--------------------------------------------------------------------------------------------------------------------*/
 void StartTasks();
 static U64 StartTasks_STAK[4096/8];
 int main (void) {
@@ -480,6 +776,25 @@ __task void StartTasks(void) {
 		
 		// Config user interface
 		UI.Init((Media*)&Test_56.Interface);
+	}
+	else if(strcmp((char*)TestBench.GetID(), "55") == NULL) {
+		GPIO_Output_AddPin(TESTBENCH_TEST_ID55_DIGITAL_OUTPUT_POWER_12V_EN_PORT, TESTBENCH_TEST_ID55_DIGITAL_OUTPUT_POWER_12V_EN_PIN, &Test_55.DigitalOutput.Power_12v_En.ValueBool, false);
+		GPIO_Output_AddPin(TESTBENCH_TEST_ID55_DIGITAL_OUTPUT_BOOSTER_EN_PORT, TESTBENCH_TEST_ID55_DIGITAL_OUTPUT_BOOSTER_EN_PIN, &Test_55.DigitalOutput.Booster_En.ValueBool, false);
+		GPIO_Output_AddPin(TESTBENCH_TEST_ID55_DIGITAL_OUTPUT_RELAY_SET_PORT, TESTBENCH_TEST_ID55_DIGITAL_OUTPUT_RELAY_SET_PIN, &Test_55.DigitalOutput.Relay_Set.ValueBool, false);
+		GPIO_Output_AddPin(TESTBENCH_TEST_ID55_DIGITAL_OUTPUT_RELAY_RESET_PORT, TESTBENCH_TEST_ID55_DIGITAL_OUTPUT_RELAY_RESET_PIN, &Test_55.DigitalOutput.Relay_Reset.ValueBool, false);
+		GPIO_Output_AddPin(TESTBENCH_TEST_ID55_DIGITAL_OUTPUT_MBUS_EN_PORT, TESTBENCH_TEST_ID55_DIGITAL_OUTPUT_MBUS_EN_PIN, &Test_55.DigitalOutput.MBUS_En.ValueBool, false);
+		GPIO_Output_AddPin(TESTBENCH_TEST_ID55_DIGITAL_OUTPUT_RS485_EN_PORT, TESTBENCH_TEST_ID55_DIGITAL_OUTPUT_RS485_EN_PIN, &Test_55.DigitalOutput.RS485_En.ValueBool, false);
+		
+		GPIO_Input_AddPin(TESTBENCH_TEST_ID55_DIGITAL_INPUT_RELAY_STATUS_PORT, TESTBENCH_TEST_ID55_DIGITAL_INPUT_RELAY_STATUS_PIN, NULL, &Test_55.DigitalInput.Relay_Status.ValueBool, PIN_EDGE_TOGGEL, PIN_PULLING_UP, false);
+			
+		TestBench.Add((uint8_t*)"HardwareVersion", &TEST_HardwareVersion);
+		TestBench.Add((uint8_t*)"SoftwareVersion", &TEST_SoftwareVersion);
+		TestBench.Add((uint8_t*)"GetID", &TEST_GetID);
+		TestBench.Add((uint8_t*)"ID55_Power_12v_On", &TEST_ID55_Power_12v_On);		
+		TestBench.Add((uint8_t*)"ID55_Power_12v_Off", &TEST_ID55_Power_12v_Off);	
+		
+		// Config user interface
+		UI.Init((Media*)&Test_55.Interface);
 	}
 	
 	os_tsk_delete_self();

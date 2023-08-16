@@ -352,6 +352,240 @@ Tel : +989124662703
 // </h>
 // </h>
 // <h> Test
+
+
+
+// <h> ID 55
+// <h> Media 
+
+// <h> UI 
+// <h> Media
+//	 <h> Uart
+//			 <o> Uart
+//					 <1=> Uart1
+//					 <2=> Uart2
+//					 <3=> Uart3
+//					 <4=> Uart4
+//					 <5=> Uart5
+//					 <6=> Uart6
+#ifndef TESTBENCH_TEST_ID55_MEDIA_UI_UART
+	#define TESTBENCH_TEST_ID55_MEDIA_UI_UART                          5
+#endif
+// </h>
+// </h>
+// </h>
+// <h> MBUS Master 
+// <h> Media
+//	 <h> Uart
+//			 <o> Uart
+//					 <1=> Uart1
+//					 <2=> Uart2
+//					 <3=> Uart3
+//					 <4=> Uart4
+//					 <5=> Uart5
+//					 <6=> Uart6
+	#define TESTBENCH_TEST_ID55_MBUS_MASTER_MEDIA_UART                  4
+// </h>
+// </h>
+// </h>
+// <h> MBUS Slave 
+// <h> Media
+//	 <h> Uart
+//			 <o> Uart
+//					 <1=> Uart1
+//					 <2=> Uart2
+//					 <3=> Uart3
+//					 <4=> Uart4
+//					 <5=> Uart5
+//					 <6=> Uart6
+	#define TESTBENCH_TEST_ID55_MBUS_SLAVE_MEDIA_UART                  3
+// </h>
+// </h>
+// </h>
+// <h> RS485 Master 
+// <h> Media
+//	 <h> Uart
+//			 <o> Uart
+//					 <1=> Uart1
+//					 <2=> Uart2
+//					 <3=> Uart3
+//					 <4=> Uart4
+//					 <5=> Uart5
+//					 <6=> Uart6
+	#define TESTBENCH_TEST_ID55_RS485_MASTER_MEDIA_UART                  1
+// </h>
+// </h>
+// </h>
+// <h> RS485 Slave 
+// <h> Media
+//	 <h> Uart
+//			 <o> Uart
+//					 <1=> Uart1
+//					 <2=> Uart2
+//					 <3=> Uart3
+//					 <4=> Uart4
+//					 <5=> Uart5
+//					 <6=> Uart6
+	#define TESTBENCH_TEST_ID55_RS485_SLAVE_MEDIA_UART                  2
+// </h>
+// </h>
+// </h>
+// </h>
+// <h> Analog Input
+// <h> Power 12v Voltage
+//			 <o> ADC
+//					 <0x0013=> Channel 19
+#define TESTBENCH_TEST_ID55_ANALOG_INPUT_POWER_12V_VOLTAGE_CHANNEL            0x0013  //A0
+// </h>
+// <h> Power 5v Voltage
+//			 <o> ADC
+//					 <0x0000=> Channel 0
+#define TESTBENCH_TEST_ID55_ANALOG_INPUT_POWER_5V_VOLTAGE_CHANNEL            0x0000  //A0
+// </h>
+// <h> Power 4v Voltage
+//			 <o> ADC
+//					 <0x0103=> Channel 3b
+#define TESTBENCH_TEST_ID55_ANALOG_INPUT_POWER_4V_VOLTAGE_CHANNEL            0x0103 //F13
+// </h>
+// <h> Power 3v3 Voltage
+//			 <o> ADC
+//					 <0x0001=> Channel 1
+#define TESTBENCH_TEST_ID55_ANALOG_INPUT_POWER_3V3_VOLTAGE_CHANNEL           0x0001 //A1
+// </h>
+// <h> Booster Voltage
+//			 <o> ADC
+//					 <0x0102=> Channel 2b
+#define TESTBENCH_TEST_ID55_ANALOG_INPUT_BOOSTER_VOLTAGE_CHANNEL            0x0102 //F12
+// </h>
+
+// </h>
+// <h> Digital Input
+// <h> Relay Status
+//			 <o> Port
+//					 <0=> PORTA
+//					 <1=> PORTB
+//					 <2=> PORTC
+//					 <3=> PORTD
+//					 <4=> PORTE
+//					 <5=> PORTF
+//					 <6=> PORTG
+//					 <7=> PORTH
+//					 <8=> PORTI
+//					 <9=> PORTJ
+//					 <10=> PORTK
+#define TESTBENCH_TEST_ID55_DIGITAL_INPUT_RELAY_STATUS_PORT            5
+//			 <o>Pin <0-15>
+#define TESTBENCH_TEST_ID55_DIGITAL_INPUT_RELAY_STATUS_PIN             0
+// </h>
+// </h>
+// <h> Digital Output
+// <h> Power_12v_En
+//			 <o> Port
+//					 <0=> PORTA
+//					 <1=> PORTB
+//					 <2=> PORTC
+//					 <3=> PORTD
+//					 <4=> PORTE
+//					 <5=> PORTF
+//					 <6=> PORTG
+//					 <7=> PORTH
+//					 <8=> PORTI
+//					 <9=> PORTJ
+//					 <10=> PORTK
+#define TESTBENCH_TEST_ID55_DIGITAL_OUTPUT_POWER_12V_EN_PORT            3
+//			 <o>Pin <0-15>
+#define TESTBENCH_TEST_ID55_DIGITAL_OUTPUT_POWER_12V_EN_PIN             7
+// </h>
+// <h> Booster_En
+//			 <o> Port
+//					 <0=> PORTA
+//					 <1=> PORTB
+//					 <2=> PORTC
+//					 <3=> PORTD
+//					 <4=> PORTE
+//					 <5=> PORTF
+//					 <6=> PORTG
+//					 <7=> PORTH
+//					 <8=> PORTI
+//					 <9=> PORTJ
+//					 <10=> PORTK
+#define TESTBENCH_TEST_ID55_DIGITAL_OUTPUT_BOOSTER_EN_PORT            0
+//			 <o>Pin <0-15>
+#define TESTBENCH_TEST_ID55_DIGITAL_OUTPUT_BOOSTER_EN_PIN             6
+// </h>
+// <h> Relay Set
+//			 <o> Port
+//					 <0=> PORTA
+//					 <1=> PORTB
+//					 <2=> PORTC
+//					 <3=> PORTD
+//					 <4=> PORTE
+//					 <5=> PORTF
+//					 <6=> PORTG
+//					 <7=> PORTH
+//					 <8=> PORTI
+//					 <9=> PORTJ
+//					 <10=> PORTK
+#define TESTBENCH_TEST_ID55_DIGITAL_OUTPUT_RELAY_SET_PORT            2
+//			 <o>Pin <0-15>
+#define TESTBENCH_TEST_ID55_DIGITAL_OUTPUT_RELAY_SET_PIN             5
+// </h>
+// <h> Relay Reset
+//			 <o> Port
+//					 <0=> PORTA
+//					 <1=> PORTB
+//					 <2=> PORTC
+//					 <3=> PORTD
+//					 <4=> PORTE
+//					 <5=> PORTF
+//					 <6=> PORTG
+//					 <7=> PORTH
+//					 <8=> PORTI
+//					 <9=> PORTJ
+//					 <10=> PORTK
+#define TESTBENCH_TEST_ID55_DIGITAL_OUTPUT_RELAY_RESET_PORT            4
+//			 <o>Pin <0-15>
+#define TESTBENCH_TEST_ID55_DIGITAL_OUTPUT_RELAY_RESET_PIN             1
+// </h>
+// <h> MBUS En
+//			 <o> Port
+//					 <0=> PORTA
+//					 <1=> PORTB
+//					 <2=> PORTC
+//					 <3=> PORTD
+//					 <4=> PORTE
+//					 <5=> PORTF
+//					 <6=> PORTG
+//					 <7=> PORTH
+//					 <8=> PORTI
+//					 <9=> PORTJ
+//					 <10=> PORTK
+#define TESTBENCH_TEST_ID55_DIGITAL_OUTPUT_MBUS_EN_PORT            0
+//			 <o>Pin <0-15>
+#define TESTBENCH_TEST_ID55_DIGITAL_OUTPUT_MBUS_EN_PIN             15
+// </h>
+// <h> RS485 En
+//			 <o> Port
+//					 <0=> PORTA
+//					 <1=> PORTB
+//					 <2=> PORTC
+//					 <3=> PORTD
+//					 <4=> PORTE
+//					 <5=> PORTF
+//					 <6=> PORTG
+//					 <7=> PORTH
+//					 <8=> PORTI
+//					 <9=> PORTJ
+//					 <10=> PORTK
+#define TESTBENCH_TEST_ID55_DIGITAL_OUTPUT_RS485_EN_PORT            1
+//			 <o>Pin <0-15>
+#define TESTBENCH_TEST_ID55_DIGITAL_OUTPUT_RS485_EN_PIN             10
+// </h>
+
+// </h>
+// </h>
+
+
 // <h> ID 56
 // <h> Media 
 // <h> METER 
@@ -535,7 +769,7 @@ Tel : +989124662703
 // </h>
 // <h> 4v Voltage
 //			 <o> ADC
-//					 <0x0002=> Channel 2
+//					 <0x0102=> Channel 2
 #define TESTBENCH_TEST_ID56_ANALOG_INPUT_POWER_4V_VOLTAGE_CHANNEL            0x0102 //F12
 // </h>
 // <h> RTC Voltage
@@ -1985,7 +2219,7 @@ Tel : +989124662703
 
 // <e> Channel 1
 #ifndef ADC_CHANNEL1_ENABLE
-	#define ADC_CHANNEL1_ENABLE    0
+	#define ADC_CHANNEL1_ENABLE    1
 #endif
 //	<o> PINSEL Port
 //		<0=> PORTA
@@ -2104,7 +2338,7 @@ Tel : +989124662703
 
 // <e> Channel 3b
 #ifndef ADC_CHANNEL3B_ENABLE
-	#define ADC_CHANNEL3B_ENABLE    0
+	#define ADC_CHANNEL3B_ENABLE    1
 #endif
 //	<o> PINSEL Port
 //		<0=> PORTA
@@ -2338,6 +2572,31 @@ Tel : +989124662703
 //	<o> PINSEL Pin <0-15>
 #ifndef ADC_CHANNEL18_PIN
 	#define ADC_CHANNEL18_PIN    12
+#endif
+//  </e>
+
+// <e> Channel 19
+#ifndef ADC_CHANNEL19_ENABLE
+	#define ADC_CHANNEL19_ENABLE    1
+#endif
+//	<o> PINSEL Port
+//		<0=> PORTA
+//		<1=> PORTB
+//		<2=> PORTC
+//		<3=> PORTD
+//		<4=> PORTE
+//		<5=> PORTF
+//		<6=> PORTG
+//		<7=> PORTH
+//		<8=> PORTI
+//		<9=> PORTJ
+//		<10=> PORTK
+#ifndef ADC_CHANNEL19_PORT
+	#define ADC_CHANNEL19_PORT    1
+#endif
+//	<o> PINSEL Pin <0-15>
+#ifndef ADC_CHANNEL19_PIN
+	#define ADC_CHANNEL19_PIN    13
 #endif
 //  </e>
 

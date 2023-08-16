@@ -214,6 +214,17 @@ void __init_ADC(void)
 	GPIO_Init((GPIO_TypeDef*)GPIO_PORTSEL[ADC_CHANNEL13_PORT], &GPIO_InitStructure);
 	#endif
 	
+	#if(ADC_CHANNEL19_ENABLE==1)
+	/* Periph clock enable */
+	RCC_AHBPeriphClockCmd(GPIO_PORTCLOCK[ADC_CHANNEL19_PORT], ENABLE);
+
+	/* Configure ADC Channel12 as analog input */
+	GPIO_InitStructure.GPIO_Pin = (1 << ADC_CHANNEL19_PIN);
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AN;
+	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
+	GPIO_Init((GPIO_TypeDef*)GPIO_PORTSEL[ADC_CHANNEL19_PORT], &GPIO_InitStructure);
+	#endif
+	
 	#if(ADC_CHANNEL27_ENABLE==1) 
 	/* Periph clock enable */
 	RCC_AHBPeriphClockCmd(GPIO_PORTCLOCK[ADC_CHANNEL27_PORT], ENABLE);
@@ -480,6 +491,19 @@ U32 ADC_Read (U16 Channel)
 	if(Channel == 13)
 	{
 		ADC_RegularChannelConfig(ADC1, ADC_Channel_13 , 1, ADC_SampleTime_384Cycles);  /* 239.5 Cycles as sampling time */
+		ADC_Cmd(ADC1, ENABLE); /* Enable ADCperipheral */
+		
+		ADC_SoftwareStartConv(ADC1);
+		TASK_MANAGER_WHILEUNTIL(!ADC_GetFlagStatus(ADC1, ADC_FLAG_EOC));  /* Wait the ADCEN flag */ 
+
+		ADValue = ADC_GetConversionValue(ADC1);
+	}
+	#endif
+	
+	#if(ADC_CHANNEL19_ENABLE==1)
+	if(Channel == 19)
+	{
+		ADC_RegularChannelConfig(ADC1, ADC_Channel_19 , 1, ADC_SampleTime_384Cycles);  /* 239.5 Cycles as sampling time */
 		ADC_Cmd(ADC1, ENABLE); /* Enable ADCperipheral */
 		
 		ADC_SoftwareStartConv(ADC1);
