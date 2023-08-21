@@ -891,7 +891,70 @@ void TEST_ID55_RS485(U8* Data)
 		sprintf((char*)Data, "OK");
 	}
 	else {
-		sprintf((char*)Data, "Relay Error : %d", Error);
+		sprintf((char*)Data, "RS485 Error : %d", Error);
+	}
+}
+/*--------------------------------------------------------------------------------------------------------------------*/
+void TEST_ID55_MBUS(U8* Data)
+{
+	TaskManager_Delay(200 MSec);
+	U8 Error = 0;
+	U8 Send[256];
+	U8 Receive[256];
+	uint32_t Length;
+	
+	Test_55.DigitalOutput.MBUS_En.Enable();
+	Test_55.MBUS_Master.Open();
+	Test_55.MBUS_Slave.Open();
+	TaskManager_Delay(100 MSec);
+	
+	memset(Send, NULL, sizeof(Send));
+	for(U16 Index=RESET; Index<sizeof(Send); Index++) {
+		Send[Index] = Index;
+	}
+	
+	memset(Receive, NULL, sizeof(Receive));
+	Test_55.MBUS_Master.Clear();
+	Test_55.MBUS_Slave.Clear();
+	TaskManager_Delay(100 MSec);	
+	Test_55.MBUS_Master.Send(Send, sizeof(Send));
+	TaskManager_Delay(100 MSec);
+	Length = sizeof(Receive);
+	Test_55.MBUS_Slave.Receive(Receive, &Length);
+	if(Length != sizeof(Send)) {
+		Error = 1;
+	}
+	else {
+		if(memcmp(Receive, Send, Length)) {
+			Error = 2;
+		}
+	}
+	
+	if(Error == 0) {
+		memset(Receive, NULL, sizeof(Receive));
+		Test_55.MBUS_Master.Clear();
+		Test_55.MBUS_Slave.Clear();
+		TaskManager_Delay(100 MSec);
+		Test_55.MBUS_Slave.Send(Send, sizeof(Send));
+		TaskManager_Delay(100 MSec);
+		Length = sizeof(Receive);
+		Test_55.MBUS_Master.Receive(Receive, &Length);
+		if(Length != sizeof(Send)) {
+			Error = 3;
+		}
+		else {
+			if(memcmp(Receive, Send, Length)) {
+				Error = 4;
+			}
+		}
+	}
+	
+	Test_55.DigitalOutput.MBUS_En.Disable();
+	if(Error == 0) {
+		sprintf((char*)Data, "OK");
+	}
+	else {
+		sprintf((char*)Data, "MBUS Error : %d", Error);
 	}
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
@@ -971,6 +1034,7 @@ __task void StartTasks(void) {
 		TestBench.Add((uint8_t*)"ID55_Booster_Voltage", &TEST_ID55_Booster_Voltage);
 		TestBench.Add((uint8_t*)"ID55_Relay", &TEST_ID55_Relay);
 		TestBench.Add((uint8_t*)"ID55_RS485", &TEST_ID55_RS485);
+		TestBench.Add((uint8_t*)"ID55_MBUS", &TEST_ID55_MBUS);
 		TestBench.Add((uint8_t*)"ID55_Power_12v_Off", &TEST_ID55_Power_12v_Off);	
 		
 		// Config user interface
