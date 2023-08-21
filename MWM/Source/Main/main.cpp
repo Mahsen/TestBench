@@ -9,7 +9,7 @@
     Site : https://www.mahsen.ir
     Tel : +989124662703
     Email : info@mahsen.ir
-    Last Update : 2023/8/16
+    Last Update : 2023/8/21
 */
 /************************************************** Warnings **********************************************************/
 /*
@@ -44,21 +44,21 @@
 */
 /************************************************** Opjects ***********************************************************/
 struct { // General
-	struct {
+	struct { // Key
 		struct_ValueBool A;
 	} Key;
-	struct {
+	struct { // LED
 		struct_ValueBool A;
 	} LED;
 } General;
 struct { // Test_56
-	struct {
+	struct { // DigitalOutput
 		struct_ValueBool Power_5v_En;
 		struct_ValueBool Power_4v_En;
 	} DigitalOutput;
-	struct {
+	struct { // DigitalInput
 	} DigitalInput;
-	struct {
+	struct { // AnalogInput
 		float Get_Power_to5v_Voltage(void)
 		{
 			return ((float)ADC_Read(TESTBENCH_TEST_ID56_ANALOG_INPUT_POWER_TO5V_VOLTAGE_CHANNEL) * 0.0008056640625);
@@ -72,7 +72,7 @@ struct { // Test_56
 			return ((float)ADC_Read(TESTBENCH_TEST_ID56_ANALOG_INPUT_RTC_VOLTAGE_CHANNEL) * 0.0008056640625);
 		}			
 	} AnalogInput;
-	class : Media
+	class : Media // Interface
 	{
 		public:
 			virtual bool Open() {		
@@ -116,7 +116,7 @@ struct { // Test_56
 				return false;
 			}		
 	} Interface;
-	class : Media
+	class : Media // Meter
 	{
 		public:
 			virtual bool Open() {		
@@ -162,8 +162,9 @@ struct { // Test_56
 	} Meter;
 } Test_56;
 struct { // Test_55
-	struct {
+	struct { // DigitalOutput
 		struct_ValueBool Power_12v_En;
+		struct_ValueBool Power_5v_En;
 		struct_ValueBool Power_3v3_En;
 		struct_ValueBool Booster_En;
 		struct_ValueBool Relay_Set;
@@ -183,10 +184,10 @@ struct { // Test_55
 		struct_ValueBool MBUS_En;
 		struct_ValueBool RS485_En;
 	} DigitalOutput;
-	struct {
+	struct { // DigitalInput
 		struct_ValueBool Relay_Status;
 	} DigitalInput;
-	struct {
+	struct { // AnalogInput
 		float Get_Power_12v_Voltage(void)
 		{
 			return ((float)ADC_Read(TESTBENCH_TEST_ID55_ANALOG_INPUT_POWER_12V_VOLTAGE_CHANNEL) * 0.0008056640625);
@@ -208,7 +209,7 @@ struct { // Test_55
 			return ((float)ADC_Read(TESTBENCH_TEST_ID55_ANALOG_INPUT_BOOSTER_VOLTAGE_CHANNEL) * 0.0008056640625);
 		}			
 	} AnalogInput;
-	class : Media
+	class : Media // Interface
 	{
 		public:
 			virtual bool Open() {		
@@ -239,6 +240,7 @@ struct { // Test_55
 						return true;
 					}
 				}
+				*Length = RESET;
 				return false;
 			}
 			virtual bool Clear() {		
@@ -252,7 +254,7 @@ struct { // Test_55
 				return false;
 			}		
 	} Interface;
-	class : Media
+	class : Media // MBUS_Master
 	{
 		public:
 			virtual bool Open() {		
@@ -283,6 +285,7 @@ struct { // Test_55
 						return true;
 					}
 				}
+				*Length = RESET;
 				return false;
 			}
 			virtual bool Clear() {		
@@ -296,7 +299,7 @@ struct { // Test_55
 				return false;
 			}		
 	} MBUS_Master;
-	class : Media
+	class : Media // MBUS_Slave
 	{
 		public:
 			virtual bool Open() {		
@@ -327,6 +330,7 @@ struct { // Test_55
 						return true;
 					}
 				}
+				*Length = RESET;
 				return false;
 			}
 			virtual bool Clear() {		
@@ -340,7 +344,7 @@ struct { // Test_55
 				return false;
 			}		
 	} MBUS_Slave;
-	class : Media
+	class : Media // RS485_Master
 	{
 		public:
 			virtual bool Open() {		
@@ -371,6 +375,7 @@ struct { // Test_55
 						return true;
 					}
 				}
+				*Length = RESET;
 				return false;
 			}
 			virtual bool Clear() {		
@@ -384,7 +389,7 @@ struct { // Test_55
 				return false;
 			}		
 	} RS485_Master;
-	class : Media
+	class : Media // RS485_Slave
 	{
 		public:
 			virtual bool Open() {		
@@ -415,6 +420,7 @@ struct { // Test_55
 						return true;
 					}
 				}
+				*Length = RESET;
 				return false;
 			}
 			virtual bool Clear() {		
@@ -824,6 +830,71 @@ void TEST_ID55_Relay(U8* Data)
 	}
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
+void TEST_ID55_RS485(U8* Data)
+{
+	TaskManager_Delay(200 MSec);
+	U8 Error = 0;
+	U8 Send[256];
+	U8 Receive[256];
+	uint32_t Length;
+	
+	Test_55.DigitalOutput.Power_5v_En.Enable();
+	Test_55.DigitalOutput.RS485_En.Enable();
+	Test_55.RS485_Master.Open();
+	Test_55.RS485_Slave.Open();
+	TaskManager_Delay(100 MSec);
+	
+	memset(Send, NULL, sizeof(Send));
+	for(U16 Index=RESET; Index<sizeof(Send); Index++) {
+		Send[Index] = Index;
+	}
+	
+	memset(Receive, NULL, sizeof(Receive));
+	Test_55.RS485_Master.Clear();
+	Test_55.RS485_Slave.Clear();
+	TaskManager_Delay(100 MSec);	
+	Test_55.RS485_Master.Send(Send, sizeof(Send));
+	TaskManager_Delay(100 MSec);
+	Length = sizeof(Receive);
+	Test_55.RS485_Slave.Receive(Receive, &Length);
+	if(Length != sizeof(Send)) {
+		Error = 1;
+	}
+	else {
+		if(memcmp(Receive, Send, Length)) {
+			Error = 2;
+		}
+	}
+	
+	if(Error == 0) {
+		memset(Receive, NULL, sizeof(Receive));
+		Test_55.RS485_Master.Clear();
+		Test_55.RS485_Slave.Clear();
+		TaskManager_Delay(100 MSec);
+		Test_55.RS485_Slave.Send(Send, sizeof(Send));
+		TaskManager_Delay(100 MSec);
+		Length = sizeof(Receive);
+		Test_55.RS485_Master.Receive(Receive, &Length);
+		if(Length != sizeof(Send)) {
+			Error = 3;
+		}
+		else {
+			if(memcmp(Receive, Send, Length)) {
+				Error = 4;
+			}
+		}
+	}
+	
+	Test_55.DigitalOutput.RS485_En.Disable();
+	Test_55.DigitalOutput.Power_5v_En.Disable();
+	if(Error == 0) {
+		sprintf((char*)Data, "OK");
+	}
+	else {
+		sprintf((char*)Data, "Relay Error : %d", Error);
+	}
+}
+/*--------------------------------------------------------------------------------------------------------------------*/
 void TEST_ID55_Power_12v_Off(U8* Data)
 {
 	TaskManager_Delay(1 Sec);
@@ -844,7 +915,7 @@ __task void StartTasks(void) {
 	
 	// Init drivers
 	__init_RTC();
-	__init_WDT();
+//	__init_WDT();
 	__init_Timer();
 	__init_GPIO();
 	__init_ADC();	
@@ -880,6 +951,7 @@ __task void StartTasks(void) {
 	}
 	else if(strcmp((char*)TestBench.GetID(), "55") == NULL) {
 		GPIO_Output_AddPin(TESTBENCH_TEST_ID55_DIGITAL_OUTPUT_POWER_12V_EN_PORT, TESTBENCH_TEST_ID55_DIGITAL_OUTPUT_POWER_12V_EN_PIN, &Test_55.DigitalOutput.Power_12v_En.ValueBool, false);
+		GPIO_Output_AddPin(TESTBENCH_TEST_ID55_DIGITAL_OUTPUT_POWER_5V_EN_PORT, TESTBENCH_TEST_ID55_DIGITAL_OUTPUT_POWER_5V_EN_PIN, &Test_55.DigitalOutput.Power_5v_En.ValueBool, false);
 		GPIO_Output_AddPin(TESTBENCH_TEST_ID55_DIGITAL_OUTPUT_POWER_3V3_EN_PORT, TESTBENCH_TEST_ID55_DIGITAL_OUTPUT_POWER_3V3_EN_PIN, &Test_55.DigitalOutput.Power_3v3_En.ValueBool, false);
 		GPIO_Output_AddPin(TESTBENCH_TEST_ID55_DIGITAL_OUTPUT_BOOSTER_EN_PORT, TESTBENCH_TEST_ID55_DIGITAL_OUTPUT_BOOSTER_EN_PIN, &Test_55.DigitalOutput.Booster_En.ValueBool, false);
 		GPIO_Output_AddPin(TESTBENCH_TEST_ID55_DIGITAL_OUTPUT_RELAY_SET_PORT, TESTBENCH_TEST_ID55_DIGITAL_OUTPUT_RELAY_SET_PIN, &Test_55.DigitalOutput.Relay_Set.ValueBool, false);
@@ -888,7 +960,7 @@ __task void StartTasks(void) {
 		GPIO_Output_AddPin(TESTBENCH_TEST_ID55_DIGITAL_OUTPUT_RS485_EN_PORT, TESTBENCH_TEST_ID55_DIGITAL_OUTPUT_RS485_EN_PIN, &Test_55.DigitalOutput.RS485_En.ValueBool, false);
 		
 		GPIO_Input_AddPin(TESTBENCH_TEST_ID55_DIGITAL_INPUT_RELAY_STATUS_PORT, TESTBENCH_TEST_ID55_DIGITAL_INPUT_RELAY_STATUS_PIN, NULL, &Test_55.DigitalInput.Relay_Status.ValueBool, PIN_EDGE_TOGGEL, PIN_PULLING_UP, false);
-			
+		
 		TestBench.Add((uint8_t*)"HardwareVersion", &TEST_HardwareVersion);
 		TestBench.Add((uint8_t*)"SoftwareVersion", &TEST_SoftwareVersion);
 		TestBench.Add((uint8_t*)"GetID", &TEST_GetID);
@@ -898,6 +970,7 @@ __task void StartTasks(void) {
 		TestBench.Add((uint8_t*)"ID55_3v3_Voltage", &TEST_ID55_3v3_Voltage);
 		TestBench.Add((uint8_t*)"ID55_Booster_Voltage", &TEST_ID55_Booster_Voltage);
 		TestBench.Add((uint8_t*)"ID55_Relay", &TEST_ID55_Relay);
+		TestBench.Add((uint8_t*)"ID55_RS485", &TEST_ID55_RS485);
 		TestBench.Add((uint8_t*)"ID55_Power_12v_Off", &TEST_ID55_Power_12v_Off);	
 		
 		// Config user interface

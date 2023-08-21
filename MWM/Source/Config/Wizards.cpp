@@ -496,6 +496,23 @@ Tel : +989124662703
 //			 <o>Pin <0-15>
 #define TESTBENCH_TEST_ID55_DIGITAL_OUTPUT_POWER_12V_EN_PIN             7
 // </h>
+// <h> Power_5v_En
+//			 <o> Port
+//					 <0=> PORTA
+//					 <1=> PORTB
+//					 <2=> PORTC
+//					 <3=> PORTD
+//					 <4=> PORTE
+//					 <5=> PORTF
+//					 <6=> PORTG
+//					 <7=> PORTH
+//					 <8=> PORTI
+//					 <9=> PORTJ
+//					 <10=> PORTK
+#define TESTBENCH_TEST_ID55_DIGITAL_OUTPUT_POWER_5V_EN_PORT            6
+//			 <o>Pin <0-15>
+#define TESTBENCH_TEST_ID55_DIGITAL_OUTPUT_POWER_5V_EN_PIN             10
+// </h>
 // <h> Power_3v3_En
 //			 <o> Port
 //					 <0=> PORTA
