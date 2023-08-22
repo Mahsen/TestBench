@@ -316,16 +316,16 @@
 		<ElementPosY1 Value="" />
 		<ElementPosY2 Value="" />
 	</Test>
-
-	<Test Command="ID56_CheckLED_Green">
+	
+	<Test Command="ID56_CheckLED_Red">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="" />
 		<EnableNext Value="" />
-		<Explanation Value="بررسی عملکرد LED Green " />
-		<Description Value="بررسی عملکرد LED Green " />
-		<MessageOK Value="عملکرد LED Green صحیح است" />
-		<MessageNO Value="اختلال در عملکرد LED Green " />
+		<Explanation Value="بررسی عملکرد LED Red " />
+		<Description Value="بررسی عملکرد LED Red " />
+		<MessageOK Value="عملکرد LED Red صحیح است" />
+		<MessageNO Value="اختلال در عملکرد LED Red " />
 		<RunExe Value="" />		
 		<AskData Value="" />	
 		<Data Value="" />

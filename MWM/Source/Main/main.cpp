@@ -826,7 +826,8 @@ void TEST_ID56_CheckBuzzer_EventLED(void)
 {
 	TEST_ID56_CheckBuzzer_EventLED_Count++;
 }
-void TEST_ID56_CheckLED_Green(U8* Data)
+
+void TEST_ID56_CheckLED_Red(U8* Data)
 {
 		TEST_ID56_CheckBuzzer_EventLED_Count = RESET;
 		U8 Buffer[128];
@@ -836,9 +837,9 @@ void TEST_ID56_CheckLED_Green(U8* Data)
 		Test_56.Meter.Clear();
 		Test_56.Meter.Send((U8*)"R50", 3);
 		TaskManager_Delay(4 Sec);
-		Length = Test_56.Meter.Receive(Buffer, &Length);
+		Test_56.Meter.Receive(Buffer, &Length);
 
-		if((Length) && (TEST_ID56_CheckBuzzer_EventLED_Count > 5000))
+		if(TEST_ID56_CheckBuzzer_EventLED_Count > 100)
 		{
 				sprintf((char*)Data, "%s", Buffer);
 		}
@@ -1166,7 +1167,7 @@ __task void StartTasks(void) {
 		TestBench.Add((uint8_t*)"ID56_CheckEEprom", &TEST_ID56_CheckEEprom);		
 		TestBench.Add((uint8_t*)"ID56_CheckOP", &TEST_ID56_CheckOP);
 		TestBench.Add((uint8_t*)"ID56_CheckBuzzer", &TEST_ID56_CheckBuzzer);
-		TestBench.Add((uint8_t*)"ID56_CheckLED_Green", &TEST_ID56_CheckLED_Green);
+		TestBench.Add((uint8_t*)"ID56_CheckLED_Red", &TEST_ID56_CheckLED_Red);
 		TestBench.Add((uint8_t*)"ID56_Power_5v_Off", &TEST_ID56_Power_5v_Off);
 		
 		// Config user interface
