@@ -292,7 +292,31 @@
 		<ElementPosY1 Value="" />
 		<ElementPosY2 Value="" />
 	</Test>
-	
+
+	<Test Command="ID56_CheckBuzzer">
+		<Enable Value="True" />
+		<EnableIf Value="" />
+		<EnableLoop Value="" />
+		<EnableNext Value="" />
+		<Explanation Value="بررسی عملکرد Buzzer " />
+		<Description Value="بررسی عملکرد Buzzer " />
+		<MessageOK Value="عملکرد Buzzer صحیح است" />
+		<MessageNO Value="اختلال در عملکرد Buzzer " />
+		<RunExe Value="" />		
+		<AskData Value="" />	
+		<Data Value="" />
+		<MustAnswer Value="OK" />
+		<ExceptAnswer Value="" />
+		<WaitAnswer Value="100000" />
+		<Alert Value="" />
+		<Promp Value="" />
+		<ExcelField Value="K" />
+		<ElementPosX1 Value="" />
+		<ElementPosX2 Value="" />
+		<ElementPosY1 Value="" />
+		<ElementPosY2 Value="" />
+	</Test>
+
 	<Test Command="ID56_CheckLCD">
 		<Enable Value="True" />
 		<EnableIf Value="" />

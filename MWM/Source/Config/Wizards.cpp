@@ -908,7 +908,7 @@ Tel : +989124662703
 // </h>
 // </h>
 // <h> Digital Input
-// <h> Limit Down
+// <h> Event Mic
 //			 <o> Port
 //					 <0=> PORTA
 //					 <1=> PORTB
@@ -921,94 +921,13 @@ Tel : +989124662703
 //					 <8=> PORTI
 //					 <9=> PORTJ
 //					 <10=> PORTK
-#define TESTBENCH_TEST_ID56_DIGITAL_INPUT_LIMIT_DOWN_PORT            0
+#ifndef TESTBENCH_TEST_ID56_DIGITAL_INPUT_EVENT_MIC_PORT
+	#define TESTBENCH_TEST_ID56_DIGITAL_INPUT_EVENT_MIC_PORT            3
+#endif
 //			 <o>Pin <0-15>
-#define TESTBENCH_TEST_ID56_DIGITAL_INPUT_LIMIT_DOWN_PIN             8
-// </h>
-// <h> Limit Up
-//			 <o> Port
-//					 <0=> PORTA
-//					 <1=> PORTB
-//					 <2=> PORTC
-//					 <3=> PORTD
-//					 <4=> PORTE
-//					 <5=> PORTF
-//					 <6=> PORTG
-//					 <7=> PORTH
-//					 <8=> PORTI
-//					 <9=> PORTJ
-//					 <10=> PORTK
-#define TESTBENCH_TEST_ID56_DIGITAL_INPUT_LIMIT_UP_PORT            0
-//			 <o>Pin <0-15>
-#define TESTBENCH_TEST_ID56_DIGITAL_INPUT_LIMIT_UP_PIN             9
-// </h>
-// <h> N Reset
-//			 <o> Port
-//					 <0=> PORTA
-//					 <1=> PORTB
-//					 <2=> PORTC
-//					 <3=> PORTD
-//					 <4=> PORTE
-//					 <5=> PORTF
-//					 <6=> PORTG
-//					 <7=> PORTH
-//					 <8=> PORTI
-//					 <9=> PORTJ
-//					 <10=> PORTK
-#define TESTBENCH_TEST_ID56_DIGITAL_INPUT_N_RESET_PORT            1
-//			 <o>Pin <0-15>
-#define TESTBENCH_TEST_ID56_DIGITAL_INPUT_N_RESET_PIN             5
-// </h>
-// <h> F Reset
-//			 <o> Port
-//					 <0=> PORTA
-//					 <1=> PORTB
-//					 <2=> PORTC
-//					 <3=> PORTD
-//					 <4=> PORTE
-//					 <5=> PORTF
-//					 <6=> PORTG
-//					 <7=> PORTH
-//					 <8=> PORTI
-//					 <9=> PORTJ
-//					 <10=> PORTK
-#define TESTBENCH_TEST_ID56_DIGITAL_INPUT_F_RESET_PORT            5
-//			 <o>Pin <0-15>
-#define TESTBENCH_TEST_ID56_DIGITAL_INPUT_F_RESET_PIN             0
-// </h>
-// <h> LED Light
-//			 <o> Port
-//					 <0=> PORTA
-//					 <1=> PORTB
-//					 <2=> PORTC
-//					 <3=> PORTD
-//					 <4=> PORTE
-//					 <5=> PORTF
-//					 <6=> PORTG
-//					 <7=> PORTH
-//					 <8=> PORTI
-//					 <9=> PORTJ
-//					 <10=> PORTK
-#define TESTBENCH_TEST_ID56_DIGITAL_INPUT_LED_LIGHT_PORT            5
-//			 <o>Pin <0-15>
-#define TESTBENCH_TEST_ID56_DIGITAL_INPUT_LED_LIGHT_PIN             4
-// </h>
-// <h> Zero Cross Detect
-//			 <o> Port
-//					 <0=> PORTA
-//					 <1=> PORTB
-//					 <2=> PORTC
-//					 <3=> PORTD
-//					 <4=> PORTE
-//					 <5=> PORTF
-//					 <6=> PORTG
-//					 <7=> PORTH
-//					 <8=> PORTI
-//					 <9=> PORTJ
-//					 <10=> PORTK
-#define TESTBENCH_TEST_ID56_DIGITAL_INPUT_ZERO_CROSS_DETECT_PORT            2
-//			 <o>Pin <0-15>
-#define TESTBENCH_TEST_ID56_DIGITAL_INPUT_ZERO_CROSS_DETECT_PIN             5
+#ifndef TESTBENCH_TEST_ID56_DIGITAL_INPUT_EVENT_MIC_PIN
+	#define TESTBENCH_TEST_ID56_DIGITAL_INPUT_EVENT_MIC_PIN             11
+#endif
 // </h>
 // </h>
 // <h> Digital Output

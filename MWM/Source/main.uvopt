@@ -180,22 +180,22 @@
         <Ww>
           <count>0</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Error</ItemText>
+          <ItemText>Buffer[Index]</ItemText>
         </Ww>
         <Ww>
           <count>1</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Buffer</ItemText>
+          <ItemText>Byte[0]</ItemText>
         </Ww>
         <Ww>
           <count>2</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Length</ItemText>
+          <ItemText>Index,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>3</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Byte</ItemText>
+          <ItemText>TEST_ID56_CheckBuzzer_EventMic_Count,0x0A</ItemText>
         </Ww>
       </WatchWindow1>
       <MemoryWindow1>
