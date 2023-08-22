@@ -160,6 +160,50 @@ struct { // Test_56
 				return false;
 			}		
 	} Meter;
+	class : Media // OP
+	{
+		public:
+			virtual bool Open() {		
+				Update(TESTBENCH_TEST_ID56_MEDIA_OP_MEDIA_BOUDRATE);
+				return true;
+			}
+			virtual bool Update(uint32_t Speed) {
+				UART_UpdateSetting(TESTBENCH_TEST_ID56_MEDIA_OP_MEDIA_UART, Speed, 0x2000, USART_Parity_Even, USART_StopBits_1, true);
+				return true;
+			}
+			virtual bool Send(uint8_t *Message, uint32_t Length) {		
+				UART_Send_String(TESTBENCH_TEST_ID56_MEDIA_OP_MEDIA_UART, Message, Length);
+				return true;
+			}
+			virtual bool Receive(uint8_t *Message, uint32_t *Length) {	
+				if(UART_Read_State_FIFO(TESTBENCH_TEST_ID56_MEDIA_OP_MEDIA_UART).rxBusy()) {
+					for(U32 Index=RESET; Index<100; Index++)
+					{
+						*Length = UART_Read_State_FIFO(TESTBENCH_TEST_ID56_MEDIA_OP_MEDIA_UART).rx_Length;	
+						TaskManager_Delay(100 MSec);
+						if(*Length == UART_Read_State_FIFO(TESTBENCH_TEST_ID56_MEDIA_OP_MEDIA_UART).rx_Length)
+						{
+							break;
+						}
+					}
+					if(*Length) {
+						*Length = UART_Receive_String_FIFO(TESTBENCH_TEST_ID56_MEDIA_OP_MEDIA_UART, Message, *Length);
+						return true;
+					}
+				}
+				return false;
+			}
+			virtual bool Clear() {		
+				UART_Reset_Buffer_FIFO(TESTBENCH_TEST_ID56_MEDIA_OP_MEDIA_UART);
+				return true;
+			}
+			virtual bool Reset() {		
+				return false;
+			}
+			virtual bool Close() {		
+				return false;
+			}		
+	} OP;
 } Test_56;
 struct { // Test_55
 	struct { // DigitalOutput
@@ -695,6 +739,56 @@ void TEST_ID56_CheckEEprom(U8* Data)
 		}
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
+void TEST_ID56_CheckOP(U8* Data)
+{
+	U8 Buffer[128];
+	U8 Byte[2];
+	uint32_t Length;
+	bool Pass;
+		
+	///
+	//{
+	sprintf((char*)Data, "ERROR");
+
+
+	Test_56.OP.Open();
+	Test_56.OP.Clear();
+					
+	for(U16 Index=RESET; Index<sizeof(Buffer); Index++)
+	{
+		Buffer[Index] = Index;		
+	}
+	
+	Test_56.OP.Send((U8*)Buffer, sizeof(Buffer));
+	
+	TaskManager_Delay(3 Sec);
+	
+	Pass = false;
+	Length = sizeof(Buffer);
+	memset((char*)Buffer, NULL, sizeof(Buffer));
+	Test_56.OP.Receive((U8*)Buffer, &Length);
+				
+	if(Length)
+	{
+		Pass = true;
+		for(U16 Index=RESET; Index<sizeof(Buffer); Index++)
+		{
+			Byte[0] = ((((U8)0xFF)-((U8)Index)) & 0x7F);
+			if(Buffer[Index] != Byte[0])
+			{
+				Pass = false;
+				break;
+			}
+		}
+	}
+
+	if(Pass)
+	{
+		sprintf((char*)Data, "OK");
+	}
+	//}
+}
+/*--------------------------------------------------------------------------------------------------------------------*/
 void TEST_ID56_Power_4v_Off(U8* Data)
 {
 		TaskManager_Delay(1 Sec);
@@ -1007,6 +1101,7 @@ __task void StartTasks(void) {
 		TestBench.Add((uint8_t*)"ID56_RTC_Voltage", &TEST_ID56_RTC_Voltage);
 		TestBench.Add((uint8_t*)"ID56_CheckFlash", &TEST_ID56_CheckFlash);	
 		TestBench.Add((uint8_t*)"ID56_CheckEEprom", &TEST_ID56_CheckEEprom);		
+		TestBench.Add((uint8_t*)"ID56_CheckOP", &TEST_ID56_CheckOP);
 		TestBench.Add((uint8_t*)"ID56_Power_5v_Off", &TEST_ID56_Power_5v_Off);
 		
 		// Config user interface

@@ -658,6 +658,42 @@ Tel : +989124662703
 // </h>
 // </h>
 // </h>
+// <h> OP 
+// <h> Media
+//  <s> Name
+#ifndef TESTBENCH_TEST_ID56_MEDIA_OP_MEDIA_NAME
+	#define TESTBENCH_TEST_ID56_MEDIA_OP_MEDIA_NAME              "OP"
+#endif
+//	 <h> Uart
+//			 <o> Uart
+//					 <1=> Uart1
+//					 <2=> Uart2
+//					 <3=> Uart3
+//					 <4=> Uart4
+//					 <5=> Uart5
+//					 <6=> Uart6
+#ifndef TESTBENCH_TEST_ID56_MEDIA_OP_MEDIA_UART
+	#define TESTBENCH_TEST_ID56_MEDIA_OP_MEDIA_UART                  3
+#endif
+// <h> Data Packet
+//			 <o> Boudrate
+//					 <300=> 300
+//					 <600=> 600
+//					 <1200=> 1200
+//					 <4800=> 4800
+//					 <9600=> 9600
+//					 <19200=> 19200
+//					 <38400=> 38400
+//					 <57600=> 57600
+//					 <115200=> 115200
+//					 <256000=> 256000
+#ifndef TESTBENCH_TEST_ID56_MEDIA_OP_MEDIA_BOUDRATE
+	#define TESTBENCH_TEST_ID56_MEDIA_OP_MEDIA_BOUDRATE           9600
+#endif
+// </h>
+// </h>
+// </h>
+// </h>
 // <h> UI 
 // <h> Media
 //  <s> Name
