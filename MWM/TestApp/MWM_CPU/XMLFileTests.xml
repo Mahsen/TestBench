@@ -341,6 +341,30 @@
 		<ElementPosY2 Value="" />
 	</Test>
 	
+	<Test Command="ID56_CheckTamper">
+		<Enable Value="True" />
+		<EnableIf Value="" />
+		<EnableLoop Value="" />
+		<EnableNext Value="" />
+		<Explanation Value="بررسی عملکرد Tamper" />
+		<Description Value="بررسی عملکرد Tamper" />
+		<MessageOK Value="عملکرد Tamper صحیح است" />
+		<MessageNO Value="اختلال در عملکرد Tamper" />
+		<RunExe Value="" />		
+		<AskData Value="" />	
+		<Data Value="" />
+		<MustAnswer Value="OK" />
+		<ExceptAnswer Value="" />
+		<WaitAnswer Value="100000" />
+		<Alert Value=" را 5 ثانیه گرفته و سپس رها کنید Tamper لطفا کلید " />
+		<Promp Value="" />
+		<ExcelField Value="L" />
+		<ElementPosX1 Value="" />
+		<ElementPosX2 Value="" />
+		<ElementPosY1 Value="" />
+		<ElementPosY2 Value="" />
+	</Test>
+	
 	<Test Command="ID56_CheckLCD">
 		<Enable Value="True" />
 		<EnableIf Value="" />

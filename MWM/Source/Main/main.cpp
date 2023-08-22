@@ -792,7 +792,6 @@ void TEST_ID56_CheckOP(U8* Data)
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
 U32 TEST_ID56_CheckBuzzer_EventMic_Count;
-
 void TEST_ID56_CheckBuzzer_EventMic(void)
 {
 	TEST_ID56_CheckBuzzer_EventMic_Count++;
@@ -821,12 +820,10 @@ void TEST_ID56_CheckBuzzer(U8* Data)
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
 U32 TEST_ID56_CheckBuzzer_EventLED_Count;
-
 void TEST_ID56_CheckBuzzer_EventLED(void)
 {
 	TEST_ID56_CheckBuzzer_EventLED_Count++;
 }
-
 void TEST_ID56_CheckLED_Red(U8* Data)
 {
 		TEST_ID56_CheckBuzzer_EventLED_Count = RESET;
@@ -848,6 +845,20 @@ void TEST_ID56_CheckLED_Red(U8* Data)
 				strcpy((char*)Data, "Error");
 		}
 	
+}
+/*--------------------------------------------------------------------------------------------------------------------*/
+void TEST_ID56_CheckTamper(U8* Data)
+{
+		U8 Buffer[128];
+		uint32_t Length;
+		
+		Test_56.Meter.Update(9600);
+		Test_56.Meter.Clear();
+		Test_56.Meter.Send((U8*)"R60", 3);
+		TaskManager_Delay(2 Sec);
+		Test_56.Meter.Receive(Buffer, &Length);
+
+		sprintf((char*)Data, "%s", Buffer);
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
 void TEST_ID56_Power_4v_Off(U8* Data)
@@ -1168,6 +1179,7 @@ __task void StartTasks(void) {
 		TestBench.Add((uint8_t*)"ID56_CheckOP", &TEST_ID56_CheckOP);
 		TestBench.Add((uint8_t*)"ID56_CheckBuzzer", &TEST_ID56_CheckBuzzer);
 		TestBench.Add((uint8_t*)"ID56_CheckLED_Red", &TEST_ID56_CheckLED_Red);
+		TestBench.Add((uint8_t*)"ID56_CheckTamper", &TEST_ID56_CheckTamper);
 		TestBench.Add((uint8_t*)"ID56_Power_5v_Off", &TEST_ID56_Power_5v_Off);
 		
 		// Config user interface
