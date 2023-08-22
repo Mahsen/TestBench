@@ -929,6 +929,27 @@ Tel : +989124662703
 	#define TESTBENCH_TEST_ID56_DIGITAL_INPUT_EVENT_MIC_PIN             11
 #endif
 // </h>
+// <h> Event LED
+//			 <o> Port
+//					 <0=> PORTA
+//					 <1=> PORTB
+//					 <2=> PORTC
+//					 <3=> PORTD
+//					 <4=> PORTE
+//					 <5=> PORTF
+//					 <6=> PORTG
+//					 <7=> PORTH
+//					 <8=> PORTI
+//					 <9=> PORTJ
+//					 <10=> PORTK
+#ifndef TESTBENCH_TEST_ID56_DIGITAL_INPUT_EVENT_LED_PORT
+	#define TESTBENCH_TEST_ID56_DIGITAL_INPUT_EVENT_LED_PORT            3
+#endif
+//			 <o>Pin <0-15>
+#ifndef TESTBENCH_TEST_ID56_DIGITAL_INPUT_EVENT_LED_PIN
+	#define TESTBENCH_TEST_ID56_DIGITAL_INPUT_EVENT_LED_PIN             10
+#endif
+// </h>
 // </h>
 // <h> Digital Output
 // <h> Power_5v_En

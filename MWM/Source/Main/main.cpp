@@ -58,6 +58,7 @@ struct { // Test_56
 	} DigitalOutput;
 	struct { // DigitalInput
 		struct_ValueBool EventMic;
+		struct_ValueBool EventLED;
 	} DigitalInput;
 	struct { // AnalogInput
 		float Get_Power_to5v_Voltage(void)
@@ -819,6 +820,35 @@ void TEST_ID56_CheckBuzzer(U8* Data)
 	
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
+U32 TEST_ID56_CheckBuzzer_EventLED_Count;
+
+void TEST_ID56_CheckBuzzer_EventLED(void)
+{
+	TEST_ID56_CheckBuzzer_EventLED_Count++;
+}
+void TEST_ID56_CheckLED_Green(U8* Data)
+{
+		TEST_ID56_CheckBuzzer_EventLED_Count = RESET;
+		U8 Buffer[128];
+		uint32_t Length;
+		
+		Test_56.Meter.Update(9600);
+		Test_56.Meter.Clear();
+		Test_56.Meter.Send((U8*)"R50", 3);
+		TaskManager_Delay(4 Sec);
+		Length = Test_56.Meter.Receive(Buffer, &Length);
+
+		if((Length) && (TEST_ID56_CheckBuzzer_EventLED_Count > 5000))
+		{
+				sprintf((char*)Data, "%s", Buffer);
+		}
+		else
+		{
+				strcpy((char*)Data, "Error");
+		}
+	
+}
+/*--------------------------------------------------------------------------------------------------------------------*/
 void TEST_ID56_Power_4v_Off(U8* Data)
 {
 		TaskManager_Delay(1 Sec);
@@ -1118,6 +1148,7 @@ __task void StartTasks(void) {
 	TestBench.Init(&TEST_GetID);
 	if(strcmp((char*)TestBench.GetID(), "56") == NULL) {
 		GPIO_Input_AddPin(TESTBENCH_TEST_ID56_DIGITAL_INPUT_EVENT_MIC_PORT, TESTBENCH_TEST_ID56_DIGITAL_INPUT_EVENT_MIC_PIN, &TEST_ID56_CheckBuzzer_EventMic, &Test_56.DigitalInput.EventMic.ValueBool, PIN_EDGE_TOGGEL, PIN_PULLING_UP, true);
+		GPIO_Input_AddPin(TESTBENCH_TEST_ID56_DIGITAL_INPUT_EVENT_LED_PORT, TESTBENCH_TEST_ID56_DIGITAL_INPUT_EVENT_LED_PIN, &TEST_ID56_CheckBuzzer_EventLED, &Test_56.DigitalInput.EventLED.ValueBool, PIN_EDGE_TOGGEL, PIN_PULLING_UP, true);
 		
 		GPIO_Output_AddPin(TESTBENCH_TEST_ID56_DIGITAL_OUTPUT_POWER_5V_EN_PORT, TESTBENCH_TEST_ID56_DIGITAL_OUTPUT_POWER_5V_EN_PIN, &Test_56.DigitalOutput.Power_5v_En.ValueBool, false);
 		GPIO_Output_AddPin(TESTBENCH_TEST_ID56_DIGITAL_OUTPUT_POWER_4V_EN_PORT, TESTBENCH_TEST_ID56_DIGITAL_OUTPUT_POWER_4V_EN_PIN, &Test_56.DigitalOutput.Power_4v_En.ValueBool, false);
@@ -1135,6 +1166,7 @@ __task void StartTasks(void) {
 		TestBench.Add((uint8_t*)"ID56_CheckEEprom", &TEST_ID56_CheckEEprom);		
 		TestBench.Add((uint8_t*)"ID56_CheckOP", &TEST_ID56_CheckOP);
 		TestBench.Add((uint8_t*)"ID56_CheckBuzzer", &TEST_ID56_CheckBuzzer);
+		TestBench.Add((uint8_t*)"ID56_CheckLED_Green", &TEST_ID56_CheckLED_Green);
 		TestBench.Add((uint8_t*)"ID56_Power_5v_Off", &TEST_ID56_Power_5v_Off);
 		
 		// Config user interface
