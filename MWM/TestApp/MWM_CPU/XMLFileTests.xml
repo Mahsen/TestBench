@@ -351,13 +351,13 @@
 		<MessageOK Value="عملکرد LCD صحیح است" />
 		<MessageNO Value="اختلال در عملکرد LCD" />
 		<RunExe Value="" />		
-		<AskData Value="آیا LCD اطلاعات را شفاف و خوانا نمایش می دهد ؟" />	
+		<AskData Value="" />	
 		<Data Value="" />
 		<MustAnswer Value="OK" />
 		<ExceptAnswer Value="" />
 		<WaitAnswer Value="100000" />
 		<Alert Value="" />
-		<Promp Value="" />
+		<Promp Value="اطلاعات را شفاف و خوانا نمایش می دهد ؟ LCD" />
 		<ExcelField Value="L" />
 		<ElementPosX1 Value="" />
 		<ElementPosX2 Value="" />
