@@ -437,6 +437,30 @@
 		<ElementPosY2 Value="" />
 	</Test>
 	
+	<Test Command="ID56_WriteSerial">
+		<Enable Value="True" />
+		<EnableIf Value="" />
+		<EnableLoop Value="True" />
+		<EnableNext Value="" />
+		<Explanation Value="تنظیم سریال سیستم" />
+		<Description Value="تنظیم سریال سیستم" />
+		<MessageOK Value="سریال سیستم تنظیم گردید" />
+		<MessageNO Value="اختلال در تنظیم سریال سیستم" />
+		<RunExe Value="" />		
+		<AskData Value="" />	
+		<Data Value="#Serial" />
+		<MustAnswer Value="OK" />
+		<ExceptAnswer Value="" />
+		<WaitAnswer Value="30000" />
+		<Alert Value="" />
+		<Promp Value="" />
+		<ExcelField Value="" />
+		<ElementPosX1 Value="" />
+		<ElementPosX2 Value="" />
+		<ElementPosY1 Value="" />
+		<ElementPosY2 Value="" />
+	</Test>
+	
 	<Test Command="ID56_Power_5v_Off">
 		<Enable Value="True" />
 		<EnableIf Value="" />
