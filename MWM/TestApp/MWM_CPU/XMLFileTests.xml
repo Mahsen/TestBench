@@ -389,6 +389,30 @@
 		<ElementPosY2 Value="" />
 	</Test>
 	
+	<Test Command="ID56_ResetParm">
+		<Enable Value="True" />
+		<EnableIf Value="" />
+		<EnableLoop Value="" />
+		<EnableNext Value="" />
+		<Explanation Value="ریست نمودن پارامتر ها" />
+		<Description Value="ریست نمودن پارامتر ها" />
+		<MessageOK Value="پارامتر ها به درستی ریست شدند" />
+		<MessageNO Value="اختلال در ریست پارامتر ها" />
+		<RunExe Value="" />		
+		<AskData Value="" />	
+		<Data Value="" />
+		<MustAnswer Value="OK" />
+		<ExceptAnswer Value="" />
+		<WaitAnswer Value="100000" />
+		<Alert Value="" />
+		<Promp Value="" />
+		<ExcelField Value="L" />
+		<ElementPosX1 Value="" />
+		<ElementPosX2 Value="" />
+		<ElementPosY1 Value="" />
+		<ElementPosY2 Value="" />
+	</Test>
+	
 	<Test Command="ID56_Power_5v_Off">
 		<Enable Value="True" />
 		<EnableIf Value="" />
