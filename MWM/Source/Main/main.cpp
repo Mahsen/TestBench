@@ -927,30 +927,30 @@ void TEST_ID56_WriteSerial(U8* Data)
 				strcpy((char*)Data, "Error");
 		}
 }
-///*--------------------------------------------------------------------------------------------------------------------*/
-//void TEST_ID56_WriteParm(U8* Data)
-//{
-//		U8 Buffer[128];
-//		uint32_t Length;
+/*--------------------------------------------------------------------------------------------------------------------*/
+void TEST_ID56_WriteDateTime(U8* Data)
+{
+		U8 Buffer[128];
+		uint32_t Length;
 
-//		Test_56.Meter.Update(9600);
-//		Test_56.Meter.Clear();		
-//		Test_56.Meter.Send((U8*)"W10", 3);
-//		TaskManager_Delay(2 Sec);
-//		Test_56.Meter.Clear();
-//		Test_56.Meter.Send(Data, strlen((char*)Data));
-//		TaskManager_Delay(3 Sec);
-//		Test_56.Meter.Receive(Buffer, &Length);
-//	
-//		if(Length)
-//		{
-//				sprintf((char*)Data, "%s", Buffer);
-//		}
-//		else
-//		{
-//				strcpy((char*)Data, "Error");
-//		}
-//}
+		Test_56.Meter.Update(9600);
+		Test_56.Meter.Clear();		
+		Test_56.Meter.Send((U8*)"W20", 3);
+		TaskManager_Delay(500 MSec);
+		Test_56.Meter.Clear();
+		Test_56.Meter.Send(Data, strlen((char*)Data));
+		TaskManager_Delay(2 Sec);
+		Test_56.Meter.Receive(Buffer, &Length);
+	
+		if(Length)
+		{
+				sprintf((char*)Data, "%s", Buffer);
+		}
+		else
+		{
+				strcpy((char*)Data, "Error");
+		}
+}
 /*--------------------------------------------------------------------------------------------------------------------*/
 void TEST_ID56_Power_4v_Off(U8* Data)
 {
@@ -1274,7 +1274,7 @@ __task void StartTasks(void) {
 		TestBench.Add((uint8_t*)"ID56_ResetParm", &TEST_ID56_ResetParm);
 		TestBench.Add((uint8_t*)"ID56_ClearSQL", &TEST_ID56_ClearSQL);
 		TestBench.Add((uint8_t*)"ID56_WriteSerial", &TEST_ID56_WriteSerial);
-		//TestBench.Add((uint8_t*)"ID56_WriteParm", &TEST_ID56_WriteParm);
+		TestBench.Add((uint8_t*)"ID56_WriteDateTime", &TEST_ID56_WriteDateTime);
 		TestBench.Add((uint8_t*)"ID56_Power_5v_Off", &TEST_ID56_Power_5v_Off);
 		
 		// Config user interface

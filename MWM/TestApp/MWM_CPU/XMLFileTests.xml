@@ -461,6 +461,30 @@
 		<ElementPosY2 Value="" />
 	</Test>
 	
+	<Test Command="ID56_WriteDateTime">
+		<Enable Value="True" />
+		<EnableIf Value="" />
+		<EnableLoop Value="True" />
+		<EnableNext Value="" />
+		<Explanation Value="تنظیم ساعت و تاریخ سیستم" />
+		<Description Value="تنظیم ساعت و تاریخ سیستم" />
+		<MessageOK Value="ساعت و تاریخ سیستم تنظیم گردید" />
+		<MessageNO Value="اختلال در تنظیم ساعت و تاریخ سیستم" />
+		<RunExe Value="" />		
+		<AskData Value="" />	
+		<Data Value="#DateTime" />
+		<MustAnswer Value="#Return_Data" />
+		<ExceptAnswer Value="ERROR|Error|NoDate" />
+		<WaitAnswer Value="25000" />
+		<Alert Value="" />
+		<Promp Value="" />
+		<ExcelField Value="AB" />
+		<ElementPosX1 Value="" />
+		<ElementPosX2 Value="" />
+		<ElementPosY1 Value="" />
+		<ElementPosY2 Value="" />
+	</Test>	
+	
 	<Test Command="ID56_Power_5v_Off">
 		<Enable Value="True" />
 		<EnableIf Value="" />
