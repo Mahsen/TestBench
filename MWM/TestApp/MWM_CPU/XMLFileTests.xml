@@ -526,7 +526,7 @@
 		<WaitAnswer Value="25000" />
 		<Alert Value="" />
 		<Promp Value="" />
-		<ExcelField Value="AB" />
+		<ExcelField Value="T" />
 		<ElementPosX1 Value="" />
 		<ElementPosX2 Value="" />
 		<ElementPosY1 Value="" />
