@@ -628,6 +628,54 @@
 		<ElementPosY1 Value="" />
 		<ElementPosY2 Value="" />
 	</Test>
+	
+	<Test Command="SoundPlay">
+		<Enable Value="True" />
+		<EnableIf Value="" />
+		<EnableLoop Value="" />
+		<EnableNext Value="" />
+		<Explanation Value="پایان تست ها" />
+		<Description Value="پایان تست ها" />
+		<MessageOK Value="تست ها به پایان رسید" />
+		<MessageNO Value="" />
+		<RunExe Value="../_Files/SoundPlay/SoundPlay.exe" />		
+		<AskData Value="" />	
+		<Data Value="" />
+		<MustAnswer Value="" />
+		<ExceptAnswer Value=" " />
+		<WaitAnswer Value="5000" />
+		<Alert Value="" />
+		<Promp Value="" />
+		<ExcelField Value="" />
+		<ElementPosX1 Value="" />
+		<ElementPosX2 Value="" />
+		<ElementPosY1 Value="" />
+		<ElementPosY2 Value="" />
+	</Test>	
+	
+	<Test Command="PrintSerial">
+		<Enable Value="True" />
+		<EnableIf Value="" />
+		<EnableLoop Value="" />
+		<EnableNext Value="" />
+		<Explanation Value="پرینت لیبل تست" />
+		<Description Value="پرینت لیبل تست" />
+		<MessageOK Value="لیبل به پرینتر ارسال گردید" />
+		<MessageNO Value="" />
+		<RunExe Value="../_Files/PrintSerial/PrintSerial.exe" />		
+		<AskData Value="" />	
+		<Data Value="#Report" />
+		<MustAnswer Value="" />
+		<ExceptAnswer Value="" />
+		<WaitAnswer Value="30000" />
+		<Alert Value="" />
+		<Promp Value="" />
+		<ExcelField Value="AD" />
+		<ElementPosX1 Value="" />
+		<ElementPosX2 Value="" />
+		<ElementPosY1 Value="" />
+		<ElementPosY2 Value="" />
+	</Test>
 </Tests>
 
 </Form>
