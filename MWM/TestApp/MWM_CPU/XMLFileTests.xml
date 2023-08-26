@@ -502,7 +502,7 @@
 		<WaitAnswer Value="30000" />
 		<Alert Value="" />
 		<Promp Value="" />
-		<ExcelField Value="" />
+		<ExcelField Value="S" />
 		<ElementPosX1 Value="" />
 		<ElementPosX2 Value="" />
 		<ElementPosY1 Value="" />
