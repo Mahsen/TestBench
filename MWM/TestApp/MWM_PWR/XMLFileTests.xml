@@ -214,7 +214,7 @@
 		<WaitAnswer Value="10000" />
 		<Alert Value="" />
 		<Promp Value="" />
-		<ExcelField Value="I" />
+		<ExcelField Value="AA" />
 		<ElementPosX1 Value="" />
 		<ElementPosX2 Value="" />
 		<ElementPosY1 Value="" />
