@@ -406,7 +406,7 @@
 		<WaitAnswer Value="100000" />
 		<Alert Value=" را 5 ثانیه گرفته و سپس رها کنید Tamper لطفا کلید " />
 		<Promp Value="" />
-		<ExcelField Value="L" />
+		<ExcelField Value="O" />
 		<ElementPosX1 Value="" />
 		<ElementPosX2 Value="" />
 		<ElementPosY1 Value="" />
