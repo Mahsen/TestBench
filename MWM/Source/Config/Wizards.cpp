@@ -35,7 +35,7 @@ Tel : +989124662703
 #endif
 //  <s> Version Software
 #ifndef TESTBENCH_VERSION_SOFTWARE
-	#define TESTBENCH_VERSION_SOFTWARE            	    "v1.14020522"
+	#define TESTBENCH_VERSION_SOFTWARE            	    "v1.14020601"
 #endif
 // <h> LED
 //			 <o> Port

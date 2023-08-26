@@ -3,7 +3,7 @@
 [GENERAL]
   aATEModuleSel[24] = 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
   ConnectMode = 0
-  CurrentFile = "C:\Users\lotfi\Desktop\v1.14011201.hex"
+  CurrentFile = "I:\Project\New_Structure\TestBench\MWM\TestApp\_Files\Hex\Program.hex"
   DataFileSAddr = 0x00000000
   GUIMode = 0
   HostName = ""
@@ -53,8 +53,8 @@
   AutoPerformsErase = 1
   AutoPerformsProgram = 1
   AutoPerformsSecure = 0
-  AutoPerformsStartApp = 0
-  AutoPerformsVerify = 1
+  AutoPerformsStartApp = 1
+  AutoPerformsVerify = 0
   EnableFixedVTref = 0
   EnableTargetPower = 0
   EraseType = 1

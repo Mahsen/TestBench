@@ -41,7 +41,7 @@
 		<RunExe Value="" />		
 		<AskData Value="" />	
 		<Data Value="" />
-		<MustAnswer Value="v1.14020522" />
+		<MustAnswer Value="v1.14020601" />
 		<ExceptAnswer Value="" />
 		<WaitAnswer Value="2000" />
 		<Alert Value="" />
@@ -101,6 +101,54 @@
 		<ElementPosY2 Value="" />
 	</Test>
 
+	<Test Command="EraseChip_Test">
+		<Enable Value="True" />
+		<EnableIf Value="" />
+		<EnableLoop Value="" />
+		<EnableNext Value="" />
+		<Explanation Value="آماده سازی اولیه سیستم" />
+		<Description Value="آماده سازی اولیه سیستم" />
+		<MessageOK Value="سیستم آماده به دریافت برنامه می باشد" />
+		<MessageNO Value="اختلال در آماده سازی اولیه" />
+		<RunExe Value="../_Files/JLink/JFlash.exe" />		
+		<AskData Value="" />	
+		<Data Value="-openprjHT6033.jflash -hide -erasechip -exit" /> 
+		<MustAnswer Value="active" />
+		<ExceptAnswer Value="" />
+		<WaitAnswer Value="100000" />
+		<Alert Value="" />
+		<Promp Value="" />
+		<ExcelField Value="" />
+		<ElementPosX1 Value="" />
+		<ElementPosX2 Value="" />
+		<ElementPosY1 Value="" />
+		<ElementPosY2 Value="" />
+	</Test>
+	
+	<Test Command="ProgramChip_Test">
+		<Enable Value="True" />
+		<EnableIf Value="" />
+		<EnableLoop Value="" />
+		<EnableNext Value="" />
+		<Explanation Value="پروگرم نمودن برنامه تست " />
+		<Description Value="پروگرم نمودن برنامه تست" />
+		<MessageOK Value="برنامه تست به سیستم ارسال گردید" />
+		<MessageNO Value="خطا در پروگرم نمودن برنامه تست" />
+		<RunExe Value="../_Files/JLink/JFlash.exe" />		
+		<AskData Value="" />	
+		<Data Value="-openprjHT6035.jflash -hide -open../Hex/main.hex -program -startapp -exit" /> 
+		<MustAnswer Value="active" />
+		<ExceptAnswer Value="" />
+		<WaitAnswer Value="100000" />
+		<Alert Value="" />
+		<Promp Value="" />
+		<ExcelField Value="" />
+		<ElementPosX1 Value="" />
+		<ElementPosX2 Value="" />
+		<ElementPosY1 Value="" />
+		<ElementPosY2 Value="" />
+	</Test>
+	
 	<Test Command="ID56_CheckProgram_Test">
 		<Enable Value="True" />
 		<EnableIf Value="" />
@@ -286,7 +334,7 @@
 		<WaitAnswer Value="100000" />
 		<Alert Value="" />
 		<Promp Value="" />
-		<ExcelField Value="K" />
+		<ExcelField Value="L" />
 		<ElementPosX1 Value="" />
 		<ElementPosX2 Value="" />
 		<ElementPosY1 Value="" />
@@ -484,6 +532,78 @@
 		<ElementPosY1 Value="" />
 		<ElementPosY2 Value="" />
 	</Test>	
+
+	<Test Command="EraseChip_Program">
+		<Enable Value="True" />
+		<EnableIf Value="" />
+		<EnableLoop Value="" />
+		<EnableNext Value="" />
+		<Explanation Value="آماده سازی اولیه سیستم" />
+		<Description Value="آماده سازی اولیه سیستم" />
+		<MessageOK Value="سیستم آماده به دریافت برنامه می باشد" />
+		<MessageNO Value="اختلال در آماده سازی اولیه" />
+		<RunExe Value="../_Files/JLink/JFlash.exe" />		
+		<AskData Value="" />	
+		<Data Value="-openprjHT6033.jflash -hide -erasechip -exit" /> 
+		<MustAnswer Value="active" />
+		<ExceptAnswer Value="" />
+		<WaitAnswer Value="100000" />
+		<Alert Value="" />
+		<Promp Value="" />
+		<ExcelField Value="" />
+		<ElementPosX1 Value="" />
+		<ElementPosX2 Value="" />
+		<ElementPosY1 Value="" />
+		<ElementPosY2 Value="" />
+	</Test>
+	
+	<Test Command="ProgramChip_Program">
+		<Enable Value="True" />
+		<EnableIf Value="" />
+		<EnableLoop Value="" />
+		<EnableNext Value="" />
+		<Explanation Value="پروگرم نمودن برنامه اصلی " />
+		<Description Value="پروگرم نمودن برنامه اصلی " />
+		<MessageOK Value="برنامه اصلی به سیستم ارسال گردید" />
+		<MessageNO Value="خطا در پروگرم نمودن برنامه اصلی" />
+		<RunExe Value="../_Files/JLink/JFlash.exe" />		
+		<AskData Value="" />	
+		<Data Value="-openprjHT6035.jflash -hide -open../Hex/Program.hex -program -startapp -exit" /> 
+		<MustAnswer Value="active" />
+		<ExceptAnswer Value="" />
+		<WaitAnswer Value="100000" />
+		<Alert Value="" />
+		<Promp Value="" />
+		<ExcelField Value="" />
+		<ElementPosX1 Value="" />
+		<ElementPosX2 Value="" />
+		<ElementPosY1 Value="" />
+		<ElementPosY2 Value="" />
+	</Test>	
+	
+	<Test Command="ID56_CheckProgram_Final">
+		<Enable Value="True" />
+		<EnableIf Value="" />
+		<EnableLoop Value="" />
+		<EnableNext Value="" />
+		<Explanation Value="بررسی برنامه تست" />
+		<Description Value="بررسی برنامه تست" />
+		<MessageOK Value="برنامه تست در دسترس قرار گرفت" />
+		<MessageNO Value="اختلال در برنامه تست" />
+		<RunExe Value="" />		
+		<AskData Value="" />	
+		<Data Value="" /> 
+		<MustAnswer Value="RUNNING" />
+		<ExceptAnswer Value="" />
+		<WaitAnswer Value="100000" />
+		<Alert Value="" />
+		<Promp Value="" />
+		<ExcelField Value="E" />
+		<ElementPosX1 Value="" />
+		<ElementPosX2 Value="" />
+		<ElementPosY1 Value="" />
+		<ElementPosY2 Value="" />
+	</Test>
 	
 	<Test Command="ID56_Power_5v_Off">
 		<Enable Value="True" />
@@ -508,7 +628,6 @@
 		<ElementPosY1 Value="" />
 		<ElementPosY2 Value="" />
 	</Test>
-	
 </Tests>
 
 </Form>

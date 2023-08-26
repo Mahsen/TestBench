@@ -9,7 +9,7 @@
     Site : https://www.mahsen.ir
     Tel : +989124662703
     Email : info@mahsen.ir
-    Last Update : 2023/8/21
+    Last Update : 2023/8/23
 */
 /************************************************** Warnings **********************************************************/
 /*
@@ -915,7 +915,7 @@ void TEST_ID56_WriteSerial(U8* Data)
 		TaskManager_Delay(500 MSec);
 		Test_56.Meter.Clear();
 		Test_56.Meter.Send(Data, strlen((char*)Data));
-		TaskManager_Delay(2 Sec);
+		TaskManager_Delay(3 Sec);
 		Test_56.Meter.Receive(Buffer, &Length);
 	
 		if(Length)
@@ -939,9 +939,32 @@ void TEST_ID56_WriteDateTime(U8* Data)
 		TaskManager_Delay(500 MSec);
 		Test_56.Meter.Clear();
 		Test_56.Meter.Send(Data, strlen((char*)Data));
-		TaskManager_Delay(2 Sec);
+		TaskManager_Delay(3 Sec);
 		Test_56.Meter.Receive(Buffer, &Length);
 	
+		if((Length) && (strstr((char*)Buffer, ":")))
+		{
+				sprintf((char*)Data, "%s", Buffer);
+		}
+		else
+		{
+				strcpy((char*)Data, "Error");
+		}
+}
+/*--------------------------------------------------------------------------------------------------------------------*/
+void TEST_ID56_CheckProgram_Final(U8* Data)
+{
+		U8 Buffer[256];
+		uint32_t Length;
+		
+		Test_56.OP.Update(300);
+		TaskManager_Delay(90 Sec);
+		Test_56.OP.Clear();
+		Test_56.OP.Send((U8*)"C00", 3);
+		TaskManager_Delay(3 Sec);
+		memset(Buffer, NULL, sizeof(Buffer));
+		Length = Test_56.OP.Receive(Buffer, &Length);
+
 		if(Length)
 		{
 				sprintf((char*)Data, "%s", Buffer);
@@ -1275,6 +1298,7 @@ __task void StartTasks(void) {
 		TestBench.Add((uint8_t*)"ID56_ClearSQL", &TEST_ID56_ClearSQL);
 		TestBench.Add((uint8_t*)"ID56_WriteSerial", &TEST_ID56_WriteSerial);
 		TestBench.Add((uint8_t*)"ID56_WriteDateTime", &TEST_ID56_WriteDateTime);
+		TestBench.Add((uint8_t*)"ID56_CheckProgram_Final", &TEST_ID56_CheckProgram_Final);
 		TestBench.Add((uint8_t*)"ID56_Power_5v_Off", &TEST_ID56_Power_5v_Off);
 		
 		// Config user interface

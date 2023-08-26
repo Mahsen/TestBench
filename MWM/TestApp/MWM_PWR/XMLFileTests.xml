@@ -41,7 +41,7 @@
 		<RunExe Value="" />		
 		<AskData Value="" />	
 		<Data Value="" />
-		<MustAnswer Value="v1.14020522" />
+		<MustAnswer Value="v1.14020601" />
 		<ExceptAnswer Value="" />
 		<WaitAnswer Value="2000" />
 		<Alert Value="" />
