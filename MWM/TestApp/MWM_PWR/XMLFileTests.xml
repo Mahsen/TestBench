@@ -22,7 +22,7 @@
 		<WaitAnswer Value="2000" />
 		<Alert Value="" />
 		<Promp Value="" />
-		<ExcelField Value="B" />
+		<ExcelField Value="" />
 		<ElementPosX1 Value="" />
 		<ElementPosX2 Value="" />
 		<ElementPosY1 Value="" />
@@ -46,7 +46,7 @@
 		<WaitAnswer Value="2000" />
 		<Alert Value="" />
 		<Promp Value="" />
-		<ExcelField Value="C" />
+		<ExcelField Value="" />
 		<ElementPosX1 Value="" />
 		<ElementPosX2 Value="" />
 		<ElementPosY1 Value="" />
@@ -70,7 +70,7 @@
 		<WaitAnswer Value="3000" />
 		<Alert Value="" />
 		<Promp Value="" />
-		<ExcelField Value="D" />
+		<ExcelField Value="" />
 		<ElementPosX1 Value="" />
 		<ElementPosX2 Value="" />
 		<ElementPosY1 Value="" />
@@ -94,7 +94,7 @@
 		<WaitAnswer Value="20000" />
 		<Alert Value="" />
 		<Promp Value="" />
-		<ExcelField Value="E" />
+		<ExcelField Value="V" />
 		<ElementPosX1 Value="" />
 		<ElementPosX2 Value="" />
 		<ElementPosY1 Value="" />
@@ -118,7 +118,7 @@
 		<WaitAnswer Value="10000" />
 		<Alert Value="" />
 		<Promp Value="" />
-		<ExcelField Value="I" />
+		<ExcelField Value="W" />
 		<ElementPosX1 Value="" />
 		<ElementPosX2 Value="" />
 		<ElementPosY1 Value="" />
@@ -142,7 +142,7 @@
 		<WaitAnswer Value="10000" />
 		<Alert Value="" />
 		<Promp Value="" />
-		<ExcelField Value="I" />
+		<ExcelField Value="X" />
 		<ElementPosX1 Value="" />
 		<ElementPosX2 Value="" />
 		<ElementPosY1 Value="" />
@@ -166,7 +166,7 @@
 		<WaitAnswer Value="10000" />
 		<Alert Value="" />
 		<Promp Value="" />
-		<ExcelField Value="I" />
+		<ExcelField Value="Y" />
 		<ElementPosX1 Value="" />
 		<ElementPosX2 Value="" />
 		<ElementPosY1 Value="" />
@@ -190,7 +190,7 @@
 		<WaitAnswer Value="10000" />
 		<Alert Value="" />
 		<Promp Value="" />
-		<ExcelField Value="I" />
+		<ExcelField Value="Z" />
 		<ElementPosX1 Value="" />
 		<ElementPosX2 Value="" />
 		<ElementPosY1 Value="" />
