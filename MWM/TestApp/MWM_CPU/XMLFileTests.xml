@@ -430,7 +430,7 @@
 		<WaitAnswer Value="100000" />
 		<Alert Value="" />
 		<Promp Value="اطلاعات را شفاف و خوانا نمایش می دهد ؟ LCD" />
-		<ExcelField Value="L" />
+		<ExcelField Value="P" />
 		<ElementPosX1 Value="" />
 		<ElementPosX2 Value="" />
 		<ElementPosY1 Value="" />
