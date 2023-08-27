@@ -1,0 +1,23 @@
+#ifndef __DEBUG_HPP
+#define __DEBUG_HPP
+//----------------------------------------------------------
+#include "defines.h"
+//----------------------------------------------------------
+void __init_Debug(void);
+
+void Debug_Alert(unsigned char * String);
+void Debug_Alert(const unsigned char * String);
+void Debug(const char * String);
+void Debug(int Value);
+void Debug(float Value);
+
+void Debug_Alert(const char * input);	
+void Debug_Alert(int Value);	
+void Debug_Alert(long int Value);
+void Debug_Alert(float Value);
+
+void Debug_Log(const char * String);
+
+bool DEBUG_Execute_SaaGPRS(U16 Unique_Request, U16 Unique_Respond, U8 *Command, U8 *Meter_Number, U8 *Password, U16 Current_Packet, U16 Number_Of_Packet, U8 *Data, U16 Data_Length);
+//----------------------------------------------------------
+#endif

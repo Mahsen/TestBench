@@ -1,0 +1,168 @@
+#ifndef __HEAP_HPP
+#define __HEAP_HPP
+//----------------------------------------------------------
+#include "defines.h"
+#include "stdlib.h"
+#include "wdt.hpp"
+//----------------------------------------------------------
+#define  HEAP_SPACE_SIZE                                0x2000
+#define  HEAP_SLICE_SIZE                                10
+//----------------------------------------------------------
+class HEAP
+{
+	private:
+
+		///
+		//{
+		U8 Space[HEAP_SPACE_SIZE];
+		//}
+
+		///
+		//{
+		struct struct_Slice
+		{
+			///
+			//{
+			bool Used;
+			void SetUsed(bool Value)
+			{
+				Used = Value;
+			}
+			bool GetUsed(void)
+			{
+				return Used;
+			}
+			void ResetUsed(void)
+			{
+				SetUsed(false);
+			}
+			//}
+			
+			///
+			//{
+			U8 Name[16];
+			void SetName(U8* Value)
+			{
+				ResetName();
+				memcpy(Name, Value, sizeof(Name));
+			}
+			U8* GetName(void)
+			{
+				return Name;
+			}
+			void ResetName(void)
+			{
+				memset(Name, NULL, sizeof(Name));
+			}
+			//}
+			
+			///
+			//{
+			void* Address;
+			void SetAddress(void* Value)
+			{
+				Address = Value;
+			}
+			void* GetAddress(void)
+			{
+				return Address;
+			}
+			void ResetAddress(void)
+			{
+				SetAddress(NULL);
+			}
+			//}
+			
+			///
+			//{
+			void** Pointer;
+			void SetPointer(void** Value)
+			{
+				Pointer = Value;
+			}
+			void** GetPointer(void)
+			{
+				return Pointer;
+			}
+			void ResetPointer(void)
+			{
+				SetPointer(NULL);
+			}
+			//}
+			
+			///
+			//{
+			U32 Size;
+			void SetSize(U32 Value)
+			{
+				Size = Value;
+			}
+			U32 GetSize(void)
+			{
+				return Size;
+			}
+			void ResetSize(void)
+			{
+				SetSize(RESET);
+			}
+			//}
+			
+			///
+			//{
+			struct_Slice(void)
+			{
+				ResetUsed();
+				ResetName();
+				ResetAddress();
+				ResetPointer();
+				ResetSize();
+			}
+			//}
+			
+		} Slice[HEAP_SLICE_SIZE];
+		//}
+
+		void DefrageSpace(void);
+		
+	public:
+
+		bool GetBlock(void* &Pointer, U32 Size, U8* Name);
+		void ClearBlock(void* &Pointer);
+	
+		///
+		//{
+		struct_Slice* GetInformation(U8 Locate)
+		{
+			if(Slice[Locate].GetUsed())
+			{
+				return &Slice[Locate];
+			}
+			else
+			{
+				return NULL;
+			}
+		}
+		//}
+		
+		///
+		//{
+		static HEAP* GetInstance(void)
+		{
+			static HEAP* THIS = NULL;
+			
+			if(!THIS)
+			{
+				THIS = new HEAP;
+			}
+			
+			return THIS;
+		}
+		//}
+		
+		void Init(void);
+
+};
+//----------------------------------------------------------
+void __init_HEAP(void);
+//----------------------------------------------------------
+#endif

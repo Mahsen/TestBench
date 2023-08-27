@@ -1,0 +1,20 @@
+#ifndef __ADC_HPP
+#define __ADC_HPP
+//----------------------------------------------------------
+#include "defines.h"
+#include "debug.hpp"
+#include "stm32f4xx_adc.h"
+#include "stm32f4xx_rcc.h"
+#include "TaskManager.hpp"
+//----------------------------------------------------------
+void __init_ADC(void);
+
+S8 ADC_AddPin(U8 adc_num, U8 funnum, U8 port, U8 pin);
+
+S16 ADC_Read (uint8_t Pin);			
+S16 ADC_Read_Average (U8 Pin,U8 Avrage);	
+
+S16 ADC_Read_VBat (void);
+S16 ADC_Read_Temp (void);
+//----------------------------------------------------------
+#endif

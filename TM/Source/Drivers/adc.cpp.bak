@@ -1,0 +1,246 @@
+//************************************************************* Warning *****************************************************************//
+//adc refrence is VrefN and VrefP
+//************************************************************* Wizard ******************************************************************//
+#include "Wizards.cpp"
+//************************************************************ defineds in Wizard ********************************************************//
+/*
+none
+*/	
+//************************************************************ includes ******************************************************************//
+#include "adc.hpp"
+//************************************************************ variables *****************************************************************//
+bool inited_adc_state[19] = {false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false};	                                   
+//************************************************************* opjects ******************************************************************//
+/*
+none
+*/
+//************************************************************ functions *****************************************************************//
+#if(ADC_ENABLE)
+/**
+ * @brief 		initialize ADC
+*/
+void __init_ADC(void)
+{
+			ADC_InitTypeDef       ADC_InitStructure;
+			ADC_CommonInitTypeDef ADC_CommonInitStructure;
+
+			/// Enable peripheral clocks 
+			RCC_APB2PeriphClockCmd(RCC_APB2Periph_ADC1, ENABLE);
+
+			/// ADC Common Init 
+			ADC_CommonInitStructure.ADC_Mode = ADC_Mode_Independent;
+			ADC_CommonInitStructure.ADC_Prescaler = ADC_Prescaler_Div2;
+			ADC_CommonInitStructure.ADC_DMAAccessMode = ADC_DMAAccessMode_Disabled;
+			ADC_CommonInitStructure.ADC_TwoSamplingDelay = ADC_TwoSamplingDelay_5Cycles;
+			ADC_CommonInit(&ADC_CommonInitStructure);
+
+			/// ADC1 Init 
+			ADC_InitStructure.ADC_Resolution = ADC_Resolution_12b;
+			ADC_InitStructure.ADC_ScanConvMode = DISABLE;
+			ADC_InitStructure.ADC_ContinuousConvMode = ENABLE;
+			ADC_InitStructure.ADC_ExternalTrigConvEdge = ADC_ExternalTrigConvEdge_None;
+			ADC_InitStructure.ADC_ExternalTrigConv = ADC_ExternalTrigConv_T1_CC1;
+			ADC_InitStructure.ADC_DataAlign = ADC_DataAlign_Right;
+			ADC_InitStructure.ADC_NbrOfConversion = 1;
+			ADC_Init(ADC1, &ADC_InitStructure);
+
+			/// Enable ADC1 DMA 
+			ADC_DMACmd(ADC1, ENABLE);
+
+			/// Enable [VBAT & Temp]
+			#if(ADC_SAMPLE_TEMP)
+			ADC_RegularChannelConfig(ADC1, ADC_Channel_TempSensor, 1, ADC_SampleTime_15Cycles);
+			ADC_TempSensorVrefintCmd(ENABLE);
+			#endif
+			#if(ADC_SAMPLE_VBAT)
+			ADC_RegularChannelConfig(ADC1, ADC_Channel_Vbat, 1, ADC_SampleTime_15Cycles);
+			ADC_VBATCmd(ENABLE);
+			#endif
+
+			/// Enable ADC1 
+			ADC_Cmd(ADC1, ENABLE);
+}
+#endif
+//_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+S16 ADC_Read_VBat (void)
+{
+	
+			return 0;
+}
+//_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+S16 ADC_Read_Temp (void)
+{
+			return 0;
+}
+////_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+//#if(ADC_ENABLE)
+///**
+// * @brief 		Add pin for adc
+// * @param[in]	adc_num number adc
+// * @param[in]	mode pinsel pin
+// * @param[in]	port number adc
+// * @param[in]	pin number adc
+// * @return 		number of added for adc
+//*/
+//S8 ADC_AddPin(U8 adc_num, U8 funnum, U8 port, U8 pin)
+//{
+//	/// Check adc number
+//	if(adc_num>7)
+//	{
+//		Debug("ADC: Out of range adc pin => signed char  ADC_AddPin(U8 adc_num, U8 mode, U8 port, U8 pin)");
+//		return -1;
+//	}
+//	
+
+//	/// Set pulling down pin input
+//	PINSEL_SetPinMode(port, pin, PINSEL_BASICMODE_PULLDOWN);
+//	///pinsel ADC pin connect
+//	PINSEL_ConfigPin(port, pin, funnum);
+//	PINSEL_SetAnalogPinMode(port, pin, ENABLE);
+//	
+//	///Disable interrupt ADC
+//	ADC_IntConfig(LPC_ADC, (ADC_TYPE_INT_OPT)adc_num, DISABLE);
+//	///Enable ADC number
+//	ADC_ChannelCmd(LPC_ADC, adc_num, ENABLE);
+
+//	inited_adc_state[adc_num] = true;
+//	
+//	
+//	return adc_num;
+
+//}
+//#endif
+////_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+//#if(ADC_ENABLE)
+///**
+// * @brief 		read adc
+// * @param[in]	adc_num number adc
+// * @return 		value adc
+//*/
+//S16 ADC_Read (U8 adc_num)
+//{
+
+//	U16 time_out = 1000;
+//	FlagStatus adc_state = RESET;
+
+//	/// Checking ADC pin
+//	if(adc_num>7)
+//	{
+//		Debug("ADC: Out of range adc pin => int ADC_Read (U8 Pin)");
+//		return -1;
+//	}
+//	
+//	/// Checking init ADC pin
+//	if(inited_adc_state[adc_num] == false)
+//	{
+//		Debug("ADC: No init this adc pin => int ADC_Read (U8 Pin)");
+//		return -2;
+//	}
+//	
+//	/// Start Convert
+//	LPC_ADC->CR &= 0xFFFFFF00;
+//	LPC_ADC->CR |= (1UL << adc_num);
+//	ADC_StartCmd(LPC_ADC, ADC_START_NOW);
+
+//	/// Wait conversion complete
+//	while(time_out-- && !adc_state)
+//	{
+//		/// Read ADC value
+//		adc_state = ADC_ChannelGetStatus(LPC_ADC, adc_num, ADC_DATA_DONE);
+//		/// Delay one Tick
+//		TaskManager_Delay(OneUnic);
+//	}
+//	
+
+//	
+//	if(!adc_state)
+//	{
+//		Debug("ADC: Not convert adc pin => int ADC_Read (U8 Pin)");
+//		return -3;
+//	}
+//	
+//	return ADC_ChannelGetData(LPC_ADC, adc_num);
+//}
+//#endif
+////_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+//#if(ADC_ENABLE)
+///**
+// * @brief 		read adc with average
+// * @param[in]	Pin number adc
+// * @param[in]	Avrage number sample
+// * @return 		value adc
+//*/
+//S16 ADC_Read_Average (U8 adc_num,U8 Avrage)
+//{
+
+//	U16 time_out = 10000 , i_Data=Avrage;
+//	FlagStatus adc_state = RESET;
+//	long int Avrage_Data = 0;
+//	
+//	/// Checking ADC pin
+//	if(adc_num>7)
+//	{
+//		Debug("ADC: Out of range adc pin => S16 ADC_Read_Average (U8 Pin,U8 Avrage)");
+//		return -1;
+//	}
+//	
+//	/// Checking init ADC pin
+//	if(inited_adc_state[adc_num] == false)
+//	{
+//		Debug("ADC: No init this adc pin => S16 ADC_Read_Average (U8 Pin,U8 Avrage)");
+//		return -2;
+//	}
+//	
+//	/// Checking avrage value 
+//	if(Avrage==0)
+//	{
+//		Debug("ADC: Out of range number average => int ADC_Read_Average (U8 Pin,U8 Avrage)");
+//		return -3;
+//	}
+//	
+//	while(i_Data--)
+//	{
+//		LPC_ADC->CR &= 0xFFFFFF00;
+//		LPC_ADC->CR |= (1UL << adc_num);
+//		ADC_StartCmd(LPC_ADC, ADC_START_NOW);
+//		
+//		///Wait conversion complete
+//		while(time_out-- && !adc_state)
+//		{
+//			adc_state = ADC_ChannelGetStatus(LPC_ADC, adc_num, ADC_DATA_DONE);
+//			/// Delay one Tick
+//			TaskManager_Delay(OneUnic);
+//		}
+//		
+//		if(!adc_state)
+//		{
+//			Debug("ADC: Not convert adc pin => int ADC_Read_Avrage (U8 Pin,U8 Avrage)");
+//			return -3;
+//		}
+//		
+//		/// Read ADC avrage value
+//		Avrage_Data += ADC_ChannelGetData(LPC_ADC, adc_num);
+//	}
+
+//	return (int)(Avrage_Data/Avrage);
+//}
+//#endif
+//*************************************************************** tasks *******************************************************************//
+/*
+none
+*/
+//************************************************************** vectors ******************************************************************//
+/*
+none
+*/
+//****************************************************************************************************************************************//
+
+
+
+
+
+
+
+
+
+
