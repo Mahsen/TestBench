@@ -59,7 +59,7 @@ Tel : +989124662703
 #endif
 // </h>
 // <h> Get ID
-// <h> Serial 1
+// <h> Dec 1
 //			 <o> Port
 //					 <0=> PORTA
 //					 <1=> PORTB
@@ -72,15 +72,15 @@ Tel : +989124662703
 //					 <8=> PORTI
 //					 <9=> PORTJ
 //					 <10=> PORTK
-#ifndef TESTBENCH_GETID_SERIAL_1_PORT
-	#define TESTBENCH_GETID_SERIAL_1_PORT            4
+#ifndef TESTBENCH_GETID_DEC1_PORT
+	#define TESTBENCH_GETID_DEC1_PORT            3
 #endif
 //			 <o>Pin <0-15>
-#ifndef TESTBENCH_GETID_SERIAL_1_PIN
-	#define TESTBENCH_GETID_SERIAL_1_PIN             0
+#ifndef TESTBENCH_GETID_DEC1_PIN
+	#define TESTBENCH_GETID_DEC1_PIN             7
 #endif
 // </h>
-// <h> Serial 2
+// <h> Dec 2 
 //			 <o> Port
 //					 <0=> PORTA
 //					 <1=> PORTB
@@ -93,15 +93,15 @@ Tel : +989124662703
 //					 <8=> PORTI
 //					 <9=> PORTJ
 //					 <10=> PORTK
-#ifndef TESTBENCH_GETID_SERIAL_2_PORT
-	#define TESTBENCH_GETID_SERIAL_2_PORT            4
+#ifndef TESTBENCH_GETID_DEC2_PORT
+	#define TESTBENCH_GETID_DEC2_PORT            6
 #endif
 //			 <o>Pin <0-15>
-#ifndef TESTBENCH_GETID_SERIAL_2_PIN
-	#define TESTBENCH_GETID_SERIAL_2_PIN             1
+#ifndef TESTBENCH_GETID_DEC2_PIN
+	#define TESTBENCH_GETID_DEC2_PIN             9
 #endif
 // </h>
-// <h> Load 
+// <h> Dec 3
 //			 <o> Port
 //					 <0=> PORTA
 //					 <1=> PORTB
@@ -114,39 +114,12 @@ Tel : +989124662703
 //					 <8=> PORTI
 //					 <9=> PORTJ
 //					 <10=> PORTK
-#ifndef TESTBENCH_GETID_LOAD_PORT
-	#define TESTBENCH_GETID_LOAD_PORT            4
+#ifndef TESTBENCH_GETID_DEC3_PORT
+	#define TESTBENCH_GETID_DEC3_PORT            6
 #endif
 //			 <o>Pin <0-15>
-#ifndef TESTBENCH_GETID_LOAD_PIN
-	#define TESTBENCH_GETID_LOAD_PIN             2
-#endif
-//			 <o> Logic
-//					 <0=> Low
-//					 <1=> High
-#ifndef TESTBENCH_GETID_LOAD_LOGIC
-	#define TESTBENCH_GETID_LOAD_LOGIC          1
-#endif
-// </h>
-// <h> Clock
-//			 <o> Port
-//					 <0=> PORTA
-//					 <1=> PORTB
-//					 <2=> PORTC
-//					 <3=> PORTD
-//					 <4=> PORTE
-//					 <5=> PORTF
-//					 <6=> PORTG
-//					 <7=> PORTH
-//					 <8=> PORTI
-//					 <9=> PORTJ
-//					 <10=> PORTK
-#ifndef TESTBENCH_GETID_CLOCK_PORT
-	#define TESTBENCH_GETID_CLOCK_PORT            4
-#endif
-//			 <o>Pin <0-15>
-#ifndef TESTBENCH_GETID_CLOCK_PIN
-	#define TESTBENCH_GETID_CLOCK_PIN             3
+#ifndef TESTBENCH_GETID_DEC3_PIN
+	#define TESTBENCH_GETID_DEC3_PIN             10
 #endif
 // </h>
 // </h>

@@ -211,101 +211,55 @@ struct { // Test_7
 bool TEST_GetID_MUTEX = false;
 uint8_t* TEST_GetID() {
 	GPIO_InitTypeDef  GPIO_InitStructure;
-	U8 Buffer[2];
+	U8 Buffer = RESET;
 	static uint8_t Data[3];
 	
 	TASK_MANAGER_MUTEXWAIT(TEST_GetID_MUTEX);
+
+	RCC_AHBPeriphClockCmd(GPIO_PORTCLOCK[TESTBENCH_GETID_DEC1_PORT] | \
+												GPIO_PORTCLOCK[TESTBENCH_GETID_DEC2_PORT] | \
+												GPIO_PORTCLOCK[TESTBENCH_GETID_DEC3_PORT], ENABLE);
 	
-	RCC_AHBPeriphClockCmd(GPIO_PORTCLOCK[TESTBENCH_GETID_SERIAL_1_PORT] | \
-				GPIO_PORTCLOCK[TESTBENCH_GETID_SERIAL_2_PORT] | \
-				GPIO_PORTCLOCK[TESTBENCH_GETID_LOAD_PORT] | \
-				GPIO_PORTCLOCK[TESTBENCH_GETID_CLOCK_PORT], ENABLE);
-	
-	// Configure output TESTBENCH_SERIAL_1
+	// Configure output DEC1
 	//{
-	GPIO_InitStructure.GPIO_Pin = (1 << TESTBENCH_GETID_SERIAL_1_PIN);
+	GPIO_InitStructure.GPIO_Pin = (1 << TESTBENCH_GETID_DEC1_PIN);
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
 	GPIO_InitStructure.GPIO_OType = GPIO_OType_OD;
-	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
+	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
 	
-	GPIO_Init((GPIO_TypeDef*)GPIO_PORTSEL[TESTBENCH_GETID_SERIAL_1_PORT], &GPIO_InitStructure);
+	GPIO_Init((GPIO_TypeDef*)GPIO_PORTSEL[TESTBENCH_GETID_DEC1_PORT], &GPIO_InitStructure);
 	//}
 
-	// Configure output TESTBENCH_SERIAL_2
+	// Configure output DEC2
 	//{
-	GPIO_InitStructure.GPIO_Pin = (1 << TESTBENCH_GETID_SERIAL_2_PIN);
+	GPIO_InitStructure.GPIO_Pin = (1 << TESTBENCH_GETID_DEC2_PIN);
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
-	GPIO_InitStructure.GPIO_OType = GPIO_OType_OD;
-	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
-	
-	GPIO_Init((GPIO_TypeDef*)GPIO_PORTSEL[TESTBENCH_GETID_SERIAL_2_PORT], &GPIO_InitStructure);
-	//}
-	
-	// Configure output TESTBENCH_LOAD
-	//{
-	GPIO_InitStructure.GPIO_Pin = (1 << TESTBENCH_GETID_LOAD_PIN);
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
 	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
-	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
+	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
 	
-	GPIO_Init((GPIO_TypeDef*)GPIO_PORTSEL[TESTBENCH_GETID_LOAD_PORT], &GPIO_InitStructure);
+	GPIO_Init((GPIO_TypeDef*)GPIO_PORTSEL[TESTBENCH_GETID_DEC2_PORT], &GPIO_InitStructure);
 	//}
 
-	// Configure output TESTBENCH_CLOCK
+	// Configure output DEC3
 	//{
-	GPIO_InitStructure.GPIO_Pin = (1 << TESTBENCH_GETID_CLOCK_PIN);
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
+	GPIO_InitStructure.GPIO_Pin = (1 << TESTBENCH_GETID_DEC3_PIN);
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
 	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
-	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
+	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
 	
-	GPIO_Init((GPIO_TypeDef*)GPIO_PORTSEL[TESTBENCH_GETID_CLOCK_PORT], &GPIO_InitStructure);
+	GPIO_Init((GPIO_TypeDef*)GPIO_PORTSEL[TESTBENCH_GETID_DEC3_PORT], &GPIO_InitStructure);
 	//}
 
-	GPIO_SetBits((GPIO_TypeDef*)GPIO_PORTSEL[TESTBENCH_GETID_LOAD_PORT], (1 << TESTBENCH_GETID_LOAD_PIN));
-	TaskManager_Delay(10 MSec);
-	GPIO_ResetBits((GPIO_TypeDef*)GPIO_PORTSEL[TESTBENCH_GETID_LOAD_PORT], (1 << TESTBENCH_GETID_LOAD_PIN));
-	TaskManager_Delay(100 MSec);
+	__disable_irq();
+	Buffer = GPIO_ReadInputDataBit((GPIO_TypeDef*)GPIO_PORTSEL[TESTBENCH_GETID_DEC1_PORT], (1 << TESTBENCH_GETID_DEC1_PIN));
+	Buffer |= (GPIO_ReadInputDataBit((GPIO_TypeDef*)GPIO_PORTSEL[TESTBENCH_GETID_DEC2_PORT], (1 << TESTBENCH_GETID_DEC2_PIN)) << 1);
+	Buffer |= (GPIO_ReadInputDataBit((GPIO_TypeDef*)GPIO_PORTSEL[TESTBENCH_GETID_DEC3_PORT], (1 << TESTBENCH_GETID_DEC3_PIN)) << 2);
+	__enable_irq();
 	
-	TaskManager_Delay(20 MSec);
-	GPIO_SetBits((GPIO_TypeDef*)GPIO_PORTSEL[TESTBENCH_GETID_CLOCK_PORT], (1 << TESTBENCH_GETID_CLOCK_PIN));
-	TaskManager_Delay(20 MSec);
-	GPIO_ResetBits((GPIO_TypeDef*)GPIO_PORTSEL[TESTBENCH_GETID_CLOCK_PORT], (1 << TESTBENCH_GETID_CLOCK_PIN));
-		
-	GPIO_SetBits((GPIO_TypeDef*)GPIO_PORTSEL[TESTBENCH_GETID_LOAD_PORT], (1 << TESTBENCH_GETID_LOAD_PIN));
-	GPIO_ResetBits((GPIO_TypeDef*)GPIO_PORTSEL[TESTBENCH_GETID_CLOCK_PORT], (1 << TESTBENCH_GETID_CLOCK_PIN));
-	TaskManager_Delay(2 MSec);	
-	Buffer[0] = RESET;
-	Buffer[1] = RESET;
-	for(S8 Index=7; Index>=0; Index--)
-	{
-		if(GPIO_ReadInputDataBit((GPIO_TypeDef*)GPIO_PORTSEL[TESTBENCH_GETID_SERIAL_1_PORT], (1 << TESTBENCH_GETID_SERIAL_1_PIN)))
-		{
-			Buffer[0] |= (1 << Index);
-		}
-		if(GPIO_ReadInputDataBit((GPIO_TypeDef*)GPIO_PORTSEL[TESTBENCH_GETID_SERIAL_2_PORT], (1 << TESTBENCH_GETID_SERIAL_2_PIN)))
-		{
-			Buffer[1] |= (1 << Index);
-		}
-		
-		TaskManager_Delay(20 MSec);
-		GPIO_SetBits((GPIO_TypeDef*)GPIO_PORTSEL[TESTBENCH_GETID_CLOCK_PORT], (1 << TESTBENCH_GETID_CLOCK_PIN));
-		TaskManager_Delay(20 MSec);
-		GPIO_ResetBits((GPIO_TypeDef*)GPIO_PORTSEL[TESTBENCH_GETID_CLOCK_PORT], (1 << TESTBENCH_GETID_CLOCK_PIN));
-	}
-	
-	if(Buffer[0] == Buffer[1]) {
-		sprintf((char*)Data, "%d", Buffer[0]);
-		General.LED.A.Disable();
-	} else {
-		General.LED.A.Enable();
-		Test_7.DigitalOutput.Power_4v_En.Disable();
-		Test_7.DigitalOutput.Power_5v_En.Disable();
-		sprintf((char*)Data, "0");
-	}
+	sprintf((char*)Data, "%d", Buffer);
 	
 	TASK_MANAGER_MUTEXRELEASE(TEST_GetID_MUTEX);	
 	
