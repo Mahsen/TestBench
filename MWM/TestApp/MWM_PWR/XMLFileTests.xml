@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Form  BoudRate="19200" Serial="ID55" Version="v1.14011007">
 
-<Tests Title="MWM529_SAA_529_01_0111_02" BoardPicture="" AutoEnableChecked="True" AutoReplay="False" AutoNext="True" ExcelFile="../_Files/Exel/MWM.xlsx" ExcelSheet="TestResult" ExcelStartSerialsField="A4" ExcelCheckSum="Z" >
+<Tests Title="MWM529_SAA_529_01_0111_02" BoardPicture="" AutoEnableChecked="True" AutoReplay="False" AutoNext="True" ExcelFile="../_Files/Exel/MWM.xlsx" ExcelSheet="TestResult" ExcelStartSerialsField="A4" ExcelCheckSum="AE" >
 
 	<Test Command="HardwareVersion">
 		<Enable Value="True" />
