@@ -1947,7 +1947,7 @@ Tel : +989124662703
 
 // <e> Channel 1b
 #ifndef ADC_CHANNEL1B_ENABLE
-	#define ADC_CHANNEL1B_ENABLE    1
+	#define ADC_CHANNEL1B_ENABLE    0
 #endif
 //	<o> PINSEL Port
 //		<0=> PORTA
@@ -1972,7 +1972,7 @@ Tel : +989124662703
 
 // <e> Channel 2
 #ifndef ADC_CHANNEL2_ENABLE
-	#define ADC_CHANNEL2_ENABLE    0
+	#define ADC_CHANNEL2_ENABLE    1
 #endif
 //	<o> PINSEL Port
 //		<0=> PORTA
@@ -1997,7 +1997,7 @@ Tel : +989124662703
 
 // <e> Channel 2b
 #ifndef ADC_CHANNEL2B_ENABLE
-	#define ADC_CHANNEL2B_ENABLE    1
+	#define ADC_CHANNEL2B_ENABLE    0
 #endif
 //	<o> PINSEL Port
 //		<0=> PORTA
@@ -2021,7 +2021,7 @@ Tel : +989124662703
 //  </e>
 
 // <e> Channel 3
-#define ADC_CHANNEL3_ENABLE    0
+#define ADC_CHANNEL3_ENABLE    1
 //	<o> PINSEL Port
 //		<0=> PORTA
 //		<1=> PORTB
@@ -2041,7 +2041,7 @@ Tel : +989124662703
 
 // <e> Channel 3b
 #ifndef ADC_CHANNEL3B_ENABLE
-	#define ADC_CHANNEL3B_ENABLE    1
+	#define ADC_CHANNEL3B_ENABLE    0
 #endif
 //	<o> PINSEL Port
 //		<0=> PORTA
@@ -2115,7 +2115,7 @@ Tel : +989124662703
 //  </e>
 
 // <e> Channel 8
-#define ADC_CHANNEL8_ENABLE    0
+#define ADC_CHANNEL8_ENABLE    1
 //	<o> PINSEL Port
 //		<0=> PORTA
 //		<1=> PORTB
@@ -2134,7 +2134,7 @@ Tel : +989124662703
 //  </e>
 
 // <e> Channel 9
-#define ADC_CHANNEL9_ENABLE    0
+#define ADC_CHANNEL9_ENABLE    1
 //	<o> PINSEL Port
 //		<0=> PORTA
 //		<1=> PORTB
@@ -2153,7 +2153,7 @@ Tel : +989124662703
 //  </e>
 
 // <e> Channel 10
-#define ADC_CHANNEL10_ENABLE    0
+#define ADC_CHANNEL10_ENABLE    1
 //	<o> PINSEL Port
 //		<0=> PORTA
 //		<1=> PORTB
@@ -2197,7 +2197,7 @@ Tel : +989124662703
 //  </e>
 
 // <e> Channel 11
-#define ADC_CHANNEL11_ENABLE    0
+#define ADC_CHANNEL11_ENABLE    1
 //	<o> PINSEL Port
 //		<0=> PORTA
 //		<1=> PORTB
@@ -2235,7 +2235,7 @@ Tel : +989124662703
 //  </e>
 
 // <e> Channel 13
-#define ADC_CHANNEL13_ENABLE    0
+#define ADC_CHANNEL13_ENABLE    1
 //	<o> PINSEL Port
 //		<0=> PORTA
 //		<1=> PORTB
@@ -2255,7 +2255,7 @@ Tel : +989124662703
 
 // <e> Channel 18
 #ifndef ADC_CHANNEL18_ENABLE
-	#define ADC_CHANNEL18_ENABLE    1
+	#define ADC_CHANNEL18_ENABLE    0
 #endif
 //	<o> PINSEL Port
 //		<0=> PORTA
@@ -2280,7 +2280,7 @@ Tel : +989124662703
 
 // <e> Channel 19
 #ifndef ADC_CHANNEL19_ENABLE
-	#define ADC_CHANNEL19_ENABLE    1
+	#define ADC_CHANNEL19_ENABLE    0
 #endif
 //	<o> PINSEL Port
 //		<0=> PORTA
@@ -2305,7 +2305,7 @@ Tel : +989124662703
 
 // <e> Channel 27
 #ifndef ADC_CHANNEL27_ENABLE
-	#define ADC_CHANNEL27_ENABLE    0
+	#define ADC_CHANNEL27_ENABLE    1
 #endif
 //	<o> PINSEL Port
 //		<0=> PORTA
@@ -2329,7 +2329,7 @@ Tel : +989124662703
 //  </e>
 
 // <e> Channel 28
-#define ADC_CHANNEL28_ENABLE    0
+#define ADC_CHANNEL28_ENABLE    1
 //	<o> PINSEL Port
 //		<0=> PORTA
 //		<1=> PORTB

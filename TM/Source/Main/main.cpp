@@ -113,17 +113,68 @@ struct { // Test_7
 		struct_ValueBool Zero_Cross_Detect;
 	} DigitalInput;
 	struct { // AnalogInput
-		float Get_Power_to5v_Voltage(void)
-		{
-			return ((float)ADC_Read(TESTBENCH_TEST_ID7_ANALOG_INPUT_POWER_TO5V_VOLTAGE_CHANNEL) * 0.000807640625);
+		float Get_Power_220v_Current(void) {
+			volatile float Val_ADC = (float)ADC_Read(TESTBENCH_TEST_ID7_ANALOG_INPUT_POWER_220V_CURRENT_CHANNEL);
+			volatile float Min_ADC = Val_ADC;
+			volatile float Max_ADC = Val_ADC;
+			volatile float Vm = 0;
+			volatile float Vrms = 0;
+			
+			for(int Count=RESET; Count<60; Count++)
+			{
+				Val_ADC = (float)ADC_Read(TESTBENCH_TEST_ID7_ANALOG_INPUT_POWER_220V_CURRENT_CHANNEL);
+				
+				if(Val_ADC < Min_ADC)
+				{
+					Min_ADC = Val_ADC;
+				}
+				if(Val_ADC > Max_ADC)
+				{
+					Max_ADC = Val_ADC;
+				}
+				
+				TaskManager_Delay(50 MSec);
+			}
+			
+			Val_ADC = Max_ADC - Min_ADC;
+			
+			Vm = Val_ADC * 0.000806 * 1.47;
+			Vrms = Vm * 0.707;
+			
+			return (Vrms * 6);
 		}
-		float Get_Power_4v_Voltage(void)
-		{
-			return ((float)ADC_Read(TESTBENCH_TEST_ID7_ANALOG_INPUT_POWER_4V_VOLTAGE_CHANNEL) * 0.000807640625);
+		float Get_Power_12v_Current(void) {
+			return ((((float)ADC_Read(TESTBENCH_TEST_ID7_ANALOG_INPUT_POWER_12V_CURRENT_CHANNEL) * 1.47 * 0.000806) - 2.5) * 6);
 		}
-		float Get_RTC_Voltage(void)
-		{
-			return ((float)ADC_Read(TESTBENCH_TEST_ID7_ANALOG_INPUT_RTC_VOLTAGE_CHANNEL) * 0.000807640625);
+		float Get_Power_12v_Voltage(void) {
+			return ((float)ADC_Read(TESTBENCH_TEST_ID7_ANALOG_INPUT_POWER_12V_VOLTAGE_CHANNEL) * 5.7 * 0.000806);
+		}
+		float Get_3V3_Voltage(void) {
+			return ((float)ADC_Read(TESTBENCH_TEST_ID7_ANALOG_INPUT_3V3_VOLTAGE_CHANNEL) * 1.47 * 0.000806);
+		}
+		float Get_GSM_Voltage(void) {
+			return ((float)ADC_Read(TESTBENCH_TEST_ID7_ANALOG_INPUT_GSM_VOLTAGE_CHANNEL) * 1.47 * 0.000806);
+		}
+		float Get_GSM_EXT_Voltage(void) {
+			return ((float)ADC_Read(TESTBENCH_TEST_ID7_ANALOG_INPUT_GSM_EXT_VOLTAGE_CHANNEL) * 1.47 * 0.000806);
+		}
+		float Get_Batt_Voltage(void) {
+			return ((float)ADC_Read(TESTBENCH_TEST_ID7_ANALOG_INPUT_BATT_VOLTAGE_CHANNEL) * 1.1 * 0.000806);
+		}
+		float Get_RTC_Voltage(void) {
+			return ((float)ADC_Read(TESTBENCH_TEST_ID7_ANALOG_INPUT_RTC_VOLTAGE_CHANNEL) * 1.1 * 0.000806);
+		}
+		float Get_LED_Power_Voltage(void) {
+			return ((float)ADC_Read(TESTBENCH_TEST_ID7_ANALOG_INPUT_LED_POWER_VOLTAGE_CHANNEL) * 0.000806);
+		}
+		float Get_LED_RS485_Voltage(void) {
+			return ((float)ADC_Read(TESTBENCH_TEST_ID7_ANALOG_INPUT_LED_RS485_VOLTAGE_CHANNEL) * 0.000806);
+		}
+		float Get_LED_NET1_Voltage(void) {
+			return ((float)ADC_Read(TESTBENCH_TEST_ID7_ANALOG_INPUT_LED_NET1_VOLTAGE_CHANNEL) * 0.000806);
+		}
+		float Get_LED_NET2_Voltage(void) {
+			return ((float)ADC_Read(TESTBENCH_TEST_ID7_ANALOG_INPUT_LED_NET2_VOLTAGE_CHANNEL) * 0.000806);
 		}			
 	} AnalogInput;
 	class : Media // Interface
