@@ -44,6 +44,48 @@
 */
 /************************************************** Opjects ***********************************************************/
 struct { // General
+	struct { // Jac
+		enum union_JackState
+		{
+			JackState_Off = RESET,
+			JackState_Up,
+			JackState_Down			
+		} State;			
+		void Off(void)
+		{
+			State = JackState_Off;
+			GPIO_ResetBits((GPIO_TypeDef*)GPIO_PORTSEL[TESTBENCH_JAC_I1_PORT], (1 << TESTBENCH_JAC_I1_PIN));
+			GPIO_ResetBits((GPIO_TypeDef*)GPIO_PORTSEL[TESTBENCH_JAC_I2_PORT], (1 << TESTBENCH_JAC_I2_PIN));
+			GPIO_ResetBits((GPIO_TypeDef*)GPIO_PORTSEL[TESTBENCH_JAC_I3_PORT], (1 << TESTBENCH_JAC_I3_PIN));
+			GPIO_ResetBits((GPIO_TypeDef*)GPIO_PORTSEL[TESTBENCH_JAC_I4_PORT], (1 << TESTBENCH_JAC_I4_PIN));
+		}
+		void Up(void)
+		{
+			Off();
+			State = JackState_Up;
+			GPIO_SetBits((GPIO_TypeDef*)GPIO_PORTSEL[TESTBENCH_JAC_I1_PORT], (1 << TESTBENCH_JAC_I1_PIN));
+			GPIO_ResetBits((GPIO_TypeDef*)GPIO_PORTSEL[TESTBENCH_JAC_I2_PORT], (1 << TESTBENCH_JAC_I2_PIN));
+			GPIO_SetBits((GPIO_TypeDef*)GPIO_PORTSEL[TESTBENCH_JAC_I3_PORT], (1 << TESTBENCH_JAC_I3_PIN));
+			GPIO_ResetBits((GPIO_TypeDef*)GPIO_PORTSEL[TESTBENCH_JAC_I4_PORT], (1 << TESTBENCH_JAC_I4_PIN));
+		}
+		void Down(void)
+		{
+			Off();
+			State = JackState_Down;
+			GPIO_ResetBits((GPIO_TypeDef*)GPIO_PORTSEL[TESTBENCH_JAC_I1_PORT], (1 << TESTBENCH_JAC_I1_PIN));
+			GPIO_SetBits((GPIO_TypeDef*)GPIO_PORTSEL[TESTBENCH_JAC_I2_PORT], (1 << TESTBENCH_JAC_I2_PIN));
+			GPIO_ResetBits((GPIO_TypeDef*)GPIO_PORTSEL[TESTBENCH_JAC_I3_PORT], (1 << TESTBENCH_JAC_I3_PIN));
+			GPIO_SetBits((GPIO_TypeDef*)GPIO_PORTSEL[TESTBENCH_JAC_I4_PORT], (1 << TESTBENCH_JAC_I4_PIN));
+		}			
+		U8 GetState(void)
+		{
+			return State;
+		}
+		U32 GetCurrent(void)
+		{
+			return ADC_Read(TESTBENCH_JAC_ADC_CHANNEL);
+		}
+	} Jac;
 	struct { // Key
 		struct_ValueBool A;
 	} Key;
@@ -276,6 +318,86 @@ void TEST_SoftwareVersion(U8* Data) {
 /*--------------------------------------------------------------------------------------------------------------------*/
 void TEST_GetID(U8* Data) {
 	strcpy((char*)Data, (char*)TEST_GetID());
+}
+/*--------------------------------------------------------------------------------------------------------------------*/
+void TEST_JacInit() {
+	RCC_AHBPeriphClockCmd(GPIO_PORTCLOCK[TESTBENCH_JAC_I1_PORT] | \
+				GPIO_PORTCLOCK[TESTBENCH_JAC_I2_PORT] | \
+				GPIO_PORTCLOCK[TESTBENCH_JAC_I3_PORT] | \
+				GPIO_PORTCLOCK[TESTBENCH_JAC_I4_PORT] | \
+				GPIO_PORTCLOCK[TESTBENCH_JAC_EN1_PORT] | \
+				GPIO_PORTCLOCK[TESTBENCH_JAC_EN2_PORT], ENABLE);
+	
+	GPIO_InitTypeDef  GPIO_InitStructure;
+	
+	GPIO_InitStructure.GPIO_Pin = (1 << TESTBENCH_JAC_I1_PIN);
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
+	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;	
+	GPIO_Init((GPIO_TypeDef*)GPIO_PORTSEL[TESTBENCH_JAC_I1_PORT], &GPIO_InitStructure);
+	
+	GPIO_InitStructure.GPIO_Pin = (1 << TESTBENCH_JAC_I2_PIN);
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
+	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;	
+	GPIO_Init((GPIO_TypeDef*)GPIO_PORTSEL[TESTBENCH_JAC_I2_PORT], &GPIO_InitStructure);
+	
+	GPIO_InitStructure.GPIO_Pin = (1 << TESTBENCH_JAC_I3_PIN);
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
+	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
+	GPIO_Init((GPIO_TypeDef*)GPIO_PORTSEL[TESTBENCH_JAC_I3_PORT], &GPIO_InitStructure);
+	
+	GPIO_InitStructure.GPIO_Pin = (1 << TESTBENCH_JAC_I4_PIN);
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
+	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;	
+	GPIO_Init((GPIO_TypeDef*)GPIO_PORTSEL[TESTBENCH_JAC_I4_PORT], &GPIO_InitStructure);
+	
+	GPIO_InitStructure.GPIO_Pin = (1 << TESTBENCH_JAC_EN1_PIN);
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
+	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;	
+	GPIO_Init((GPIO_TypeDef*)GPIO_PORTSEL[TESTBENCH_JAC_EN1_PORT], &GPIO_InitStructure);
+	
+	GPIO_InitStructure.GPIO_Pin = (1 << TESTBENCH_JAC_EN2_PIN);
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
+	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;	
+	GPIO_Init((GPIO_TypeDef*)GPIO_PORTSEL[TESTBENCH_JAC_EN2_PORT], &GPIO_InitStructure);
+	
+	GPIO_SetBits((GPIO_TypeDef*)GPIO_PORTSEL[TESTBENCH_JAC_EN1_PORT], (1 << TESTBENCH_JAC_EN1_PIN));
+	GPIO_SetBits((GPIO_TypeDef*)GPIO_PORTSEL[TESTBENCH_JAC_EN2_PORT], (1 << TESTBENCH_JAC_EN2_PIN));
+	
+	General.Jac.Off();
+}
+/*--------------------------------------------------------------------------------------------------------------------*/
+void TEST_DownStand(U8* Data)
+{
+	TEST_JacInit();
+	
+	General.Jac.Down();
+	TaskManager_Delay(20 Sec);
+	General.Jac.Off();
+	
+	sprintf((char*)Data, "OK");
+}
+/*--------------------------------------------------------------------------------------------------------------------*/
+void TEST_UpStand(U8* Data)
+{
+	TEST_JacInit();
+	
+	General.Jac.Up();
+	TaskManager_Delay(12 Sec);
+	General.Jac.Off();
+	
+	sprintf((char*)Data, "OK");
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
 void TEST_ID7_Power_5v_On(U8* Data)
@@ -705,6 +827,8 @@ __task void StartTasks(void) {
 		TestBench.Add((uint8_t*)"HardwareVersion", &TEST_HardwareVersion);
 		TestBench.Add((uint8_t*)"SoftwareVersion", &TEST_SoftwareVersion);
 		TestBench.Add((uint8_t*)"GetID", &TEST_GetID);
+		TestBench.Add((uint8_t*)"DownStand", &TEST_DownStand);
+		TestBench.Add((uint8_t*)"UpStand", &TEST_UpStand);
 		TestBench.Add((uint8_t*)"ID7_Power_5v_On", &TEST_ID7_Power_5v_On);			
 		TestBench.Add((uint8_t*)"ID7_CheckProgram_Test", &TEST_ID7_CheckProgram_Test);	
 		TestBench.Add((uint8_t*)"ID7_Power_4v_On", &TEST_ID7_Power_4v_On);
