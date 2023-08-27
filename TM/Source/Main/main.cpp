@@ -96,11 +96,21 @@ struct { // General
 struct { // Test_7
 	struct { // DigitalOutput
 		struct_ValueBool Power_5v_En;
-		struct_ValueBool Power_4v_En;
+		struct_ValueBool Power_220v_Test;		
+		struct_ValueBool Power_220v_En;
+		struct_ValueBool Power_12v_Test;		
+		struct_ValueBool Power_12v_En;	
+		struct_ValueBool VBatt_Enable;
+		struct_ValueBool Reset;
+		struct_ValueBool ZeroCross_Gen;
 	} DigitalOutput;
 	struct { // DigitalInput
-		struct_ValueBool EventMic;
-		struct_ValueBool EventLED;
+		struct_ValueBool Limit_Down;
+		struct_ValueBool Limit_Up;
+		struct_ValueBool N_Reset;
+		struct_ValueBool F_Reset;
+		struct_ValueBool LED_Light;
+		struct_ValueBool Zero_Cross_Detect;
 	} DigitalInput;
 	struct { // AnalogInput
 		float Get_Power_to5v_Voltage(void)
@@ -403,27 +413,27 @@ void TEST_UpStand(U8* Data)
 void TEST_ID7_Power_220v_On(U8* Data) {
 		float Value;
 	
-		Test_7.DigitalOutput.Set_Power_12v_En(false);
+		Test_7.DigitalOutput.Power_12v_En.Disable();
 		TaskManager_Delay(1 Sec);
 	
-		Test_7.DigitalOutput.Set_Power_220v_En(true);
-		Test_7.DigitalOutput.Set_Power_220v_Test(false);
+		Test_7.DigitalOutput.Power_220v_En.Enable();
+		Test_7.DigitalOutput.Power_220v_Test.Disable();
 		TaskManager_Delay(4 Sec);
 	
 		Value = Test_7.AnalogInput.Get_Power_220v_Current();
 		
-		Test_7.LED.SetA(false);
+		General.LED.A.Disable();
 		if((Value > 0) && (Value < 0.08))
 		{
-				Test_7.DigitalOutput.Set_Power_220v_Test(true);
-				Test_7.LED.SetA(true);
+				Test_7.DigitalOutput.Power_220v_Test.Enable();
+				General.LED.A.Enable();			
 				sprintf((char*)Data, "OK");
 		}
 		else
 		{
-				Test_7.DigitalOutput.Set_Power_220v_Test(false);
-				Test_7.DigitalOutput.Set_Power_220v_En(false);
-				Test_7.DigitalOutput.Set_Power_12v_En(false);
+				Test_7.DigitalOutput.Power_220v_Test.Disable();
+				Test_7.DigitalOutput.Power_220v_En.Disable();
+				Test_7.DigitalOutput.Power_12v_En.Disable();
 			
 				sprintf((char*)Data, "%.2f Amp", Value);
 		}	
@@ -431,10 +441,10 @@ void TEST_ID7_Power_220v_On(U8* Data) {
 /*--------------------------------------------------------------------------------------------------------------------*/
 void TEST_ID7_Power_220v_Off(U8* Data) {
 	
-		Test_7.DigitalOutput.Set_Power_220v_Test(false);
-		Test_7.DigitalOutput.Set_Power_220v_En(false);
-		Test_7.DigitalOutput.Set_Power_12v_En(false);
-		Test_7.LED.SetA(false);
+		Test_7.DigitalOutput.Power_220v_Test.Disable();
+		Test_7.DigitalOutput.Power_220v_En.Disable();
+		Test_7.DigitalOutput.Power_12v_En.Disable();
+		General.LED.A.Disable();
 	
 		sprintf((char*)Data, "OK");	
 }
@@ -442,26 +452,26 @@ void TEST_ID7_Power_220v_Off(U8* Data) {
 void TEST_ID7_Power_12v_On(U8* Data) {
 		float Value[2];
 	
-		Test_7.DigitalOutput.Set_Power_220v_Test(false);
-		Test_7.DigitalOutput.Set_Power_220v_En(false);
+		Test_7.DigitalOutput.Power_220v_Test.Disable();
+		Test_7.DigitalOutput.Power_220v_En.Disable();
 		TaskManager_Delay(1 Sec);
-		Test_7.DigitalOutput.Set_Power_12v_En(true);
+		Test_7.DigitalOutput.Power_12v_En.Enable();
 		TaskManager_Delay(2 Sec);
 	
 		Value[0] = Test_7.AnalogInput.Get_Power_12v_Voltage();
 		Value[1] = Test_7.AnalogInput.Get_Power_12v_Current();
 
-		Test_7.LED.SetA(false);
+		General.LED.A.Disable();
 		if((Value[0] >= 11.8) && (Value[0] <= 12.2) && (Value[1] <= 0.6))
 		{
-				Test_7.LED.SetA(true);
+				General.LED.A.Enable();
 				sprintf((char*)Data, "OK");
 		}
 		else
 		{
-				Test_7.DigitalOutput.Set_Power_220v_Test(false);
-				Test_7.DigitalOutput.Set_Power_220v_En(false);
-				Test_7.DigitalOutput.Set_Power_12v_En(false);
+				Test_7.DigitalOutput.Power_220v_Test.Disable();
+				Test_7.DigitalOutput.Power_220v_En.Disable();
+				Test_7.DigitalOutput.Power_12v_En.Disable();
 			
 				sprintf((char*)Data, "%.2f Volt,%.2f Amp", Value[0], Value[1]);
 		}	
@@ -469,10 +479,10 @@ void TEST_ID7_Power_12v_On(U8* Data) {
 /*--------------------------------------------------------------------------------------------------------------------*/
 void TEST_ID7_Power_12v_Off(U8* Data) {
 	
-		Test_7.DigitalOutput.Set_Power_220v_Test(false);
-		Test_7.DigitalOutput.Set_Power_220v_En(false);
-		Test_7.DigitalOutput.Set_Power_12v_En(false);
-		Test_7.LED.SetA(false);
+		Test_7.DigitalOutput.Power_220v_Test.Disable();
+		Test_7.DigitalOutput.Power_220v_En.Disable();
+		Test_7.DigitalOutput.Power_12v_En.Disable();
+		General.LED.A.Disable();
 	
 		sprintf((char*)Data, "OK");
 }
@@ -1455,12 +1465,21 @@ __task void StartTasks(void) {
 	// Add tests
 	TestBench.Init(&TEST_GetID);
 	if(strcmp((char*)TestBench.GetID(), "7") == NULL) {
-		GPIO_Input_AddPin(TESTBENCH_TEST_ID7_DIGITAL_INPUT_EVENT_MIC_PORT, TESTBENCH_TEST_ID7_DIGITAL_INPUT_EVENT_MIC_PIN, &TEST_ID7_CheckBuzzer_EventMic, &Test_7.DigitalInput.EventMic.ValueBool, PIN_EDGE_TOGGEL, PIN_PULLING_UP, true);
-		GPIO_Input_AddPin(TESTBENCH_TEST_ID7_DIGITAL_INPUT_EVENT_LED_PORT, TESTBENCH_TEST_ID7_DIGITAL_INPUT_EVENT_LED_PIN, &TEST_ID7_CheckBuzzer_EventLED, &Test_7.DigitalInput.EventLED.ValueBool, PIN_EDGE_TOGGEL, PIN_PULLING_UP, true);
-		
-		GPIO_Output_AddPin(TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_POWER_5V_EN_PORT, TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_POWER_5V_EN_PIN, &Test_7.DigitalOutput.Power_5v_En.ValueBool, false);
-		GPIO_Output_AddPin(TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_POWER_4V_EN_PORT, TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_POWER_4V_EN_PIN, &Test_7.DigitalOutput.Power_4v_En.ValueBool, false);
-		
+		PWM_Write(5, 50, 7);
+
+		GPIO_Output_AddPin(TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_POWER_220V_TEST_PORT, TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_POWER_220V_TEST_PIN, &Test_7.DigitalOutput.Power_220v_Test.ValueBool, false);
+		GPIO_Output_AddPin(TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_POWER_220V_EN_PORT, TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_POWER_220V_EN_PIN, &Test_7.DigitalOutput.Power_220v_En.ValueBool, false);
+		GPIO_Output_AddPin(TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_POWER_12V_TEST_PORT, TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_POWER_12V_TEST_PIN, &Test_7.DigitalOutput.Power_12v_Test.ValueBool, false);
+		GPIO_Output_AddPin(TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_POWER_12V_EN_PORT, TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_POWER_12V_EN_PIN, &Test_7.DigitalOutput.Power_12v_En.ValueBool, false);
+		GPIO_Output_AddPin(TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_VBATT_ENABLE_PORT, TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_VBATT_ENABLE_PIN, &Test_7.DigitalOutput.VBatt_Enable.ValueBool, false);
+		GPIO_Output_AddPin(TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_RESET_PORT, TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_RESET_PIN, &Test_7.DigitalOutput.Reset.ValueBool, false);
+		GPIO_Output_AddPin(TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_RESET_PORT, TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_RESET_PIN, &Test_7.DigitalOutput.ZeroCross_Gen.ValueBool, false);
+
+		GPIO_Input_AddPin(TESTBENCH_TEST_ID7_DIGITAL_INPUT_N_RESET_PORT, TESTBENCH_TEST_ID7_DIGITAL_INPUT_N_RESET_PIN, NULL, &Test_7.DigitalInput.N_Reset.ValueBool, PIN_EDGE_TOGGEL, PIN_PULLING_UP, false);
+		GPIO_Input_AddPin(TESTBENCH_TEST_ID7_DIGITAL_INPUT_F_RESET_PORT, TESTBENCH_TEST_ID7_DIGITAL_INPUT_F_RESET_PIN, NULL, &Test_7.DigitalInput.F_Reset.ValueBool, PIN_EDGE_TOGGEL, PIN_PULLING_UP, false);
+		GPIO_Input_AddPin(TESTBENCH_TEST_ID7_DIGITAL_INPUT_LED_LIGHT_PORT, TESTBENCH_TEST_ID7_DIGITAL_INPUT_LED_LIGHT_PIN, NULL, &Test_7.DigitalInput.LED_Light.ValueBool, PIN_EDGE_TOGGEL, PIN_PULLING_UP, false);
+		GPIO_Input_AddPin(TESTBENCH_TEST_ID7_DIGITAL_INPUT_ZERO_CROSS_DETECT_PORT, TESTBENCH_TEST_ID7_DIGITAL_INPUT_ZERO_CROSS_DETECT_PIN, &TEST_ID7_Event_ZeroCross, &Test_7.DigitalInput.Zero_Cross_Detect.ValueBool, PIN_EDGE_DOWN, PIN_PULLING_UP, true);						
+
 		TestBench.Add((uint8_t*)"HardwareVersion", &TEST_HardwareVersion);
 		TestBench.Add((uint8_t*)"SoftwareVersion", &TEST_SoftwareVersion);
 		TestBench.Add((uint8_t*)"GetID", &TEST_GetID);

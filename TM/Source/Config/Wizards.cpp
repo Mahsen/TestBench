@@ -614,7 +614,7 @@ Tel : +989124662703
 // </h>
 // </h>
 // <h> Digital Input
-// <h> Event Mic
+// <h> N Reset
 //			 <o> Port
 //					 <0=> PORTA
 //					 <1=> PORTB
@@ -627,15 +627,11 @@ Tel : +989124662703
 //					 <8=> PORTI
 //					 <9=> PORTJ
 //					 <10=> PORTK
-#ifndef TESTBENCH_TEST_ID7_DIGITAL_INPUT_EVENT_MIC_PORT
-	#define TESTBENCH_TEST_ID7_DIGITAL_INPUT_EVENT_MIC_PORT            3
-#endif
+#define TESTBENCH_TEST_ID7_DIGITAL_INPUT_N_RESET_PORT            1
 //			 <o>Pin <0-15>
-#ifndef TESTBENCH_TEST_ID7_DIGITAL_INPUT_EVENT_MIC_PIN
-	#define TESTBENCH_TEST_ID7_DIGITAL_INPUT_EVENT_MIC_PIN             11
-#endif
+#define TESTBENCH_TEST_ID7_DIGITAL_INPUT_N_RESET_PIN             5
 // </h>
-// <h> Event LED
+// <h> F Reset
 //			 <o> Port
 //					 <0=> PORTA
 //					 <1=> PORTB
@@ -648,55 +644,46 @@ Tel : +989124662703
 //					 <8=> PORTI
 //					 <9=> PORTJ
 //					 <10=> PORTK
-#ifndef TESTBENCH_TEST_ID7_DIGITAL_INPUT_EVENT_LED_PORT
-	#define TESTBENCH_TEST_ID7_DIGITAL_INPUT_EVENT_LED_PORT            3
-#endif
+#define TESTBENCH_TEST_ID7_DIGITAL_INPUT_F_RESET_PORT            5
 //			 <o>Pin <0-15>
-#ifndef TESTBENCH_TEST_ID7_DIGITAL_INPUT_EVENT_LED_PIN
-	#define TESTBENCH_TEST_ID7_DIGITAL_INPUT_EVENT_LED_PIN             10
-#endif
+#define TESTBENCH_TEST_ID7_DIGITAL_INPUT_F_RESET_PIN             0
+// </h>
+// <h> LED Light
+//			 <o> Port
+//					 <0=> PORTA
+//					 <1=> PORTB
+//					 <2=> PORTC
+//					 <3=> PORTD
+//					 <4=> PORTE
+//					 <5=> PORTF
+//					 <6=> PORTG
+//					 <7=> PORTH
+//					 <8=> PORTI
+//					 <9=> PORTJ
+//					 <10=> PORTK
+#define TESTBENCH_TEST_ID7_DIGITAL_INPUT_LED_LIGHT_PORT            5
+//			 <o>Pin <0-15>
+#define TESTBENCH_TEST_ID7_DIGITAL_INPUT_LED_LIGHT_PIN             4
+// </h>
+// <h> Zero Cross Detect
+//			 <o> Port
+//					 <0=> PORTA
+//					 <1=> PORTB
+//					 <2=> PORTC
+//					 <3=> PORTD
+//					 <4=> PORTE
+//					 <5=> PORTF
+//					 <6=> PORTG
+//					 <7=> PORTH
+//					 <8=> PORTI
+//					 <9=> PORTJ
+//					 <10=> PORTK
+#define TESTBENCH_TEST_ID7_DIGITAL_INPUT_ZERO_CROSS_DETECT_PORT            2
+//			 <o>Pin <0-15>
+#define TESTBENCH_TEST_ID7_DIGITAL_INPUT_ZERO_CROSS_DETECT_PIN             5
 // </h>
 // </h>
 // <h> Digital Output
-// <h> Power_5v_En
-//			 <o> Port
-//					 <0=> PORTA
-//					 <1=> PORTB
-//					 <2=> PORTC
-//					 <3=> PORTD
-//					 <4=> PORTE
-//					 <5=> PORTF
-//					 <6=> PORTG
-//					 <7=> PORTH
-//					 <8=> PORTI
-//					 <9=> PORTJ
-//					 <10=> PORTK
-#define TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_POWER_5V_EN_PORT            6
-//			 <o>Pin <0-15>
-#define TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_POWER_5V_EN_PIN             10
-// </h>
-// <h> 4v_En
-//			 <o> Port
-//					 <0=> PORTA
-//					 <1=> PORTB
-//					 <2=> PORTC
-//					 <3=> PORTD
-//					 <4=> PORTE
-//					 <5=> PORTF
-//					 <6=> PORTG
-//					 <7=> PORTH
-//					 <8=> PORTI
-//					 <9=> PORTJ
-//					 <10=> PORTK
-#define TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_POWER_4V_EN_PORT            3
-//			 <o>Pin <0-15>
-#define TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_POWER_4V_EN_PIN             3
-// </h>
-
-
-
-
-
 // <h> Power_220v_Test
 //			 <o> Port
 //					 <0=> PORTA
