@@ -328,78 +328,6 @@ Tel : +989124662703
 
 // <h> ID 7
 // <h> Media 
-// <h> METER 
-// <h> Media
-//  <s> Name
-#ifndef TESTBENCH_TEST_ID7_MEDIA_METER_MEDIA_NAME
-	#define TESTBENCH_TEST_ID7_MEDIA_METER_MEDIA_NAME              "METER"
-#endif
-//	 <h> Uart
-//			 <o> Uart
-//					 <1=> Uart1
-//					 <2=> Uart2
-//					 <3=> Uart3
-//					 <4=> Uart4
-//					 <5=> Uart5
-//					 <6=> Uart6
-#ifndef TESTBENCH_TEST_ID7_MEDIA_METER_MEDIA_UART
-	#define TESTBENCH_TEST_ID7_MEDIA_METER_MEDIA_UART                  2
-#endif
-// <h> Data Packet
-//			 <o> Boudrate
-//					 <300=> 300
-//					 <600=> 600
-//					 <1200=> 1200
-//					 <4800=> 4800
-//					 <9600=> 9600
-//					 <19200=> 19200
-//					 <38400=> 38400
-//					 <57600=> 57600
-//					 <115200=> 115200
-//					 <27000=> 27000
-#ifndef TESTBENCH_TEST_ID7_MEDIA_METER_MEDIA_BOUDRATE
-	#define TESTBENCH_TEST_ID7_MEDIA_METER_MEDIA_BOUDRATE           9600
-#endif
-// </h>
-// </h>
-// </h>
-// </h>
-// <h> OP 
-// <h> Media
-//  <s> Name
-#ifndef TESTBENCH_TEST_ID7_MEDIA_OP_MEDIA_NAME
-	#define TESTBENCH_TEST_ID7_MEDIA_OP_MEDIA_NAME              "OP"
-#endif
-//	 <h> Uart
-//			 <o> Uart
-//					 <1=> Uart1
-//					 <2=> Uart2
-//					 <3=> Uart3
-//					 <4=> Uart4
-//					 <5=> Uart5
-//					 <6=> Uart6
-#ifndef TESTBENCH_TEST_ID7_MEDIA_OP_MEDIA_UART
-	#define TESTBENCH_TEST_ID7_MEDIA_OP_MEDIA_UART                  3
-#endif
-// <h> Data Packet
-//			 <o> Boudrate
-//					 <300=> 300
-//					 <600=> 600
-//					 <1200=> 1200
-//					 <4800=> 4800
-//					 <9600=> 9600
-//					 <19200=> 19200
-//					 <38400=> 38400
-//					 <57600=> 57600
-//					 <115200=> 115200
-//					 <27000=> 27000
-#ifndef TESTBENCH_TEST_ID7_MEDIA_OP_MEDIA_BOUDRATE
-	#define TESTBENCH_TEST_ID7_MEDIA_OP_MEDIA_BOUDRATE           9600
-#endif
-// </h>
-// </h>
-// </h>
-// </h>
 // <h> UI 
 // <h> Media
 //  <s> Name
@@ -415,7 +343,7 @@ Tel : +989124662703
 //					 <5=> Uart5
 //					 <6=> Uart6
 #ifndef TESTBENCH_TEST_ID7_MEDIA_UI_UART
-	#define TESTBENCH_TEST_ID7_MEDIA_UI_UART                          5
+	#define TESTBENCH_TEST_ID7_MEDIA_UI_UART                          2
 #endif
 // </h>
 // </h>
@@ -435,46 +363,8 @@ Tel : +989124662703
 //					 <5=> Uart5
 //					 <6=> Uart6
 #ifndef TESTBENCH_TEST_ID7_MEDIA_RS485_MEDIA_UART
-	#define TESTBENCH_TEST_ID7_MEDIA_RS485_MEDIA_UART                  4
+	#define TESTBENCH_TEST_ID7_MEDIA_RS485_MEDIA_UART                  5
 #endif
-// <h> Data Packet
-//			 <o> Boudrate
-//					 <300=> 300
-//					 <600=> 600
-//					 <1200=> 1200
-//					 <4800=> 4800
-//					 <9600=> 9600
-//					 <19200=> 19200
-//					 <38400=> 38400
-//					 <57600=> 57600
-//					 <115200=> 115200
-//					 <27000=> 27000
-#ifndef TESTBENCH_TEST_ID7_MEDIA_RS485_MEDIA_BOUDRATE
-	#define TESTBENCH_TEST_ID7_MEDIA_RS485_MEDIA_BOUDRATE           9600
-#endif
-//			 <o> Data Bit
-//					 <0x2000=> 7
-//					 <0x0000=> 8
-//					 <0x1000=> 9
-#ifndef TESTBENCH_TEST_ID7_MEDIA_RS485_MEDIA_DATABIT
-	#define TESTBENCH_TEST_ID7_MEDIA_RS485_MEDIA_DATABIT            0x0000
-#endif
-//			 <o> Stop bits
-//					 <0x1000=> 0.5
-//					 <0x0000=> 1
-//					 <0x3000=> 1.5
-//					 <0x2000=> 2
-#ifndef TESTBENCH_TEST_ID7_MEDIA_RS485_MEDIA_STOPBIT
-	#define TESTBENCH_TEST_ID7_MEDIA_RS485_MEDIA_STOPBIT             0x0000
-#endif
-//			 <o> Parity
-//					 <0x0000=> None
-//					 <0x0400=> Even
-//					 <0x0600=> Odd
-#ifndef TESTBENCH_TEST_ID7_MEDIA_RS485_MEDIA_PARITY
-	#define TESTBENCH_TEST_ID7_MEDIA_RS485_MEDIA_PARITY             0x0000
-#endif
-// </h>
 // </h>
 // </h>
 // </h>
@@ -493,46 +383,8 @@ Tel : +989124662703
 //					 <5=> Uart5
 //					 <6=> Uart6
 #ifndef TESTBENCH_TEST_ID7_MEDIA_OP_MEDIA_UART
-	#define TESTBENCH_TEST_ID7_MEDIA_OP_MEDIA_UART                  5
+	#define TESTBENCH_TEST_ID7_MEDIA_OP_MEDIA_UART                  4
 #endif
-// <h> Data Packet
-//			 <o> Boudrate
-//					 <300=> 300
-//					 <600=> 600
-//					 <1200=> 1200
-//					 <4800=> 4800
-//					 <9600=> 9600
-//					 <19200=> 19200
-//					 <38400=> 38400
-//					 <57600=> 57600
-//					 <115200=> 115200
-//					 <27000=> 27000
-#ifndef TESTBENCH_TEST_ID7_MEDIA_OP_MEDIA_BOUDRATE
-	#define TESTBENCH_TEST_ID7_MEDIA_OP_MEDIA_BOUDRATE           9600
-#endif
-//			 <o> Data Bit
-//					 <0x2000=> 7
-//					 <0x0000=> 8
-//					 <0x1000=> 9
-#ifndef TESTBENCH_TEST_ID7_MEDIA_OP_MEDIA_DATABIT
-	#define TESTBENCH_TEST_ID7_MEDIA_OP_MEDIA_DATABIT            0x0000
-#endif
-//			 <o> Stop bits
-//					 <0x1000=> 0.5
-//					 <0x0000=> 1
-//					 <0x3000=> 1.5
-//					 <0x2000=> 2
-#ifndef TESTBENCH_TEST_ID7_MEDIA_OP_MEDIA_STOPBIT
-	#define TESTBENCH_TEST_ID7_MEDIA_OP_MEDIA_STOPBIT             0x0000
-#endif
-//			 <o> Parity
-//					 <0x0000=> None
-//					 <0x0400=> Even
-//					 <0x0600=> Odd
-#ifndef TESTBENCH_TEST_ID7_MEDIA_OP_MEDIA_PARITY
-	#define TESTBENCH_TEST_ID7_MEDIA_OP_MEDIA_PARITY             0x0000
-#endif
-// </h>
 // </h>
 // </h>
 // </h>
