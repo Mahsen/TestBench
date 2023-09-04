@@ -35,7 +35,7 @@ Tel : +989124662703
 #endif
 //  <s> Version Software
 #ifndef TESTBENCH_VERSION_SOFTWARE
-	#define TESTBENCH_VERSION_SOFTWARE            	    "v1.14020605"
+	#define TESTBENCH_VERSION_SOFTWARE            	    "v1.14020613"
 #endif
 // <h> LED
 //			 <o> Port
@@ -51,7 +51,7 @@ Tel : +989124662703
 //					 <9=> PORTJ
 //					 <10=> PORTK
 #ifndef TESTBENCH_LED_PORT
-	#define TESTBENCH_LED_PORT            6
+	#define TESTBENCH_LED_PORT            2
 #endif
 //			 <o>Pin <0-15>
 #ifndef TESTBENCH_LED_PIN
@@ -164,7 +164,7 @@ Tel : +989124662703
 #endif
 //			 <o>Pin <0-15>
 #ifndef TESTBENCH_KEY_A_PIN
-	#define TESTBENCH_KEY_A_PIN             8
+	#define TESTBENCH_KEY_A_PIN             9
 #endif
 // </h>
 // <h> Limit
@@ -816,7 +816,7 @@ Tel : +989124662703
 //					 <9=> PORTJ
 //					 <10=> PORTK
 #ifndef WDT_LED_PORT
-	#define WDT_LED_PORT            6
+	#define WDT_LED_PORT            2
 #endif
 //			 <o>Pin <0-15>
 #ifndef WDT_LED_PIN

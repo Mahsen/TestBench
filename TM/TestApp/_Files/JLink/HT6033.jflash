@@ -3,7 +3,7 @@
 [GENERAL]
   aATEModuleSel[24] = 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
   ConnectMode = 0
-  CurrentFile = "I:\Project\New_Structure\TestBench\MWM\TestApp\_Files\Hex\Program.hex"
+  CurrentFile = "I:\Project\New_Structure\TestBench\TM\TestApp\_Files\Hex\main.hex"
   DataFileSAddr = 0x00000000
   GUIMode = 0
   HostName = ""
@@ -57,7 +57,7 @@
   AutoPerformsVerify = 0
   EnableFixedVTref = 0
   EnableTargetPower = 0
-  EraseType = 1
+  EraseType = 3
   FixedVTref = 0x00000CE4
   MonitorVTref = 0
   MonitorVTrefMax = 0x0000157C

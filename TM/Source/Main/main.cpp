@@ -208,6 +208,7 @@ struct { // Test_7
 						return true;
 					}
 				}
+				*Length = 0;
 				return false;
 			}
 			virtual bool Clear() {		
@@ -252,6 +253,7 @@ struct { // Test_7
 						return true;
 					}
 				}
+				*Length = 0;
 				return false;
 			}
 			virtual bool Clear() {		
@@ -296,6 +298,7 @@ struct { // Test_7
 						return true;
 					}
 				}
+				*Length = 0;
 				return false;
 			}
 			virtual bool Clear() {		
@@ -1089,8 +1092,22 @@ void TEST_ID7_CheckZeroCross(U8* Data) {
 	else
 	{
 			sprintf((char*)Data, "%d", TEST_ID7_Counter_ZeroCross);
-	}	
+	}
 	//}
+}
+void TEST_Key_Press(void) {
+	U8 Data[16];
+	if(General.Key.A.Get() == false) {
+		TaskManager_Delay(3 Sec);
+		if(General.Key.A.Get() == false) {			
+			TEST_JacInit();
+			General.Jac.Down();
+		}
+		else {
+			TEST_JacInit();
+			General.Jac.Up();
+		}		
+	}
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
 void StartTasks();
@@ -1106,7 +1123,7 @@ __task void StartTasks(void) {
 	
 	// Init drivers
 	__init_RTC();
-//	__init_WDT();
+	__init_WDT();
 	__init_Timer();
 	__init_GPIO();
 	__init_ADC();	
@@ -1129,7 +1146,7 @@ __task void StartTasks(void) {
 		GPIO_Output_AddPin(TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_POWER_12V_EN_PORT, TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_POWER_12V_EN_PIN, &Test_7.DigitalOutput.Power_12v_En.ValueBool, false);
 		GPIO_Output_AddPin(TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_VBATT_ENABLE_PORT, TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_VBATT_ENABLE_PIN, &Test_7.DigitalOutput.VBatt_Enable.ValueBool, false);
 		GPIO_Output_AddPin(TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_RESET_PORT, TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_RESET_PIN, &Test_7.DigitalOutput.Reset.ValueBool, false);
-		GPIO_Output_AddPin(TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_RESET_PORT, TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_RESET_PIN, &Test_7.DigitalOutput.ZeroCross_Gen.ValueBool, false);
+		GPIO_Output_AddPin(TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_ZERO_CROSS_GEN_PORT, TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_ZERO_CROSS_GEN_PIN, &Test_7.DigitalOutput.ZeroCross_Gen.ValueBool, false);
 
 		GPIO_Input_AddPin(TESTBENCH_TEST_ID7_DIGITAL_INPUT_N_RESET_PORT, TESTBENCH_TEST_ID7_DIGITAL_INPUT_N_RESET_PIN, NULL, &Test_7.DigitalInput.N_Reset.ValueBool, PIN_EDGE_TOGGEL, PIN_PULLING_UP, false);
 		GPIO_Input_AddPin(TESTBENCH_TEST_ID7_DIGITAL_INPUT_F_RESET_PORT, TESTBENCH_TEST_ID7_DIGITAL_INPUT_F_RESET_PIN, NULL, &Test_7.DigitalInput.F_Reset.ValueBool, PIN_EDGE_TOGGEL, PIN_PULLING_UP, false);
@@ -1140,8 +1157,7 @@ __task void StartTasks(void) {
 		TestBench.Add((uint8_t*)"SoftwareVersion", &TEST_SoftwareVersion);
 		TestBench.Add((uint8_t*)"GetID", &TEST_GetID);
 		TestBench.Add((uint8_t*)"DownStand", &TEST_DownStand);
-		TestBench.Add((uint8_t*)"UpStand", &TEST_UpStand);
-		
+		TestBench.Add((uint8_t*)"UpStand", &TEST_UpStand);		
 		TestBench.Add((uint8_t*)"ID7_Power_220v_On", &TEST_ID7_Power_220v_On);
 		TestBench.Add((uint8_t*)"ID7_Power_220v_Off", &TEST_ID7_Power_220v_Off);
 		TestBench.Add((uint8_t*)"ID7_Power_12v_On", &TEST_ID7_Power_12v_On);
@@ -1174,7 +1190,10 @@ __task void StartTasks(void) {
 		UI.Init((Media*)&Test_7.Interface);
 	}
 	
-	os_tsk_delete_self();
+	while (true) {
+		TEST_Key_Press();
+		TaskManager_Delay(1 Sec);
+	}
 }
 /************************************************** Vectors ***********************************************************/
 /*

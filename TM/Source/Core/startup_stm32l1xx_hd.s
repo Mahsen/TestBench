@@ -1,46 +1,33 @@
-;/******************** (C) COPYRIGHT 2014 STMicroelectronics ********************
-;* File Name          : startup_stm32l152xd.s
+;******************** (C) COPYRIGHT 2012 STMicroelectronics ********************
+;* File Name          : startup_stm32l1xx_hd.s
 ;* Author             : MCD Application Team
-;* Version            : V2.0.0RC2
-;* Date               : 11-July-2014
-;* Description        : STM32L152XD Devices vector for MDK-ARM toolchain.
+;* Version            : V1.1.1
+;* Date               : 09-March-2012
+;* Description        : STM32L1xx Ultra Low Power High-density Devices vector 
+;*                      table for MDK-ARM toolchain.
 ;*                      This module performs:
 ;*                      - Set the initial SP
 ;*                      - Set the initial PC == Reset_Handler
-;*                      - Set the vector table entries with the exceptions ISR 
-;*                        address.
-;*                      - Configure the system clock
+;*                      - Set the vector table entries with the exceptions ISR address
 ;*                      - Branches to __main in the C library (which eventually
 ;*                        calls main()).
-;*                      After Reset the Cortex-M3 processor is in Thread mode,
+;*                      After Reset the CortexM3 processor is in Thread mode,
 ;*                      priority is Privileged, and the Stack is set to Main.
-;********************************************************************************
-;*
-;* <h2><center>&copy; COPYRIGHT(c) 2014 STMicroelectronics</center></h2>
-;*
-;* Redistribution and use in source and binary forms, with or without modification,
-;* are permitted provided that the following conditions are met:
-;*   1. Redistributions of source code must retain the above copyright notice,
-;*      this list of conditions and the following disclaimer.
-;*   2. Redistributions in binary form must reproduce the above copyright notice,
-;*      this list of conditions and the following disclaimer in the documentation
-;*      and/or other materials provided with the distribution.
-;*   3. Neither the name of STMicroelectronics nor the names of its contributors
-;*      may be used to endorse or promote products derived from this software
-;*      without specific prior written permission.
-;*
-;* THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-;* AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-;* IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-;* DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
-;* FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-;* DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-;* SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-;* CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
-;* OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-;* OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-;
-;* <<< Use Configuration Wizard in Context Menu >>>
+;* <<< Use Configuration Wizard in Context Menu >>>   
+;*******************************************************************************
+; 
+; Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
+; You may not use this file except in compliance with the License.
+; You may obtain a copy of the License at:
+; 
+;        http://www.st.com/software_license_agreement_liberty_v2
+; 
+; Unless required by applicable law or agreed to in writing, software 
+; distributed under the License is distributed on an "AS IS" BASIS, 
+; WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+; See the License for the specific language governing permissions and
+; limitations under the License.
+; 
 ;*******************************************************************************
 
 ; Amount of memory (in bytes) allocated for Stack
@@ -49,7 +36,7 @@
 ;   <o> Stack Size (in Bytes) <0x0-0xFFFFFFFF:8>
 ; </h>
 
-Stack_Size      EQU     0x00001000
+Stack_Size      EQU     0x00000800
 
                 AREA    STACK, NOINIT, READWRITE, ALIGN=3
 Stack_Mem       SPACE   Stack_Size
@@ -60,7 +47,7 @@ __initial_sp
 ;   <o>  Heap Size (in Bytes) <0x0-0xFFFFFFFF:8>
 ; </h>
 
-Heap_Size       EQU     0x00002000
+Heap_Size       EQU     0x00004000
 
                 AREA    HEAP, NOINIT, READWRITE, ALIGN=3
 __heap_base
@@ -150,7 +137,7 @@ __Vectors       DCD     __initial_sp              ; Top of Stack
                 DCD     DMA2_Channel3_IRQHandler  ; DMA2 Channel 3
                 DCD     DMA2_Channel4_IRQHandler  ; DMA2 Channel 4
                 DCD     DMA2_Channel5_IRQHandler  ; DMA2 Channel 5
-                DCD     0                         ; Reserved
+                DCD     AES_IRQHandler            ; AES
                 DCD     COMP_ACQ_IRQHandler       ; Comparator Channel Acquisition
                 
 __Vectors_End
@@ -271,6 +258,7 @@ Default_Handler PROC
                 EXPORT  DMA2_Channel3_IRQHandler   [WEAK]
                 EXPORT  DMA2_Channel4_IRQHandler   [WEAK]
                 EXPORT  DMA2_Channel5_IRQHandler   [WEAK]
+                EXPORT  AES_IRQHandler             [WEAK]
                 EXPORT  COMP_ACQ_IRQHandler        [WEAK]
 
 WWDG_IRQHandler
@@ -328,6 +316,7 @@ DMA2_Channel2_IRQHandler
 DMA2_Channel3_IRQHandler
 DMA2_Channel4_IRQHandler
 DMA2_Channel5_IRQHandler
+AES_IRQHandler
 COMP_ACQ_IRQHandler
 
                 B       .

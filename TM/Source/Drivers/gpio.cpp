@@ -529,7 +529,6 @@ __task void GPIO_Output_Task(void)
 
 	/// Delays in beginning the task
 	TaskManager_Delay(TASK_MANAGER_DELAYFIRSTTASK);
-	
 	U8 gpio_i;
 	
 	/// Task {

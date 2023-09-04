@@ -24,7 +24,7 @@
 //   <i> Define max. number of tasks that will run at the same time.
 //   <i> Default: 6
 #ifndef OS_TASKCNT
- #define OS_TASKCNT     15
+ #define OS_TASKCNT     7
 #endif
 
 //   <o>Number of tasks with user-provided stack <0-250>
@@ -32,7 +32,7 @@
 //   <i> The memory space for the stack is provided by the user.
 //   <i> Default: 0
 #ifndef OS_PRIVCNT
- #define OS_PRIVCNT     14
+ #define OS_PRIVCNT     6
 #endif
 
 //   <o>Task stack size [bytes] <20-4096:8><#/4>
