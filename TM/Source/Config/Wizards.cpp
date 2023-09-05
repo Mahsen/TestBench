@@ -363,7 +363,7 @@ Tel : +989124662703
 //					 <5=> Uart5
 //					 <6=> Uart6
 #ifndef TESTBENCH_TEST_ID7_MEDIA_RS485_MEDIA_UART
-	#define TESTBENCH_TEST_ID7_MEDIA_RS485_MEDIA_UART                  5
+	#define TESTBENCH_TEST_ID7_MEDIA_RS485_MEDIA_UART                  4
 #endif
 // </h>
 // </h>
@@ -383,7 +383,7 @@ Tel : +989124662703
 //					 <5=> Uart5
 //					 <6=> Uart6
 #ifndef TESTBENCH_TEST_ID7_MEDIA_OP_MEDIA_UART
-	#define TESTBENCH_TEST_ID7_MEDIA_OP_MEDIA_UART                  4
+	#define TESTBENCH_TEST_ID7_MEDIA_OP_MEDIA_UART                  5
 #endif
 // </h>
 // </h>
@@ -402,8 +402,8 @@ Tel : +989124662703
 // </h>
 // <h> RTC Voltage
 //			 <o> ADC
-//					 <0x0000=> Channel 0
-#define TESTBENCH_TEST_ID7_ANALOG_INPUT_RTC_VOLTAGE_CHANNEL            0x0000 //A0
+//					 <0x000A=> Channel 10
+#define TESTBENCH_TEST_ID7_ANALOG_INPUT_RTC_VOLTAGE_CHANNEL            0x000A
 // </h>
 
 

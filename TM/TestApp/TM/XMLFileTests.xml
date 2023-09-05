@@ -137,7 +137,7 @@
 		<MessageNO Value="اختلال در آماده سازی اولیه" />
 		<RunExe Value="../_Files/JLink/JFlash.exe" />		
 		<AskData Value="" />	
-		<Data Value="-openprjHT6033.jflash -erasechip -exit" /> 
+		<Data Value="-openprjHT6033.jflash -hide -erasechip -exit" /> 
 		<MustAnswer Value="active" />
 		<ExceptAnswer Value="" />
 		<WaitAnswer Value="100000" />
@@ -161,7 +161,7 @@
 		<MessageNO Value="خطا در پروگرم نمودن برنامه تست" />
 		<RunExe Value="../_Files/JLink/JFlash.exe" />		
 		<AskData Value="" />	
-		<Data Value="-openprjHT6033.jflash -open../Hex/main.hex -program -startapp -exit" /> 
+		<Data Value="-openprjHT6033.jflash -hide -open../Hex/main.hex -program -startapp -exit" /> 
 		<MustAnswer Value="active" />
 		<ExceptAnswer Value="" />
 		<WaitAnswer Value="100000" />
@@ -753,7 +753,7 @@
 	<Test Command="ID7_CheckZeroCross">
 		<Enable Value="True" />
 		<EnableIf Value="" />
-		<EnableLoop Value="" />
+		<EnableLoop Value="True" />
 		<EnableNext Value="" />
 		<Explanation Value="بررسی عملکرد مدار ZeroCross" />
 		<Description Value="بررسی عملکرد مدار ZeroCross" />

@@ -275,7 +275,7 @@ struct { // Test_7
 				return true;
 			}
 			virtual bool Update(uint32_t Speed) {
-				UART_UpdateSetting(TESTBENCH_TEST_ID7_MEDIA_RS485_MEDIA_UART, Speed, 0x2000, USART_Parity_Even, USART_StopBits_1, true);
+				UART_UpdateSetting(TESTBENCH_TEST_ID7_MEDIA_RS485_MEDIA_UART, Speed, USART_WordLength_8b, USART_Parity_No, USART_StopBits_1, true);
 				return true;
 			}
 			virtual bool Send(uint8_t *Message, uint32_t Length) {		
@@ -569,7 +569,7 @@ void TEST_ID7_CheckProgram_Final(U8* Data) {
 		uint32_t Length;
 		
 		Test_7.OP.Open();
-		TaskManager_Delay(5 Sec);
+		TaskManager_Delay(10 Sec);
 		Test_7.OP.Reset();
 		Test_7.OP.Send((U8*)"C00", 3);
 		TaskManager_Delay(3 Sec);
@@ -1096,9 +1096,14 @@ void TEST_ID7_CheckZeroCross(U8* Data) {
 	//}
 }
 void TEST_Key_Press(void) {
-	U8 Data[16];
 	if(General.Key.A.Get() == false) {
-		TaskManager_Delay(3 Sec);
+		Test_7.DigitalOutput.Power_220v_Test.Disable();
+		Test_7.DigitalOutput.Power_220v_En.Disable();
+		Test_7.DigitalOutput.Power_12v_En.Disable();
+		General.LED.A.Disable();
+		for(U8 Index=0; ((Index<6)&&(General.Key.A.Get()==false)); Index++) {
+			TaskManager_Delay(500 MSec);
+		}		
 		if(General.Key.A.Get() == false) {			
 			TEST_JacInit();
 			General.Jac.Down();
