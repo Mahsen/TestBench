@@ -617,7 +617,7 @@
 		<MessageNO Value="اختلال در تنظیم سرور" />
 		<RunExe Value="" />		
 		<AskData Value="" />	
-		<Data Value="NULL" />
+		<Data Value="94.139.169.122:8000" />
 		<MustAnswer Value="OK" />
 		<ExceptAnswer Value="" />
 		<WaitAnswer Value="30000" />
