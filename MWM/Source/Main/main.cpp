@@ -571,7 +571,7 @@ uint8_t* TEST_GetID() {
 		GPIO_ResetBits((GPIO_TypeDef*)GPIO_PORTSEL[TESTBENCH_GETID_CLOCK_PORT], (1 << TESTBENCH_GETID_CLOCK_PIN));
 	}
 	
-	if(Buffer[0] == Buffer[1]) {
+	if((Buffer[0] == Buffer[1]) && (Buffer[0] != 0) && (Buffer[0] != 0xFF)) {
 		sprintf((char*)Data, "%d", Buffer[0]);
 		General.LED.A.Disable();
 	} else {
@@ -1258,7 +1258,7 @@ __task void StartTasks(void) {
 	
 	// Init drivers
 	__init_RTC();
-//	__init_WDT();
+	__init_WDT();
 	__init_Timer();
 	__init_GPIO();
 	__init_ADC();	
