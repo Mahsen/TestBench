@@ -586,10 +586,10 @@
 		<EnableIf Value="" />
 		<EnableLoop Value="" />
 		<EnableNext Value="" />
-		<Explanation Value="بررسی برنامه تست" />
-		<Description Value="بررسی برنامه تست" />
-		<MessageOK Value="برنامه تست در دسترس قرار گرفت" />
-		<MessageNO Value="اختلال در برنامه تست" />
+		<Explanation Value="بررسی برنامه نهایی" />
+		<Description Value="بررسی برنامه نهایی" />
+		<MessageOK Value="برنامه نهایی در دسترس قرار گرفت" />
+		<MessageNO Value="اختلال در برنامه نهایی" />
 		<RunExe Value="" />		
 		<AskData Value="" />	
 		<Data Value="" /> 
