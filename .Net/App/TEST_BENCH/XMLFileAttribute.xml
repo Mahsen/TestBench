@@ -1,0 +1,266 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Tests Title="Test_AG510" AutoEnableChecked="False" AutoReplay="True" AutoNext="True" >
+  
+  <Test Command="TEST_SERIAL">
+    <Enable Value="True" />
+    <EnableIf Value="" />
+    <Explanation Value="تست سریال سیستم یرای همخوانی نرم افزار کامپیوتر و نرم افزار تستی سخت افزار می باشد" />
+    <Description Value="تست ورژن سیستم" />
+    <MessageOK Value="صحت ورژن سیستم" />
+    <MessageNO Value="خطا ورژن سیستم" />
+    <Data Value="" />
+    <MustAnswer Value="SWare=v7.003-HWare=v7.0" />
+    <WaitAnswer Value="1000" />
+    <Alert Value="" />
+    <Promp Value="" />
+  </Test>
+
+  <Test Command="TEST_LED">
+    <Enable Value="True" />
+    <EnableIf Value="" />
+    <Explanation Value="تست ال ای دی های حالت به صورت چشمی بوده و در صورت روشن شدن باید پیام سیستم را تایید نمایید" />
+    <Description Value="عملکرد ال ای دی های حالت" />
+    <MessageOK Value="صحت عملکرد ال ای دی های حالت" />
+    <MessageNO Value="خطا در عملکرد ال ای دی های حالت" />
+    <Data Value="" />
+    <MustAnswer Value="" />
+    <WaitAnswer Value="6000" />
+    <Alert Value="به ال ای دی های حالت توجه کنید" />
+    <Promp Value="آیا ال ای دی های حالت چشمک زدند" />
+  </Test>
+
+  <Test Command="">
+    <Enable Value="True" />
+    <EnableIf Value="" />
+    <Explanation Value="این تست برای اطمینان از عملکرد کلید سخت افزاری ریست می باشد که به شما اطمینان می دهد که کلید ریست به درستی کار می نماید" />
+    <Description Value="عملکرد کلید ریست" />
+    <MessageOK Value="صحت عملکرد ریست" />
+    <MessageNO Value="عدم عملکرد کلید ریست" />
+    <Data Value="" />
+    <MustAnswer Value="Start&#xD;&#xA;" />
+    <WaitAnswer Value="2000" />
+    <Alert Value="کلید ریست را زده سپس تایید کنید" />
+    <Promp Value="" />
+  </Test>
+
+  <Test Command="TEST_FLASH">
+    <Enable Value="True" />
+    <EnableIf Value="" />
+    <Explanation Value="تست فلش در پانزده مکان متفاوت از آن اعم از خواندن و نوشتن انجام شده و صحت عملکرد فلش را به شما اعلام می نماید" />
+    <Description Value="عملکرد Flash" />
+    <MessageOK Value="صحت عملکرد Flash" />
+    <MessageNO Value="خطا در عملکرد Flash" />
+    <Data Value="" />
+    <MustAnswer Value="OK_TEST_FLASH" />
+    <WaitAnswer Value="2000" />
+    <Alert Value="" />
+    <Promp Value="" />
+  </Test>
+
+  <Test Command="TEST_RS232_1">
+    <Enable Value="True" />
+    <EnableIf Value="" />
+    <Explanation Value="ارتباط دو طرفه پورت را بررسی می نماید در این حالت اصلاعاتی ارسال شده و سپس تست کننده نیز اطلاعاتی متناظر را ارسال می نماید" />
+    <Description Value="عملکرد RS232_1" />
+    <MessageOK Value="صحت عملکرد RS232_1" />
+    <MessageNO Value="خطا در عملکرد RS232_1" />
+    <Data Value="" />
+    <MustAnswer Value="OK_TEST_RS232_1" />
+    <WaitAnswer Value="2000" />
+    <Alert Value="متصل نمایید RS232_1 لطفا تست کننده را به" />
+    <Promp Value="" />
+  </Test>
+
+  <Test Command="TEST_RS232_2">
+    <Enable Value="True" />
+    <EnableIf Value="" />
+    <Explanation Value="ارتباط دو طرفه پورت را بررسی می نماید در این حالت اصلاعاتی ارسال شده و سپس تست کننده نیز اطلاعاتی متناظر را ارسال می نماید" />
+    <Description Value="عملکرد RS232_2" />
+    <MessageOK Value="صحت عملکرد RS232_2" />
+    <MessageNO Value="خطا در عملکرد RS232_2" />
+    <Data Value="" />
+    <MustAnswer Value="OK_TEST_RS232_2" />
+    <WaitAnswer Value="2000" />
+    <Alert Value="متصل نمایید RS232_2 لطفا تست کننده را به" />
+    <Promp Value="" />
+  </Test>
+
+  <Test Command="TEST_RS485">
+    <Enable Value="True" />
+    <EnableIf Value="" />
+    <Explanation Value="ارتباط دو طرفه پورت را بررسی می نماید در این حالت اصلاعاتی ارسال شده و سپس تست کننده نیز اطلاعاتی متناظر را ارسال می نماید" />
+    <Description Value="عملکرد RS485" />
+    <MessageOK Value="صحت عملکرد RS485" />
+    <MessageNO Value="خطا در عملکرد RS485" />
+    <Data Value="" />
+    <MustAnswer Value="OK_TEST_RS485" />
+    <WaitAnswer Value="2000" />
+    <Alert Value="متصل نمایید RS485 لطفا تست کننده را به" />
+    <Promp Value="" />
+  </Test>
+
+  <Test Command="TEST_DIG_READ">
+    <Enable Value="True" />
+    <EnableIf Value="" />
+    <Explanation Value="در صورت تشخیص ولتاز بر روی سیگنال های آنالوگ ورودی مقدار روشن و در غیر این صورت مقدار خاموش می گیرد" />
+    <Description Value="عملکرد سیگنال های دیجیتال ورودی" />
+    <MessageOK Value="" />
+    <MessageNO Value="" />
+    <Data Value="" />
+    <MustAnswer Value="#Return_Data" />
+    <WaitAnswer Value="2000" />
+    <Alert Value="سیگنال های دیجیتال ورودی خوانده شوند" />
+    <Promp Value="" />
+  </Test>
+
+  <Test Command="TEST_DIG_WRITE">
+    <Enable Value="True" />
+    <EnableIf Value="" />
+    <Explanation Value="برای تست صحت عملکرد سیگنال های دیجیتال خروجی آن ها را فعال می نمایم" />
+    <Description Value="عملکرد سیگنال های دیجیتال خروجی" />
+    <MessageOK Value="سیگنال های دیجیتال خروجی فعال شدند" />
+    <MessageNO Value="سیگنال های دیجیتال خروجی فعال نشدند" />
+    <Data Value="Dig_Out_3=On-Dig_Out_4=On" />
+    <MustAnswer Value="" />
+    <WaitAnswer Value="2000" />
+    <Alert Value="سیگنال های دیجیتال خروجی فعال شود" />
+    <Promp Value="آیا سیگنال های دیجیتال خروجی فعال گردید ؟" />
+  </Test>
+
+  <Test Command="TEST_DIG_WRITE">
+    <Enable Value="True" />
+    <EnableIf Value="" />
+    <Explanation Value="برای تست صحت عملکرد سیگنال های دیجیتال خروجی آن ها را خیر فعال می نمایم" />
+    <Description Value="عملکرد سیگنال های دیجیتال خروجی" />
+    <MessageOK Value="سیگنال های دیجیتال خروجی غیر فعال شدند" />
+    <MessageNO Value="سیگنال های دیجیتال خروجی غیر فعال نشدند" />
+    <Data Value="Dig_Out_3=Off-Dig_Out_4=Off" />
+    <MustAnswer Value="" />
+    <WaitAnswer Value="2000" />
+    <Alert Value="سیگنال های دیجیتال خروجی غیر فعال شود" />
+    <Promp Value="آیا سیگنال های دیجیتال خروجی غیر فعال گردید ؟" />
+  </Test>
+
+  <Test Command="TEST_SIM900ON">
+    <Enable Value="True" />
+    <EnableIf Value="" />
+    <Explanation Value="تست روشن شدن ماژول می باشد" />
+    <Description Value="روشن شدن ماژول SIM900" />
+    <MessageOK Value="صحت عملکرد در روشن شدن ماژول SIM900" />
+    <MessageNO Value="خطا در روشن شدن ماژول SIM900" />
+    <Data Value="" />
+    <MustAnswer Value="OK_TEST_SIM900ON" />
+    <WaitAnswer Value="10000" />
+    <Alert Value="" />
+    <Promp Value="" />
+  </Test>
+
+  <Test Command="TEST_SIM900AT">
+    <Enable Value="True" />
+    <EnableIf Value="TEST_SIM900ON" />
+    <Explanation Value="تست آن که آیا ماژول دستورات یا کامند ها را دریافت می نماید یا خیر را بررسی می کند" />
+    <Description Value="ارسال کامند به SIM900" />
+    <MessageOK Value="صحت عملکرد کامند  SIM900" />
+    <MessageNO Value="خطا در عملکرد کامند SIM900" />
+    <Data Value="AT&#xD;&#xA;" />
+    <MustAnswer Value="OK" />
+    <WaitAnswer Value="3000" />
+    <Alert Value="" />
+    <Promp Value="" />
+  </Test>
+  
+  <!--
+    <Test Command="TEST_PSTNON">
+    <Enable Value="True" />
+    <EnableIf Value="" />
+    <Explanation Value="تست روشن شدن ماژول می باشد" />
+    <Description Value="روشن شدن ماژول PSTN" />
+    <MessageOK Value="صحت عملکرد در روشن شدن ماژول PSTN" />
+    <MessageNO Value="خطا در روشن شدن ماژول PSTN" />
+    <Data Value="" />
+    <MustAnswer Value="OK_TEST_PSTNON" />
+    <WaitAnswer Value="3000" />
+    <Alert Value="" />
+    <Promp Value="" />
+  </Test>
+
+
+  <Test Command="TEST_PSTNAT">
+    <Enable Value="True" />
+    <EnableIf Value="TEST_PSTNON" />
+    <Explanation Value="تست آن که آیا ماژول دستورات یا کامند ها را دریافت می نماید یا خیر را بررسی می کند" />
+    <Description Value="ارسال کامند به PSTN" />
+    <MessageOK Value="صحت عملکرد کامند  PSTN" />
+    <MessageNO Value="خطا در عملکرد کامند PSTN" />
+    <Data Value="AT&#xD;&#xA;" />
+    <MustAnswer Value="OK" />
+    <WaitAnswer Value="3000" />
+    <Alert Value="" />
+    <Promp Value="" />
+  </Test>
+-->
+
+
+<!--
+  <Test Command="TEST_WIZACK">
+    <Enable Value="True" />
+    <EnableIf Value="" />
+    <Explanation Value="ارتباط ماژول را با شبکه اترنت بررسی می نماید و در صورت تنظیمات درست آدرس ها مقدار تایید می گیرد" />
+    <Description Value="ارتباط ماژول LAN" />
+    <MessageOK Value="صحت ارتباط ماژول LAN" />
+    <MessageNO Value="عدم ارتباط ماژول LAN" />
+    <Data Value="" />
+    <MustAnswer Value="OK_TEST_WIZACK" />
+    <WaitAnswer Value="20000" />
+    <Alert Value="کابل اترنت ماژول را متصل کرده و پس از چهل ثانیه تایید کنید" />
+    <Promp Value="" />
+  </Test>
+-->
+  
+  <Test Command="TEST_ANALOG_READ">
+    <Enable Value="True" />
+    <EnableIf Value="" />
+    <Explanation Value="مقدار سیگنال آنالوگ را بر حسب ولتاژ می خواند" />
+    <Description Value="عملکرد سیگنال های آنالوگ ورودی" />
+    <MessageOK Value="" />
+    <MessageNO Value="" />
+    <Data Value="" />
+    <MustAnswer Value="#Return_Data" />
+    <WaitAnswer Value="2000" />
+    <Alert Value="ولتاژ سیگنال های آنالوگ ورودی خوانده شوند" />
+    <Promp Value="" />
+  </Test>
+  
+  
+  
+  <Test Command="TEST_WRITEDATETIME">
+    <Enable Value="True" />
+    <EnableIf Value="" />
+    <Explanation Value="تست آی سی ساعت سیستم" />
+    <Description Value="تنظیم ساعت سیستم" />
+    <MessageOK Value="تنظیم ساعت 11\04\05 10-12-30 با موفقیت انجام شد" />
+    <MessageNO Value="تنظیم ساعت 11\04\05 10-12-30 با موفقیت انجام نشد" />
+    <Data Value="11\04\05 10-12-30" />
+    <MustAnswer Value="OK_TEST_WRITEDATETIME" />
+    <WaitAnswer Value="3000" />
+    <Alert Value="" />
+    <Promp Value="" />
+  </Test>
+
+  
+  <Test Command="TEST_READDATETIME">
+    <Enable Value="True" />
+    <EnableIf Value="TEST_WRITEDATETIME" />
+    <Explanation Value="تست آی سی ساعت سیستم" />
+    <Description Value="خواندن ساعت سیستم" />
+    <MessageOK Value="خواندن ساعت با موفقیت انجام شد" />
+    <MessageNO Value="خواندن ساعت با موفقیت انجام نشد" />
+    <Data Value="" />
+    <MustAnswer Value="#Return_Data" />
+    <WaitAnswer Value="3000" />
+    <Alert Value="" />
+    <Promp Value="" />
+  </Test>
+
+</Tests>
