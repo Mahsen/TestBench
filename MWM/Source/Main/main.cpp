@@ -48,7 +48,9 @@ struct { // General
 		struct_ValueBool A;
 	} Key;
 	struct { // LED
-		struct_ValueBool A;
+		struct_ValueBool Fault;
+		struct_ValueBool Send;
+		struct_ValueBool Receive;
 	} LED;
 } General;
 struct { // Test_56
@@ -87,9 +89,11 @@ struct { // Test_56
 			}
 			virtual bool Send(uint8_t *Message, uint32_t Length) {		
 				UART_Send_String(TESTBENCH_TEST_ID56_MEDIA_UI_UART, Message, Length);
+				General.LED.Send.Enable();
+				General.LED.Receive.Disable();
 				return true;
 			}
-			virtual bool Receive(uint8_t *Message, uint32_t *Length) {	
+			virtual bool Receive(uint8_t *Message, uint32_t *Length) {					
 				if(UART_Read_State_FIFO(TESTBENCH_TEST_ID56_MEDIA_UI_UART).rxBusy()) {
 					for(U32 Index=RESET; Index<100; Index++)
 					{
@@ -101,6 +105,8 @@ struct { // Test_56
 						}
 					}
 					if(*Length) {
+						General.LED.Receive.Enable();
+						General.LED.Send.Disable();
 						*Length = UART_Receive_String_FIFO(TESTBENCH_TEST_ID56_MEDIA_UI_UART, Message, *Length);
 						return true;
 					}
@@ -267,6 +273,8 @@ struct { // Test_55
 				return true;
 			}
 			virtual bool Send(uint8_t *Message, uint32_t Length) {		
+				General.LED.Send.Enable();
+				General.LED.Receive.Disable();
 				UART_Send_String(TESTBENCH_TEST_ID56_MEDIA_UI_UART, Message, Length);
 				return true;
 			}
@@ -282,6 +290,8 @@ struct { // Test_55
 						}
 					}
 					if(*Length) {
+						General.LED.Receive.Enable();
+						General.LED.Send.Disable();
 						*Length = UART_Receive_String_FIFO(TESTBENCH_TEST_ID56_MEDIA_UI_UART, Message, *Length);
 						return true;
 					}
@@ -573,14 +583,17 @@ uint8_t* TEST_GetID() {
 	
 	if((Buffer[0] == Buffer[1]) && (Buffer[0] != 0) && (Buffer[0] != 0xFF)) {
 		sprintf((char*)Data, "%d", Buffer[0]);
-		General.LED.A.Disable();
+		General.LED.Fault.Disable();
 	} else {
-		General.LED.A.Enable();
+		General.LED.Fault.Enable();
 		Test_56.DigitalOutput.Power_4v_En.Disable();
 		Test_56.DigitalOutput.Power_5v_En.Disable();
 		Test_55.DigitalOutput.Power_12v_En.Disable();
 		sprintf((char*)Data, "0");
 	}
+	
+	General.LED.Send.Disable();
+	General.LED.Receive.Disable();	
 	
 	TASK_MANAGER_MUTEXRELEASE(TEST_GetID_MUTEX);	
 	
@@ -627,7 +640,7 @@ void TEST_ID56_CheckProgram_Test(U8* Data)
 		uint32_t Length;
 		
 		Test_56.Meter.Update(9600);
-		TaskManager_Delay(10 Sec);
+		TaskManager_Delay(20 Sec);
 		Test_56.Meter.Clear();
 		Test_56.Meter.Send((U8*)"C00", 3);
 		TaskManager_Delay(3 Sec);
@@ -669,7 +682,7 @@ void TEST_ID56_CheckModem(U8* Data)
 	Test_56.Meter.Update(9600);
 	Test_56.Meter.Clear();
 	Test_56.Meter.Send((U8*)"R10", 3);
-	TaskManager_Delay(2 Sec);
+	TaskManager_Delay(4 Sec);
 	Length = Test_56.Meter.Receive(Buffer, &Length);
 	TaskManager_Delay(1 Sec);
 
@@ -1268,8 +1281,10 @@ __task void StartTasks(void) {
 	__init_TaskManager();
 	
 	GPIO_Input_AddPin(TESTBENCH_KEY_A_PORT, TESTBENCH_KEY_A_PIN, NULL, &General.Key.A.ValueBool, PIN_EDGE_TOGGEL, PIN_PULLING_UP, false);
-	GPIO_Output_AddPin(TESTBENCH_LED_PORT, TESTBENCH_LED_PIN, &General.LED.A.ValueBool, !WDT_LED_LOGIC);
-
+	GPIO_Output_AddPin(TESTBENCH_LED_PORT, TESTBENCH_LED_PIN, &General.LED.Fault.ValueBool, !WDT_LED_LOGIC);
+	GPIO_Output_AddPin(TESTBENCH_LED_R_PORT, TESTBENCH_LED_R_PIN, &General.LED.Send.ValueBool, !WDT_LED_LOGIC);
+	GPIO_Output_AddPin(TESTBENCH_LED_G_PORT, TESTBENCH_LED_G_PIN, &General.LED.Receive.ValueBool, !WDT_LED_LOGIC);
+	
 	// Add tests
 	TestBench.Init(&TEST_GetID);
 	if(strcmp((char*)TestBench.GetID(), "56") == NULL) {

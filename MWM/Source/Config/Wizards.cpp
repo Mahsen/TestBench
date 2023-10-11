@@ -37,6 +37,50 @@ Tel : +989124662703
 #ifndef TESTBENCH_VERSION_SOFTWARE
 	#define TESTBENCH_VERSION_SOFTWARE            	    "v1.14020601"
 #endif
+// <h> LED RG 
+// <h> LED Red 
+//			 <o> Port
+//					 <0=> PORTA
+//					 <1=> PORTB
+//					 <2=> PORTC
+//					 <3=> PORTD
+//					 <4=> PORTE
+//					 <5=> PORTF
+//					 <6=> PORTG
+//					 <7=> PORTH
+//					 <8=> PORTI
+//					 <9=> PORTJ
+//					 <10=> PORTK
+#ifndef TESTBENCH_LED_R_PORT
+	#define TESTBENCH_LED_R_PORT            2
+#endif
+//			 <o>Pin <0-15>
+#ifndef TESTBENCH_LED_R_PIN
+	#define TESTBENCH_LED_R_PIN             6
+#endif
+// </h>
+// <h> LED Green 
+//			 <o> Port
+//					 <0=> PORTA
+//					 <1=> PORTB
+//					 <2=> PORTC
+//					 <3=> PORTD
+//					 <4=> PORTE
+//					 <5=> PORTF
+//					 <6=> PORTG
+//					 <7=> PORTH
+//					 <8=> PORTI
+//					 <9=> PORTJ
+//					 <10=> PORTK
+#ifndef TESTBENCH_LED_G_PORT
+	#define TESTBENCH_LED_G_PORT            2
+#endif
+//			 <o>Pin <0-15>
+#ifndef TESTBENCH_LED_G_PIN
+	#define TESTBENCH_LED_G_PIN             7
+#endif
+// </h>
+// </h>
 // <h> LED
 //			 <o> Port
 //					 <0=> PORTA
