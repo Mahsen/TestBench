@@ -1306,6 +1306,7 @@ __task void StartTasks(void) {
 	
 	// Add tests
 	TestBench.Init(&TEST_GetID);
+	TryID:
 	if(strcmp((char*)TestBench.GetID(), "56") == NULL) {
 		GPIO_Input_AddPin(TESTBENCH_TEST_ID56_DIGITAL_INPUT_EVENT_MIC_PORT, TESTBENCH_TEST_ID56_DIGITAL_INPUT_EVENT_MIC_PIN, &TEST_ID56_CheckBuzzer_EventMic, &Test_56.DigitalInput.EventMic.ValueBool, PIN_EDGE_TOGGEL, PIN_PULLING_UP, true);
 		GPIO_Input_AddPin(TESTBENCH_TEST_ID56_DIGITAL_INPUT_EVENT_LED_PORT, TESTBENCH_TEST_ID56_DIGITAL_INPUT_EVENT_LED_PIN, &TEST_ID56_CheckBuzzer_EventLED, &Test_56.DigitalInput.EventLED.ValueBool, PIN_EDGE_TOGGEL, PIN_PULLING_UP, true);
@@ -1365,6 +1366,10 @@ __task void StartTasks(void) {
 		
 		// Config user interface
 		UI.Init((Media*)&Test_55.Interface);
+	}
+	else {
+		TaskManager_Delay(500 MSec);
+		goto TryID;
 	}
 	
 	os_tsk_delete_self();
