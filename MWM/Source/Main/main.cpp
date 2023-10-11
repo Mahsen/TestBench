@@ -497,6 +497,7 @@ uint8_t* TEST_GetID() {
 	GPIO_InitTypeDef  GPIO_InitStructure;
 	U8 Buffer[2];
 	static uint8_t Data[3];
+	static bool Find = false;
 	
 	TASK_MANAGER_MUTEXWAIT(TEST_GetID_MUTEX);
 	
@@ -583,8 +584,26 @@ uint8_t* TEST_GetID() {
 	
 	if((Buffer[0] == Buffer[1]) && (Buffer[0] != 0) && (Buffer[0] != 0xFF)) {
 		sprintf((char*)Data, "%d", Buffer[0]);
+		if(Find == false) { 			
+			General.LED.Receive.Enable();
+			General.LED.Send.Disable();
+			TaskManager_Delay(200 MSec);
+			General.LED.Receive.Disable();
+			General.LED.Send.Enable();
+			TaskManager_Delay(300 MSec);
+			Find = true;
+		}
 		General.LED.Fault.Disable();
 	} else {
+		if(Find == true) { 	
+			General.LED.Receive.Disable();
+			General.LED.Send.Enable();						
+			TaskManager_Delay(200 MSec);
+			General.LED.Receive.Enable();
+			General.LED.Send.Disable();
+			TaskManager_Delay(300 MSec);
+			Find = false;
+		}
 		General.LED.Fault.Enable();
 		Test_56.DigitalOutput.Power_4v_En.Disable();
 		Test_56.DigitalOutput.Power_5v_En.Disable();
