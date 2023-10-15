@@ -442,23 +442,21 @@ void TEST_JacInit() {
 	General.Jac.Off();
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
-void TEST_DownStand(U8* Data)
-{
+void TEST_DownStand(U8* Data) {
 	TEST_JacInit();
 	
 	General.Jac.Down();
-	TaskManager_Delay(20 Sec);
+	TaskManager_Delay(18 Sec);
 	General.Jac.Off();
 	
 	sprintf((char*)Data, "OK");
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
-void TEST_UpStand(U8* Data)
-{
+void TEST_UpStand(U8* Data) {
 	TEST_JacInit();
 	
 	General.Jac.Up();
-	TaskManager_Delay(12 Sec);
+	TaskManager_Delay(9 Sec);
 	General.Jac.Off();
 	
 	sprintf((char*)Data, "OK");
@@ -541,12 +539,12 @@ void TEST_ID7_Power_12v_Off(U8* Data) {
 		sprintf((char*)Data, "OK");
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
-void TEST_ID7_CheckProgram_Test(U8* Data) {
+void TEST_ID7_CheckProgram(U8* Data) {
 		U8 Buffer[256];
 		uint32_t Length;
 		
 		Test_7.RS485.Open();
-		TaskManager_Delay(5 Sec);
+		TaskManager_Delay(10 Sec);
 		Test_7.RS485.Reset();
 		Test_7.RS485.Send((U8*)"C00", 3);
 		TaskManager_Delay(3 Sec);
@@ -554,29 +552,6 @@ void TEST_ID7_CheckProgram_Test(U8* Data) {
 		Length = sizeof(Buffer);
 		Test_7.RS485.Receive(Buffer, &Length);
 
-		if(Length)
-		{
-				sprintf((char*)Data, "%s", Buffer);
-		}
-		else
-		{
-				strcpy((char*)Data, "Error");
-		}	
-}
-/*--------------------------------------------------------------------------------------------------------------------*/
-void TEST_ID7_CheckProgram_Final(U8* Data) {
-		U8 Buffer[256];
-		uint32_t Length;
-		
-		Test_7.OP.Open();
-		TaskManager_Delay(10 Sec);
-		Test_7.OP.Reset();
-		Test_7.OP.Send((U8*)"C00", 3);
-		TaskManager_Delay(3 Sec);
-		memset(Buffer, NULL, sizeof(Buffer));
-		Length = sizeof(Buffer);
-		Test_7.OP.Receive(Buffer, &Length);
-	
 		if(Length)
 		{
 				sprintf((char*)Data, "%s", Buffer);
@@ -602,47 +577,16 @@ void TEST_ID7_Power_3V3(U8* Data) {
 /*--------------------------------------------------------------------------------------------------------------------*/
 void TEST_ID7_GSM_Voltage(U8* Data) {
 	float Value;
-	Test_7.RS485.Open();
-	
-	Test_7.RS485.Send((U8*)"C51", 3);
-	TaskManager_Delay(9 Sec);
 	Value = Test_7.AnalogInput.Get_GSM_Voltage();
-	
-	Test_7.RS485.Send((U8*)"C50", 3);
-	TaskManager_Delay(1 Sec);
-	
-	if((Value >= 3.6) && (Value <= 4.2))
-	{
+	if((Value >= 3.6) && (Value <= 4.2)) {
 		sprintf((char*)Data, "OK");
 	}
-	else
-	{
+	else {
 		sprintf((char*)Data, "%.2f Volt", Value);
 	}
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
-void TEST_ID7_GSM_EXT_Voltage(U8* Data) {
-	float Value;
-	Test_7.RS485.Open();
-	
-	Test_7.RS485.Send((U8*)"C51", 3);
-	TaskManager_Delay(9 Sec);
-	Value = Test_7.AnalogInput.Get_GSM_EXT_Voltage();
-	
-	Test_7.RS485.Send((U8*)"C50", 3);
-	TaskManager_Delay(1 Sec);
-	
-	if((Value >= 1.7) && (Value <= 1.9))
-	{
-		sprintf((char*)Data, "OK");
-	}
-	else
-	{
-		sprintf((char*)Data, "%.2f Volt", Value);
-	}
-}
-/*--------------------------------------------------------------------------------------------------------------------*/
-void TEST_ID7_Batt_Voltage(U8* Data) {
+void TEST_ID7_Batt(U8* Data) {
 	TaskManager_Delay(200 MSec);
 	float Value = Test_7.AnalogInput.Get_Batt_Voltage();
 	
@@ -672,21 +616,19 @@ void TEST_ID7_RTC_Voltage(U8* Data) {
 	}
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
-void TEST_ID7_CheckDataOP(U8* Data) {
+void TEST_ID7_CheckData(U8* Data) {
 	bool Pass;
 	U8 Buffer[128];
 	uint32_t Length;
 
-	///
+	sprintf((char*)Data, "");
+	
+	/// OP
 	//{
-	sprintf((char*)Data, "ERROR");
-
-
 	Test_7.OP.Open();
 	Test_7.OP.Reset();
 					
-	for(U16 Index=RESET; Index<sizeof(Buffer); Index++)
-	{
+	for(U16 Index=RESET; Index<sizeof(Buffer); Index++) {
 		Buffer[Index] = Index;		
 	}
 	
@@ -698,42 +640,30 @@ void TEST_ID7_CheckDataOP(U8* Data) {
 	Length = sizeof(Buffer);
 	Test_7.OP.Receive(Buffer, &Length);
 
-	if(Length)
-	{
+	if(Length) {
 		Pass = true;
-		for(U16 Index=RESET; Index<sizeof(Buffer); Index++)
-		{
-			if(Buffer[Index] != (0xFF-Index))
-			{
+		for(U16 Index=RESET; Index<sizeof(Buffer); Index++) {
+			if(Buffer[Index] != (0xFF-Index)) {
 				Pass = false;
 			}
 		}
 	}
 
-	if(Pass)
-	{
-		sprintf((char*)Data, "OK");
+	if(Pass) {
+		strcat((char*)Data, "OP:OK");
+	}
+	else {
+		strcat((char*)Data, "OP:ERROR");
 	}
 	//}
-}
-/*--------------------------------------------------------------------------------------------------------------------*/
-void TEST_ID7_CheckDataRS485(U8* Data) {
-	bool Pass;
-	U8 Buffer[128];
-	uint32_t Length;
-
-	///
+	
+	/// RS485
 	//{
-	sprintf((char*)Data, "ERROR");
-
-
 	Test_7.RS485.Open();
 	Test_7.RS485.Reset();
 					
-	for(U16 Index=RESET; Index<sizeof(Buffer); Index++)
-	{
+	for(U16 Index=RESET; Index<sizeof(Buffer); Index++) {
 		Buffer[Index] = Index;
-		
 	}
 	
 	Test_7.RS485.Send(Buffer, sizeof(Buffer));
@@ -744,208 +674,171 @@ void TEST_ID7_CheckDataRS485(U8* Data) {
 	Length = sizeof(Buffer);
 	Test_7.RS485.Receive(Buffer, &Length);
 	
-	if(Length)
-	{
+	if(Length) {
 		Pass = true;
-		for(U16 Index=RESET; Index<sizeof(Buffer); Index++)
-		{
-			if(Buffer[Index] != (0xFF-Index))
-			{
+		for(U16 Index=RESET; Index<sizeof(Buffer); Index++) {
+			if(Buffer[Index] != (0xFF-Index)) {
 				Pass = false;
 			}
 		}
 	}
 
-	if(Pass)
-	{
-		sprintf((char*)Data, "OK");
+	if(Pass) {
+		strcat((char*)Data, ", RS485:OK");
+	}
+	else {
+		strcat((char*)Data, ", RS485:ERROR");
 	}
 	//}
-	
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
-void TEST_ID7_CheckN_Reset(U8* Data) {
-	sprintf((char*)Data, "ERROR");
+void TEST_ID7_CheckKey(U8* Data) {
+	sprintf((char*)Data, "");
 	
 	PWM_Write(5, 50, 7);
 	TaskManager_Delay(200 MSec);
-	if(Test_7.DigitalInput.N_Reset.Get() == true)
-	{
+	if(Test_7.DigitalInput.N_Reset.Get() == true) {
 		PWM_Write(5, 50, 10);	
 		TaskManager_Delay(200 MSec);
-		if(Test_7.DigitalInput.N_Reset.Get() == false)
-		{			
-			sprintf((char*)Data, "OK");
+		if(Test_7.DigitalInput.N_Reset.Get() == false) {			
+			strcat((char*)Data, "Reset:OK");
+		} 
+		else {
+			strcat((char*)Data, "Reset:ERROR");
 		}
+	}
+	else {
+		strcat((char*)Data, "Reset:ERROR");
 	}
 
 	PWM_Write(5, 50, 7);
-}
-/*--------------------------------------------------------------------------------------------------------------------*/
-void TEST_ID7_CheckF_Reset(U8* Data) {
-	sprintf((char*)Data, "ERROR");
-	
-	PWM_Write(5, 50, 7);
+
 	TaskManager_Delay(200 MSec);
-	if(Test_7.DigitalInput.F_Reset.Get() == true)
-	{
+	if(Test_7.DigitalInput.F_Reset.Get() == true) {
 		PWM_Write(5, 50, 5);
 		TaskManager_Delay(200 MSec);
-		if(Test_7.DigitalInput.F_Reset.Get() == false)
-		{
-			sprintf((char*)Data, "OK");
+		if(Test_7.DigitalInput.F_Reset.Get() == false) {
+			strcat((char*)Data, ", Factory:OK");
 		}
+		else {
+			strcat((char*)Data, ", Factory:ERROR");
+		}
+	}
+	else {
+		strcat((char*)Data, ", Factory:ERROR");
 	}
 
 	PWM_Write(5, 50, 7);
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
-void TEST_ID7_CheckLED_Power_Voltage(U8* Data) {
+void TEST_ID7_CheckLED(U8* Data) {
 	float Value;
 	bool Pass;
 	
-	///
-	//{
-	Pass = true;
-	sprintf((char*)Data, "OK");
+	sprintf((char*)Data, "");
 	Test_7.RS485.Open();
 	
+	/// LED Power
+	//{
+	Pass = true;		
 	Test_7.RS485.Send((U8*)"C21", 3);
 	TaskManager_Delay(1 Sec);
 	Value = Test_7.AnalogInput.Get_LED_Power_Voltage();
-	if(!((Value >= 1.35) && (Value <= 1.55)))
-	{
+	if(Value <= 0.5) {
 			Pass = false;
 	}
-	
 	Test_7.RS485.Send((U8*)"C20", 3);
 	Test_7.RS485.Reset();
 	TaskManager_Delay(1 Sec);
 	Value = Test_7.AnalogInput.Get_LED_Power_Voltage();
-	if(!(Value == 0))
-	{
+	if(Value >= 0.3) {
 			Pass = false;
 	}
-
-	if(!Pass)
-	{
-		sprintf((char*)Data, "ERROR");
+	if(Pass) {
+		strcat((char*)Data, "Power:OK");
 	}
-
+	else {
+		strcat((char*)Data, "Power:ERROR");
+	}
 	//}
-}
-/*--------------------------------------------------------------------------------------------------------------------*/
-void TEST_ID7_CheckLED_RS485_Voltage(U8* Data) {
-	float Value;
-	bool Pass;
 	
-	///
+	/// LED RS485
 	//{
 	Pass = true;
-	sprintf((char*)Data, "OK");
-	Test_7.RS485.Open();
-	
 	Test_7.RS485.Send((U8*)"C31", 3);
 	TaskManager_Delay(1 Sec);
 	Value = Test_7.AnalogInput.Get_LED_RS485_Voltage();
-	if(!((Value >= 1.35) && (Value <= 1.55)))
-	{
+	if(Value <= 0.5) {
 			Pass = false;
 	}
-	
 	Test_7.RS485.Send((U8*)"C30", 3);
 	Test_7.RS485.Reset();
 	TaskManager_Delay(1 Sec);
 	Value = Test_7.AnalogInput.Get_LED_RS485_Voltage();
-	if(!(Value == 0))
-	{
+	if(Value >= 0.3) {
 			Pass = false;
 	}
-
-	if(!Pass)
-	{
-		sprintf((char*)Data, "ERROR");
+	if(Pass) {
+		strcat((char*)Data, ", RS485:OK");
 	}
-
+	else {
+		strcat((char*)Data, ", RS485:ERROR");
+	}
 	//}
-}
-/*--------------------------------------------------------------------------------------------------------------------*/
-void TEST_ID7_CheckLED_NET1_Voltage(U8* Data) {
-	float Value;
-	bool Pass;
 	
-	///
+	/// LED NET 1
 	//{
 	Pass = true;
-	sprintf((char*)Data, "OK");
-	Test_7.RS485.Open();
-	
 	Test_7.RS485.Send((U8*)"C41", 3);
 	TaskManager_Delay(1 Sec);
 	Value = Test_7.AnalogInput.Get_LED_NET1_Voltage();
-	if(!((Value >= 1.35) && (Value <= 1.55)))
-	{
+	if(Value <= 0.5) {
 			Pass = false;
 	}
-	
 	Test_7.RS485.Send((U8*)"C40", 3);
 	Test_7.RS485.Reset();
 	TaskManager_Delay(1 Sec);
 	Value = Test_7.AnalogInput.Get_LED_NET1_Voltage();
-	if(!(Value == 0))
-	{
+	if(Value >= 0.3) {
 			Pass = false;
 	}
-
-	if(!Pass)
-	{
-		sprintf((char*)Data, "ERROR");
+	if(Pass) {
+		strcat((char*)Data, ", NET1:OK");
 	}
-
+	else {
+		strcat((char*)Data, ", NET1:ERROR");
+	}
 	//}
-}
-/*--------------------------------------------------------------------------------------------------------------------*/
-void TEST_ID7_CheckLED_NET2_Voltage(U8* Data) {
-	float Value;
-	bool Pass;
 	
-	///
+	/// LED NET 2
 	//{
 	Pass = true;
-	sprintf((char*)Data, "OK");
-	Test_7.RS485.Open();
-	
 	Test_7.RS485.Send((U8*)"C12", 3);
 	TaskManager_Delay(1 Sec);
 	Value = Test_7.AnalogInput.Get_LED_NET2_Voltage();
-	if(!((Value >= 0.8) && (Value <= 1.4)))
-	{
+	if(Value <= 0.5) {
 			Pass = false;
 	}
-	
 	Test_7.RS485.Send((U8*)"C11", 3);
 	TaskManager_Delay(1 Sec);
 	Value = Test_7.AnalogInput.Get_LED_NET2_Voltage();
-	if(!((Value >= 1.35) && (Value <= 1.55)))
-	{
+	if(Value <= 0.5) {
 			Pass = false;
 	}
-	
 	Test_7.RS485.Send((U8*)"C10", 3);
-	Test_7.RS485.Reset();
 	TaskManager_Delay(1 Sec);
 	Value = Test_7.AnalogInput.Get_LED_NET2_Voltage();
-	if(!(Value == 0))
-	{
+	if(Value >= 0.3) {
 			Pass = false;
 	}
-
-	if(!Pass)
-	{
-		sprintf((char*)Data, "ERROR");
+	if(Pass) {
+		strcat((char*)Data, ", NET2:OK");
 	}
-
+	else {
+		strcat((char*)Data, ", NET2:ERROR");
+	}
 	//}
+
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
 void TEST_ID7_CheckFlash(U8* Data) {
@@ -997,6 +890,9 @@ void TEST_ID7_WriteDateTime(U8* Data) {
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
 void TEST_ID7_WriteSerial(U8* Data) {
+		U8 Buffer[256];
+		uint32_t Length;
+	
 		Test_7.RS485.Open();
 		
 		Test_7.RS485.Reset();
@@ -1004,33 +900,8 @@ void TEST_ID7_WriteSerial(U8* Data) {
 		TaskManager_Delay(1 Sec);
 		Test_7.RS485.Reset();
 		Test_7.RS485.Send(Data, strlen((char*)Data));
-		TaskManager_Delay(1 Sec);
+		TaskManager_Delay(10 Sec);
 	
-		sprintf((char*)Data, "OK");	
-}
-/*--------------------------------------------------------------------------------------------------------------------*/
-void TEST_ID7_WriteProduction_Year(U8* Data) {
-		Test_7.RS485.Open();
-		
-		Test_7.RS485.Reset();
-		Test_7.RS485.Send((U8*)"W81", 3);
-		TaskManager_Delay(1 Sec);
-		Test_7.RS485.Reset();
-		Test_7.RS485.Send(&Data[2], 2);
-		TaskManager_Delay(1 Sec);
-	
-		sprintf((char*)Data, "OK");
-}
-/*--------------------------------------------------------------------------------------------------------------------*/
-void TEST_ID7_ReadPeroperty(U8* Data) {
-		U8 Buffer[256];
-		uint32_t Length;
-		
-		Test_7.RS485.Open();
-		
-		Test_7.RS485.Reset();
-		Test_7.RS485.Send((U8*)"R80", 3);
-		TaskManager_Delay(2 Sec);
 		memset(Buffer, NULL, sizeof(Buffer));
 		Length = sizeof(Buffer);	
 		Test_7.RS485.Receive(Buffer, &Length);
@@ -1045,14 +916,11 @@ void TEST_ID7_ReadPeroperty(U8* Data) {
 		}	
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
-void TEST_ID7_CheckGSM_Status(U8* Data) {
+void TEST_ID7_CheckGSM(U8* Data) {
 	U8 Buffer[128];
 	uint32_t Length;
 	
 	Test_7.RS485.Open();
-	
-	Test_7.RS485.Send((U8*)"C61", 3);
-	TaskManager_Delay(20 Sec);
 
 	Test_7.RS485.Reset();
 	Test_7.RS485.Send((U8*)"R60", 3);
@@ -1060,18 +928,10 @@ void TEST_ID7_CheckGSM_Status(U8* Data) {
 	Length = sizeof(Buffer);	
 	Test_7.RS485.Receive(Buffer, &Length);
 
-	Test_7.RS485.Send((U8*)"C60", 3);
-	TaskManager_Delay(1 Sec);
-	
-	Test_7.RS485.Send((U8*)"C50", 3);
-	TaskManager_Delay(1 Sec);
-
-	if(Length)
-	{
+	if(Length) {
 			sprintf((char*)Data, "%s", Buffer);
 	}
-	else
-	{
+	else {
 			strcpy((char*)Data, "Error");
 	}
 }
@@ -1168,27 +1028,18 @@ __task void StartTasks(void) {
 		TestBench.Add((uint8_t*)"ID7_Power_12v_On", &TEST_ID7_Power_12v_On);
 		TestBench.Add((uint8_t*)"ID7_Power_3V3", &TEST_ID7_Power_3V3);
 		TestBench.Add((uint8_t*)"ID7_Power_12v_Off", &TEST_ID7_Power_12v_Off);
-		TestBench.Add((uint8_t*)"ID7_CheckProgram_Test", &TEST_ID7_CheckProgram_Test);
+		TestBench.Add((uint8_t*)"ID7_CheckProgram", &TEST_ID7_CheckProgram);
 		TestBench.Add((uint8_t*)"ID7_GSM_Voltage", &TEST_ID7_GSM_Voltage);
-		TestBench.Add((uint8_t*)"ID7_GSM_EXT_Voltage", &TEST_ID7_GSM_EXT_Voltage);
-		TestBench.Add((uint8_t*)"ID7_Batt_Voltage", &TEST_ID7_Batt_Voltage);
+		TestBench.Add((uint8_t*)"ID7_Batt", &TEST_ID7_Batt);
 		TestBench.Add((uint8_t*)"ID7_RTC_Voltage", &TEST_ID7_RTC_Voltage);
-		TestBench.Add((uint8_t*)"ID7_CheckDataOP", &TEST_ID7_CheckDataOP);
-		TestBench.Add((uint8_t*)"ID7_CheckDataRS485", &TEST_ID7_CheckDataRS485);
-		TestBench.Add((uint8_t*)"ID7_CheckN_Reset", &TEST_ID7_CheckN_Reset);
-		TestBench.Add((uint8_t*)"ID7_CheckF_Reset", &TEST_ID7_CheckF_Reset);
-		TestBench.Add((uint8_t*)"ID7_CheckLED_Power_Voltage", &TEST_ID7_CheckLED_Power_Voltage);
-		TestBench.Add((uint8_t*)"ID7_CheckLED_RS485_Voltage", &TEST_ID7_CheckLED_RS485_Voltage);
-		TestBench.Add((uint8_t*)"ID7_CheckLED_NET1_Voltage", &TEST_ID7_CheckLED_NET1_Voltage);
-		TestBench.Add((uint8_t*)"ID7_CheckLED_NET2_Voltage", &TEST_ID7_CheckLED_NET2_Voltage);
+		TestBench.Add((uint8_t*)"ID7_CheckData", &TEST_ID7_CheckData);
+		TestBench.Add((uint8_t*)"ID7_CheckKey", &TEST_ID7_CheckKey);
+		TestBench.Add((uint8_t*)"ID7_CheckLED", &TEST_ID7_CheckLED);
 		TestBench.Add((uint8_t*)"ID7_CheckFlash", &TEST_ID7_CheckFlash);
-		TestBench.Add((uint8_t*)"ID7_CheckGSM_Status", &TEST_ID7_CheckGSM_Status);
+		TestBench.Add((uint8_t*)"ID7_CheckGSM", &TEST_ID7_CheckGSM);
 		TestBench.Add((uint8_t*)"ID7_WriteDomain", &TEST_ID7_WriteDomain);
 		TestBench.Add((uint8_t*)"ID7_WriteDateTime", &TEST_ID7_WriteDateTime);
 		TestBench.Add((uint8_t*)"ID7_WriteSerial", &TEST_ID7_WriteSerial);
-		TestBench.Add((uint8_t*)"ID7_WriteProduction_Year", &TEST_ID7_WriteProduction_Year);
-		TestBench.Add((uint8_t*)"ID7_ReadPeroperty", &TEST_ID7_ReadPeroperty);
-		TestBench.Add((uint8_t*)"ID7_CheckProgram_Final", &TEST_ID7_CheckProgram_Final);
 		TestBench.Add((uint8_t*)"ID7_CheckZeroCross", &TEST_ID7_CheckZeroCross);
 
 		// Config user interface
