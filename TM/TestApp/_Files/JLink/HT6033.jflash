@@ -3,7 +3,7 @@
 [GENERAL]
   aATEModuleSel[24] = 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
   ConnectMode = 0
-  CurrentFile = "I:\Project\New_Structure\TestBench\TM\TestApp\_Files\Hex\main.hex"
+  CurrentFile = "I:\Project\New_Structure\TM\Application\_FLASH_HT6033_A7672E_\Exe\Program.hex"
   DataFileSAddr = 0x00000000
   GUIMode = 0
   HostName = ""

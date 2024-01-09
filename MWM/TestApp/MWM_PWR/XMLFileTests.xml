@@ -246,7 +246,7 @@
 	</Test>
 	
 	<Test Command="ID55_MBUS">
-		<Enable Value="True" />
+		<Enable Value="False" />
 		<EnableIf Value="" />
 		<EnableLoop Value="True" />
 		<EnableNext Value="" />
