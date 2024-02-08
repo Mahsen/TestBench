@@ -18998,6 +18998,7 @@ __task void StartTasks(void) {
 		TestBench.Add((uint8_t*)"HardwareVersion", &TEST_HardwareVersion);
 		TestBench.Add((uint8_t*)"SoftwareVersion", &TEST_SoftwareVersion);
 		TestBench.Add((uint8_t*)"GetID", &TEST_GetID);
+		TestBench.Add((uint8_t*)"ProgramSWD", &TEST_ProgramSWD);
 		TestBench.Add((uint8_t*)"DownStand", &TEST_DownStand);
 		TestBench.Add((uint8_t*)"UpStand", &TEST_UpStand);		
 		TestBench.Add((uint8_t*)"ID7_Power_220v_On", &TEST_ID7_Power_220v_On);
