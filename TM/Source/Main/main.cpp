@@ -18979,50 +18979,51 @@ __task void StartTasks(void) {
 
 	// Add tests
 	TestBench.Init(&TEST_GetID);
-	if(strcmp((char*)TestBench.GetID(), "7") == NULL) {
-		PWM_Write(5, 50, 7);
+	//if(strcmp((char*)TestBench.GetID(), "7") == NULL) {
+	
+	PWM_Write(5, 50, 7);
 
-		GPIO_Output_AddPin(TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_POWER_220V_TEST_PORT, TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_POWER_220V_TEST_PIN, &Test_7.DigitalOutput.Power_220v_Test.ValueBool, false);
-		GPIO_Output_AddPin(TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_POWER_220V_EN_PORT, TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_POWER_220V_EN_PIN, &Test_7.DigitalOutput.Power_220v_En.ValueBool, false);
-		GPIO_Output_AddPin(TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_POWER_12V_TEST_PORT, TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_POWER_12V_TEST_PIN, &Test_7.DigitalOutput.Power_12v_Test.ValueBool, false);
-		GPIO_Output_AddPin(TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_POWER_12V_EN_PORT, TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_POWER_12V_EN_PIN, &Test_7.DigitalOutput.Power_12v_En.ValueBool, false);
-		GPIO_Output_AddPin(TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_VBATT_ENABLE_PORT, TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_VBATT_ENABLE_PIN, &Test_7.DigitalOutput.VBatt_Enable.ValueBool, false);
-		GPIO_Output_AddPin(TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_RESET_PORT, TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_RESET_PIN, &Test_7.DigitalOutput.Reset.ValueBool, false);
-		GPIO_Output_AddPin(TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_ZERO_CROSS_GEN_PORT, TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_ZERO_CROSS_GEN_PIN, &Test_7.DigitalOutput.ZeroCross_Gen.ValueBool, false);
+	GPIO_Output_AddPin(TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_POWER_220V_TEST_PORT, TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_POWER_220V_TEST_PIN, &Test_7.DigitalOutput.Power_220v_Test.ValueBool, false);
+	GPIO_Output_AddPin(TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_POWER_220V_EN_PORT, TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_POWER_220V_EN_PIN, &Test_7.DigitalOutput.Power_220v_En.ValueBool, false);
+	GPIO_Output_AddPin(TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_POWER_12V_TEST_PORT, TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_POWER_12V_TEST_PIN, &Test_7.DigitalOutput.Power_12v_Test.ValueBool, false);
+	GPIO_Output_AddPin(TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_POWER_12V_EN_PORT, TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_POWER_12V_EN_PIN, &Test_7.DigitalOutput.Power_12v_En.ValueBool, false);
+	GPIO_Output_AddPin(TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_VBATT_ENABLE_PORT, TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_VBATT_ENABLE_PIN, &Test_7.DigitalOutput.VBatt_Enable.ValueBool, false);
+	GPIO_Output_AddPin(TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_RESET_PORT, TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_RESET_PIN, &Test_7.DigitalOutput.Reset.ValueBool, false);
+	GPIO_Output_AddPin(TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_ZERO_CROSS_GEN_PORT, TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_ZERO_CROSS_GEN_PIN, &Test_7.DigitalOutput.ZeroCross_Gen.ValueBool, false);
 
-		GPIO_Input_AddPin(TESTBENCH_TEST_ID7_DIGITAL_INPUT_N_RESET_PORT, TESTBENCH_TEST_ID7_DIGITAL_INPUT_N_RESET_PIN, NULL, &Test_7.DigitalInput.N_Reset.ValueBool, PIN_EDGE_TOGGEL, PIN_PULLING_UP, false);
-		GPIO_Input_AddPin(TESTBENCH_TEST_ID7_DIGITAL_INPUT_F_RESET_PORT, TESTBENCH_TEST_ID7_DIGITAL_INPUT_F_RESET_PIN, NULL, &Test_7.DigitalInput.F_Reset.ValueBool, PIN_EDGE_TOGGEL, PIN_PULLING_UP, false);
-		GPIO_Input_AddPin(TESTBENCH_TEST_ID7_DIGITAL_INPUT_LED_LIGHT_PORT, TESTBENCH_TEST_ID7_DIGITAL_INPUT_LED_LIGHT_PIN, NULL, &Test_7.DigitalInput.LED_Light.ValueBool, PIN_EDGE_TOGGEL, PIN_PULLING_UP, false);
-		GPIO_Input_AddPin(TESTBENCH_TEST_ID7_DIGITAL_INPUT_ZERO_CROSS_DETECT_PORT, TESTBENCH_TEST_ID7_DIGITAL_INPUT_ZERO_CROSS_DETECT_PIN, &TEST_ID7_Event_ZeroCross, &Test_7.DigitalInput.Zero_Cross_Detect.ValueBool, PIN_EDGE_DOWN, PIN_PULLING_UP, true);						
+	GPIO_Input_AddPin(TESTBENCH_TEST_ID7_DIGITAL_INPUT_N_RESET_PORT, TESTBENCH_TEST_ID7_DIGITAL_INPUT_N_RESET_PIN, NULL, &Test_7.DigitalInput.N_Reset.ValueBool, PIN_EDGE_TOGGEL, PIN_PULLING_UP, false);
+	GPIO_Input_AddPin(TESTBENCH_TEST_ID7_DIGITAL_INPUT_F_RESET_PORT, TESTBENCH_TEST_ID7_DIGITAL_INPUT_F_RESET_PIN, NULL, &Test_7.DigitalInput.F_Reset.ValueBool, PIN_EDGE_TOGGEL, PIN_PULLING_UP, false);
+	GPIO_Input_AddPin(TESTBENCH_TEST_ID7_DIGITAL_INPUT_LED_LIGHT_PORT, TESTBENCH_TEST_ID7_DIGITAL_INPUT_LED_LIGHT_PIN, NULL, &Test_7.DigitalInput.LED_Light.ValueBool, PIN_EDGE_TOGGEL, PIN_PULLING_UP, false);
+	GPIO_Input_AddPin(TESTBENCH_TEST_ID7_DIGITAL_INPUT_ZERO_CROSS_DETECT_PORT, TESTBENCH_TEST_ID7_DIGITAL_INPUT_ZERO_CROSS_DETECT_PIN, &TEST_ID7_Event_ZeroCross, &Test_7.DigitalInput.Zero_Cross_Detect.ValueBool, PIN_EDGE_DOWN, PIN_PULLING_UP, true);						
 
-		TestBench.Add((uint8_t*)"HardwareVersion", &TEST_HardwareVersion);
-		TestBench.Add((uint8_t*)"SoftwareVersion", &TEST_SoftwareVersion);
-		TestBench.Add((uint8_t*)"GetID", &TEST_GetID);
-		TestBench.Add((uint8_t*)"ProgramSWD", &TEST_ProgramSWD);
-		TestBench.Add((uint8_t*)"DownStand", &TEST_DownStand);
-		TestBench.Add((uint8_t*)"UpStand", &TEST_UpStand);		
-		TestBench.Add((uint8_t*)"ID7_Power_220v_On", &TEST_ID7_Power_220v_On);
-		TestBench.Add((uint8_t*)"ID7_Power_220v_Off", &TEST_ID7_Power_220v_Off);
-		TestBench.Add((uint8_t*)"ID7_Power_12v_On", &TEST_ID7_Power_12v_On);
-		TestBench.Add((uint8_t*)"ID7_Power_3V3", &TEST_ID7_Power_3V3);
-		TestBench.Add((uint8_t*)"ID7_Power_12v_Off", &TEST_ID7_Power_12v_Off);
-		TestBench.Add((uint8_t*)"ID7_CheckProgram", &TEST_ID7_CheckProgram);
-		TestBench.Add((uint8_t*)"ID7_GSM_Voltage", &TEST_ID7_GSM_Voltage);
-		TestBench.Add((uint8_t*)"ID7_Batt", &TEST_ID7_Batt);
-		TestBench.Add((uint8_t*)"ID7_RTC_Voltage", &TEST_ID7_RTC_Voltage);
-		TestBench.Add((uint8_t*)"ID7_CheckData", &TEST_ID7_CheckData);
-		TestBench.Add((uint8_t*)"ID7_CheckKey", &TEST_ID7_CheckKey);
-		TestBench.Add((uint8_t*)"ID7_CheckLED", &TEST_ID7_CheckLED);
-		TestBench.Add((uint8_t*)"ID7_CheckFlash", &TEST_ID7_CheckFlash);
-		TestBench.Add((uint8_t*)"ID7_CheckGSM", &TEST_ID7_CheckGSM);
-		TestBench.Add((uint8_t*)"ID7_WriteDomain", &TEST_ID7_WriteDomain);
-		TestBench.Add((uint8_t*)"ID7_WriteDateTime", &TEST_ID7_WriteDateTime);
-		TestBench.Add((uint8_t*)"ID7_WriteSerial", &TEST_ID7_WriteSerial);
-		TestBench.Add((uint8_t*)"ID7_CheckZeroCross", &TEST_ID7_CheckZeroCross);
+	TestBench.Add((uint8_t*)"HardwareVersion", &TEST_HardwareVersion);
+	TestBench.Add((uint8_t*)"SoftwareVersion", &TEST_SoftwareVersion);
+	TestBench.Add((uint8_t*)"GetID", &TEST_GetID);
+	TestBench.Add((uint8_t*)"ProgramSWD", &TEST_ProgramSWD);
+	TestBench.Add((uint8_t*)"DownStand", &TEST_DownStand);
+	TestBench.Add((uint8_t*)"UpStand", &TEST_UpStand);		
+	TestBench.Add((uint8_t*)"ID7_Power_220v_On", &TEST_ID7_Power_220v_On);
+	TestBench.Add((uint8_t*)"ID7_Power_220v_Off", &TEST_ID7_Power_220v_Off);
+	TestBench.Add((uint8_t*)"ID7_Power_12v_On", &TEST_ID7_Power_12v_On);
+	TestBench.Add((uint8_t*)"ID7_Power_3V3", &TEST_ID7_Power_3V3);
+	TestBench.Add((uint8_t*)"ID7_Power_12v_Off", &TEST_ID7_Power_12v_Off);
+	TestBench.Add((uint8_t*)"ID7_CheckProgram", &TEST_ID7_CheckProgram);
+	TestBench.Add((uint8_t*)"ID7_GSM_Voltage", &TEST_ID7_GSM_Voltage);
+	TestBench.Add((uint8_t*)"ID7_Batt", &TEST_ID7_Batt);
+	TestBench.Add((uint8_t*)"ID7_RTC_Voltage", &TEST_ID7_RTC_Voltage);
+	TestBench.Add((uint8_t*)"ID7_CheckData", &TEST_ID7_CheckData);
+	TestBench.Add((uint8_t*)"ID7_CheckKey", &TEST_ID7_CheckKey);
+	TestBench.Add((uint8_t*)"ID7_CheckLED", &TEST_ID7_CheckLED);
+	TestBench.Add((uint8_t*)"ID7_CheckFlash", &TEST_ID7_CheckFlash);
+	TestBench.Add((uint8_t*)"ID7_CheckGSM", &TEST_ID7_CheckGSM);
+	TestBench.Add((uint8_t*)"ID7_WriteDomain", &TEST_ID7_WriteDomain);
+	TestBench.Add((uint8_t*)"ID7_WriteDateTime", &TEST_ID7_WriteDateTime);
+	TestBench.Add((uint8_t*)"ID7_WriteSerial", &TEST_ID7_WriteSerial);
+	TestBench.Add((uint8_t*)"ID7_CheckZeroCross", &TEST_ID7_CheckZeroCross);
 
-		// Config user interface
-		UI.Init((Media*)&Test_7.Interface);
-	}
+	// Config user interface
+	UI.Init((Media*)&Test_7.Interface);
+	//}
 	
 	while (true) {
 		TEST_Key_Press();
