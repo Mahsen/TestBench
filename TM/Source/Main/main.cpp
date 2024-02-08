@@ -30,6 +30,7 @@
 #include "TaskTimer.hpp"
 #include "media.hpp"
 #include "Wizards.cpp"
+#include "dap.h"
 /************************************************** Defineds **********************************************************/
 /*
     Nothing
@@ -44,7 +45,7 @@
 */
 // BLOBINATIOR: Program.bin
 
-const unsigned char _FLASH_HT6033_A7672E_v1_14021103[286962] =
+const unsigned char SAA_766_01_0207_02_v1_14021103[286962] =
 {
    0xA8,0x16,0x00,0x20,0xB9,0x32,0x00,0x00,0x53,0x01,0x00,0x00,0xCB,0x01,0x00,0x00,
    0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
@@ -18313,6 +18314,32 @@ uint8_t* TEST_GetID() {
 	return Data;
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
+uint32_t TEST_ProgramSWD(uint32_t addr, const uint8_t *data, uint32_t len) {
+  dap_init();
+  dap_connect();
+  dap_reset_link();
+  dap_target_prepare();
+  dap_target_select();
+
+  static uint32_t id;
+	//Reading IDCODE
+	TaskManager_Delay(1 Sec);
+	id = dap_read_idcode();
+	if(id && (id!=0) && (id!=0xFFFFFFFF)) {
+		//Erasing entire device...
+		TaskManager_Delay(1 Sec);
+		dap_target_erase();
+		//Writing a page...
+		TaskManager_Delay(1 Sec);
+		dap_target_write_flash(addr, data, len);
+		
+		dap_target_deselect();
+		dap_disconnect();
+	}
+
+	return id;
+}
+/*--------------------------------------------------------------------------------------------------------------------*/
 void TEST_HardwareVersion(uint8_t* Data) {
 	sprintf((char*)Data, "%s", TESTBENCH_VERSION_HARDWARE);
 }
@@ -18323,6 +18350,15 @@ void TEST_SoftwareVersion(U8* Data) {
 /*--------------------------------------------------------------------------------------------------------------------*/
 void TEST_GetID(U8* Data) {
 	strcpy((char*)Data, (char*)TEST_GetID());
+}
+/*--------------------------------------------------------------------------------------------------------------------*/
+void TEST_ProgramSWD(U8* Data) {
+	if(strcmp((char*)Data, "SAA_766_01_0207_02_v1_14021103")==0) {
+		sprintf((char*)Data, "%d", TEST_ProgramSWD(0x00000000, SAA_766_01_0207_02_v1_14021103, sizeof(SAA_766_01_0207_02_v1_14021103)));
+	}
+	else {
+		sprintf((char*)Data, "ERROR");
+	}
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
 void TEST_JacInit() {

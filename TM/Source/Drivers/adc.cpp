@@ -273,7 +273,7 @@ void __init_ADC(void)
 U32 ADC_Read (U16 Channel)
 {
 	U32 ADValue = RESET;
-	bool BankB = (((Channel & 0xFF00) >> 8) & 1);
+	//bool BankB = (((Channel & 0xFF00) >> 8) & 1);
 	Channel = (Channel & 0x00FF);
 	ADC1->CR2 &= ~(1<<2); //-- Clear Bit Cfg
 	

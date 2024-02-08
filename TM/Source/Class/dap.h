@@ -48,7 +48,7 @@ void dap_target_prepare(void);
 void dap_target_select(void);
 void dap_target_deselect(void);
 void dap_target_erase(void);
-void dap_target_write_flash(uint32_t addr, uint8_t *data, uint16_t len);
+void dap_target_write_flash(uint32_t addr, const uint8_t *data, uint32_t len);
 #ifdef __cplusplus
 }
 #endif

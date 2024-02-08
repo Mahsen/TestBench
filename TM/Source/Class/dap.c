@@ -514,8 +514,8 @@ void dap_target_erase(void) {
 	dap_write_word(CMU_FLASHLOCK, CMU_FLASHLOCK_LOCKED);
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
-void dap_target_write_flash(uint32_t addr, uint8_t *data, uint16_t len) {
-	int offs;
+void dap_target_write_flash(uint32_t addr, const uint8_t *data, uint32_t len) {
+	uint32_t offs;
 	uint32_t value;
 
   dap_write_word(CMU_WPREG, CMU_WPREG_UNPROTECTED); // Unlock Region
