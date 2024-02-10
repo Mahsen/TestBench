@@ -331,8 +331,8 @@ Tel : +989124662703
 // <h> UI 
 // <h> Media
 //  <s> Name
-#ifndef TESTBENCH_TEST_ID7_MEDIA_UI_NAME
-	#define TESTBENCH_TEST_ID7_MEDIA_UI_NAME            		"UI"
+#ifndef TESTBENCH_TEST_TM_MEDIA_UI_NAME
+	#define TESTBENCH_TEST_TM_MEDIA_UI_NAME            		"UI"
 #endif
 //	 <h> Uart
 //			 <o> Uart
@@ -342,8 +342,8 @@ Tel : +989124662703
 //					 <4=> Uart4
 //					 <5=> Uart5
 //					 <6=> Uart6
-#ifndef TESTBENCH_TEST_ID7_MEDIA_UI_UART
-	#define TESTBENCH_TEST_ID7_MEDIA_UI_UART                          2
+#ifndef TESTBENCH_TEST_TM_MEDIA_UI_UART
+	#define TESTBENCH_TEST_TM_MEDIA_UI_UART                          2
 #endif
 // </h>
 // </h>
@@ -351,8 +351,8 @@ Tel : +989124662703
 // <h> RS485 
 // <h> Media
 //  <s> Name
-#ifndef TESTBENCH_TEST_ID7_MEDIA_RS485_MEDIA_NAME
-	#define TESTBENCH_TEST_ID7_MEDIA_RS485_MEDIA_NAME              "RS485"
+#ifndef TESTBENCH_TEST_TM_MEDIA_RS485_MEDIA_NAME
+	#define TESTBENCH_TEST_TM_MEDIA_RS485_MEDIA_NAME              "RS485"
 #endif
 //	 <h> Uart
 //			 <o> Uart
@@ -362,8 +362,8 @@ Tel : +989124662703
 //					 <4=> Uart4
 //					 <5=> Uart5
 //					 <6=> Uart6
-#ifndef TESTBENCH_TEST_ID7_MEDIA_RS485_MEDIA_UART
-	#define TESTBENCH_TEST_ID7_MEDIA_RS485_MEDIA_UART                  4
+#ifndef TESTBENCH_TEST_TM_MEDIA_RS485_MEDIA_UART
+	#define TESTBENCH_TEST_TM_MEDIA_RS485_MEDIA_UART                  4
 #endif
 // </h>
 // </h>
@@ -371,8 +371,8 @@ Tel : +989124662703
 // <h> OP 
 // <h> Media
 //  <s> Name
-#ifndef TESTBENCH_TEST_ID7_MEDIA_OP_MEDIA_NAME
-	#define TESTBENCH_TEST_ID7_MEDIA_OP_MEDIA_NAME            		"OP"
+#ifndef TESTBENCH_TEST_TM_MEDIA_OP_MEDIA_NAME
+	#define TESTBENCH_TEST_TM_MEDIA_OP_MEDIA_NAME            		"OP"
 #endif
 //	 <h> Uart
 //			 <o> Uart
@@ -382,8 +382,8 @@ Tel : +989124662703
 //					 <4=> Uart4
 //					 <5=> Uart5
 //					 <6=> Uart6
-#ifndef TESTBENCH_TEST_ID7_MEDIA_OP_MEDIA_UART
-	#define TESTBENCH_TEST_ID7_MEDIA_OP_MEDIA_UART                  5
+#ifndef TESTBENCH_TEST_TM_MEDIA_OP_MEDIA_UART
+	#define TESTBENCH_TEST_TM_MEDIA_OP_MEDIA_UART                  5
 #endif
 // </h>
 // </h>
@@ -393,17 +393,17 @@ Tel : +989124662703
 // <h> Power to5v Voltage
 //			 <o> ADC
 //					 <0x0012=> Channel 18
-#define TESTBENCH_TEST_ID7_ANALOG_INPUT_POWER_TO5V_VOLTAGE_CHANNEL            0x0012  //B12
+#define TESTBENCH_TEST_TM_ANALOG_INPUT_POWER_TO5V_VOLTAGE_CHANNEL            0x0012  //B12
 // </h>
 // <h> 4v Voltage
 //			 <o> ADC
 //					 <0x0102=> Channel 2
-#define TESTBENCH_TEST_ID7_ANALOG_INPUT_POWER_4V_VOLTAGE_CHANNEL            0x0102 //F12
+#define TESTBENCH_TEST_TM_ANALOG_INPUT_POWER_4V_VOLTAGE_CHANNEL            0x0102 //F12
 // </h>
 // <h> RTC Voltage
 //			 <o> ADC
 //					 <0x000A=> Channel 10
-#define TESTBENCH_TEST_ID7_ANALOG_INPUT_RTC_VOLTAGE_CHANNEL            0x000A
+#define TESTBENCH_TEST_TM_ANALOG_INPUT_RTC_VOLTAGE_CHANNEL            0x000A
 // </h>
 
 
@@ -412,57 +412,57 @@ Tel : +989124662703
 // <h> Power 220v Current
 //			 <o> ADC
 //					 <0x001C=> Channel 28
-#define TESTBENCH_TEST_ID7_ANALOG_INPUT_POWER_220V_CURRENT_CHANNEL            0x001C
+#define TESTBENCH_TEST_TM_ANALOG_INPUT_POWER_220V_CURRENT_CHANNEL            0x001C
 // </h>
 // <h> Power 12v Current
 //			 <o> ADC
 //					 <0x0009=> Channel 9
-#define TESTBENCH_TEST_ID7_ANALOG_INPUT_POWER_12V_CURRENT_CHANNEL            0x0009
+#define TESTBENCH_TEST_TM_ANALOG_INPUT_POWER_12V_CURRENT_CHANNEL            0x0009
 // </h>
 // <h> Power 12v Voltage
 //			 <o> ADC
 //					 <0x0008=> Channel 8
-#define TESTBENCH_TEST_ID7_ANALOG_INPUT_POWER_12V_VOLTAGE_CHANNEL            0x0008
+#define TESTBENCH_TEST_TM_ANALOG_INPUT_POWER_12V_VOLTAGE_CHANNEL            0x0008
 // </h>
 // <h> 3V3 Voltage
 //			 <o> ADC
 //					 <0x0002=> Channel 2
-#define TESTBENCH_TEST_ID7_ANALOG_INPUT_3V3_VOLTAGE_CHANNEL            0x0002
+#define TESTBENCH_TEST_TM_ANALOG_INPUT_3V3_VOLTAGE_CHANNEL            0x0002
 // </h>
 // <h> GSM Voltage
 //			 <o> ADC
 //					 <0x000B=> Channel 11
-#define TESTBENCH_TEST_ID7_ANALOG_INPUT_GSM_VOLTAGE_CHANNEL            0x000B
+#define TESTBENCH_TEST_TM_ANALOG_INPUT_GSM_VOLTAGE_CHANNEL            0x000B
 // </h>
 // <h> GSM EXT Voltage
 //			 <o> ADC
 //					 <0x001B=> Channel 27
-#define TESTBENCH_TEST_ID7_ANALOG_INPUT_GSM_EXT_VOLTAGE_CHANNEL            0x001B
+#define TESTBENCH_TEST_TM_ANALOG_INPUT_GSM_EXT_VOLTAGE_CHANNEL            0x001B
 // </h>
 // <h> Batt Voltage
 //			 <o> ADC
 //					 <0x0003=> Channel 3
-#define TESTBENCH_TEST_ID7_ANALOG_INPUT_BATT_VOLTAGE_CHANNEL            0x0003
+#define TESTBENCH_TEST_TM_ANALOG_INPUT_BATT_VOLTAGE_CHANNEL            0x0003
 // </h>
 // <h> LED Power Voltage
 //			 <o> ADC
 //					 <0x000C=> Channel 12
-#define TESTBENCH_TEST_ID7_ANALOG_INPUT_LED_POWER_VOLTAGE_CHANNEL            0x000C
+#define TESTBENCH_TEST_TM_ANALOG_INPUT_LED_POWER_VOLTAGE_CHANNEL            0x000C
 // </h>
 // <h> LED RS485 Voltage
 //			 <o> ADC
 //					 <0x000D=> Channel 13
-#define TESTBENCH_TEST_ID7_ANALOG_INPUT_LED_RS485_VOLTAGE_CHANNEL            0x000D
+#define TESTBENCH_TEST_TM_ANALOG_INPUT_LED_RS485_VOLTAGE_CHANNEL            0x000D
 // </h>
 // <h> LED NET1 Voltage
 //			 <o> ADC
 //					 <0x0000=> Channel 0
-#define TESTBENCH_TEST_ID7_ANALOG_INPUT_LED_NET1_VOLTAGE_CHANNEL            0x0000
+#define TESTBENCH_TEST_TM_ANALOG_INPUT_LED_NET1_VOLTAGE_CHANNEL            0x0000
 // </h>
 // <h> LED NET2 Voltage
 //			 <o> ADC
 //					 <0x0001=> Channel 1
-#define TESTBENCH_TEST_ID7_ANALOG_INPUT_LED_NET2_VOLTAGE_CHANNEL            0x0001
+#define TESTBENCH_TEST_TM_ANALOG_INPUT_LED_NET2_VOLTAGE_CHANNEL            0x0001
 // </h>
 // </h>
 // <h> Digital Input
@@ -479,9 +479,9 @@ Tel : +989124662703
 //					 <8=> PORTI
 //					 <9=> PORTJ
 //					 <10=> PORTK
-#define TESTBENCH_TEST_ID7_DIGITAL_INPUT_N_RESET_PORT            1
+#define TESTBENCH_TEST_TM_DIGITAL_INPUT_N_RESET_PORT            1
 //			 <o>Pin <0-15>
-#define TESTBENCH_TEST_ID7_DIGITAL_INPUT_N_RESET_PIN             5
+#define TESTBENCH_TEST_TM_DIGITAL_INPUT_N_RESET_PIN             5
 // </h>
 // <h> F Reset
 //			 <o> Port
@@ -496,9 +496,9 @@ Tel : +989124662703
 //					 <8=> PORTI
 //					 <9=> PORTJ
 //					 <10=> PORTK
-#define TESTBENCH_TEST_ID7_DIGITAL_INPUT_F_RESET_PORT            5
+#define TESTBENCH_TEST_TM_DIGITAL_INPUT_F_RESET_PORT            5
 //			 <o>Pin <0-15>
-#define TESTBENCH_TEST_ID7_DIGITAL_INPUT_F_RESET_PIN             0
+#define TESTBENCH_TEST_TM_DIGITAL_INPUT_F_RESET_PIN             0
 // </h>
 // <h> LED Light
 //			 <o> Port
@@ -513,9 +513,9 @@ Tel : +989124662703
 //					 <8=> PORTI
 //					 <9=> PORTJ
 //					 <10=> PORTK
-#define TESTBENCH_TEST_ID7_DIGITAL_INPUT_LED_LIGHT_PORT            5
+#define TESTBENCH_TEST_TM_DIGITAL_INPUT_LED_LIGHT_PORT            5
 //			 <o>Pin <0-15>
-#define TESTBENCH_TEST_ID7_DIGITAL_INPUT_LED_LIGHT_PIN             4
+#define TESTBENCH_TEST_TM_DIGITAL_INPUT_LED_LIGHT_PIN             4
 // </h>
 // <h> Zero Cross Detect
 //			 <o> Port
@@ -530,9 +530,9 @@ Tel : +989124662703
 //					 <8=> PORTI
 //					 <9=> PORTJ
 //					 <10=> PORTK
-#define TESTBENCH_TEST_ID7_DIGITAL_INPUT_ZERO_CROSS_DETECT_PORT            2
+#define TESTBENCH_TEST_TM_DIGITAL_INPUT_ZERO_CROSS_DETECT_PORT            2
 //			 <o>Pin <0-15>
-#define TESTBENCH_TEST_ID7_DIGITAL_INPUT_ZERO_CROSS_DETECT_PIN             5
+#define TESTBENCH_TEST_TM_DIGITAL_INPUT_ZERO_CROSS_DETECT_PIN             5
 // </h>
 // </h>
 // <h> Digital Output
@@ -549,9 +549,9 @@ Tel : +989124662703
 //					 <8=> PORTI
 //					 <9=> PORTJ
 //					 <10=> PORTK
-#define TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_POWER_220V_TEST_PORT            7
+#define TESTBENCH_TEST_TM_DIGITAL_OUTPUT_POWER_220V_TEST_PORT            7
 //			 <o>Pin <0-15>
-#define TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_POWER_220V_TEST_PIN             2
+#define TESTBENCH_TEST_TM_DIGITAL_OUTPUT_POWER_220V_TEST_PIN             2
 // </h>
 // <h> Power_220v_En
 //			 <o> Port
@@ -566,9 +566,9 @@ Tel : +989124662703
 //					 <8=> PORTI
 //					 <9=> PORTJ
 //					 <10=> PORTK
-#define TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_POWER_220V_EN_PORT            0
+#define TESTBENCH_TEST_TM_DIGITAL_OUTPUT_POWER_220V_EN_PORT            0
 //			 <o>Pin <0-15>
-#define TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_POWER_220V_EN_PIN             15
+#define TESTBENCH_TEST_TM_DIGITAL_OUTPUT_POWER_220V_EN_PIN             15
 // </h>
 // <h> Power_12v_Test
 //			 <o> Port
@@ -583,9 +583,9 @@ Tel : +989124662703
 //					 <8=> PORTI
 //					 <9=> PORTJ
 //					 <10=> PORTK
-#define TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_POWER_12V_TEST_PORT            4
+#define TESTBENCH_TEST_TM_DIGITAL_OUTPUT_POWER_12V_TEST_PORT            4
 //			 <o>Pin <0-15>
-#define TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_POWER_12V_TEST_PIN             8
+#define TESTBENCH_TEST_TM_DIGITAL_OUTPUT_POWER_12V_TEST_PIN             8
 // </h>
 // <h> Power_12v_En
 //			 <o> Port
@@ -600,9 +600,9 @@ Tel : +989124662703
 //					 <8=> PORTI
 //					 <9=> PORTJ
 //					 <10=> PORTK
-#define TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_POWER_12V_EN_PORT            4
+#define TESTBENCH_TEST_TM_DIGITAL_OUTPUT_POWER_12V_EN_PORT            4
 //			 <o>Pin <0-15>
-#define TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_POWER_12V_EN_PIN             7
+#define TESTBENCH_TEST_TM_DIGITAL_OUTPUT_POWER_12V_EN_PIN             7
 // </h>
 // <h> VBatt Enable
 //			 <o> Port
@@ -617,9 +617,9 @@ Tel : +989124662703
 //					 <8=> PORTI
 //					 <9=> PORTJ
 //					 <10=> PORTK
-#define TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_VBATT_ENABLE_PORT            6
+#define TESTBENCH_TEST_TM_DIGITAL_OUTPUT_VBATT_ENABLE_PORT            6
 //			 <o>Pin <0-15>
-#define TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_VBATT_ENABLE_PIN             1
+#define TESTBENCH_TEST_TM_DIGITAL_OUTPUT_VBATT_ENABLE_PIN             1
 // </h>
 // <h> Reset
 //			 <o> Port
@@ -634,9 +634,9 @@ Tel : +989124662703
 //					 <8=> PORTI
 //					 <9=> PORTJ
 //					 <10=> PORTK
-#define TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_RESET_PORT            6
+#define TESTBENCH_TEST_TM_DIGITAL_OUTPUT_RESET_PORT            6
 //			 <o>Pin <0-15>
-#define TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_RESET_PIN             0
+#define TESTBENCH_TEST_TM_DIGITAL_OUTPUT_RESET_PIN             0
 // </h>
 // <h> Zero Cross Gen
 //			 <o> Port
@@ -651,9 +651,9 @@ Tel : +989124662703
 //					 <8=> PORTI
 //					 <9=> PORTJ
 //					 <10=> PORTK
-#define TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_ZERO_CROSS_GEN_PORT            2
+#define TESTBENCH_TEST_TM_DIGITAL_OUTPUT_ZERO_CROSS_GEN_PORT            2
 //			 <o>Pin <0-15>
-#define TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_ZERO_CROSS_GEN_PIN             4
+#define TESTBENCH_TEST_TM_DIGITAL_OUTPUT_ZERO_CROSS_GEN_PIN             4
 // </h>
 
 // </h>

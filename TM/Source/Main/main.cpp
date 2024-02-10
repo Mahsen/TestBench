@@ -18056,7 +18056,7 @@ struct { // Test_7
 	} DigitalInput;
 	struct { // AnalogInput
 		float Get_Power_220v_Current(void) {
-			volatile float Val_ADC = (float)ADC_Read(TESTBENCH_TEST_ID7_ANALOG_INPUT_POWER_220V_CURRENT_CHANNEL);
+			volatile float Val_ADC = (float)ADC_Read(TESTBENCH_TEST_TM_ANALOG_INPUT_POWER_220V_CURRENT_CHANNEL);
 			volatile float Min_ADC = Val_ADC;
 			volatile float Max_ADC = Val_ADC;
 			volatile float Vm = 0;
@@ -18064,7 +18064,7 @@ struct { // Test_7
 			
 			for(int Count=RESET; Count<60; Count++)
 			{
-				Val_ADC = (float)ADC_Read(TESTBENCH_TEST_ID7_ANALOG_INPUT_POWER_220V_CURRENT_CHANNEL);
+				Val_ADC = (float)ADC_Read(TESTBENCH_TEST_TM_ANALOG_INPUT_POWER_220V_CURRENT_CHANNEL);
 				
 				if(Val_ADC < Min_ADC)
 				{
@@ -18086,37 +18086,37 @@ struct { // Test_7
 			return (Vrms * 6);
 		}
 		float Get_Power_12v_Current(void) {
-			return ((((float)ADC_Read(TESTBENCH_TEST_ID7_ANALOG_INPUT_POWER_12V_CURRENT_CHANNEL) * 1.47 * 0.000806) - 2.5) * 6);
+			return ((((float)ADC_Read(TESTBENCH_TEST_TM_ANALOG_INPUT_POWER_12V_CURRENT_CHANNEL) * 1.47 * 0.000806) - 2.5) * 6);
 		}
 		float Get_Power_12v_Voltage(void) {
-			return ((float)ADC_Read(TESTBENCH_TEST_ID7_ANALOG_INPUT_POWER_12V_VOLTAGE_CHANNEL) * 5.7 * 0.000806);
+			return ((float)ADC_Read(TESTBENCH_TEST_TM_ANALOG_INPUT_POWER_12V_VOLTAGE_CHANNEL) * 5.7 * 0.000806);
 		}
 		float Get_3V3_Voltage(void) {
-			return ((float)ADC_Read(TESTBENCH_TEST_ID7_ANALOG_INPUT_3V3_VOLTAGE_CHANNEL) * 1.47 * 0.000806);
+			return ((float)ADC_Read(TESTBENCH_TEST_TM_ANALOG_INPUT_3V3_VOLTAGE_CHANNEL) * 1.47 * 0.000806);
 		}
 		float Get_GSM_Voltage(void) {
-			return ((float)ADC_Read(TESTBENCH_TEST_ID7_ANALOG_INPUT_GSM_VOLTAGE_CHANNEL) * 1.47 * 0.000806);
+			return ((float)ADC_Read(TESTBENCH_TEST_TM_ANALOG_INPUT_GSM_VOLTAGE_CHANNEL) * 1.47 * 0.000806);
 		}
 		float Get_GSM_EXT_Voltage(void) {
-			return ((float)ADC_Read(TESTBENCH_TEST_ID7_ANALOG_INPUT_GSM_EXT_VOLTAGE_CHANNEL) * 1.47 * 0.000806);
+			return ((float)ADC_Read(TESTBENCH_TEST_TM_ANALOG_INPUT_GSM_EXT_VOLTAGE_CHANNEL) * 1.47 * 0.000806);
 		}
 		float Get_Batt_Voltage(void) {
-			return ((float)ADC_Read(TESTBENCH_TEST_ID7_ANALOG_INPUT_BATT_VOLTAGE_CHANNEL) * 1.1 * 0.000806);
+			return ((float)ADC_Read(TESTBENCH_TEST_TM_ANALOG_INPUT_BATT_VOLTAGE_CHANNEL) * 1.1 * 0.000806);
 		}
 		float Get_RTC_Voltage(void) {
-			return ((float)ADC_Read(TESTBENCH_TEST_ID7_ANALOG_INPUT_RTC_VOLTAGE_CHANNEL) * 1.1 * 0.000806);
+			return ((float)ADC_Read(TESTBENCH_TEST_TM_ANALOG_INPUT_RTC_VOLTAGE_CHANNEL) * 1.1 * 0.000806);
 		}
 		float Get_LED_Power_Voltage(void) {
-			return ((float)ADC_Read(TESTBENCH_TEST_ID7_ANALOG_INPUT_LED_POWER_VOLTAGE_CHANNEL) * 0.000806);
+			return ((float)ADC_Read(TESTBENCH_TEST_TM_ANALOG_INPUT_LED_POWER_VOLTAGE_CHANNEL) * 0.000806);
 		}
 		float Get_LED_RS485_Voltage(void) {
-			return ((float)ADC_Read(TESTBENCH_TEST_ID7_ANALOG_INPUT_LED_RS485_VOLTAGE_CHANNEL) * 0.000806);
+			return ((float)ADC_Read(TESTBENCH_TEST_TM_ANALOG_INPUT_LED_RS485_VOLTAGE_CHANNEL) * 0.000806);
 		}
 		float Get_LED_NET1_Voltage(void) {
-			return ((float)ADC_Read(TESTBENCH_TEST_ID7_ANALOG_INPUT_LED_NET1_VOLTAGE_CHANNEL) * 0.000806);
+			return ((float)ADC_Read(TESTBENCH_TEST_TM_ANALOG_INPUT_LED_NET1_VOLTAGE_CHANNEL) * 0.000806);
 		}
 		float Get_LED_NET2_Voltage(void) {
-			return ((float)ADC_Read(TESTBENCH_TEST_ID7_ANALOG_INPUT_LED_NET2_VOLTAGE_CHANNEL) * 0.000806);
+			return ((float)ADC_Read(TESTBENCH_TEST_TM_ANALOG_INPUT_LED_NET2_VOLTAGE_CHANNEL) * 0.000806);
 		}			
 	} AnalogInput;
 	class : Media // Interface
@@ -18127,26 +18127,26 @@ struct { // Test_7
 				return true;
 			}
 			virtual bool Update(uint32_t Speed) {
-				UART_UpdateSetting(TESTBENCH_TEST_ID7_MEDIA_UI_UART, Speed, USART_WordLength_8b, USART_Parity_No, USART_StopBits_1, true);
+				UART_UpdateSetting(TESTBENCH_TEST_TM_MEDIA_UI_UART, Speed, USART_WordLength_8b, USART_Parity_No, USART_StopBits_1, true);
 				return true;
 			}
 			virtual bool Send(uint8_t *Message, uint32_t Length) {		
-				UART_Send_String(TESTBENCH_TEST_ID7_MEDIA_UI_UART, Message, Length);
+				UART_Send_String(TESTBENCH_TEST_TM_MEDIA_UI_UART, Message, Length);
 				return true;
 			}
 			virtual bool Receive(uint8_t *Message, uint32_t *Length) {	
-				if(UART_Read_State_FIFO(TESTBENCH_TEST_ID7_MEDIA_UI_UART).rxBusy()) {
+				if(UART_Read_State_FIFO(TESTBENCH_TEST_TM_MEDIA_UI_UART).rxBusy()) {
 					for(U32 Index=RESET; Index<100; Index++)
 					{
-						*Length = UART_Read_State_FIFO(TESTBENCH_TEST_ID7_MEDIA_UI_UART).rx_Length;	
+						*Length = UART_Read_State_FIFO(TESTBENCH_TEST_TM_MEDIA_UI_UART).rx_Length;	
 						TaskManager_Delay(100 MSec);
-						if(*Length == UART_Read_State_FIFO(TESTBENCH_TEST_ID7_MEDIA_UI_UART).rx_Length)
+						if(*Length == UART_Read_State_FIFO(TESTBENCH_TEST_TM_MEDIA_UI_UART).rx_Length)
 						{
 							break;
 						}
 					}
 					if(*Length) {
-						*Length = UART_Receive_String_FIFO(TESTBENCH_TEST_ID7_MEDIA_UI_UART, Message, *Length);
+						*Length = UART_Receive_String_FIFO(TESTBENCH_TEST_TM_MEDIA_UI_UART, Message, *Length);
 						return true;
 					}
 				}
@@ -18154,7 +18154,7 @@ struct { // Test_7
 				return false;
 			}
 			virtual bool Clear() {		
-				UART_Reset_Buffer_FIFO(TESTBENCH_TEST_ID7_MEDIA_UI_UART);
+				UART_Reset_Buffer_FIFO(TESTBENCH_TEST_TM_MEDIA_UI_UART);
 				return true;
 			}
 			virtual bool Reset() {		
@@ -18172,26 +18172,26 @@ struct { // Test_7
 				return true;
 			}
 			virtual bool Update(uint32_t Speed) {
-				UART_UpdateSetting(TESTBENCH_TEST_ID7_MEDIA_OP_MEDIA_UART, Speed, USART_WordLength_8b, USART_Parity_No, USART_StopBits_1, true);
+				UART_UpdateSetting(TESTBENCH_TEST_TM_MEDIA_OP_MEDIA_UART, Speed, USART_WordLength_8b, USART_Parity_No, USART_StopBits_1, true);
 				return true;
 			}
 			virtual bool Send(uint8_t *Message, uint32_t Length) {		
-				UART_Send_String(TESTBENCH_TEST_ID7_MEDIA_OP_MEDIA_UART, Message, Length);
+				UART_Send_String(TESTBENCH_TEST_TM_MEDIA_OP_MEDIA_UART, Message, Length);
 				return true;
 			}
 			virtual bool Receive(uint8_t *Message, uint32_t *Length) {	
-				if(UART_Read_State_FIFO(TESTBENCH_TEST_ID7_MEDIA_OP_MEDIA_UART).rxBusy()) {
+				if(UART_Read_State_FIFO(TESTBENCH_TEST_TM_MEDIA_OP_MEDIA_UART).rxBusy()) {
 					for(U32 Index=RESET; Index<100; Index++)
 					{
-						*Length = UART_Read_State_FIFO(TESTBENCH_TEST_ID7_MEDIA_OP_MEDIA_UART).rx_Length;	
+						*Length = UART_Read_State_FIFO(TESTBENCH_TEST_TM_MEDIA_OP_MEDIA_UART).rx_Length;	
 						TaskManager_Delay(100 MSec);
-						if(*Length == UART_Read_State_FIFO(TESTBENCH_TEST_ID7_MEDIA_OP_MEDIA_UART).rx_Length)
+						if(*Length == UART_Read_State_FIFO(TESTBENCH_TEST_TM_MEDIA_OP_MEDIA_UART).rx_Length)
 						{
 							break;
 						}
 					}
 					if(*Length) {
-						*Length = UART_Receive_String_FIFO(TESTBENCH_TEST_ID7_MEDIA_OP_MEDIA_UART, Message, *Length);
+						*Length = UART_Receive_String_FIFO(TESTBENCH_TEST_TM_MEDIA_OP_MEDIA_UART, Message, *Length);
 						return true;
 					}
 				}
@@ -18199,7 +18199,7 @@ struct { // Test_7
 				return false;
 			}
 			virtual bool Clear() {		
-				UART_Reset_Buffer_FIFO(TESTBENCH_TEST_ID7_MEDIA_OP_MEDIA_UART);
+				UART_Reset_Buffer_FIFO(TESTBENCH_TEST_TM_MEDIA_OP_MEDIA_UART);
 				return true;
 			}
 			virtual bool Reset() {		
@@ -18217,26 +18217,26 @@ struct { // Test_7
 				return true;
 			}
 			virtual bool Update(uint32_t Speed) {
-				UART_UpdateSetting(TESTBENCH_TEST_ID7_MEDIA_RS485_MEDIA_UART, Speed, USART_WordLength_8b, USART_Parity_No, USART_StopBits_1, true);
+				UART_UpdateSetting(TESTBENCH_TEST_TM_MEDIA_RS485_MEDIA_UART, Speed, USART_WordLength_8b, USART_Parity_No, USART_StopBits_1, true);
 				return true;
 			}
 			virtual bool Send(uint8_t *Message, uint32_t Length) {		
-				UART_Send_String(TESTBENCH_TEST_ID7_MEDIA_RS485_MEDIA_UART, Message, Length);
+				UART_Send_String(TESTBENCH_TEST_TM_MEDIA_RS485_MEDIA_UART, Message, Length);
 				return true;
 			}
 			virtual bool Receive(uint8_t *Message, uint32_t *Length) {	
-				if(UART_Read_State_FIFO(TESTBENCH_TEST_ID7_MEDIA_RS485_MEDIA_UART).rxBusy()) {
+				if(UART_Read_State_FIFO(TESTBENCH_TEST_TM_MEDIA_RS485_MEDIA_UART).rxBusy()) {
 					for(U32 Index=RESET; Index<100; Index++)
 					{
-						*Length = UART_Read_State_FIFO(TESTBENCH_TEST_ID7_MEDIA_RS485_MEDIA_UART).rx_Length;	
+						*Length = UART_Read_State_FIFO(TESTBENCH_TEST_TM_MEDIA_RS485_MEDIA_UART).rx_Length;	
 						TaskManager_Delay(100 MSec);
-						if(*Length == UART_Read_State_FIFO(TESTBENCH_TEST_ID7_MEDIA_RS485_MEDIA_UART).rx_Length)
+						if(*Length == UART_Read_State_FIFO(TESTBENCH_TEST_TM_MEDIA_RS485_MEDIA_UART).rx_Length)
 						{
 							break;
 						}
 					}
 					if(*Length) {
-						*Length = UART_Receive_String_FIFO(TESTBENCH_TEST_ID7_MEDIA_RS485_MEDIA_UART, Message, *Length);
+						*Length = UART_Receive_String_FIFO(TESTBENCH_TEST_TM_MEDIA_RS485_MEDIA_UART, Message, *Length);
 						return true;
 					}
 				}
@@ -18244,7 +18244,7 @@ struct { // Test_7
 				return false;
 			}
 			virtual bool Clear() {		
-				UART_Reset_Buffer_FIFO(TESTBENCH_TEST_ID7_MEDIA_RS485_MEDIA_UART);
+				UART_Reset_Buffer_FIFO(TESTBENCH_TEST_TM_MEDIA_RS485_MEDIA_UART);
 				return true;
 			}
 			virtual bool Reset() {		
@@ -18439,7 +18439,7 @@ void TEST_UpStand(U8* Data) {
 	sprintf((char*)Data, "OK");
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
-void TEST_ID7_Power_220v_On(U8* Data) {
+void TEST_TM_Power_220v_On(U8* Data) {
 		float Value;
 	
 		Test_7.DigitalOutput.Power_12v_En.Disable();
@@ -18468,7 +18468,7 @@ void TEST_ID7_Power_220v_On(U8* Data) {
 		}	
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
-void TEST_ID7_Power_220v_Off(U8* Data) {
+void TEST_TM_Power_220v_Off(U8* Data) {
 	
 		Test_7.DigitalOutput.Power_220v_Test.Disable();
 		Test_7.DigitalOutput.Power_220v_En.Disable();
@@ -18478,7 +18478,7 @@ void TEST_ID7_Power_220v_Off(U8* Data) {
 		sprintf((char*)Data, "OK");	
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
-void TEST_ID7_Power_12v_On(U8* Data) {
+void TEST_TM_Power_12v_On(U8* Data) {
 		float Value[2];
 	
 		Test_7.DigitalOutput.Power_220v_Test.Disable();
@@ -18506,7 +18506,7 @@ void TEST_ID7_Power_12v_On(U8* Data) {
 		}	
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
-void TEST_ID7_Power_12v_Off(U8* Data) {
+void TEST_TM_Power_12v_Off(U8* Data) {
 	
 		Test_7.DigitalOutput.Power_220v_Test.Disable();
 		Test_7.DigitalOutput.Power_220v_En.Disable();
@@ -18516,7 +18516,7 @@ void TEST_ID7_Power_12v_Off(U8* Data) {
 		sprintf((char*)Data, "OK");
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
-void TEST_ID7_CheckProgram(U8* Data) {
+void TEST_TM_CheckProgram(U8* Data) {
 		U8 Buffer[256];
 		uint32_t Length;
 		
@@ -18539,7 +18539,7 @@ void TEST_ID7_CheckProgram(U8* Data) {
 		}	
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
-void TEST_ID7_Power_3V3(U8* Data) {
+void TEST_TM_Power_3V3(U8* Data) {
 	TaskManager_Delay(200 MSec);
 	float Value = Test_7.AnalogInput.Get_3V3_Voltage();
 	if((Value > 3.2) && (Value < 3.4))
@@ -18552,7 +18552,7 @@ void TEST_ID7_Power_3V3(U8* Data) {
 	}
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
-void TEST_ID7_GSM_Voltage(U8* Data) {
+void TEST_TM_GSM_Voltage(U8* Data) {
 	float Value;
 	Value = Test_7.AnalogInput.Get_GSM_Voltage();
 	if((Value >= 3.6) && (Value <= 4.2)) {
@@ -18563,7 +18563,7 @@ void TEST_ID7_GSM_Voltage(U8* Data) {
 	}
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
-void TEST_ID7_Batt(U8* Data) {
+void TEST_TM_Batt(U8* Data) {
 	TaskManager_Delay(200 MSec);
 	float Value = Test_7.AnalogInput.Get_Batt_Voltage();
 	
@@ -18577,7 +18577,7 @@ void TEST_ID7_Batt(U8* Data) {
 	}
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
-void TEST_ID7_RTC_Voltage(U8* Data) {
+void TEST_TM_RTC_Voltage(U8* Data) {
 	Test_7.DigitalOutput.VBatt_Enable.Enable();
 	TaskManager_Delay(200 MSec);
 	float Value = Test_7.AnalogInput.Get_RTC_Voltage();
@@ -18593,7 +18593,7 @@ void TEST_ID7_RTC_Voltage(U8* Data) {
 	}
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
-void TEST_ID7_CheckData(U8* Data) {
+void TEST_TM_CheckData(U8* Data) {
 	bool Pass;
 	U8 Buffer[128];
 	uint32_t Length;
@@ -18669,7 +18669,7 @@ void TEST_ID7_CheckData(U8* Data) {
 	//}
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
-void TEST_ID7_CheckKey(U8* Data) {
+void TEST_TM_CheckKey(U8* Data) {
 	sprintf((char*)Data, "");
 	
 	PWM_Write(5, 50, 7);
@@ -18709,7 +18709,7 @@ void TEST_ID7_CheckKey(U8* Data) {
 	TaskManager_Delay(10 Sec);
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
-void TEST_ID7_CheckLED(U8* Data) {
+void TEST_TM_CheckLED(U8* Data) {
 	float Value;
 	bool Pass;
 	
@@ -18819,7 +18819,7 @@ void TEST_ID7_CheckLED(U8* Data) {
 
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
-void TEST_ID7_CheckFlash(U8* Data) {
+void TEST_TM_CheckFlash(U8* Data) {
 		U8 Buffer[128];
 		uint32_t Length;
 		Test_7.RS485.Open();
@@ -18840,7 +18840,7 @@ void TEST_ID7_CheckFlash(U8* Data) {
 		}	
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
-void TEST_ID7_WriteDomain(U8* Data) {
+void TEST_TM_WriteDomain(U8* Data) {
 		Test_7.RS485.Open();
 		
 		Test_7.RS485.Reset();
@@ -18853,7 +18853,7 @@ void TEST_ID7_WriteDomain(U8* Data) {
 		sprintf((char*)Data, "OK");	
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
-void TEST_ID7_WriteDateTime(U8* Data) {
+void TEST_TM_WriteDateTime(U8* Data) {
 		Test_7.RS485.Open();
 		
 		Test_7.RS485.Reset();
@@ -18866,7 +18866,7 @@ void TEST_ID7_WriteDateTime(U8* Data) {
 		sprintf((char*)Data, "OK");
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
-void TEST_ID7_WriteSerial(U8* Data) {
+void TEST_TM_WriteSerial(U8* Data) {
 		U8 Buffer[256];
 		uint32_t Length;
 	
@@ -18893,7 +18893,7 @@ void TEST_ID7_WriteSerial(U8* Data) {
 		}	
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
-void TEST_ID7_CheckGSM(U8* Data) {
+void TEST_TM_CheckGSM(U8* Data) {
 	U8 Buffer[128];
 	uint32_t Length;
 	
@@ -18913,22 +18913,22 @@ void TEST_ID7_CheckGSM(U8* Data) {
 	}
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
-U32 TEST_ID7_Counter_ZeroCross;
-void TEST_ID7_Event_ZeroCross(void) {
-	TEST_ID7_Counter_ZeroCross++;
+U32 TEST_TM_Counter_ZeroCross;
+void TEST_TM_Event_ZeroCross(void) {
+	TEST_TM_Counter_ZeroCross++;
 }
-void TEST_ID7_CheckZeroCross(U8* Data) {
+void TEST_TM_CheckZeroCross(U8* Data) {
 	///
 	//{
-	TEST_ID7_Counter_ZeroCross = RESET;
+	TEST_TM_Counter_ZeroCross = RESET;
 	TaskManager_Delay(1 Sec);
-	if((TEST_ID7_Counter_ZeroCross >= 95) && (TEST_ID7_Counter_ZeroCross < 120))
+	if((TEST_TM_Counter_ZeroCross >= 95) && (TEST_TM_Counter_ZeroCross < 120))
 	{
 			sprintf((char*)Data, "OK");
 	}
 	else
 	{
-			sprintf((char*)Data, "%d", TEST_ID7_Counter_ZeroCross);
+			sprintf((char*)Data, "%d", TEST_TM_Counter_ZeroCross);
 	}
 	//}
 }
@@ -18979,22 +18979,21 @@ __task void StartTasks(void) {
 
 	// Add tests
 	TestBench.Init(&TEST_GetID);
-	//if(strcmp((char*)TestBench.GetID(), "7") == NULL) {
-	
+
 	PWM_Write(5, 50, 7);
 
-	GPIO_Output_AddPin(TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_POWER_220V_TEST_PORT, TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_POWER_220V_TEST_PIN, &Test_7.DigitalOutput.Power_220v_Test.ValueBool, false);
-	GPIO_Output_AddPin(TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_POWER_220V_EN_PORT, TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_POWER_220V_EN_PIN, &Test_7.DigitalOutput.Power_220v_En.ValueBool, false);
-	GPIO_Output_AddPin(TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_POWER_12V_TEST_PORT, TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_POWER_12V_TEST_PIN, &Test_7.DigitalOutput.Power_12v_Test.ValueBool, false);
-	GPIO_Output_AddPin(TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_POWER_12V_EN_PORT, TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_POWER_12V_EN_PIN, &Test_7.DigitalOutput.Power_12v_En.ValueBool, false);
-	GPIO_Output_AddPin(TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_VBATT_ENABLE_PORT, TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_VBATT_ENABLE_PIN, &Test_7.DigitalOutput.VBatt_Enable.ValueBool, false);
-	GPIO_Output_AddPin(TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_RESET_PORT, TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_RESET_PIN, &Test_7.DigitalOutput.Reset.ValueBool, false);
-	GPIO_Output_AddPin(TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_ZERO_CROSS_GEN_PORT, TESTBENCH_TEST_ID7_DIGITAL_OUTPUT_ZERO_CROSS_GEN_PIN, &Test_7.DigitalOutput.ZeroCross_Gen.ValueBool, false);
+	GPIO_Output_AddPin(TESTBENCH_TEST_TM_DIGITAL_OUTPUT_POWER_220V_TEST_PORT, TESTBENCH_TEST_TM_DIGITAL_OUTPUT_POWER_220V_TEST_PIN, &Test_7.DigitalOutput.Power_220v_Test.ValueBool, false);
+	GPIO_Output_AddPin(TESTBENCH_TEST_TM_DIGITAL_OUTPUT_POWER_220V_EN_PORT, TESTBENCH_TEST_TM_DIGITAL_OUTPUT_POWER_220V_EN_PIN, &Test_7.DigitalOutput.Power_220v_En.ValueBool, false);
+	GPIO_Output_AddPin(TESTBENCH_TEST_TM_DIGITAL_OUTPUT_POWER_12V_TEST_PORT, TESTBENCH_TEST_TM_DIGITAL_OUTPUT_POWER_12V_TEST_PIN, &Test_7.DigitalOutput.Power_12v_Test.ValueBool, false);
+	GPIO_Output_AddPin(TESTBENCH_TEST_TM_DIGITAL_OUTPUT_POWER_12V_EN_PORT, TESTBENCH_TEST_TM_DIGITAL_OUTPUT_POWER_12V_EN_PIN, &Test_7.DigitalOutput.Power_12v_En.ValueBool, false);
+	GPIO_Output_AddPin(TESTBENCH_TEST_TM_DIGITAL_OUTPUT_VBATT_ENABLE_PORT, TESTBENCH_TEST_TM_DIGITAL_OUTPUT_VBATT_ENABLE_PIN, &Test_7.DigitalOutput.VBatt_Enable.ValueBool, false);
+	GPIO_Output_AddPin(TESTBENCH_TEST_TM_DIGITAL_OUTPUT_RESET_PORT, TESTBENCH_TEST_TM_DIGITAL_OUTPUT_RESET_PIN, &Test_7.DigitalOutput.Reset.ValueBool, false);
+	GPIO_Output_AddPin(TESTBENCH_TEST_TM_DIGITAL_OUTPUT_ZERO_CROSS_GEN_PORT, TESTBENCH_TEST_TM_DIGITAL_OUTPUT_ZERO_CROSS_GEN_PIN, &Test_7.DigitalOutput.ZeroCross_Gen.ValueBool, false);
 
-	GPIO_Input_AddPin(TESTBENCH_TEST_ID7_DIGITAL_INPUT_N_RESET_PORT, TESTBENCH_TEST_ID7_DIGITAL_INPUT_N_RESET_PIN, NULL, &Test_7.DigitalInput.N_Reset.ValueBool, PIN_EDGE_TOGGEL, PIN_PULLING_UP, false);
-	GPIO_Input_AddPin(TESTBENCH_TEST_ID7_DIGITAL_INPUT_F_RESET_PORT, TESTBENCH_TEST_ID7_DIGITAL_INPUT_F_RESET_PIN, NULL, &Test_7.DigitalInput.F_Reset.ValueBool, PIN_EDGE_TOGGEL, PIN_PULLING_UP, false);
-	GPIO_Input_AddPin(TESTBENCH_TEST_ID7_DIGITAL_INPUT_LED_LIGHT_PORT, TESTBENCH_TEST_ID7_DIGITAL_INPUT_LED_LIGHT_PIN, NULL, &Test_7.DigitalInput.LED_Light.ValueBool, PIN_EDGE_TOGGEL, PIN_PULLING_UP, false);
-	GPIO_Input_AddPin(TESTBENCH_TEST_ID7_DIGITAL_INPUT_ZERO_CROSS_DETECT_PORT, TESTBENCH_TEST_ID7_DIGITAL_INPUT_ZERO_CROSS_DETECT_PIN, &TEST_ID7_Event_ZeroCross, &Test_7.DigitalInput.Zero_Cross_Detect.ValueBool, PIN_EDGE_DOWN, PIN_PULLING_UP, true);						
+	GPIO_Input_AddPin(TESTBENCH_TEST_TM_DIGITAL_INPUT_N_RESET_PORT, TESTBENCH_TEST_TM_DIGITAL_INPUT_N_RESET_PIN, NULL, &Test_7.DigitalInput.N_Reset.ValueBool, PIN_EDGE_TOGGEL, PIN_PULLING_UP, false);
+	GPIO_Input_AddPin(TESTBENCH_TEST_TM_DIGITAL_INPUT_F_RESET_PORT, TESTBENCH_TEST_TM_DIGITAL_INPUT_F_RESET_PIN, NULL, &Test_7.DigitalInput.F_Reset.ValueBool, PIN_EDGE_TOGGEL, PIN_PULLING_UP, false);
+	GPIO_Input_AddPin(TESTBENCH_TEST_TM_DIGITAL_INPUT_LED_LIGHT_PORT, TESTBENCH_TEST_TM_DIGITAL_INPUT_LED_LIGHT_PIN, NULL, &Test_7.DigitalInput.LED_Light.ValueBool, PIN_EDGE_TOGGEL, PIN_PULLING_UP, false);
+	GPIO_Input_AddPin(TESTBENCH_TEST_TM_DIGITAL_INPUT_ZERO_CROSS_DETECT_PORT, TESTBENCH_TEST_TM_DIGITAL_INPUT_ZERO_CROSS_DETECT_PIN, &TEST_TM_Event_ZeroCross, &Test_7.DigitalInput.Zero_Cross_Detect.ValueBool, PIN_EDGE_DOWN, PIN_PULLING_UP, true);						
 
 	TestBench.Add((uint8_t*)"HardwareVersion", &TEST_HardwareVersion);
 	TestBench.Add((uint8_t*)"SoftwareVersion", &TEST_SoftwareVersion);
@@ -19002,29 +19001,28 @@ __task void StartTasks(void) {
 	TestBench.Add((uint8_t*)"ProgramSWD", &TEST_ProgramSWD);
 	TestBench.Add((uint8_t*)"DownStand", &TEST_DownStand);
 	TestBench.Add((uint8_t*)"UpStand", &TEST_UpStand);		
-	TestBench.Add((uint8_t*)"ID7_Power_220v_On", &TEST_ID7_Power_220v_On);
-	TestBench.Add((uint8_t*)"ID7_Power_220v_Off", &TEST_ID7_Power_220v_Off);
-	TestBench.Add((uint8_t*)"ID7_Power_12v_On", &TEST_ID7_Power_12v_On);
-	TestBench.Add((uint8_t*)"ID7_Power_3V3", &TEST_ID7_Power_3V3);
-	TestBench.Add((uint8_t*)"ID7_Power_12v_Off", &TEST_ID7_Power_12v_Off);
-	TestBench.Add((uint8_t*)"ID7_CheckProgram", &TEST_ID7_CheckProgram);
-	TestBench.Add((uint8_t*)"ID7_GSM_Voltage", &TEST_ID7_GSM_Voltage);
-	TestBench.Add((uint8_t*)"ID7_Batt", &TEST_ID7_Batt);
-	TestBench.Add((uint8_t*)"ID7_RTC_Voltage", &TEST_ID7_RTC_Voltage);
-	TestBench.Add((uint8_t*)"ID7_CheckData", &TEST_ID7_CheckData);
-	TestBench.Add((uint8_t*)"ID7_CheckKey", &TEST_ID7_CheckKey);
-	TestBench.Add((uint8_t*)"ID7_CheckLED", &TEST_ID7_CheckLED);
-	TestBench.Add((uint8_t*)"ID7_CheckFlash", &TEST_ID7_CheckFlash);
-	TestBench.Add((uint8_t*)"ID7_CheckGSM", &TEST_ID7_CheckGSM);
-	TestBench.Add((uint8_t*)"ID7_WriteDomain", &TEST_ID7_WriteDomain);
-	TestBench.Add((uint8_t*)"ID7_WriteDateTime", &TEST_ID7_WriteDateTime);
-	TestBench.Add((uint8_t*)"ID7_WriteSerial", &TEST_ID7_WriteSerial);
-	TestBench.Add((uint8_t*)"ID7_CheckZeroCross", &TEST_ID7_CheckZeroCross);
+	TestBench.Add((uint8_t*)"ID7_Power_220v_On", &TEST_TM_Power_220v_On);
+	TestBench.Add((uint8_t*)"ID7_Power_220v_Off", &TEST_TM_Power_220v_Off);
+	TestBench.Add((uint8_t*)"ID7_Power_12v_On", &TEST_TM_Power_12v_On);
+	TestBench.Add((uint8_t*)"ID7_Power_3V3", &TEST_TM_Power_3V3);
+	TestBench.Add((uint8_t*)"ID7_Power_12v_Off", &TEST_TM_Power_12v_Off);
+	TestBench.Add((uint8_t*)"ID7_CheckProgram", &TEST_TM_CheckProgram);
+	TestBench.Add((uint8_t*)"ID7_GSM_Voltage", &TEST_TM_GSM_Voltage);
+	TestBench.Add((uint8_t*)"ID7_Batt", &TEST_TM_Batt);
+	TestBench.Add((uint8_t*)"ID7_RTC_Voltage", &TEST_TM_RTC_Voltage);
+	TestBench.Add((uint8_t*)"ID7_CheckData", &TEST_TM_CheckData);
+	TestBench.Add((uint8_t*)"ID7_CheckKey", &TEST_TM_CheckKey);
+	TestBench.Add((uint8_t*)"ID7_CheckLED", &TEST_TM_CheckLED);
+	TestBench.Add((uint8_t*)"ID7_CheckFlash", &TEST_TM_CheckFlash);
+	TestBench.Add((uint8_t*)"ID7_CheckGSM", &TEST_TM_CheckGSM);
+	TestBench.Add((uint8_t*)"ID7_WriteDomain", &TEST_TM_WriteDomain);
+	TestBench.Add((uint8_t*)"ID7_WriteDateTime", &TEST_TM_WriteDateTime);
+	TestBench.Add((uint8_t*)"ID7_WriteSerial", &TEST_TM_WriteSerial);
+	TestBench.Add((uint8_t*)"ID7_CheckZeroCross", &TEST_TM_CheckZeroCross);
 
 	// Config user interface
 	UI.Init((Media*)&Test_7.Interface);
-	//}
-	
+
 	while (true) {
 		TEST_Key_Press();
 		TaskManager_Delay(1 Sec);
