@@ -1137,18 +1137,18 @@
 		<ElementPosY2 Value="" />
 	</Test>
 	
-	<Test Command="ProgramChip">
+	<Test Command="ProgramSWD">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="" />
 		<EnableNext Value="" />
 		<Explanation Value="آماده سازی برنامه" />
 		<Description Value="آماده سازی برنامه" />
-		<MessageOK Value="برنامه با موفقیت ارسال گردید" />
+		<MessageOK Value="برنامه با موفقیت پروگرم گردید" />
 		<MessageNO Value="خطا در ارسال برنامه" />
-		<RunExe Value="../_Files/JLink/JFlash.exe" />		
+		<RunExe Value="" />		
 		<AskData Value="" />	
-		<Data Value="-openprjHT6033.jflash -hide -open../Hex/v1.14021103_SAA_766_01_0207_02.hex -auto -exit" /> 
+		<Data Value="SAA_766_01_0207_02_v1_14021103" /> 
 		<MustAnswer Value="" />
 		<ExceptAnswer Value="" />
 		<WaitAnswer Value="100000" />

@@ -467,6 +467,11 @@
               <FileType>8</FileType>
               <FilePath>.\Class\TagBench.cpp</FilePath>
             </File>
+            <File>
+              <FileName>dap.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Class\dap.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
