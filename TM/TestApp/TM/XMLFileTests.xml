@@ -1150,7 +1150,7 @@
 		<AskData Value="" />	
 		<Data Value="SAA_766_01_0207_02_v1_14021103" /> 
 		<MustAnswer Value="" />
-		<ExceptAnswer Value="" />
+		<ExceptAnswer Value="-1|0" />
 		<WaitAnswer Value="100000" />
 		<Alert Value="" />
 		<Promp Value="" />
