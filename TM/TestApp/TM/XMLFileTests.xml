@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Form  BoudRate="19200" Serial="ID7" Version="v1.14021013">
+<Form  BoudRate="19200" Serial="ID7" Version="v1.14021103">
 
 <Tests Title="TM_v1.14020723_SAA_758_01_0202_05" BoardPicture="" AutoEnableChecked="True" AutoReplay="False" AutoNext="True" ExcelFile="../_Files/Exel/TM.xlsx" ExcelSheet="TestResult" ExcelStartSerialsField="A4" ExcelCheckSum="O" >
 
@@ -86,8 +86,8 @@
 		<MessageNO Value="خطا در ارسال برنامه" />
 		<RunExe Value="../_Files/JLink/JFlash.exe" />		
 		<AskData Value="" />	
-		<Data Value="-openprjHT6033.jflash -hide -open../Hex/v1.14020723_SAA_758_02_0108_02.hex -auto" /> 
-		<MustAnswer Value="active" />
+		<Data Value="-openprjHT6033.jflash -hide -open../Hex/v1.14020723_SAA_758_02_0108_02.hex -auto -exit" /> 
+		<MustAnswer Value="" />
 		<ExceptAnswer Value="" />
 		<WaitAnswer Value="100000" />
 		<Alert Value="" />
@@ -617,8 +617,8 @@
 		<MessageNO Value="خطا در ارسال برنامه" />
 		<RunExe Value="../_Files/JLink/JFlash.exe" />		
 		<AskData Value="" />	
-		<Data Value="-openprjHT6033.jflash -hide -open../Hex/v1.14020827_SAA_758_01_0108_02.hex -auto" /> 
-		<MustAnswer Value="active" />
+		<Data Value="-openprjHT6033.jflash -hide -open../Hex/v1.14020827_SAA_758_01_0108_02.hex -auto -exit" /> 
+		<MustAnswer Value="" />
 		<ExceptAnswer Value="" />
 		<WaitAnswer Value="100000" />
 		<Alert Value="" />
@@ -1063,7 +1063,7 @@
 	</Test>
 </Tests>
 
-<Tests Title="TM_v1.14021013_SAA_766_01_0207_02" BoardPicture="" AutoEnableChecked="True" AutoReplay="False" AutoNext="True" ExcelFile="../_Files/Exel/TM.xlsx" ExcelSheet="TestResult" ExcelStartSerialsField="A4" ExcelCheckSum="O" >
+<Tests Title="TM_v1.14021103_SAA_766_01_0207_02" BoardPicture="" AutoEnableChecked="True" AutoReplay="False" AutoNext="True" ExcelFile="../_Files/Exel/TM.xlsx" ExcelSheet="TestResult" ExcelStartSerialsField="A4" ExcelCheckSum="O" >
 
 	<Test Command="SoftwareVersion">
 		<Enable Value="True" />
@@ -1148,8 +1148,8 @@
 		<MessageNO Value="خطا در ارسال برنامه" />
 		<RunExe Value="../_Files/JLink/JFlash.exe" />		
 		<AskData Value="" />	
-		<Data Value="-openprjHT6033.jflash -hide -open../Hex/v1.14021013_SAA_766_01_0207_02.hex -auto" /> 
-		<MustAnswer Value="active" />
+		<Data Value="-openprjHT6033.jflash -hide -open../Hex/v1.14021103_SAA_766_01_0207_02.hex -auto -exit" /> 
+		<MustAnswer Value="" />
 		<ExceptAnswer Value="" />
 		<WaitAnswer Value="100000" />
 		<Alert Value="" />

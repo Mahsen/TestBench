@@ -466,11 +466,11 @@ void TEST_ID7_Power_220v_On(U8* Data) {
 		float Value;
 	
 		Test_7.DigitalOutput.Power_12v_En.Disable();
-		TaskManager_Delay(1 Sec);
+		TaskManager_Delay(4 Sec);
 	
 		Test_7.DigitalOutput.Power_220v_En.Enable();
 		Test_7.DigitalOutput.Power_220v_Test.Disable();
-		TaskManager_Delay(4 Sec);
+		TaskManager_Delay(7 Sec);
 	
 		Value = Test_7.AnalogInput.Get_Power_220v_Current();
 		
@@ -729,6 +729,7 @@ void TEST_ID7_CheckKey(U8* Data) {
 	}
 
 	PWM_Write(5, 50, 7);
+	TaskManager_Delay(10 Sec);
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
 void TEST_ID7_CheckLED(U8* Data) {
@@ -844,7 +845,6 @@ void TEST_ID7_CheckLED(U8* Data) {
 void TEST_ID7_CheckFlash(U8* Data) {
 		U8 Buffer[128];
 		uint32_t Length;
-		
 		Test_7.RS485.Open();
 		
 		Test_7.RS485.Reset();
