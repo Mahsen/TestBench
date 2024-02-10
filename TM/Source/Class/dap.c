@@ -51,6 +51,8 @@
 #include "dap.h"
 #include "defines.h"
 #include "stm32l1xx_gpio.h"
+#include "stm32l1xx_rcc.h"
+#include "stm32l1xx_iwdg.h"
 /************************************************** Defineds **********************************************************/
 #define DAP_IDLE_CYCLES                0
 #define DAP_RETRY_COUNT                128
@@ -76,30 +78,30 @@
 #define CMU_FLASHLOCK_LOCKED           ((uint32_t)0x0000)
 
 GPIO_InitTypeDef HAL_GPIO_b;
-#define HAL_GPIO_SWRST_PORT             GPIOA
-#define HAL_GPIO_SWRST_PIN              GPIO_Pin_0
-#define HAL_GPIO_SWCLK_PORT             GPIOA
-#define HAL_GPIO_SWCLK_PIN              GPIO_Pin_1
-#define HAL_GPIO_SWDIO_PORT             GPIOA
-#define HAL_GPIO_SWDIO_PIN              GPIO_Pin_2
+#define HAL_GPIO_SWRST_PORT             GPIOF
+#define HAL_GPIO_SWRST_PIN              GPIO_Pin_11
+#define HAL_GPIO_SWCLK_PORT             GPIOF
+#define HAL_GPIO_SWCLK_PIN              GPIO_Pin_13
+#define HAL_GPIO_SWDIO_PORT             GPIOF
+#define HAL_GPIO_SWDIO_PIN              GPIO_Pin_14
 
-#define HAL_GPIO_SWRST_out()            HAL_GPIO_b.GPIO_Pin=HAL_GPIO_SWRST_PIN;HAL_GPIO_b.GPIO_Mode=GPIO_Mode_OUT;HAL_GPIO_b.GPIO_OType=GPIO_OType_PP;HAL_GPIO_b.GPIO_PuPd=GPIO_PuPd_NOPULL;HAL_GPIO_b.GPIO_Speed=GPIO_Speed_2MHz;GPIO_Init(HAL_GPIO_SWRST_PORT,&HAL_GPIO_b) //GPIO_SetDir (2, 10, GPIO_DIR_OUTPUT)
+#define HAL_GPIO_SWRST_out()            GPIOF->MODER &= ~(GPIO_MODER_MODER11_0); GPIOF->MODER |= GPIO_MODER_MODER11_0; //HAL_GPIO_b.GPIO_Pin=HAL_GPIO_SWRST_PIN;HAL_GPIO_b.GPIO_Mode=GPIO_Mode_OUT;HAL_GPIO_b.GPIO_OType=GPIO_OType_PP;HAL_GPIO_b.GPIO_PuPd=GPIO_PuPd_NOPULL;HAL_GPIO_b.GPIO_Speed=GPIO_Speed_2MHz;GPIO_Init(HAL_GPIO_SWRST_PORT,&HAL_GPIO_b) //GPIO_SetDir (2, 10, GPIO_DIR_OUTPUT)
 #define HAL_GPIO_SWRST_write(Value)     Value?(HAL_GPIO_SWRST_PORT->BSRRL=HAL_GPIO_SWRST_PIN):(HAL_GPIO_SWRST_PORT->BSRRH=HAL_GPIO_SWRST_PIN) //GPIO_PinWrite (2, 10, Value)
 #define HAL_GPIO_SWRST_set()            HAL_GPIO_SWRST_write(1)
 #define HAL_GPIO_SWRST_clr()            HAL_GPIO_SWRST_write(0)
 
-#define HAL_GPIO_SWCLK_in()             HAL_GPIO_b.GPIO_Pin=HAL_GPIO_SWCLK_PIN;HAL_GPIO_b.GPIO_Mode=GPIO_Mode_IN;HAL_GPIO_b.GPIO_OType=GPIO_OType_PP;HAL_GPIO_b.GPIO_PuPd=GPIO_PuPd_NOPULL;HAL_GPIO_b.GPIO_Speed=GPIO_Speed_2MHz;GPIO_Init(HAL_GPIO_SWCLK_PORT,&HAL_GPIO_b)//GPIO_SetDir (2, 11, GPIO_DIR_INPUT)
-#define HAL_GPIO_SWCLK_out()            HAL_GPIO_b.GPIO_Pin=HAL_GPIO_SWCLK_PIN;HAL_GPIO_b.GPIO_Mode=GPIO_Mode_OUT;HAL_GPIO_b.GPIO_OType=GPIO_OType_PP;HAL_GPIO_b.GPIO_PuPd=GPIO_PuPd_NOPULL;HAL_GPIO_b.GPIO_Speed=GPIO_Speed_2MHz;GPIO_Init(HAL_GPIO_SWCLK_PORT,&HAL_GPIO_b)//GPIO_SetDir (2, 11, GPIO_DIR_OUTPUT)
+#define HAL_GPIO_SWCLK_in()             GPIOF->MODER &= ~(GPIO_MODER_MODER13_0); //HAL_GPIO_b.GPIO_Pin=HAL_GPIO_SWCLK_PIN;HAL_GPIO_b.GPIO_Mode=GPIO_Mode_IN;GPIO_Init(HAL_GPIO_SWCLK_PORT,&HAL_GPIO_b)//GPIO_SetDir (2, 11, GPIO_DIR_INPUT)
+#define HAL_GPIO_SWCLK_out()            GPIOF->MODER &= ~(GPIO_MODER_MODER13_0); GPIOF->MODER |= GPIO_MODER_MODER13_0; //HAL_GPIO_b.GPIO_Pin=HAL_GPIO_SWCLK_PIN;HAL_GPIO_b.GPIO_Mode=GPIO_Mode_OUT;GPIO_Init(HAL_GPIO_SWCLK_PORT,&HAL_GPIO_b)//GPIO_SetDir (2, 11, GPIO_DIR_OUTPUT)
 #define HAL_GPIO_SWCLK_write(Value)     Value?(HAL_GPIO_SWCLK_PORT->BSRRL=HAL_GPIO_SWCLK_PIN):(HAL_GPIO_SWCLK_PORT->BSRRH=HAL_GPIO_SWCLK_PIN) //GPIO_PinWrite (2, 11, Value)
-#define HAL_GPIO_SWCLK_read()           (GPIOA->IDR&HAL_GPIO_SWCLK_PIN) //GPIO_PinRead (2, 11)
+#define HAL_GPIO_SWCLK_read()           (GPIOF->IDR&HAL_GPIO_SWCLK_PIN)?1:0 //GPIO_PinRead (2, 11)
 #define HAL_GPIO_SWCLK_set()            HAL_GPIO_SWCLK_write(1)
 #define HAL_GPIO_SWCLK_clr()            HAL_GPIO_SWCLK_write(0)
 #define HAL_GPIO_SWDIO_pullup()         HAL_GPIO_SWCLK_in()
 
-#define HAL_GPIO_SWDIO_in()             HAL_GPIO_b.GPIO_Pin=HAL_GPIO_SWDIO_PIN;HAL_GPIO_b.GPIO_Mode=GPIO_Mode_IN;HAL_GPIO_b.GPIO_OType=GPIO_OType_PP;HAL_GPIO_b.GPIO_PuPd=GPIO_PuPd_NOPULL;HAL_GPIO_b.GPIO_Speed=GPIO_Speed_2MHz;GPIO_Init(HAL_GPIO_SWDIO_PORT,&HAL_GPIO_b)//GPIO_SetDir (2, 12, GPIO_DIR_INPUT)
-#define HAL_GPIO_SWDIO_out()            HAL_GPIO_b.GPIO_Pin=HAL_GPIO_SWDIO_PIN;HAL_GPIO_b.GPIO_Mode=GPIO_Mode_OUT;HAL_GPIO_b.GPIO_OType=GPIO_OType_PP;HAL_GPIO_b.GPIO_PuPd=GPIO_PuPd_NOPULL;HAL_GPIO_b.GPIO_Speed=GPIO_Speed_2MHz;GPIO_Init(HAL_GPIO_SWDIO_PORT,&HAL_GPIO_b)//GPIO_SetDir (2, 12, GPIO_DIR_OUTPUT)
+#define HAL_GPIO_SWDIO_in()             GPIOF->MODER &= ~(GPIO_MODER_MODER14_0); //HAL_GPIO_b.GPIO_Pin=HAL_GPIO_SWDIO_PIN;HAL_GPIO_b.GPIO_Mode=GPIO_Mode_IN;GPIO_Init(HAL_GPIO_SWDIO_PORT,&HAL_GPIO_b)//GPIO_SetDir (2, 12, GPIO_DIR_INPUT)
+#define HAL_GPIO_SWDIO_out()            GPIOF->MODER &= ~(GPIO_MODER_MODER14_0); GPIOF->MODER |= GPIO_MODER_MODER14_0; //HAL_GPIO_b.GPIO_Pin=HAL_GPIO_SWDIO_PIN;HAL_GPIO_b.GPIO_Mode=GPIO_Mode_OUT;GPIO_Init(HAL_GPIO_SWDIO_PORT,&HAL_GPIO_b)//GPIO_SetDir (2, 12, GPIO_DIR_OUTPUT)
 #define HAL_GPIO_SWDIO_write(Value)     Value?(HAL_GPIO_SWDIO_PORT->BSRRL=HAL_GPIO_SWDIO_PIN):(HAL_GPIO_SWDIO_PORT->BSRRH=HAL_GPIO_SWDIO_PIN) //GPIO_PinWrite (2, 12, Value)
-#define HAL_GPIO_SWDIO_read()           (GPIOA->IDR&HAL_GPIO_SWDIO_PIN) //GPIO_PinRead (2, 12)
+#define HAL_GPIO_SWDIO_read()           (GPIOF->IDR&HAL_GPIO_SWDIO_PIN)?1:0 //GPIO_PinRead (2, 12)
 #define HAL_GPIO_SWDIO_set()            HAL_GPIO_SWDIO_write(1)
 #define HAL_GPIO_SWDIO_clr()            HAL_GPIO_SWDIO_write(0)
 
@@ -157,6 +159,11 @@ enum {
     Nothing
 */
 /************************************************** Functions *********************************************************/
+void dap_delay_loop(void) {
+//  int delay = 100;
+//  while (--delay);
+}
+/*--------------------------------------------------------------------------------------------------------------------*/
 void DAP_CONFIG_SWCLK_write(int value) {
   HAL_GPIO_SWCLK_write(value);
 }
@@ -190,14 +197,35 @@ void DAP_CONFIG_SWDIO_out(void) {
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
 void DAP_CONFIG_SETUP(void) {
+	
+	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOF, ENABLE);	
+
 	HAL_GPIO_SWRST_out();
 	HAL_GPIO_SWRST_clr();
+	dap_delay_loop();
 	HAL_GPIO_SWRST_set();
 	
   HAL_GPIO_SWCLK_in();
 
   HAL_GPIO_SWDIO_in();
   HAL_GPIO_SWDIO_pullup();
+	
+	
+	/*
+	static int ff[3];
+	if(ff[0] == 0) {
+		HAL_GPIO_SWRST_out();
+		HAL_GPIO_SWRST_clr();
+		dap_delay_loop();
+		HAL_GPIO_SWRST_set();
+		
+		HAL_GPIO_SWCLK_in();
+		HAL_GPIO_SWDIO_in();
+		ff[0] = 1;
+	}
+	ff[1] = HAL_GPIO_SWCLK_read();
+	ff[2] = HAL_GPIO_SWDIO_read();
+	*/
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
 void DAP_CONFIG_DISCONNECT(void) {
@@ -214,14 +242,6 @@ void DAP_CONFIG_CONNECT_SWD(void) {
 
   HAL_GPIO_SWCLK_out();
   HAL_GPIO_SWCLK_set();
-}
-/*--------------------------------------------------------------------------------------------------------------------*/
-void dap_delay_loop(void) {
-//#ifdef DAP_CONFIG_CLOCK_DELAY
-//  int delay = DAP_CONFIG_CLOCK_DELAY;
-
-//  while (--delay);
-//#endif
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
 static void dap_swd_clock(int cycles) {
@@ -403,12 +423,12 @@ static void dap_swj_sequence(int size, uint8_t *data) {
 }
 
 /*--------------------------------------------------------------------------------------------------------------------*/
-static bool dap_read_reg(uint8_t reg, uint32_t *value) {
+static __inline bool dap_read_reg(uint8_t reg, uint32_t *value) {
   return (DAP_TRANSFER_OK == dap_swd_transfer(reg | DAP_TRANSFER_RnW, value));
 }
 
 /*--------------------------------------------------------------------------------------------------------------------*/
-static bool dap_write_reg(uint8_t reg, uint32_t value) {
+static __inline bool dap_write_reg(uint8_t reg, uint32_t value) {
   return (DAP_TRANSFER_OK == dap_swd_transfer(reg, &value));
 }
 
@@ -428,7 +448,7 @@ void dap_disconnect(void) {
 }
 
 /*--------------------------------------------------------------------------------------------------------------------*/
-uint32_t dap_read_word(uint32_t addr) {
+static __inline uint32_t dap_read_word(uint32_t addr) {
   uint32_t data;
 
   if (!dap_write_reg(SWD_AP_TAR, addr))
@@ -441,7 +461,7 @@ uint32_t dap_read_word(uint32_t addr) {
 }
 
 /*--------------------------------------------------------------------------------------------------------------------*/
-void dap_write_word(uint32_t addr, uint32_t data) {
+static __inline void dap_write_word(uint32_t addr, uint32_t data) {
   dap_write_reg(SWD_AP_TAR, addr);
   dap_write_reg(SWD_AP_DRW, data);
 }
@@ -536,6 +556,9 @@ void dap_target_write_flash(uint32_t addr, const uint8_t *data, uint32_t len) {
     value = ((uint32_t)data[offs + 3] << 24) | ((uint32_t)data[offs + 2] << 16) | ((uint32_t)data[offs + 1] << 8) | (uint32_t)data[offs];
 		dap_write_word(addr + offs, value);
 		while (dap_read_word(CMU_FLASHCON) & CMU_FLASHCON_BUSY);
+		if((offs%50000)==0) {
+			IWDG_ReloadCounter();
+		}
 	}
 	
 	dap_write_word(CMU_FLASHCON, CMU_FLASHCON_FOP_READ);

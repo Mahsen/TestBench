@@ -207,8 +207,7 @@ void SystemInit (void)
 	RCC_PLLCmd(DISABLE);
 	RCC_MSICmd(DISABLE);
 	RCC_HSEConfig(RCC_HSE_OFF);  
-	if(RCC_GetFlagStatus(RCC_FLAG_HSERDY) != RESET )
-	{
+	if(RCC_GetFlagStatus(RCC_FLAG_HSERDY) != RESET ) {
 		while(1);
 	}
 	

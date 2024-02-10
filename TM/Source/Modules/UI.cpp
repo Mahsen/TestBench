@@ -66,6 +66,7 @@ void class_UI::Task() {
 			else if(TestBench.Pars(Message, &Length)) {
 				MyMedia->Send(Message, Length);
 			}
+			MyMedia->Reset();
 		}
 		TaskManager_Delay(500 MSec);
 	}
