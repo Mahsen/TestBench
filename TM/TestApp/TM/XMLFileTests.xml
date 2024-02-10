@@ -51,7 +51,7 @@
 		<ElementPosY2 Value="" />
 	</Test>
 
-	<Test Command="ID7_Power_12v_On">
+	<Test Command="TM_Power_12v_On">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="True" />
@@ -99,7 +99,7 @@
 		<ElementPosY2 Value="" />
 	</Test>	
 
-	<Test Command="ID7_CheckProgram">
+	<Test Command="TM_CheckProgram">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="" />
@@ -123,7 +123,7 @@
 		<ElementPosY2 Value="" />
 	</Test>
 	
-	<Test Command="ID7_CheckLED">
+	<Test Command="TM_CheckLED">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="True" />
@@ -147,7 +147,7 @@
 		<ElementPosY2 Value="" />
 	</Test>
 
-	<Test Command="ID7_Power_3V3">
+	<Test Command="TM_Power_3V3">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="True" />
@@ -171,7 +171,7 @@
 		<ElementPosY2 Value="" />
 	</Test>
 
-	<Test Command="ID7_Batt">
+	<Test Command="TM_Batt">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="True" />
@@ -195,7 +195,7 @@
 		<ElementPosY2 Value="" />
 	</Test>
 
-	<Test Command="ID7_CheckData">
+	<Test Command="TM_CheckData">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="" />
@@ -219,7 +219,7 @@
 		<ElementPosY2 Value="" />
 	</Test>
 	
-	<Test Command="ID7_CheckKey">
+	<Test Command="TM_CheckKey">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="" />
@@ -243,7 +243,7 @@
 		<ElementPosY2 Value="" />
 	</Test>
 
-	<Test Command="ID7_CheckFlash">
+	<Test Command="TM_CheckFlash">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="" />
@@ -267,7 +267,7 @@
 		<ElementPosY2 Value="" />
 	</Test>
 	
-	<Test Command="ID7_GSM_Voltage">
+	<Test Command="TM_GSM_Voltage">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="True" />
@@ -291,7 +291,7 @@
 		<ElementPosY2 Value="" />
 	</Test>
 	
-	<Test Command="ID7_CheckGSM">
+	<Test Command="TM_CheckGSM">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="" />
@@ -315,7 +315,7 @@
 		<ElementPosY2 Value="" />
 	</Test>
 	
-	<Test Command="ID7_WriteDateTime">
+	<Test Command="TM_WriteDateTime">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="" />
@@ -339,7 +339,7 @@
 		<ElementPosY2 Value="" />
 	</Test>	
 	
-	<Test Command="ID7_WriteDomain">
+	<Test Command="TM_WriteDomain">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="" />
@@ -363,7 +363,7 @@
 		<ElementPosY2 Value="" />
 	</Test>
 
-	<Test Command="ID7_WriteSerial">
+	<Test Command="TM_WriteSerial">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="" />
@@ -387,7 +387,7 @@
 		<ElementPosY2 Value="" />
 	</Test>
 
-	<Test Command="ID7_Power_12v_Off">
+	<Test Command="TM_Power_12v_Off">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="" />
@@ -411,7 +411,7 @@
 		<ElementPosY2 Value="" />
 	</Test>
 
-	<Test Command="ID7_Power_220v_On">
+	<Test Command="TM_Power_220v_On">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="True" />
@@ -435,7 +435,7 @@
 		<ElementPosY2 Value="" />
 	</Test>
 	
-	<Test Command="ID7_CheckZeroCross">
+	<Test Command="TM_CheckZeroCross">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="True" />
@@ -459,7 +459,7 @@
 		<ElementPosY2 Value="" />
 	</Test>
 	
-	<Test Command="ID7_Power_220v_Off">
+	<Test Command="TM_Power_220v_Off">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="" />
@@ -582,7 +582,7 @@
 		<ElementPosY2 Value="" />
 	</Test>
 
-	<Test Command="ID7_Power_12v_On">
+	<Test Command="TM_Power_12v_On">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="True" />
@@ -630,7 +630,7 @@
 		<ElementPosY2 Value="" />
 	</Test>	
 
-	<Test Command="ID7_CheckProgram">
+	<Test Command="TM_CheckProgram">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="" />
@@ -654,7 +654,7 @@
 		<ElementPosY2 Value="" />
 	</Test>
 	
-	<Test Command="ID7_CheckLED">
+	<Test Command="TM_CheckLED">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="True" />
@@ -678,7 +678,7 @@
 		<ElementPosY2 Value="" />
 	</Test>
 
-	<Test Command="ID7_Power_3V3">
+	<Test Command="TM_Power_3V3">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="True" />
@@ -702,7 +702,7 @@
 		<ElementPosY2 Value="" />
 	</Test>
 
-	<Test Command="ID7_Batt">
+	<Test Command="TM_Batt">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="True" />
@@ -726,7 +726,7 @@
 		<ElementPosY2 Value="" />
 	</Test>
 
-	<Test Command="ID7_CheckData">
+	<Test Command="TM_CheckData">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="" />
@@ -750,7 +750,7 @@
 		<ElementPosY2 Value="" />
 	</Test>
 	
-	<Test Command="ID7_CheckKey">
+	<Test Command="TM_CheckKey">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="" />
@@ -774,7 +774,7 @@
 		<ElementPosY2 Value="" />
 	</Test>
 
-	<Test Command="ID7_CheckFlash">
+	<Test Command="TM_CheckFlash">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="" />
@@ -798,7 +798,7 @@
 		<ElementPosY2 Value="" />
 	</Test>
 	
-	<Test Command="ID7_GSM_Voltage">
+	<Test Command="TM_GSM_Voltage">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="True" />
@@ -822,7 +822,7 @@
 		<ElementPosY2 Value="" />
 	</Test>
 	
-	<Test Command="ID7_CheckGSM">
+	<Test Command="TM_CheckGSM">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="" />
@@ -846,7 +846,7 @@
 		<ElementPosY2 Value="" />
 	</Test>
 	
-	<Test Command="ID7_WriteDateTime">
+	<Test Command="TM_WriteDateTime">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="" />
@@ -870,7 +870,7 @@
 		<ElementPosY2 Value="" />
 	</Test>	
 	
-	<Test Command="ID7_WriteDomain">
+	<Test Command="TM_WriteDomain">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="" />
@@ -894,7 +894,7 @@
 		<ElementPosY2 Value="" />
 	</Test>
 
-	<Test Command="ID7_WriteSerial">
+	<Test Command="TM_WriteSerial">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="" />
@@ -918,7 +918,7 @@
 		<ElementPosY2 Value="" />
 	</Test>
 
-	<Test Command="ID7_Power_12v_Off">
+	<Test Command="TM_Power_12v_Off">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="" />
@@ -942,7 +942,7 @@
 		<ElementPosY2 Value="" />
 	</Test>
 
-	<Test Command="ID7_Power_220v_On">
+	<Test Command="TM_Power_220v_On">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="True" />
@@ -966,7 +966,7 @@
 		<ElementPosY2 Value="" />
 	</Test>
 	
-	<Test Command="ID7_CheckZeroCross">
+	<Test Command="TM_CheckZeroCross">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="True" />
@@ -990,7 +990,7 @@
 		<ElementPosY2 Value="" />
 	</Test>
 	
-	<Test Command="ID7_Power_220v_Off">
+	<Test Command="TM_Power_220v_Off">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="" />
@@ -1113,7 +1113,7 @@
 		<ElementPosY2 Value="" />
 	</Test>
 
-	<Test Command="ID7_Power_12v_On">
+	<Test Command="TM_Power_12v_On">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="True" />
@@ -1161,7 +1161,7 @@
 		<ElementPosY2 Value="" />
 	</Test>	
 
-	<Test Command="ID7_CheckProgram">
+	<Test Command="TM_CheckProgram">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="" />
@@ -1185,7 +1185,7 @@
 		<ElementPosY2 Value="" />
 	</Test>
 	
-	<Test Command="ID7_CheckLED">
+	<Test Command="TM_CheckLED">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="True" />
@@ -1209,7 +1209,7 @@
 		<ElementPosY2 Value="" />
 	</Test>
 
-	<Test Command="ID7_Power_3V3">
+	<Test Command="TM_Power_3V3">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="True" />
@@ -1233,7 +1233,7 @@
 		<ElementPosY2 Value="" />
 	</Test>
 
-	<Test Command="ID7_Batt">
+	<Test Command="TM_Batt">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="True" />
@@ -1257,7 +1257,7 @@
 		<ElementPosY2 Value="" />
 	</Test>
 
-	<Test Command="ID7_CheckData">
+	<Test Command="TM_CheckData">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="" />
@@ -1281,7 +1281,7 @@
 		<ElementPosY2 Value="" />
 	</Test>
 	
-	<Test Command="ID7_CheckKey">
+	<Test Command="TM_CheckKey">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="" />
@@ -1305,7 +1305,7 @@
 		<ElementPosY2 Value="" />
 	</Test>
 
-	<Test Command="ID7_CheckFlash">
+	<Test Command="TM_CheckFlash">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="" />
@@ -1329,7 +1329,7 @@
 		<ElementPosY2 Value="" />
 	</Test>
 	
-	<Test Command="ID7_GSM_Voltage">
+	<Test Command="TM_GSM_Voltage">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="True" />
@@ -1353,7 +1353,7 @@
 		<ElementPosY2 Value="" />
 	</Test>
 	
-	<Test Command="ID7_CheckGSM">
+	<Test Command="TM_CheckGSM">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="" />
@@ -1377,7 +1377,7 @@
 		<ElementPosY2 Value="" />
 	</Test>
 	
-	<Test Command="ID7_WriteDateTime">
+	<Test Command="TM_WriteDateTime">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="" />
@@ -1401,7 +1401,7 @@
 		<ElementPosY2 Value="" />
 	</Test>	
 	
-	<Test Command="ID7_WriteDomain">
+	<Test Command="TM_WriteDomain">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="" />
@@ -1425,7 +1425,7 @@
 		<ElementPosY2 Value="" />
 	</Test>
 
-	<Test Command="ID7_WriteSerial">
+	<Test Command="TM_WriteSerial">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="" />
@@ -1449,7 +1449,7 @@
 		<ElementPosY2 Value="" />
 	</Test>
 
-	<Test Command="ID7_Power_12v_Off">
+	<Test Command="TM_Power_12v_Off">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="" />
@@ -1473,7 +1473,7 @@
 		<ElementPosY2 Value="" />
 	</Test>
 
-	<Test Command="ID7_Power_220v_On">
+	<Test Command="TM_Power_220v_On">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="True" />
@@ -1497,7 +1497,7 @@
 		<ElementPosY2 Value="" />
 	</Test>
 	
-	<Test Command="ID7_CheckZeroCross">
+	<Test Command="TM_CheckZeroCross">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="True" />
@@ -1521,7 +1521,7 @@
 		<ElementPosY2 Value="" />
 	</Test>
 	
-	<Test Command="ID7_Power_220v_Off">
+	<Test Command="TM_Power_220v_Off">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="" />
