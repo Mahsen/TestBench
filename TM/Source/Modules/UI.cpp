@@ -57,16 +57,17 @@ void class_UI::Task() {
 	uint8_t Message[1024];
 	uint32_t Length;
 	char StrID[16];
-	while(true) {
-		sprintf(StrID, "FIND=ID%s\r\n", TestBench.GetID());
-		if(MyMedia->Receive(Message, &Length)) {			
+	while(true) {		
+		if(MyMedia->Receive(Message, &Length)) {	
+			sprintf(StrID, "FIND=ID%s\r\n", TestBench.GetID());
 			if(strcmp((char*)Message, StrID) == NULL) {
 				MyMedia->Send((U8*)"OK\r\n", 4);
 			}
 			else if(TestBench.Pars(Message, &Length)) {
 				MyMedia->Send(Message, Length);
 			}
-			MyMedia->Reset();
+			memset(Message, 0, sizeof(Message));
+			MyMedia->Clear();
 		}
 		TaskManager_Delay(500 MSec);
 	}

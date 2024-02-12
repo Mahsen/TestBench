@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Form  BoudRate="19200" Serial="ID1" Version="v1.14021121">
 
-<Tests Title="TM_v1.14021103_SAA_766_01_0207_02" BoardPicture="" AutoEnableChecked="True" AutoReplay="False" AutoNext="True" ExcelFile="../_Files/Exel/TM.xlsx" ExcelSheet="TestResult" ExcelStartSerialsField="A4" ExcelCheckSum="O" >
+<Tests Title="TM_v1.14021103_SAA_766_01_0207_02" BoardPicture="" AutoEnableChecked="True" AutoReplay="False" AutoNext="True" ExcelFile="../_Files/Exel/TM.xlsx" ExcelSheet="TestResult" ExcelStartSerialsField="A4" ExcelCheckSum="N" >
 
 	<Test Command="SoftwareVersion">
 		<Enable Value="True" />
@@ -51,20 +51,20 @@
 		<ElementPosY2 Value="" />
 	</Test>
 
-	<Test Command="TM_Power_12v_On">
+	<Test Command="TM_Power_220v_On">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="True" />
 		<EnableNext Value="" />
-		<Explanation Value="اتصال تغذیه 12 ولت برد مورد تست" />
-		<Description Value="اتصال تغذیه 12 ولت برد مورد تست" />
-		<MessageOK Value="تغذیه 12 ولت برد مورد تست وصل گردید" />
-		<MessageNO Value="اختلال در اتصال تغذیه 12 ولت برد تست" />
+		<Explanation Value="اتصال تغذیه برد مورد تست" />
+		<Description Value="اتصال تغذیه برد مورد تست" />
+		<MessageOK Value="تغذیه برد مورد تست وصل گردید" />
+		<MessageNO Value="اختلال در اتصال تغذیه برد تست" />
 		<RunExe Value="" />		
 		<AskData Value="" />	
 		<Data Value="" />
-		<MustAnswer Value="OK" />
-		<ExceptAnswer Value="" />
+		<MustAnswer Value="#Return_Data" />
+		<ExceptAnswer Value="ERROR" />
 		<WaitAnswer Value="100000" />
 		<Alert Value="" />
 		<Promp Value="" />
@@ -74,7 +74,7 @@
 		<ElementPosY1 Value="" />
 		<ElementPosY2 Value="" />
 	</Test>
-	
+
 	<Test Command="ProgramSWD">
 		<Enable Value="True" />
 		<EnableIf Value="" />
@@ -86,19 +86,43 @@
 		<MessageNO Value="خطا در ارسال برنامه" />
 		<RunExe Value="" />		
 		<AskData Value="" />	
-		<Data Value="SAA_766_01_0207_02_v1_14021103" /> 
+		<Data Value="SAA_766_01_0207_02_v1_14021103 94.139.169.122:8000 #Serial #DateTime" /> 
 		<MustAnswer Value="#Return_Data" />
 		<ExceptAnswer Value="not|ERROR" />
 		<WaitAnswer Value="100000" />
 		<Alert Value="" />
 		<Promp Value="" />
-		<ExcelField Value="" />
+		<ExcelField Value="D" />
 		<ElementPosX1 Value="" />
 		<ElementPosX2 Value="" />
 		<ElementPosY1 Value="" />
 		<ElementPosY2 Value="" />
 	</Test>	
-
+	
+	<Test Command="TM_CheckZeroCross">
+		<Enable Value="True" />
+		<EnableIf Value="" />
+		<EnableLoop Value="True" />
+		<EnableNext Value="" />
+		<Explanation Value="بررسی عملکرد مدار ZeroCross" />
+		<Description Value="بررسی عملکرد مدار ZeroCross" />
+		<MessageOK Value="عملکرد مدار ZeroCross صحیح میباشد" />
+		<MessageNO Value="عملکرد مدار ZeroCross اختلال دارد" />
+		<RunExe Value="" />		
+		<AskData Value="" />	
+		<Data Value="" />
+		<MustAnswer Value="OK" />
+		<ExceptAnswer Value="" />
+		<WaitAnswer Value="100000" />
+		<Alert Value="" />
+		<Promp Value="" />
+		<ExcelField Value="E" />
+		<ElementPosX1 Value="" />
+		<ElementPosX2 Value="" />
+		<ElementPosY1 Value="" />
+		<ElementPosY2 Value="" />
+	</Test>
+	
 	<Test Command="TM_CheckProgram">
 		<Enable Value="True" />
 		<EnableIf Value="" />
@@ -140,7 +164,7 @@
 		<WaitAnswer Value="100000" />
 		<Alert Value="" />
 		<Promp Value="" />
-		<ExcelField Value="D" />
+		<ExcelField Value="F" />
 		<ElementPosX1 Value="" />
 		<ElementPosX2 Value="" />
 		<ElementPosY1 Value="" />
@@ -164,31 +188,7 @@
 		<WaitAnswer Value="100000" />
 		<Alert Value="" />
 		<Promp Value="" />
-		<ExcelField Value="E" />
-		<ElementPosX1 Value="" />
-		<ElementPosX2 Value="" />
-		<ElementPosY1 Value="" />
-		<ElementPosY2 Value="" />
-	</Test>
-
-	<Test Command="TM_Batt">
-		<Enable Value="True" />
-		<EnableIf Value="" />
-		<EnableLoop Value="True" />
-		<EnableNext Value="" />
-		<Explanation Value="بررسی عملکرد ولتاژ باتری" />
-		<Description Value="بررسی عملکرد ولتاژ باتری" />
-		<MessageOK Value="عملکرد ولتاژ باتری صحیح میباشد" />
-		<MessageNO Value="عملکرد ولتاژ باتری اختلال دارد" />
-		<RunExe Value="" />		
-		<AskData Value="" />	
-		<Data Value="" />
-		<MustAnswer Value="OK" />
-		<ExceptAnswer Value="" />
-		<WaitAnswer Value="100000" />
-		<Alert Value="" />
-		<Promp Value="" />
-		<ExcelField Value="F" />
+		<ExcelField Value="G" />
 		<ElementPosX1 Value="" />
 		<ElementPosX2 Value="" />
 		<ElementPosY1 Value="" />
@@ -212,37 +212,13 @@
 		<WaitAnswer Value="100000" />
 		<Alert Value="" />
 		<Promp Value="" />
-		<ExcelField Value="G" />
-		<ElementPosX1 Value="" />
-		<ElementPosX2 Value="" />
-		<ElementPosY1 Value="" />
-		<ElementPosY2 Value="" />
-	</Test>
-	
-	<Test Command="TM_CheckKey">
-		<Enable Value="True" />
-		<EnableIf Value="" />
-		<EnableLoop Value="" />
-		<EnableNext Value="" />
-		<Explanation Value="بررسی عملکرد مدار کلید ها" />
-		<Description Value="بررسی عملکرد مدار کلید ها" />
-		<MessageOK Value="عملکرد مدار کلید ها صحیح میباشد" />
-		<MessageNO Value="عملکرد مدار کلید ها اختلال دارد" />
-		<RunExe Value="" />		
-		<AskData Value="" />	
-		<Data Value="" />
-		<MustAnswer Value="#Return_Data" />
-		<ExceptAnswer Value="ERROR" />
-		<WaitAnswer Value="100000" />
-		<Alert Value="" />
-		<Promp Value="" />
 		<ExcelField Value="H" />
 		<ElementPosX1 Value="" />
 		<ElementPosX2 Value="" />
 		<ElementPosY1 Value="" />
 		<ElementPosY2 Value="" />
 	</Test>
-
+	
 	<Test Command="TM_CheckFlash">
 		<Enable Value="True" />
 		<EnableIf Value="" />
@@ -267,6 +243,30 @@
 		<ElementPosY2 Value="" />
 	</Test>
 	
+	<Test Command="TM_Batt">
+		<Enable Value="True" />
+		<EnableIf Value="" />
+		<EnableLoop Value="True" />
+		<EnableNext Value="" />
+		<Explanation Value="بررسی عملکرد ولتاژ باتری" />
+		<Description Value="بررسی عملکرد ولتاژ باتری" />
+		<MessageOK Value="عملکرد ولتاژ باتری صحیح میباشد" />
+		<MessageNO Value="عملکرد ولتاژ باتری اختلال دارد" />
+		<RunExe Value="" />		
+		<AskData Value="" />	
+		<Data Value="" />
+		<MustAnswer Value="OK" />
+		<ExceptAnswer Value="" />
+		<WaitAnswer Value="100000" />
+		<Alert Value="" />
+		<Promp Value="" />
+		<ExcelField Value="J" />
+		<ElementPosX1 Value="" />
+		<ElementPosX2 Value="" />
+		<ElementPosY1 Value="" />
+		<ElementPosY2 Value="" />
+	</Test>
+	
 	<Test Command="TM_GSM_Voltage">
 		<Enable Value="True" />
 		<EnableIf Value="" />
@@ -284,7 +284,7 @@
 		<WaitAnswer Value="100000" />
 		<Alert Value="" />
 		<Promp Value="" />
-		<ExcelField Value="J" />
+		<ExcelField Value="K" />
 		<ElementPosX1 Value="" />
 		<ElementPosX2 Value="" />
 		<ElementPosY1 Value="" />
@@ -308,123 +308,27 @@
 		<WaitAnswer Value="100000" />
 		<Alert Value="" />
 		<Promp Value="" />
-		<ExcelField Value="K" />
-		<ElementPosX1 Value="" />
-		<ElementPosX2 Value="" />
-		<ElementPosY1 Value="" />
-		<ElementPosY2 Value="" />
-	</Test>
-	
-	<Test Command="TM_WriteDateTime">
-		<Enable Value="True" />
-		<EnableIf Value="" />
-		<EnableLoop Value="" />
-		<EnableNext Value="" />
-		<Explanation Value="تنظیم ساعت و تاریخ" />
-		<Description Value="تنظیم ساعت و تاریخ" />
-		<MessageOK Value="ساعت و تاریخ تنظیم گردید" />
-		<MessageNO Value="اختلال در تنظیم ساعت و تاریخ" />
-		<RunExe Value="" />		
-		<AskData Value="" />	
-		<Data Value="#DateTime" />
-		<MustAnswer Value="OK" />
-		<ExceptAnswer Value="" />
-		<WaitAnswer Value="100000" />
-		<Alert Value="" />
-		<Promp Value="" />
-		<ExcelField Value="" />
-		<ElementPosX1 Value="" />
-		<ElementPosX2 Value="" />
-		<ElementPosY1 Value="" />
-		<ElementPosY2 Value="" />
-	</Test>	
-	
-	<Test Command="TM_WriteDomain">
-		<Enable Value="True" />
-		<EnableIf Value="" />
-		<EnableLoop Value="" />
-		<EnableNext Value="" />
-		<Explanation Value="تنظیم مشخصات سرور" />
-		<Description Value="تنظیم مشخصات سرور" />
-		<MessageOK Value="تنظیم سرور به درستی انجام گردید" />
-		<MessageNO Value="اختلال در تنظیم سرور" />
-		<RunExe Value="" />		
-		<AskData Value="" />	
-		<Data Value="94.139.169.122:8000" />
-		<MustAnswer Value="OK" />
-		<ExceptAnswer Value="" />
-		<WaitAnswer Value="100000" />
-		<Alert Value="" />
-		<Promp Value="" />
-		<ExcelField Value="" />
-		<ElementPosX1 Value="" />
-		<ElementPosX2 Value="" />
-		<ElementPosY1 Value="" />
-		<ElementPosY2 Value="" />
-	</Test>
-
-	<Test Command="TM_WriteSerial">
-		<Enable Value="True" />
-		<EnableIf Value="" />
-		<EnableLoop Value="" />
-		<EnableNext Value="" />
-		<Explanation Value="تنظیم سریال سیستم" />
-		<Description Value="تنظیم سریال سیستم" />
-		<MessageOK Value="سریال سیستم تنظیم گردید" />
-		<MessageNO Value="اختلال در تنظیم سریال سیستم" />
-		<RunExe Value="" />		
-		<AskData Value="" />	
-		<Data Value="#Serial" />
-		<MustAnswer Value="#Return_Data" />
-		<ExceptAnswer Value="Error" />
-		<WaitAnswer Value="100000" />
-		<Alert Value="" />
-		<Promp Value="" />
 		<ExcelField Value="L" />
 		<ElementPosX1 Value="" />
 		<ElementPosX2 Value="" />
 		<ElementPosY1 Value="" />
 		<ElementPosY2 Value="" />
 	</Test>
-
-	<Test Command="TM_Power_12v_Off">
+	
+	<Test Command="TM_CheckKey">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="" />
 		<EnableNext Value="" />
-		<Explanation Value="قطع تغذیه 12 ولت برد مورد تست" />
-		<Description Value="قطع تغذیه 12 ولت برد مورد تست" />
-		<MessageOK Value="تغذیه 12 ولت برد مورد تست قطع گردید" />
-		<MessageNO Value="اختلال در قطع تغذیه 12 ولت برد تست" />
+		<Explanation Value="بررسی عملکرد مدار کلید ها" />
+		<Description Value="بررسی عملکرد مدار کلید ها" />
+		<MessageOK Value="عملکرد مدار کلید ها صحیح میباشد" />
+		<MessageNO Value="عملکرد مدار کلید ها اختلال دارد" />
 		<RunExe Value="" />		
 		<AskData Value="" />	
 		<Data Value="" />
-		<MustAnswer Value="OK" />
-		<ExceptAnswer Value="" />
-		<WaitAnswer Value="100000" />
-		<Alert Value="" />
-		<Promp Value="" />
-		<ExcelField Value="" />
-		<ElementPosX1 Value="" />
-		<ElementPosX2 Value="" />
-		<ElementPosY1 Value="" />
-		<ElementPosY2 Value="" />
-	</Test>
-
-	<Test Command="TM_Power_220v_On">
-		<Enable Value="True" />
-		<EnableIf Value="" />
-		<EnableLoop Value="True" />
-		<EnableNext Value="" />
-		<Explanation Value="اتصال تغذیه 220 ولت برد مورد تست" />
-		<Description Value="اتصال تغذیه 220 ولت برد مورد تست" />
-		<MessageOK Value="تغذیه 220 ولت برد مورد تست وصل گردید" />
-		<MessageNO Value="اختلال در اتصال تغذیه 220 ولت برد تست" />
-		<RunExe Value="" />		
-		<AskData Value="" />	
-		<Data Value="" />
-		<MustAnswer Value="OK" />
-		<ExceptAnswer Value="" />
+		<MustAnswer Value="#Return_Data" />
+		<ExceptAnswer Value="ERROR" />
 		<WaitAnswer Value="100000" />
 		<Alert Value="" />
 		<Promp Value="" />
@@ -434,40 +338,16 @@
 		<ElementPosY1 Value="" />
 		<ElementPosY2 Value="" />
 	</Test>
-	
-	<Test Command="TM_CheckZeroCross">
-		<Enable Value="True" />
-		<EnableIf Value="" />
-		<EnableLoop Value="True" />
-		<EnableNext Value="" />
-		<Explanation Value="بررسی عملکرد مدار ZeroCross" />
-		<Description Value="بررسی عملکرد مدار ZeroCross" />
-		<MessageOK Value="عملکرد مدار ZeroCross صحیح میباشد" />
-		<MessageNO Value="عملکرد مدار ZeroCross اختلال دارد" />
-		<RunExe Value="" />		
-		<AskData Value="" />	
-		<Data Value="" />
-		<MustAnswer Value="OK" />
-		<ExceptAnswer Value="" />
-		<WaitAnswer Value="100000" />
-		<Alert Value="" />
-		<Promp Value="" />
-		<ExcelField Value="N" />
-		<ElementPosX1 Value="" />
-		<ElementPosX2 Value="" />
-		<ElementPosY1 Value="" />
-		<ElementPosY2 Value="" />
-	</Test>
-	
+
 	<Test Command="TM_Power_220v_Off">
 		<Enable Value="True" />
 		<EnableIf Value="" />
 		<EnableLoop Value="" />
 		<EnableNext Value="" />
-		<Explanation Value="قطع تغذیه 220 ولت برد مورد تست" />
-		<Description Value="قطع تغذیه 220 ولت برد مورد تست" />
-		<MessageOK Value="تغذیه 220 ولت برد مورد تست قطع گردید" />
-		<MessageNO Value="اختلال در قطع تغذیه 220 ولت برد تست" />
+		<Explanation Value="قطع تغذیه برد مورد تست" />
+		<Description Value="قطع تغذیه برد مورد تست" />
+		<MessageOK Value="تغذیه برد مورد تست قطع گردید" />
+		<MessageNO Value="اختلال در قطع تغذیه برد تست" />
 		<RunExe Value="" />		
 		<AskData Value="" />	
 		<Data Value="" />

@@ -540,10 +540,12 @@ void dap_target_erase(void) {
 	dap_write_word(CMU_FLASHLOCK, CMU_FLASHLOCK_LOCKED);
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
-void dap_target_write_flash(uint32_t addr, const uint8_t *data, uint32_t len) {
+void dap_target_write_flash(uint32_t addr, const uint8_t *data, uint32_t len, uint32_t addr_config, uint32_t len_config, uint8_t* Domain, uint8_t* Serial, uint8_t* Prodoct) {
 	uint32_t offs;
+	uint32_t Data_Config_offs;
 	uint32_t value;
-
+	uint8_t Data_Config[128];
+	
   dap_write_word(CMU_WPREG, CMU_WPREG_UNPROTECTED); // Unlock Region
   while (0 == (dap_read_word(CMU_WPREG) & 1));
 
@@ -553,14 +555,41 @@ void dap_target_write_flash(uint32_t addr, const uint8_t *data, uint32_t len) {
 	
 	for (offs = 0; offs < len; offs += sizeof(uint32_t))
   {
+		if((offs == addr_config) && (len_config)) {
+			break;
+		}
     value = ((uint32_t)data[offs + 3] << 24) | ((uint32_t)data[offs + 2] << 16) | ((uint32_t)data[offs + 1] << 8) | (uint32_t)data[offs];
 		dap_write_word(addr + offs, value);
 		while (dap_read_word(CMU_FLASHCON) & CMU_FLASHCON_BUSY);
 		if((offs%50000)==0) {
 			IWDG_ReloadCounter();
+		}		
+	}
+	if(len_config) {
+		memset(Data_Config, 0, sizeof(Data_Config));
+		strcpy((char*)&Data_Config[0], (char*)Serial);
+		strcpy((char*)&Data_Config[16], (char*)Prodoct);
+		strcpy((char*)&Data_Config[32], (char*)Domain);
+		for (Data_Config_offs=0, offs = addr_config; Data_Config_offs < len_config; offs += sizeof(uint32_t), Data_Config_offs += sizeof(uint32_t))
+		{
+			value = ((uint32_t)Data_Config[Data_Config_offs + 3] << 24) | ((uint32_t)Data_Config[Data_Config_offs + 2] << 16) | ((uint32_t)Data_Config[Data_Config_offs + 1] << 8) | (uint32_t)Data_Config[Data_Config_offs];
+			dap_write_word(addr + offs, value);
+			while (dap_read_word(CMU_FLASHCON) & CMU_FLASHCON_BUSY);
+			if((offs%50000)==0) {
+				IWDG_ReloadCounter();
+			}
+		}		
+		for (; offs < len; offs += sizeof(uint32_t))
+		{
+			value = ((uint32_t)data[offs + 3] << 24) | ((uint32_t)data[offs + 2] << 16) | ((uint32_t)data[offs + 1] << 8) | (uint32_t)data[offs];
+			dap_write_word(addr + offs, value);
+			while (dap_read_word(CMU_FLASHCON) & CMU_FLASHCON_BUSY);
+			if((offs%50000)==0) {
+				IWDG_ReloadCounter();
+			}
 		}
 	}
-	
+
 	dap_write_word(CMU_FLASHCON, CMU_FLASHCON_FOP_READ);
 	
 	dap_write_word(CMU_FLASHLOCK, CMU_FLASHLOCK_LOCKED);
