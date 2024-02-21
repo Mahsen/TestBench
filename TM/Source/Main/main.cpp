@@ -18755,7 +18755,7 @@ void TEST_DownStand(U8* Data) {
 	TEST_JacInit();
 	
 	General.Jac.Down();
-	TaskManager_Delay(17 Sec);
+	TaskManager_Delay(22 Sec);
 	General.Jac.Off();
 	
 	sprintf((char*)Data, "OK");
@@ -18765,7 +18765,7 @@ void TEST_UpStand(U8* Data) {
 	TEST_JacInit();
 	
 	General.Jac.Up();
-	TaskManager_Delay(8 Sec);
+	TaskManager_Delay(15 Sec);
 	General.Jac.Off();
 	
 	sprintf((char*)Data, "OK");
@@ -18779,7 +18779,7 @@ void TEST_TM_Power_220v_On(U8* Data) {
 	
 		Test_7.DigitalOutput.Power_220v_En.Enable();
 		Test_7.DigitalOutput.Power_220v_Test.Disable();
-		TaskManager_Delay(7 Sec);
+		TaskManager_Delay(16 Sec);
 	
 		Value[0] = Test_7.AnalogInput.Get_Power_220v_Current();
 		Value[1] = Test_7.AnalogInput.Get_Power_12v_Voltage();
