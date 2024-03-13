@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Form  BoudRate="19200" Serial="ID1" Version="v1.14021121">
 
-<Tests Title="TM_v1.14021103_SAA_766_01_0207_02" BoardPicture="" AutoEnableChecked="True" AutoReplay="False" AutoNext="True" ExcelFile="../_Files/Exel/TM.xlsx" ExcelSheet="TestResult" ExcelStartSerialsField="A4" ExcelCheckSum="N" >
+<Tests Title="TM_v1.14021223_SAA_766_01_0207_02" BoardPicture="" AutoEnableChecked="True" AutoReplay="False" AutoNext="True" ExcelFile="../_Files/Exel/TM.xlsx" ExcelSheet="TestResult" ExcelStartSerialsField="A4" ExcelCheckSum="N" >
 
 	<Test Command="SoftwareVersion">
 		<Enable Value="True" />
@@ -86,7 +86,7 @@
 		<MessageNO Value="خطا در ارسال برنامه" />
 		<RunExe Value="" />		
 		<AskData Value="" />	
-		<Data Value="SAA_766_01_0207_02_v1_14021103 94.139.169.122:8000 #Serial #DateTime" /> 
+		<Data Value="SAA_766_01_0207_02_v1_14021223 94.139.169.122:8000 #Serial #DateTime" /> 
 		<MustAnswer Value="#Return_Data" />
 		<ExceptAnswer Value="not|ERROR" />
 		<WaitAnswer Value="100000" />
