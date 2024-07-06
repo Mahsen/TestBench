@@ -23,7 +23,7 @@ Section Cross References
     main.o(.text) refers to main.o(.data) for TEST_GetID_MUTEX
     main.o(.text) refers to gpio.o(.constdata) for GPIO_PORTCLOCK
     main.o(.text) refers to gpio.o(.data) for GPIO_PORTSEL
-    main.o(.text) refers to main.o(.constdata) for SAA_766_01_0207_02_v1_14030412
+    main.o(.text) refers to main.o(.constdata) for SAA_766_01_0207_02_v1_14030416
     main.o(.text) refers to adc.o(.text) for ADC_Read(unsigned short)
     main.o(.text) refers to fflt_clz.o(x$fpl$ffltu) for __aeabi_ui2f
     main.o(.text) refers to f2d.o(x$fpl$f2d) for __aeabi_f2d
@@ -1970,50 +1970,50 @@ Image Symbol Table
     _fsub1                                   0x0800ce63   Thumb Code     0  faddsub_clz.o(x$fpl$fsub)
     x$fpl$llufromd                           0x0800cf40   Section      120  dfixull.o(x$fpl$llufromd)
     x$fpl$printf1                            0x0800cfb8   Section        4  printf1.o(x$fpl$printf1)
-    .constdata                               0x0800cfbc   Section    294712  main.o(.constdata)
+    .constdata                               0x0800cfbc   Section    294752  main.o(.constdata)
     x$fpl$usenofp                            0x0800cfbc   Section        0  usenofp.o(x$fpl$usenofp)
-    SAA_766_01_0207_02_v1_14030412           0x0800cfbc   Data       294529  main.o(.constdata)
-    typeinfo for [unnamed type (instance 2)]::[unnamed type (instance 4)] 0x08054e40   Data          24  main.o(.constdata)
-    typeinfo for [unnamed type (instance 2)]::[unnamed type (instance 5)] 0x08054e58   Data          24  main.o(.constdata)
-    typeinfo for [unnamed type (instance 2)]::[unnamed type (instance 6)] 0x08054e70   Data          24  main.o(.constdata)
-    vtable for [unnamed type (instance 2)]::[unnamed type (instance 4)] 0x08054e88   Data          36  main.o(.constdata)
-    vtable for [unnamed type (instance 2)]::[unnamed type (instance 5)] 0x08054eac   Data          36  main.o(.constdata)
-    vtable for [unnamed type (instance 2)]::[unnamed type (instance 6)] 0x08054ed0   Data          36  main.o(.constdata)
-    .constdata                               0x08054ef4   Section      144  datetype.o(.constdata)
-    shmtable                                 0x08054ef4   Data          72  datetype.o(.constdata)
-    miltable                                 0x08054f3c   Data          72  datetype.o(.constdata)
-    .constdata                               0x08054f84   Section       40  gpio.o(.constdata)
-    GPIO_EXTI                                0x08054fa4   Data           8  gpio.o(.constdata)
-    .constdata                               0x08054fac   Section       40  rtx_conf_cm.o(.constdata)
-    __tagsym$$used                           0x08054fc0   Number         0  rtx_conf_cm.o(.constdata)
-    __tagsym$$used                           0x08054fc4   Number         0  rtx_conf_cm.o(.constdata)
-    .constdata                               0x08054fd4   Section      148  bigflt0.o(.constdata)
-    tenpwrs_x                                0x08054fd4   Data          60  bigflt0.o(.constdata)
-    tenpwrs_i                                0x08055010   Data          64  bigflt0.o(.constdata)
-    .constdata__ZTI5Media                    0x08055068   Section        8  main.o(.constdata__ZTI5Media)
-    .constdata__ZTS5Media                    0x08055070   Section        7  main.o(.constdata__ZTS5Media)
-    .constdata__ZTSNUt0_Ut2_E                0x08055077   Section       11  main.o(.constdata__ZTSNUt0_Ut2_E)
-    .constdata__ZTSNUt0_Ut3_E                0x08055082   Section       11  main.o(.constdata__ZTSNUt0_Ut3_E)
-    .constdata__ZTSNUt0_Ut4_E                0x0805508d   Section       11  main.o(.constdata__ZTSNUt0_Ut4_E)
-    .constdata__ZTV5Media                    0x08055098   Section       36  main.o(.constdata__ZTV5Media)
-    .constdata__ZTVN10__cxxabiv117__class_type_infoE 0x080550bc   Section       16  lib_rtti_impl.o(.constdata__ZTVN10__cxxabiv117__class_type_infoE)
-    .constdata__ZTVN10__cxxabiv121__vmi_class_type_infoE 0x080550cc   Section       16  lib_rtti_impl.o(.constdata__ZTVN10__cxxabiv121__vmi_class_type_infoE)
-    locale$$data                             0x080550fc   Section       28  lc_numeric_c.o(locale$$data)
-    __lcnum_c_name                           0x08055100   Data           2  lc_numeric_c.o(locale$$data)
-    __lcnum_c_start                          0x08055108   Data           0  lc_numeric_c.o(locale$$data)
-    __lcnum_c_point                          0x08055114   Data           0  lc_numeric_c.o(locale$$data)
-    __lcnum_c_thousands                      0x08055116   Data           0  lc_numeric_c.o(locale$$data)
-    __lcnum_c_grouping                       0x08055117   Data           0  lc_numeric_c.o(locale$$data)
-    locale$$data                             0x08055118   Section      272  lc_ctype_c.o(locale$$data)
-    __lcnum_c_end                            0x08055118   Data           0  lc_numeric_c.o(locale$$data)
-    __lcctype_c_name                         0x0805511c   Data           2  lc_ctype_c.o(locale$$data)
-    __lcctype_c_start                        0x08055124   Data           0  lc_ctype_c.o(locale$$data)
-    .init_array                              0x08055228   Section        4  main.o(.init_array)
-    __lcctype_c_end                          0x08055228   Data           0  lc_ctype_c.o(locale$$data)
-    .init_array                              0x0805522c   Section        4  gpio.o(.init_array)
-    .init_array                              0x08055230   Section        4  timer.o(.init_array)
-    .init_array                              0x08055234   Section        4  rtc.o(.init_array)
-    .init_array                              0x08055238   Section        0  init_aeabi.o(.init_array)
+    SAA_766_01_0207_02_v1_14030416           0x0800cfbc   Data       294569  main.o(.constdata)
+    typeinfo for [unnamed type (instance 2)]::[unnamed type (instance 4)] 0x08054e68   Data          24  main.o(.constdata)
+    typeinfo for [unnamed type (instance 2)]::[unnamed type (instance 5)] 0x08054e80   Data          24  main.o(.constdata)
+    typeinfo for [unnamed type (instance 2)]::[unnamed type (instance 6)] 0x08054e98   Data          24  main.o(.constdata)
+    vtable for [unnamed type (instance 2)]::[unnamed type (instance 4)] 0x08054eb0   Data          36  main.o(.constdata)
+    vtable for [unnamed type (instance 2)]::[unnamed type (instance 5)] 0x08054ed4   Data          36  main.o(.constdata)
+    vtable for [unnamed type (instance 2)]::[unnamed type (instance 6)] 0x08054ef8   Data          36  main.o(.constdata)
+    .constdata                               0x08054f1c   Section      144  datetype.o(.constdata)
+    shmtable                                 0x08054f1c   Data          72  datetype.o(.constdata)
+    miltable                                 0x08054f64   Data          72  datetype.o(.constdata)
+    .constdata                               0x08054fac   Section       40  gpio.o(.constdata)
+    GPIO_EXTI                                0x08054fcc   Data           8  gpio.o(.constdata)
+    .constdata                               0x08054fd4   Section       40  rtx_conf_cm.o(.constdata)
+    __tagsym$$used                           0x08054fe8   Number         0  rtx_conf_cm.o(.constdata)
+    __tagsym$$used                           0x08054fec   Number         0  rtx_conf_cm.o(.constdata)
+    .constdata                               0x08054ffc   Section      148  bigflt0.o(.constdata)
+    tenpwrs_x                                0x08054ffc   Data          60  bigflt0.o(.constdata)
+    tenpwrs_i                                0x08055038   Data          64  bigflt0.o(.constdata)
+    .constdata__ZTI5Media                    0x08055090   Section        8  main.o(.constdata__ZTI5Media)
+    .constdata__ZTS5Media                    0x08055098   Section        7  main.o(.constdata__ZTS5Media)
+    .constdata__ZTSNUt0_Ut2_E                0x0805509f   Section       11  main.o(.constdata__ZTSNUt0_Ut2_E)
+    .constdata__ZTSNUt0_Ut3_E                0x080550aa   Section       11  main.o(.constdata__ZTSNUt0_Ut3_E)
+    .constdata__ZTSNUt0_Ut4_E                0x080550b5   Section       11  main.o(.constdata__ZTSNUt0_Ut4_E)
+    .constdata__ZTV5Media                    0x080550c0   Section       36  main.o(.constdata__ZTV5Media)
+    .constdata__ZTVN10__cxxabiv117__class_type_infoE 0x080550e4   Section       16  lib_rtti_impl.o(.constdata__ZTVN10__cxxabiv117__class_type_infoE)
+    .constdata__ZTVN10__cxxabiv121__vmi_class_type_infoE 0x080550f4   Section       16  lib_rtti_impl.o(.constdata__ZTVN10__cxxabiv121__vmi_class_type_infoE)
+    locale$$data                             0x08055124   Section       28  lc_numeric_c.o(locale$$data)
+    __lcnum_c_name                           0x08055128   Data           2  lc_numeric_c.o(locale$$data)
+    __lcnum_c_start                          0x08055130   Data           0  lc_numeric_c.o(locale$$data)
+    __lcnum_c_point                          0x0805513c   Data           0  lc_numeric_c.o(locale$$data)
+    __lcnum_c_thousands                      0x0805513e   Data           0  lc_numeric_c.o(locale$$data)
+    __lcnum_c_grouping                       0x0805513f   Data           0  lc_numeric_c.o(locale$$data)
+    locale$$data                             0x08055140   Section      272  lc_ctype_c.o(locale$$data)
+    __lcnum_c_end                            0x08055140   Data           0  lc_numeric_c.o(locale$$data)
+    __lcctype_c_name                         0x08055144   Data           2  lc_ctype_c.o(locale$$data)
+    __lcctype_c_start                        0x0805514c   Data           0  lc_ctype_c.o(locale$$data)
+    .init_array                              0x08055250   Section        4  main.o(.init_array)
+    __lcctype_c_end                          0x08055250   Data           0  lc_ctype_c.o(locale$$data)
+    .init_array                              0x08055254   Section        4  gpio.o(.init_array)
+    .init_array                              0x08055258   Section        4  timer.o(.init_array)
+    .init_array                              0x0805525c   Section        4  rtc.o(.init_array)
+    .init_array                              0x08055260   Section        0  init_aeabi.o(.init_array)
     .data                                    0x20000000   Section       16  main.o(.data)
     Data                                     0x20000008   Data           3  main.o(.data)
     id                                       0x2000000c   Data           4  main.o(.data)
@@ -2988,31 +2988,31 @@ Image Symbol Table
     _ll_ufrom_d                              0x0800cf41   Thumb Code   120  dfixull.o(x$fpl$llufromd)
     _printf_fp_dec                           0x0800cfb9   Thumb Code     4  printf1.o(x$fpl$printf1)
     __I$use$fp                               0x0800cfbc   Number         0  usenofp.o(x$fpl$usenofp)
-    GPIO_PORTCLOCK                           0x08054f84   Data          32  gpio.o(.constdata)
-    os_maxtaskrun                            0x08054fac   Data           2  rtx_conf_cm.o(.constdata)
-    os_stackinfo                             0x08054fb0   Data           4  rtx_conf_cm.o(.constdata)
-    os_rrobin                                0x08054fb4   Data           4  rtx_conf_cm.o(.constdata)
-    os_trv                                   0x08054fb8   Data           4  rtx_conf_cm.o(.constdata)
-    os_flags                                 0x08054fbc   Data           1  rtx_conf_cm.o(.constdata)
-    os_clockrate                             0x08054fc0   Data           4  rtx_conf_cm.o(.constdata)
-    os_timernum                              0x08054fc4   Data           4  rtx_conf_cm.o(.constdata)
-    mp_tcb_size                              0x08054fc8   Data           2  rtx_conf_cm.o(.constdata)
-    mp_stk_size                              0x08054fcc   Data           4  rtx_conf_cm.o(.constdata)
-    os_fifo_size                             0x08054fd0   Data           1  rtx_conf_cm.o(.constdata)
-    mp_tmr_size                              0x08054fd2   Data           2  rtx_conf_cm.o(.constdata)
-    typeinfo for Media                       0x08055068   Data           8  main.o(.constdata__ZTI5Media)
-    typeinfo name for Media                  0x08055070   Data           7  main.o(.constdata__ZTS5Media)
-    typeinfo name for [unnamed type (instance 2)]::[unnamed type (instance 4)] 0x08055077   Data          11  main.o(.constdata__ZTSNUt0_Ut2_E)
-    typeinfo name for [unnamed type (instance 2)]::[unnamed type (instance 5)] 0x08055082   Data          11  main.o(.constdata__ZTSNUt0_Ut3_E)
-    typeinfo name for [unnamed type (instance 2)]::[unnamed type (instance 6)] 0x0805508d   Data          11  main.o(.constdata__ZTSNUt0_Ut4_E)
-    vtable for Media                         0x08055098   Data          36  main.o(.constdata__ZTV5Media)
-    vtable for __cxxabiv1::__class_type_info 0x080550bc   Data          16  lib_rtti_impl.o(.constdata__ZTVN10__cxxabiv117__class_type_infoE)
-    vtable for __cxxabiv1::__vmi_class_type_info 0x080550cc   Data          16  lib_rtti_impl.o(.constdata__ZTVN10__cxxabiv121__vmi_class_type_infoE)
-    Region$$Table$$Base                      0x080550dc   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x080550fc   Number         0  anon$$obj.o(Region$$Table)
-    __ctype                                  0x08055125   Data           0  lc_ctype_c.o(locale$$data)
-    SHT$$INIT_ARRAY$$Base                    0x08055228   Number         0  main.o(.init_array)
-    SHT$$INIT_ARRAY$$Limit                   0x08055238   Number         0  init_aeabi.o(.init_array)
+    GPIO_PORTCLOCK                           0x08054fac   Data          32  gpio.o(.constdata)
+    os_maxtaskrun                            0x08054fd4   Data           2  rtx_conf_cm.o(.constdata)
+    os_stackinfo                             0x08054fd8   Data           4  rtx_conf_cm.o(.constdata)
+    os_rrobin                                0x08054fdc   Data           4  rtx_conf_cm.o(.constdata)
+    os_trv                                   0x08054fe0   Data           4  rtx_conf_cm.o(.constdata)
+    os_flags                                 0x08054fe4   Data           1  rtx_conf_cm.o(.constdata)
+    os_clockrate                             0x08054fe8   Data           4  rtx_conf_cm.o(.constdata)
+    os_timernum                              0x08054fec   Data           4  rtx_conf_cm.o(.constdata)
+    mp_tcb_size                              0x08054ff0   Data           2  rtx_conf_cm.o(.constdata)
+    mp_stk_size                              0x08054ff4   Data           4  rtx_conf_cm.o(.constdata)
+    os_fifo_size                             0x08054ff8   Data           1  rtx_conf_cm.o(.constdata)
+    mp_tmr_size                              0x08054ffa   Data           2  rtx_conf_cm.o(.constdata)
+    typeinfo for Media                       0x08055090   Data           8  main.o(.constdata__ZTI5Media)
+    typeinfo name for Media                  0x08055098   Data           7  main.o(.constdata__ZTS5Media)
+    typeinfo name for [unnamed type (instance 2)]::[unnamed type (instance 4)] 0x0805509f   Data          11  main.o(.constdata__ZTSNUt0_Ut2_E)
+    typeinfo name for [unnamed type (instance 2)]::[unnamed type (instance 5)] 0x080550aa   Data          11  main.o(.constdata__ZTSNUt0_Ut3_E)
+    typeinfo name for [unnamed type (instance 2)]::[unnamed type (instance 6)] 0x080550b5   Data          11  main.o(.constdata__ZTSNUt0_Ut4_E)
+    vtable for Media                         0x080550c0   Data          36  main.o(.constdata__ZTV5Media)
+    vtable for __cxxabiv1::__class_type_info 0x080550e4   Data          16  lib_rtti_impl.o(.constdata__ZTVN10__cxxabiv117__class_type_infoE)
+    vtable for __cxxabiv1::__vmi_class_type_info 0x080550f4   Data          16  lib_rtti_impl.o(.constdata__ZTVN10__cxxabiv121__vmi_class_type_infoE)
+    Region$$Table$$Base                      0x08055104   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x08055124   Number         0  anon$$obj.o(Region$$Table)
+    __ctype                                  0x0805514d   Data           0  lc_ctype_c.o(locale$$data)
+    SHT$$INIT_ARRAY$$Base                    0x08055250   Number         0  main.o(.init_array)
+    SHT$$INIT_ARRAY$$Limit                   0x08055260   Number         0  init_aeabi.o(.init_array)
     General                                  0x20000000   Data           3  main.o(.data)
     TEST_GetID_MUTEX                         0x20000003   Data           1  main.o(.data)
     TEST_TM_Counter_ZeroCross                0x20000004   Data           4  main.o(.data)
@@ -3083,9 +3083,9 @@ Memory Map of the image
 
   Image Entry point : 0x08000125
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x0005531c, Max: 0x00060000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00055344, Max: 0x00060000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00055238, Max: 0x00060000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00055260, Max: 0x00060000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -3398,66 +3398,66 @@ Memory Map of the image
     0x0800cf40   0x0800cf40   0x00000078   Code   RO         2415    x$fpl$llufromd      fz_ws.l(dfixull.o)
     0x0800cfb8   0x0800cfb8   0x00000004   Code   RO         2455    x$fpl$printf1       fz_ws.l(printf1.o)
     0x0800cfbc   0x0800cfbc   0x00000000   Code   RO         2631    x$fpl$usenofp       fz_ws.l(usenofp.o)
-    0x0800cfbc   0x0800cfbc   0x00047f38   Data   RO            6    .constdata          main.o
-    0x08054ef4   0x08054ef4   0x00000090   Data   RO          303    .constdata          datetype.o
-    0x08054f84   0x08054f84   0x00000028   Data   RO          582    .constdata          gpio.o
-    0x08054fac   0x08054fac   0x00000028   Data   RO         1328    .constdata          rtx_conf_cm.o
-    0x08054fd4   0x08054fd4   0x00000094   Data   RO         2700    .constdata          c_w.l(bigflt0.o)
-    0x08055068   0x08055068   0x00000008   Data   RO           59    .constdata__ZTI5Media  main.o
-    0x08055070   0x08055070   0x00000007   Data   RO           63    .constdata__ZTS5Media  main.o
-    0x08055077   0x08055077   0x0000000b   Data   RO           60    .constdata__ZTSNUt0_Ut2_E  main.o
-    0x08055082   0x08055082   0x0000000b   Data   RO           61    .constdata__ZTSNUt0_Ut3_E  main.o
-    0x0805508d   0x0805508d   0x0000000b   Data   RO           62    .constdata__ZTSNUt0_Ut4_E  main.o
-    0x08055098   0x08055098   0x00000024   Data   RO           58    .constdata__ZTV5Media  main.o
-    0x080550bc   0x080550bc   0x00000010   Data   RO         2363    .constdata__ZTVN10__cxxabiv117__class_type_infoE  cpprt_w.l(lib_rtti_impl.o)
-    0x080550cc   0x080550cc   0x00000010   Data   RO         2367    .constdata__ZTVN10__cxxabiv121__vmi_class_type_infoE  cpprt_w.l(lib_rtti_impl.o)
-    0x080550dc   0x080550dc   0x00000020   Data   RO         2906    Region$$Table       anon$$obj.o
-    0x080550fc   0x080550fc   0x0000001c   Data   RO         2724    locale$$data        c_w.l(lc_numeric_c.o)
-    0x08055118   0x08055118   0x00000110   Data   RO         2847    locale$$data        c_w.l(lc_ctype_c.o)
-    0x08055228   0x08055228   0x00000004   Data   RO            8    .init_array         main.o
-    0x0805522c   0x08055228   0x00000004   Data   RO          584    .init_array         gpio.o
-    0x08055230   0x08055228   0x00000004   Data   RO          854    .init_array         timer.o
-    0x08055234   0x08055228   0x00000004   Data   RO         1106    .init_array         rtc.o
-    0x08055238   0x08055228   0x00000000   Data   RO         2282    .init_array         c_w.l(init_aeabi.o)
+    0x0800cfbc   0x0800cfbc   0x00047f60   Data   RO            6    .constdata          main.o
+    0x08054f1c   0x08054f1c   0x00000090   Data   RO          303    .constdata          datetype.o
+    0x08054fac   0x08054fac   0x00000028   Data   RO          582    .constdata          gpio.o
+    0x08054fd4   0x08054fd4   0x00000028   Data   RO         1328    .constdata          rtx_conf_cm.o
+    0x08054ffc   0x08054ffc   0x00000094   Data   RO         2700    .constdata          c_w.l(bigflt0.o)
+    0x08055090   0x08055090   0x00000008   Data   RO           59    .constdata__ZTI5Media  main.o
+    0x08055098   0x08055098   0x00000007   Data   RO           63    .constdata__ZTS5Media  main.o
+    0x0805509f   0x0805509f   0x0000000b   Data   RO           60    .constdata__ZTSNUt0_Ut2_E  main.o
+    0x080550aa   0x080550aa   0x0000000b   Data   RO           61    .constdata__ZTSNUt0_Ut3_E  main.o
+    0x080550b5   0x080550b5   0x0000000b   Data   RO           62    .constdata__ZTSNUt0_Ut4_E  main.o
+    0x080550c0   0x080550c0   0x00000024   Data   RO           58    .constdata__ZTV5Media  main.o
+    0x080550e4   0x080550e4   0x00000010   Data   RO         2363    .constdata__ZTVN10__cxxabiv117__class_type_infoE  cpprt_w.l(lib_rtti_impl.o)
+    0x080550f4   0x080550f4   0x00000010   Data   RO         2367    .constdata__ZTVN10__cxxabiv121__vmi_class_type_infoE  cpprt_w.l(lib_rtti_impl.o)
+    0x08055104   0x08055104   0x00000020   Data   RO         2906    Region$$Table       anon$$obj.o
+    0x08055124   0x08055124   0x0000001c   Data   RO         2724    locale$$data        c_w.l(lc_numeric_c.o)
+    0x08055140   0x08055140   0x00000110   Data   RO         2847    locale$$data        c_w.l(lc_ctype_c.o)
+    0x08055250   0x08055250   0x00000004   Data   RO            8    .init_array         main.o
+    0x08055254   0x08055250   0x00000004   Data   RO          584    .init_array         gpio.o
+    0x08055258   0x08055250   0x00000004   Data   RO          854    .init_array         timer.o
+    0x0805525c   0x08055250   0x00000004   Data   RO         1106    .init_array         rtc.o
+    0x08055260   0x08055250   0x00000000   Data   RO         2282    .init_array         c_w.l(init_aeabi.o)
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08055238, Size: 0x000092f0, Max: 0x0000c000, ABSOLUTE)
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08055260, Size: 0x000092f0, Max: 0x0000c000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x08055238   0x00000010   Data   RW            7    .data               main.o
-    0x20000010   0x08055248   0x00000004   Data   RW          268    .data               ui.o
-    0x20000014   0x0805524c   0x00000001   Data   RW          304    .data               datetype.o
-    0x20000015   0x0805524d   0x00000003   PAD
-    0x20000018   0x08055250   0x00000024   Data   RW          583    .data               gpio.o
-    0x2000003c   0x08055274   0x00000001   Data   RW          853    .data               timer.o
-    0x2000003d   0x08055275   0x00000017   Data   RW          995    .data               uart.o
-    0x20000054   0x0805528c   0x00000002   Data   RW         1020    .data               wdt.o
-    0x20000056   0x0805528e   0x00000002   PAD
-    0x20000058   0x08055290   0x00000008   Data   RW         1105    .data               rtc.o
-    0x20000060   0x08055298   0x00000018   Data   RW         1213    .data               taskmanager.o
-    0x20000078   0x080552b0   0x00000001   Data   RW         1244    .data               tasktimer.o
-    0x20000079   0x080552b1   0x00000003   PAD
-    0x2000007c   0x080552b4   0x0000001d   Data   RW         1280    .data               system_stm32l1xx.o
-    0x20000099   0x080552d1   0x00000003   PAD
-    0x2000009c   0x080552d4   0x00000008   Data   RW         1329    .data               rtx_conf_cm.o
-    0x200000a4   0x080552dc   0x00000019   Data   RW         1494    .data               stm32l1xx_rcc.o
-    0x200000bd   0x080552f5   0x00000003   PAD
-    0x200000c0   0x080552f8   0x00000008   Data   RW         1653    .data               RTX_CM3.lib(rt_task.o)
-    0x200000c8   0x08055300   0x00000004   Data   RW         1745    .data               RTX_CM3.lib(rt_time.o)
-    0x200000cc   0x08055304   0x00000001   Data   RW         1807    .data               RTX_CM3.lib(hal_cm3.o)
-    0x200000cd   0x08055305   0x00000003   PAD
-    0x200000d0   0x08055308   0x00000008   Data   RW         1854    .data               RTX_CM3.lib(rt_system.o)
-    0x200000d8   0x08055310   0x00000008   Data   RW         2172    .data               RTX_CM3.lib(rt_timer.o)
-    0x200000e0   0x08055318   0x00000004   Data   RW         2261    .data               c_w.l(strtok.o)
-    0x200000e4   0x0805531c   0x00000004   PAD
+    0x20000000   0x08055260   0x00000010   Data   RW            7    .data               main.o
+    0x20000010   0x08055270   0x00000004   Data   RW          268    .data               ui.o
+    0x20000014   0x08055274   0x00000001   Data   RW          304    .data               datetype.o
+    0x20000015   0x08055275   0x00000003   PAD
+    0x20000018   0x08055278   0x00000024   Data   RW          583    .data               gpio.o
+    0x2000003c   0x0805529c   0x00000001   Data   RW          853    .data               timer.o
+    0x2000003d   0x0805529d   0x00000017   Data   RW          995    .data               uart.o
+    0x20000054   0x080552b4   0x00000002   Data   RW         1020    .data               wdt.o
+    0x20000056   0x080552b6   0x00000002   PAD
+    0x20000058   0x080552b8   0x00000008   Data   RW         1105    .data               rtc.o
+    0x20000060   0x080552c0   0x00000018   Data   RW         1213    .data               taskmanager.o
+    0x20000078   0x080552d8   0x00000001   Data   RW         1244    .data               tasktimer.o
+    0x20000079   0x080552d9   0x00000003   PAD
+    0x2000007c   0x080552dc   0x0000001d   Data   RW         1280    .data               system_stm32l1xx.o
+    0x20000099   0x080552f9   0x00000003   PAD
+    0x2000009c   0x080552fc   0x00000008   Data   RW         1329    .data               rtx_conf_cm.o
+    0x200000a4   0x08055304   0x00000019   Data   RW         1494    .data               stm32l1xx_rcc.o
+    0x200000bd   0x0805531d   0x00000003   PAD
+    0x200000c0   0x08055320   0x00000008   Data   RW         1653    .data               RTX_CM3.lib(rt_task.o)
+    0x200000c8   0x08055328   0x00000004   Data   RW         1745    .data               RTX_CM3.lib(rt_time.o)
+    0x200000cc   0x0805532c   0x00000001   Data   RW         1807    .data               RTX_CM3.lib(hal_cm3.o)
+    0x200000cd   0x0805532d   0x00000003   PAD
+    0x200000d0   0x08055330   0x00000008   Data   RW         1854    .data               RTX_CM3.lib(rt_system.o)
+    0x200000d8   0x08055338   0x00000008   Data   RW         2172    .data               RTX_CM3.lib(rt_timer.o)
+    0x200000e0   0x08055340   0x00000004   Data   RW         2261    .data               c_w.l(strtok.o)
+    0x200000e4   0x08055344   0x00000004   PAD
     0x200000e8        -       0x00001020   Zero   RW            5    .bss                main.o
     0x20001108        -       0x00000748   Zero   RW          218    .bss                testbench.o
     0x20001850        -       0x00001000   Zero   RW          267    .bss                ui.o
     0x20002850        -       0x00000540   Zero   RW          581    .bss                gpio.o
     0x20002d90        -       0x000000d0   Zero   RW          852    .bss                timer.o
     0x20002e60        -       0x00000a64   Zero   RW          994    .bss                uart.o
-    0x200038c4   0x0805531c   0x00000004   PAD
+    0x200038c4   0x08055344   0x00000004   PAD
     0x200038c8        -       0x00000400   Zero   RW         1019    .bss                wdt.o
     0x20003cc8        -       0x000001c0   Zero   RW         1212    .bss                taskmanager.o
     0x20003e88        -       0x00000240   Zero   RW         1243    .bss                tasktimer.o
@@ -3480,7 +3480,7 @@ Image component sizes
       1840         30          0          0          0     214456   dap.o
       1034         12        144          1          0       9446   datetype.o
       3370        116         44         36       1344      25378   gpio.o
-      7034       1212     294800         16       4128     280795   main.o
+      7034       1212     294840         16       4128     280795   main.o
        220         22          0          0          0       3409   misc.o
        440         16          0          0          0       1063   pwm.o
       1854         14          4          8          0      12403   rtc.o
@@ -3508,7 +3508,7 @@ Image component sizes
        280         16          0          2       1024       2007   wdt.o
 
     ----------------------------------------------------------------------
-     37688       2298     295360        192      37192     744861   Object Totals
+     37688       2298     295400        192      37192     744861   Object Totals
          0          0         32          0          0          0   (incl. Generated)
          6          0          0         14          4          0   (incl. Padding)
 
@@ -3666,15 +3666,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     52888       3308     295840        228      37388     762242   Grand Totals
-     52888       3308     295840        228      37388     762242   ELF Image Totals
-     52888       3308     295840        228          0          0   ROM Totals
+     52888       3308     295880        228      37388     762242   Grand Totals
+     52888       3308     295880        228      37388     762242   ELF Image Totals
+     52888       3308     295880        228          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)               348728 ( 340.55kB)
+    Total RO  Size (Code + RO Data)               348768 ( 340.59kB)
     Total RW  Size (RW Data + ZI Data)             37616 (  36.73kB)
-    Total ROM Size (Code + RO Data + RW Data)     348956 ( 340.78kB)
+    Total ROM Size (Code + RO Data + RW Data)     348996 ( 340.82kB)
 
 ==============================================================================
 
