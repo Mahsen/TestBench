@@ -1,0 +1,346 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Form  BoudRate="19200" Serial="ID55" Version="v1.14011007">
+
+<Tests Title="MWM529_SAA_529_01_0111_02" BoardPicture="" AutoEnableChecked="True" AutoReplay="False" AutoNext="True" ExcelFile="../_Files/Exel/MWM.xlsx" ExcelSheet="TestResult" ExcelStartSerialsField="A4" ExcelCheckSum="AE" >
+
+	<Test Command="HardwareVersion">
+		<Enable Value="True" />
+		<EnableIf Value="" />
+		<EnableLoop Value="" />
+		<EnableNext Value="" />
+		<Explanation Value="خواندن ورژن سخت افزار تستر" />
+		<Description Value="خواندن ورژن سخت افزار تستر" />
+		<MessageOK Value="ورژن سخت افزار تست با فایل تست تطابق دارد" />
+		<MessageNO Value="عدم تطابق ورژن سخت افزار تست با فایل تست" />
+		<MessageOK Value="" />
+		<MessageNO Value="" />
+		<RunExe Value="" />		
+		<AskData Value="" />	
+		<Data Value="" />
+		<MustAnswer Value="v1.14020401" />
+		<ExceptAnswer Value="" />
+		<WaitAnswer Value="2000" />
+		<Alert Value="" />
+		<Promp Value="" />
+		<ExcelField Value="" />
+		<ElementPosX1 Value="" />
+		<ElementPosX2 Value="" />
+		<ElementPosY1 Value="" />
+		<ElementPosY2 Value="" />
+	</Test>
+	
+	<Test Command="SoftwareVersion">
+		<Enable Value="True" />
+		<EnableIf Value="" />
+		<EnableLoop Value="" />
+		<EnableNext Value="" />
+		<Explanation Value="خواندن ورژن نرم افزار تستر" />
+		<Description Value="خواندن ورژن نرم افزار تستر" />
+		<MessageOK Value="ورژن نرم افزار تست با فایل تست تطابق دارد" />
+		<MessageNO Value="عدم تطابق ورژن نرم افزار تست با فایل تست" />
+		<RunExe Value="" />		
+		<AskData Value="" />	
+		<Data Value="" />
+		<MustAnswer Value="v1.14020601" />
+		<ExceptAnswer Value="" />
+		<WaitAnswer Value="2000" />
+		<Alert Value="" />
+		<Promp Value="" />
+		<ExcelField Value="" />
+		<ElementPosX1 Value="" />
+		<ElementPosX2 Value="" />
+		<ElementPosY1 Value="" />
+		<ElementPosY2 Value="" />
+	</Test>
+	
+	<Test Command="GetID">
+		<Enable Value="True" />
+		<EnableIf Value="" />
+		<EnableLoop Value="" />
+		<EnableNext Value="" />
+		<Explanation Value="بررسی نسخه نرم افزار با استند تست" />
+		<Description Value="بررسی نسخه نرم افزار با استند تست" />
+		<MessageOK Value="نسخه نرم افزار با استند تست همخوانی دارد" />
+		<MessageNO Value="عدم همخوانی نسخه نرم افزار با استند تست" />
+		<RunExe Value="" />		
+		<AskData Value="" />	
+		<Data Value="" />
+		<MustAnswer Value="55" />
+		<ExceptAnswer Value="" />
+		<WaitAnswer Value="3000" />
+		<Alert Value="" />
+		<Promp Value="" />
+		<ExcelField Value="" />
+		<ElementPosX1 Value="" />
+		<ElementPosX2 Value="" />
+		<ElementPosY1 Value="" />
+		<ElementPosY2 Value="" />
+	</Test>
+
+	<Test Command="ID55_Power_12v_On">
+		<Enable Value="True" />
+		<EnableIf Value="" />
+		<EnableLoop Value="" />
+		<EnableNext Value="" />
+		<Explanation Value="اتصال تغذیه 12 ولت برد مورد تست" />
+		<Description Value="اتصال تغذیه 12 ولت برد مورد تست" />
+		<MessageOK Value="تغذیه 12 ولت برد مورد تست وصل گردید" />
+		<MessageNO Value="اختلال در اتصال تغذیه 12 ولت برد تست" />
+		<RunExe Value="" />		
+		<AskData Value="" />	
+		<Data Value="" />
+		<MustAnswer Value="OK" />
+		<ExceptAnswer Value="" />
+		<WaitAnswer Value="20000" />
+		<Alert Value="" />
+		<Promp Value="" />
+		<ExcelField Value="V" />
+		<ElementPosX1 Value="" />
+		<ElementPosX2 Value="" />
+		<ElementPosY1 Value="" />
+		<ElementPosY2 Value="" />
+	</Test>
+
+	<Test Command="ID55_5v_Voltage">
+		<Enable Value="True" />
+		<EnableIf Value="" />
+		<EnableLoop Value="True" />
+		<EnableNext Value="" />
+		<Explanation Value="بررسی عملکرد ولتاژ 5v" />
+		<Description Value="بررسی عملکرد ولتاژ 5v" />
+		<MessageOK Value="عملکرد ولتاژ 5v صحیح میباشد" />
+		<MessageNO Value="عملکرد ولتاژ 5v اختلال دارد" />
+		<RunExe Value="" />		
+		<AskData Value="" />	
+		<Data Value="" />
+		<MustAnswer Value="OK" />
+		<ExceptAnswer Value="" />
+		<WaitAnswer Value="10000" />
+		<Alert Value="" />
+		<Promp Value="" />
+		<ExcelField Value="W" />
+		<ElementPosX1 Value="" />
+		<ElementPosX2 Value="" />
+		<ElementPosY1 Value="" />
+		<ElementPosY2 Value="" />
+	</Test>
+	
+	<Test Command="ID55_4v_Voltage">
+		<Enable Value="True" />
+		<EnableIf Value="" />
+		<EnableLoop Value="True" />
+		<EnableNext Value="" />
+		<Explanation Value="بررسی عملکرد ولتاژ 4v" />
+		<Description Value="بررسی عملکرد ولتاژ 4v" />
+		<MessageOK Value="عملکرد ولتاژ 4v صحیح میباشد" />
+		<MessageNO Value="عملکرد ولتاژ 4v اختلال دارد" />
+		<RunExe Value="" />		
+		<AskData Value="" />	
+		<Data Value="" />
+		<MustAnswer Value="OK" />
+		<ExceptAnswer Value="" />
+		<WaitAnswer Value="10000" />
+		<Alert Value="" />
+		<Promp Value="" />
+		<ExcelField Value="X" />
+		<ElementPosX1 Value="" />
+		<ElementPosX2 Value="" />
+		<ElementPosY1 Value="" />
+		<ElementPosY2 Value="" />
+	</Test>
+	
+	<Test Command="ID55_3v3_Voltage">
+		<Enable Value="True" />
+		<EnableIf Value="" />
+		<EnableLoop Value="True" />
+		<EnableNext Value="" />
+		<Explanation Value="بررسی عملکرد ولتاژ 3v3" />
+		<Description Value="بررسی عملکرد ولتاژ 3v3" />
+		<MessageOK Value="عملکرد ولتاژ 3v3 صحیح میباشد" />
+		<MessageNO Value="عملکرد ولتاژ 3v3 اختلال دارد" />
+		<RunExe Value="" />		
+		<AskData Value="" />	
+		<Data Value="" />
+		<MustAnswer Value="OK" />
+		<ExceptAnswer Value="" />
+		<WaitAnswer Value="10000" />
+		<Alert Value="" />
+		<Promp Value="" />
+		<ExcelField Value="Y" />
+		<ElementPosX1 Value="" />
+		<ElementPosX2 Value="" />
+		<ElementPosY1 Value="" />
+		<ElementPosY2 Value="" />
+	</Test>
+	
+	<Test Command="ID55_Booster_Voltage">
+		<Enable Value="True" />
+		<EnableIf Value="" />
+		<EnableLoop Value="True" />
+		<EnableNext Value="" />
+		<Explanation Value="بررسی عملکرد ولتاژ Booster" />
+		<Description Value="بررسی عملکرد ولتاژ Booster" />
+		<MessageOK Value="عملکرد ولتاژ Booster صحیح میباشد" />
+		<MessageNO Value="عملکرد ولتاژ Booster اختلال دارد" />
+		<RunExe Value="" />		
+		<AskData Value="" />	
+		<Data Value="" />
+		<MustAnswer Value="OK" />
+		<ExceptAnswer Value="" />
+		<WaitAnswer Value="10000" />
+		<Alert Value="" />
+		<Promp Value="" />
+		<ExcelField Value="Z" />
+		<ElementPosX1 Value="" />
+		<ElementPosX2 Value="" />
+		<ElementPosY1 Value="" />
+		<ElementPosY2 Value="" />
+	</Test>
+	
+	<Test Command="ID55_Relay">
+		<Enable Value="True" />
+		<EnableIf Value="" />
+		<EnableLoop Value="True" />
+		<EnableNext Value="" />
+		<Explanation Value="بررسی عملکرد Relay" />
+		<Description Value="بررسی عملکرد Relay" />
+		<MessageOK Value="عمکرد Relay صحیح می باشد" />
+		<MessageNO Value="اختلال در عملکرد Relay" />
+		<RunExe Value="" />		
+		<AskData Value="" />	
+		<Data Value="" />
+		<MustAnswer Value="OK" />
+		<ExceptAnswer Value="" />
+		<WaitAnswer Value="10000" />
+		<Alert Value="" />
+		<Promp Value="" />
+		<ExcelField Value="AA" />
+		<ElementPosX1 Value="" />
+		<ElementPosX2 Value="" />
+		<ElementPosY1 Value="" />
+		<ElementPosY2 Value="" />
+	</Test>
+	
+	<Test Command="ID55_RS485">
+		<Enable Value="True" />
+		<EnableIf Value="" />
+		<EnableLoop Value="True" />
+		<EnableNext Value="" />
+		<Explanation Value="بررسی عملکرد RS485" />
+		<Description Value="بررسی عملکرد RS485" />
+		<MessageOK Value="عمکرد RS485 صحیح می باشد" />
+		<MessageNO Value="اختلال در عملکرد RS485" />
+		<RunExe Value="" />		
+		<AskData Value="" />	
+		<Data Value="" />
+		<MustAnswer Value="OK" />
+		<ExceptAnswer Value="" />
+		<WaitAnswer Value="10000" />
+		<Alert Value="" />
+		<Promp Value="" />
+		<ExcelField Value="AB" />
+		<ElementPosX1 Value="" />
+		<ElementPosX2 Value="" />
+		<ElementPosY1 Value="" />
+		<ElementPosY2 Value="" />
+	</Test>
+	
+	<Test Command="ID55_MBUS">
+		<Enable Value="False" />
+		<EnableIf Value="" />
+		<EnableLoop Value="True" />
+		<EnableNext Value="" />
+		<Explanation Value="بررسی عملکرد MBUS" />
+		<Description Value="بررسی عملکرد MBUS" />
+		<MessageOK Value="عمکرد MBUS صحیح می باشد" />
+		<MessageNO Value="اختلال در عملکرد MBUS" />
+		<RunExe Value="" />		
+		<AskData Value="" />	
+		<Data Value="" />
+		<MustAnswer Value="OK" />
+		<ExceptAnswer Value="" />
+		<WaitAnswer Value="10000" />
+		<Alert Value="" />
+		<Promp Value="" />
+		<ExcelField Value="AC" />
+		<ElementPosX1 Value="" />
+		<ElementPosX2 Value="" />
+		<ElementPosY1 Value="" />
+		<ElementPosY2 Value="" />
+	</Test>
+	
+	<Test Command="ID55_Power_12v_Off">
+		<Enable Value="True" />
+		<EnableIf Value="" />
+		<EnableLoop Value="" />
+		<EnableNext Value="" />
+		<Explanation Value="قطع تغذیه 12 ولت برد مورد تست" />
+		<Description Value="قطع تغذیه 12 ولت برد مورد تست" />
+		<MessageOK Value="تغذیه 12 ولت برد مورد تست قطع گردید" />
+		<MessageNO Value="اختلال در قطع تغذیه 12 ولت برد تست" />
+		<RunExe Value="" />		
+		<AskData Value="" />	
+		<Data Value="" />
+		<MustAnswer Value="OK" />
+		<ExceptAnswer Value="" />
+		<WaitAnswer Value="20000" />
+		<Alert Value="" />
+		<Promp Value="" />
+		<ExcelField Value="" />
+		<ElementPosX1 Value="" />
+		<ElementPosX2 Value="" />
+		<ElementPosY1 Value="" />
+		<ElementPosY2 Value="" />
+	</Test>
+	
+	<Test Command="SoundPlay">
+		<Enable Value="True" />
+		<EnableIf Value="" />
+		<EnableLoop Value="" />
+		<EnableNext Value="" />
+		<Explanation Value="پایان تست ها" />
+		<Description Value="پایان تست ها" />
+		<MessageOK Value="تست ها به پایان رسید" />
+		<MessageNO Value="" />
+		<RunExe Value="../_Files/SoundPlay/SoundPlay.exe" />		
+		<AskData Value="" />	
+		<Data Value="" />
+		<MustAnswer Value="" />
+		<ExceptAnswer Value=" " />
+		<WaitAnswer Value="5000" />
+		<Alert Value="" />
+		<Promp Value="" />
+		<ExcelField Value="" />
+		<ElementPosX1 Value="" />
+		<ElementPosX2 Value="" />
+		<ElementPosY1 Value="" />
+		<ElementPosY2 Value="" />
+	</Test>	
+	
+	<Test Command="PrintSerial">
+		<Enable Value="True" />
+		<EnableIf Value="" />
+		<EnableLoop Value="" />
+		<EnableNext Value="" />
+		<Explanation Value="پرینت لیبل تست" />
+		<Description Value="پرینت لیبل تست" />
+		<MessageOK Value="لیبل به پرینتر ارسال گردید" />
+		<MessageNO Value="" />
+		<RunExe Value="../_Files/PrintSerial/PrintSerial.exe" />		
+		<AskData Value="" />	
+		<Data Value="#Report" />
+		<MustAnswer Value="" />
+		<ExceptAnswer Value="" />
+		<WaitAnswer Value="30000" />
+		<Alert Value="" />
+		<Promp Value="" />
+		<ExcelField Value="AD" />
+		<ElementPosX1 Value="" />
+		<ElementPosX2 Value="" />
+		<ElementPosY1 Value="" />
+		<ElementPosY2 Value="" />
+	</Test>
+	
+</Tests>
+
+</Form>
