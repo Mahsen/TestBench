@@ -3240,39 +3240,39 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-       912         16          0          0          0       2582   adc.o
+       912         16          0          0          0       2558   adc.o
          0          0          0          0          0       4508   core_cm3.o
-      1034         12        144          1          0       9450   datetype.o
-      3370        116         44         36       1344      25406   gpio.o
-      8106       1068        623         20       4152     290017   main.o
-       220         22          0          0          0     188233   misc.o
-       440         16          0          0          0       1063   pwm.o
-      1854         14          4          8          0      12451   rtc.o
-       148         26         40          8       3656      10544   rtx_conf_cm.o
-        64         26        292          0      12288        776   startup_stm32l152xd.o
-      1332         20          0          0          0      22858   stm32l1xx_adc.o
-       284         10          0          0          0       4619   stm32l1xx_exti.o
-      1576         38          0          0          0       8127   stm32l1xx_flash.o
-       492         24          0          0          0       8993   stm32l1xx_gpio.o
-        64          6          0          0          0       1257   stm32l1xx_iwdg.o
-       344         14          0          0          0       3996   stm32l1xx_pwr.o
-      1160         40          0         25          0       9151   stm32l1xx_rcc.o
-      2792         36          0          0          0      21214   stm32l1xx_rtc.o
-       616         10          0          0          0       2817   stm32l1xx_syscfg.o
-      2522         28          0          0          0      35748   stm32l1xx_tim.o
-       904         14          0          0          0      13108   stm32l1xx_usart.o
-       408         24          0         29          0      14967   system_stm32l1xx.o
-       318         68          0          0          0       4864   tagbench.o
-       900         54          0         24        448       4939   taskmanager.o
-       420         24          0          1        576       2851   tasktimer.o
-       260         14          0          0       1864       4912   testbench.o
-      1162         22          4          1        208      13970   timer.o
-      4332        300          0         23       2660      14836   uart.o
-       184         36          0          4       4096       2479   ui.o
-       280         16          0          2       1024       2011   wdt.o
+      1034         12        144          1          0       9198   datetype.o
+      3370        116         44         36       1344      24618   gpio.o
+      8106       1068        623         20       4152     289597   main.o
+       220         22          0          0          0     188177   misc.o
+       440         16          0          0          0       1047   pwm.o
+      1854         14          4          8          0      12187   rtc.o
+       148         26         40          8       3656      10512   rtx_conf_cm.o
+        64         26        292          0      12288        764   startup_stm32l152xd.o
+      1332         20          0          0          0      22814   stm32l1xx_adc.o
+       284         10          0          0          0       4579   stm32l1xx_exti.o
+      1576         38          0          0          0       8115   stm32l1xx_flash.o
+       492         24          0          0          0       8953   stm32l1xx_gpio.o
+        64          6          0          0          0       1241   stm32l1xx_iwdg.o
+       344         14          0          0          0       3964   stm32l1xx_pwr.o
+      1160         40          0         25          0       9111   stm32l1xx_rcc.o
+      2792         36          0          0          0      21174   stm32l1xx_rtc.o
+       616         10          0          0          0       2805   stm32l1xx_syscfg.o
+      2522         28          0          0          0      35712   stm32l1xx_tim.o
+       904         14          0          0          0      13064   stm32l1xx_usart.o
+       408         24          0         29          0      14891   system_stm32l1xx.o
+       318         68          0          0          0       4688   tagbench.o
+       900         54          0         24        448       4867   taskmanager.o
+       420         24          0          1        576       2807   tasktimer.o
+       260         14          0          0       1864       4808   testbench.o
+      1162         22          4          1        208      13522   timer.o
+      4332        300          0         23       2660      14788   uart.o
+       184         36          0          4       4096       2423   ui.o
+       280         16          0          2       1024       1967   wdt.o
 
     ----------------------------------------------------------------------
-     36504       2114       1184        200      32320     742747   Object Totals
+     36504       2114       1184        200      32320     739459   Object Totals
          0          0         32          0          0          0   (incl. Generated)
          6          0          1         18          4          0   (incl. Padding)
 
@@ -3408,8 +3408,8 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     45984       2920       1216        236      32516     759464   Grand Totals
-     45984       2920       1216        236      32516     759464   ELF Image Totals
+     45984       2920       1216        236      32516     756176   Grand Totals
+     45984       2920       1216        236      32516     756176   ELF Image Totals
      45984       2920       1216        236          0          0   ROM Totals
 
 ==============================================================================
